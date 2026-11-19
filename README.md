@@ -2,11 +2,12 @@
 
 FarmSaarthi is a vernacular crop-advice web app for Indian farmers. A farmer picks a language, state and district, and optionally types or speaks the crop they are interested in. They get:
 
-- the top 3 crops to sow now, with reasons
-- irrigation and fertilizer advice
-- weather, pest and disease alerts
+- **"What to do now" cards**: short, colour-coded actions such as "Irrigate this week" or "Don't spray now" (rain is coming)
+- the top 3 crops to grow now, with reasons
+- all advice **read aloud** in their language
+- irrigation and fertilizer advice, and weather, pest and disease alerts, under "More details"
 
-They can also upload a photo of their crop, which is stored in **Azure cloud storage** and shown in a per-district gallery.
+They can also upload a photo of their crop, which is stored in **Azure cloud storage** and shown in a per-district gallery. The app can be installed on a phone and still shows the last advice without internet.
 
 ## Features
 
@@ -19,19 +20,38 @@ They can also upload a photo of their crop, which is stored in **Azure cloud sto
   - A record of each upload (state, district, crop, note, time) goes to **Azure Table Storage**.
   - Photos are checked before upload: JPG, PNG or WEBP only, 5 MB at most, and the file must be a real image. They are resized and stripped of all metadata, including GPS location.
   - The gallery shows photos through read-only links that expire after 30 minutes.
+- **Action cards**, sorted red (urgent), amber, green, then neutral. They are built from the forecast:
+  - "Heavy rain on Saturday" when a day reaches IMD's heavy-rain level (64.5 mm)
+  - "Don't spray now" if rain is due within 3 days
+  - "Irrigate this week" or "Skip irrigation this week"
+  - heat, dry-spell, pest and fungal-disease warnings
+  - a fertilizer tip
+- **Read aloud** with **Azure AI Speech** (free F0 tier). A speaker button on every card and crop, plus "Read all aloud".
+  - Audio for each sentence is made once and kept in Blob Storage, so replays don't use the free quota.
+  - The server only reads text it wrote itself (each piece is HMAC-signed), so nobody can spend the quota on other text.
+  - Without a key, the phone's built-in voice is used.
+- **Regional crop rules**: crops grown only in some regions (coffee, apple, coconut, jute and others) are only suggested in the states that grow them. If a farmer asks about a crop that is out of season or out of region, they get a note explaining why, for example "Cotton is usually sown in kharif (June–October)".
+- **"Was this advice useful?"** buttons with an optional comment.
+  - Answers and anonymous usage records (state, district, language, suggested crop) go to Azure Table Storage.
+  - **`/stats`** shows totals for evaluation: useful %, languages, states, crops, and analyses per day.
+- **Installable and offline-ready**:
+  - Works as a progressive web app (manifest and service worker) with an "Install app" button on Android.
+  - The page opens without internet and shows the last saved advice with an "offline" banner.
 - **Honest labels**: the page shows whether weather is live or estimated. Soil and market values are marked as estimates.
 
 ## How it fits together
 
 ```
-Browser (templates/index.html)
-   │  /analyze  /photos  /i18n/<lang>
+Browser (templates/index.html + service worker templates/sw.js)
+   │  /analyze  /speak  /feedback  /photos  /i18n/<lang>  /stats
    ▼
 Flask app (app.py)
-   ├── engine.py        crop model + advice  ──► weather.py ──► Open-Meteo API
-   ├── translations.py  interface text       ──► Azure Translator
-   └── photos.py        image checks         ──► Azure Blob Storage (photo files)
-                                             ──► Azure Table Storage (photo records)
+   ├── engine.py        crop model, action cards ──► weather.py ──► Open-Meteo API
+   ├── translations.py  interface text           ──► Azure Translator
+   ├── speech.py        read aloud               ──► Azure AI Speech (+ audio kept in Blob Storage)
+   ├── events.py        usage + feedback         ──► Azure Table Storage (AppEvents)
+   └── photos.py        image checks             ──► Azure Blob Storage (photo files)
+                                                 ──► Azure Table Storage (photo records)
 ```
 
 ## Project structure
@@ -43,6 +63,11 @@ Flask app (app.py)
 | `weather.py` | Open-Meteo client with a 3-hour cache |
 | `translations.py` | Hand-written interface text plus Azure Translator, with English fallback |
 | `photos.py` | Photo checks and clean-up, and Azure Blob + Table Storage |
+| `speech.py` | Azure AI Speech text-to-speech, signed text, audio cache |
+| `events.py` | Usage and feedback records, and the `/stats` numbers |
+| `templates/sw.js` | Service worker: offline copy of the page and styles |
+| `templates/stats.html` | The `/stats` evaluation page |
+| `static/icons/` | App icons for installing on a phone |
 | `data/crop_recommendation.csv` | Public 22-crop dataset (see Data sources) |
 | `data/farm_data.json` | Hand-written growing ranges, used to generate wheat, sugarcane and millets rows |
 | `data/crop_meta.json` | Soil types, sowing seasons and local names for each crop |
@@ -89,6 +114,10 @@ Open http://127.0.0.1:8000.
 | `AZURE_STORAGE_TABLE` | Table for photo records | `CropPhotos` |
 | `AZURE_TRANSLATOR_KEY` | Translating advice and missing interface text (English if empty) | empty |
 | `AZURE_TRANSLATOR_REGION` | Region of the Translator resource | empty |
+| `AZURE_SPEECH_KEY` | Read-aloud with Azure voices (phone voice if empty) | empty |
+| `AZURE_SPEECH_REGION` | Region of the Speech resource | empty |
+| `AZURE_STORAGE_EVENTS_TABLE` | Table for usage and feedback records | `AppEvents` |
+| `SECRET_KEY` | Signs read-aloud text; set it so links survive restarts | random per start |
 | `PORT` | Port for `python app.py` | `8000` |
 
 Never commit `.env` or real keys. `.gitignore` already excludes `.env`.
@@ -116,7 +145,11 @@ GitHub Actions runs the full suite, including the emulator round trip, on every 
 | `GET /i18n/<language>` | Interface text for one language |
 | `POST /photos` | Multipart upload: `photo`, `state`, `district`, optional `crop`, `note`, `language` (10 uploads per 10 minutes per address) |
 | `GET /photos?state=&district=&limit=` | Recent photos, newest first, with expiring read links |
-| `GET /healthz` | Shows whether photo storage and the translator are configured |
+| `POST /speak` | JSON `{text, sig, language}` (text and signature come from `/analyze`) returns MP3 audio |
+| `POST /feedback` | JSON `{useful, state, district, language, analysis_id, comment?, feedback_id?}` |
+| `GET /stats`, `GET /stats.json` | Usage and feedback totals |
+| `GET /sw.js`, `GET /manifest.webmanifest` | Install and offline support |
+| `GET /healthz` | Shows which Azure services are configured |
 
 ## Data sources and limits
 

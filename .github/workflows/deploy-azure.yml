@@ -32,7 +32,7 @@ jobs:
       - name: Package the app (without tests and dev files)
         run: |
           mkdir -p "$RUNNER_TEMP/package"
-          cp -r app.py engine.py photos.py translations.py weather.py requirements.txt .python-version data static templates "$RUNNER_TEMP/package/"
+          cp -r ./*.py requirements.txt .python-version data static templates "$RUNNER_TEMP/package/"
 
       - name: Deploy
         uses: azure/webapps-deploy@v3

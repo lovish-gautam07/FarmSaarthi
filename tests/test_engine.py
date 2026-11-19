@@ -104,3 +104,78 @@ def test_stated_interest_raises_the_score(engine):
 def test_fertilizer_advice_says_soil_values_are_estimates(engine):
     advice = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)["fertilizer_advice"]
     assert "Soil Health Card" in advice
+
+
+# ----- growing regions and the farmer's own crop ----------------------------------
+
+def test_regional_crops_stay_in_their_states(engine):
+    bengal = engine.recommend("Purba Bardhaman", "en", "", "West Bengal", today=RABI_DAY)
+    assert all(crop["in_region"] for crop in bengal["top_crops"])
+    assert "coffee" not in {crop["crop_id"] for crop in bengal["top_crops"]}
+    assert engine._checks(bengal["district"], "coffee")["region"] is False
+
+    kerala = engine.recommend("Wayanad", "en", "", "Kerala", today=RABI_DAY)
+    assert engine._checks(kerala["district"], "coffee")["region"] is True
+
+
+def test_asked_for_crop_out_of_season_gets_a_note(engine):
+    result = engine.recommend("Nagpur", "en", "cotton", "Maharashtra", today=RABI_DAY)
+    assert "cotton" not in {crop["crop_id"] for crop in result["top_crops"]}
+    note = next(n for n in result["interest_notes"] if n["crop_id"] == "cotton")
+    assert "kharif (June–October)" in note["text"]
+
+
+def test_asked_for_crop_outside_its_region_gets_a_note(engine):
+    result = engine.recommend("Purba Bardhaman", "en", "coffee", "West Bengal", today=RABI_DAY)
+    note = next(n for n in result["interest_notes"] if n["crop_id"] == "coffee")
+    assert "not commonly grown in West Bengal" in note["text"]
+
+
+def test_no_interest_notes_when_nothing_was_asked(engine):
+    assert engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)["interest_notes"] == []
+
+
+# ----- action cards ------------------------------------------------------------------
+
+def actions_for(weather, today=RABI_DAY):
+    return FarmSaarthiEngine(weather_client=weather).recommend("Ludhiana", "en", "", "Punjab", today=today)["actions"]
+
+
+def test_cards_are_sorted_by_urgency_and_limited():
+    order = {"alert": 0, "warn": 1, "good": 2, "info": 3}
+    days = [{"date": f"2026-11-{19 + i}", "rain_mm": 80.0 if i == 2 else 0.0, "max_temp": 40.0} for i in range(7)]
+    cards = actions_for(FakeWeather(next_days=days, max_temperature_next_7_days=40.0, humidity=88.0, rain_next_7_days_mm=80.0))
+    assert [order[c["level"]] for c in cards] == sorted(order[c["level"]] for c in cards)
+    assert len(cards) <= 6
+    titles = [c["title"] for c in cards]
+    assert any(t.startswith("Heavy rain on Saturday") for t in titles)  # 21 Nov 2026 is a Saturday
+    assert any(t.startswith("Heat: up to 40") for t in titles)
+
+
+def test_rain_tomorrow_means_do_not_spray():
+    days = [{"date": f"2026-11-{19 + i}", "rain_mm": 12.0 if i == 1 else 0.0, "max_temp": 25.0} for i in range(7)]
+    cards = actions_for(FakeWeather(next_days=days, rain_next_7_days_mm=12.0))
+    spray = next(c for c in cards if c["icon"] == "no-spray")
+    assert "tomorrow" in spray["text"]
+
+
+def test_irrigation_card_follows_the_forecast():
+    dry = actions_for(FakeWeather(rain_next_7_days_mm=0.0))
+    wet = actions_for(FakeWeather(rain_next_7_days_mm=70.0))
+    assert any(c["title"] == "Irrigate this week" and c["level"] == "warn" for c in dry)
+    assert any(c["title"] == "Skip irrigation this week" for c in wet)
+
+
+def test_best_crops_card_names_in_season_crops(engine):
+    result = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)
+    card = next(c for c in result["actions"] if c["icon"] == "seed")
+    assert card["title"].startswith("Best crops now:")
+    for crop in result["top_crops"]:
+        if crop["in_season"] and crop["in_region"]:
+            assert crop["crop"] in card["title"]
+
+
+def test_offline_cards_are_marked_as_estimates(engine):
+    cards = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)["actions"]
+    weather_cards = [c for c in cards if c["icon"] in {"water", "rain", "heat"}]
+    assert weather_cards and all(c["estimate"] for c in weather_cards)

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FarmSaarthi Stats</title>
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.png') }}?v={{ asset_version }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v={{ asset_version }}">
+</head>
+<body>
+    <main class="page-shell stats-page">
+        <a class="back-link" href="/">&larr; FarmSaarthi</a>
+        <p class="eyebrow">Evaluation</p>
+        <h1>Usage and feedback</h1>
+        <p class="panel-copy">
+            Totals only. FarmSaarthi stores the state, district, language and suggested crop of each analysis,
+            and the yes/no answer of each feedback, with no names or phone numbers.
+            Written comments can be read in the Azure portal under Storage browser &rarr; Tables &rarr; AppEvents.
+        </p>
+
+        {% if summary is none %}
+        <article class="result-card stats-empty">
+            {% if failed %}
+            Could not reach Azure Storage right now. Try again in a minute.
+            {% else %}
+            Usage records are not set up on this server. Set <code>AZURE_STORAGE_CONNECTION_STRING</code> to turn them on.
+            {% endif %}
+        </article>
+        {% else %}
+        {% set s = summary %}
+        <div class="stats-grid">
+            <article class="stat-card"><span>Analyses run</span><strong>{{ s.analyses }}</strong></article>
+            <article class="stat-card"><span>Feedback answers</span><strong>{{ s.feedback }}</strong></article>
+            <article class="stat-card"><span>Found it useful</span><strong>{% if s.useful_percent is not none %}{{ s.useful_percent }}%{% else %}&ndash;{% endif %}</strong><p>{{ s.useful }} of {{ s.feedback }} answers</p></article>
+            <article class="stat-card"><span>Written comments</span><strong>{{ s.comments }}</strong></article>
+            <article class="stat-card"><span>Photos uploaded</span><strong>{% if s.photos is not none %}{{ s.photos }}{% else %}&ndash;{% endif %}</strong></article>
+            <article class="stat-card"><span>Used live weather</span><strong>{% if s.live_weather_percent is not none %}{{ s.live_weather_percent }}%{% else %}&ndash;{% endif %}</strong><p>of analyses</p></article>
+        </div>
+
+        <article class="result-card">
+            <h3>Analyses in the last 14 days</h3>
+            {% set peak = (s.per_day | map(attribute='analyses') | max) or 1 %}
+            <div class="bar-list">
+                {% for day in s.per_day %}
+                <div class="bar-row">
+                    <span>{{ day.date[5:] }}</span>
+                    <div class="bar-track"><div class="bar-fill" style="width: {{ (100 * day.analyses / peak) | round(1) }}%"></div></div>
+                    <strong>{{ day.analyses }}</strong>
+                </div>
+                {% endfor %}
+            </div>
+        </article>
+
+        <div class="stats-tables">
+            <article class="result-card">
+                <h3>Languages used</h3>
+                <table>
+                    <thead><tr><th>Language</th><th>Analyses</th></tr></thead>
+                    <tbody>
+                        {% for code, count in s.languages %}<tr><td>{{ language_names.get(code, code) }}</td><td>{{ count }}</td></tr>{% else %}<tr><td colspan="2">No data yet</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            </article>
+            <article class="result-card">
+                <h3>Feedback by language</h3>
+                <table>
+                    <thead><tr><th>Language</th><th>Answers</th><th>Useful</th></tr></thead>
+                    <tbody>
+                        {% for code, row in s.feedback_by_language %}<tr><td>{{ language_names.get(code, code) }}</td><td>{{ row.answers }}</td><td>{{ (100 * row.useful / row.answers) | round | int }}%</td></tr>{% else %}<tr><td colspan="3">No data yet</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            </article>
+            <article class="result-card">
+                <h3>Top states</h3>
+                <table>
+                    <thead><tr><th>State</th><th>Analyses</th></tr></thead>
+                    <tbody>
+                        {% for state, count in s.states %}<tr><td>{{ state }}</td><td>{{ count }}</td></tr>{% else %}<tr><td colspan="2">No data yet</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            </article>
+            <article class="result-card">
+                <h3>Most suggested crops</h3>
+                <table>
+                    <thead><tr><th>Crop</th><th>Times first</th></tr></thead>
+                    <tbody>
+                        {% for crop, count in s.top_crops %}<tr><td>{{ crop_meta[crop].name if crop in crop_meta else crop }}</td><td>{{ count }}</td></tr>{% else %}<tr><td colspan="2">No data yet</td></tr>{% endfor %}
+                    </tbody>
+                </table>
+            </article>
+        </div>
+        {% endif %}
+    </main>
+</body>
+</html>

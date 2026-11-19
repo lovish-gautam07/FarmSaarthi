@@ -53,6 +53,15 @@ To see uploads later, open the storage account and go to **Storage browser**:
 3. Choose **Review + create**, then **Create**.
 4. Open it and go to **Keys and Endpoint**. Copy **KEY 1** and the **Location/Region** (for example `centralindia`).
 
+## 4b. Create Azure AI Speech (to read advice aloud)
+
+1. Portal search: **Speech services**, then **Create**.
+2. Resource group: `farmsaarthi-rg`. Region: **Central India**. Name: for example `farmsaarthi-speech`. Pricing tier: **Free F0**, which allows 0.5 million characters of neural voice a month.
+3. Choose **Review + create**, then **Create**.
+4. Open it and go to **Keys and Endpoint**. Copy **KEY 1** and the **Location/Region**.
+
+FarmSaarthi saves every sentence it has already spoken in Blob Storage, so the same advice is never sent to Azure twice. If the free quota runs out, or the key is missing, the page uses the phone's own voice instead.
+
 ## 5. Try it locally with your real Azure resources (optional)
 
 In your project's `.env` file (never commit it):
@@ -61,7 +70,12 @@ In your project's `.env` file (never commit it):
 AZURE_STORAGE_CONNECTION_STRING=<connection string from step 3>
 AZURE_TRANSLATOR_KEY=<KEY 1 from step 4>
 AZURE_TRANSLATOR_REGION=centralindia
+AZURE_SPEECH_KEY=<KEY 1 from step 4b>
+AZURE_SPEECH_REGION=centralindia
+SECRET_KEY=<any long random text>
 ```
+
+To make a random `SECRET_KEY`, run `python -c "import secrets; print(secrets.token_hex(32))"`.
 
 Run `python app.py`, upload a photo, and check it appears in **Storage browser**.
 
@@ -84,6 +98,9 @@ Run `python app.py`, upload a photo, and check it appears in **Storage browser**
    | `AZURE_STORAGE_CONNECTION_STRING` | connection string from step 3 |
    | `AZURE_TRANSLATOR_KEY` | KEY 1 from step 4 |
    | `AZURE_TRANSLATOR_REGION` | `centralindia` |
+   | `AZURE_SPEECH_KEY` | KEY 1 from step 4b |
+   | `AZURE_SPEECH_REGION` | `centralindia` |
+   | `SECRET_KEY` | a long random text (see step 5) |
    | `SCM_DO_BUILD_DURING_DEPLOYMENT` | `true` |
 
 5. Go to **Settings → Configuration → General settings**:
@@ -99,7 +116,8 @@ Run `python app.py`, upload a photo, and check it appears in **Storage browser**
    - **Secrets** tab → **New repository secret**. Name: `AZURE_WEBAPP_PUBLISH_PROFILE`. Value: the whole contents of the downloaded file.
    - **Variables** tab → **New repository variable**. Name: `AZURE_WEBAPP_NAME`. Value: your web app name, for example `farmsaarthi-<yourname>`.
 3. Push to `main`, or open **Actions → Deploy to Azure App Service → Run workflow**. The workflow runs the tests first and only deploys if they pass.
-4. Open `https://<your-app-name>.azurewebsites.net/healthz`. You should see `"photo_storage": true` and `"translator": true`.
+4. Open `https://<your-app-name>.azurewebsites.net/healthz`. Every service should say `true`: `photo_storage`, `translator`, `speech` and `feedback`.
+5. Usage and feedback totals for your report are at `https://<your-app-name>.azurewebsites.net/stats`. Written comments are in the storage account under **Storage browser → Tables → AppEvents**.
 
 The first start after a deploy can take a minute or two while Azure installs the packages.
 

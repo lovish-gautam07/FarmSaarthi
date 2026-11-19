@@ -69,3 +69,11 @@ def test_analysis_text_is_translated(engine):
     assert result["district"]["season"].startswith("[hi] ")
     # Machine-readable ids stay untouched.
     assert not result["top_crops"][0]["crop_id"].startswith("[")
+
+
+def test_action_cards_and_notes_are_translated(engine):
+    i18n = I18n(FakeTranslator())
+    result = engine.recommend("Nagpur", "ta", "cotton", "Maharashtra", today=RABI_DAY)
+    assert i18n.translate_analysis(result, "ta")
+    assert all(a["title"].startswith("[ta] ") and a["text"].startswith("[ta] ") for a in result["actions"])
+    assert all(n["text"].startswith("[ta] ") for n in result["interest_notes"])

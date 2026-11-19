@@ -3,8 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1d7a58">
+    <meta name="description" content="Crop advice, weather alerts and read-aloud guidance for Indian farmers in 13 languages.">
     <title>{{ bundle.labels.title }}</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.png') }}?v={{ asset_version }}">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='icons/apple-touch-icon.png') }}?v={{ asset_version }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v={{ asset_version }}">
 </head>
 <body>
     <main class="page-shell">
@@ -18,6 +23,7 @@
                     <span id="hero-tag-2">{{ bundle.ui.heroTag2 }}</span>
                     <span id="hero-tag-3">{{ bundle.ui.heroTag3 }}</span>
                 </div>
+                <button type="button" class="install-btn hidden" id="install-btn">{{ bundle.ui.installApp }}</button>
             </div>
 
             <div class="hero-stats">
@@ -109,42 +115,73 @@
                 </div>
             </div>
 
-            <div class="overview-grid" id="overview-strip"></div>
+            <p class="offline-banner hidden" id="offline-banner" role="status"></p>
 
-            <div class="results-grid">
-                <article class="result-card recommendation-card">
-                    <div class="card-head">
-                        <h3 id="top-crops-title">{{ bundle.labels.top_crops }}</h3>
-                    </div>
-                    <ul id="top-crops-list" class="recommendation-list"></ul>
-                </article>
-
-                <article class="result-card advisory-card">
-                    <div class="advisory-block">
-                        <h3 id="irrigation-title">{{ bundle.labels.irrigation }}</h3>
-                        <p id="irrigation-text"></p>
-                    </div>
-                    <div class="advisory-block">
-                        <h3 id="fertilizer-title">{{ bundle.labels.fertilizer }}</h3>
-                        <p id="fertilizer-text"></p>
-                    </div>
-                    <p class="fine-print" id="translation-note"></p>
-                </article>
-
-                <article class="result-card alert-card">
-                    <h3 id="alerts-title">{{ bundle.labels.alerts }}</h3>
-                    <ul id="alerts-list" class="alert-list"></ul>
-                </article>
+            <div class="actions-head">
+                <h3 id="actions-title">{{ bundle.ui.actionsTitle }}</h3>
+                <button type="button" class="read-all-btn" id="read-all-btn">{{ bundle.ui.readAll }}</button>
             </div>
+            <div class="action-grid" id="action-grid"></div>
 
-            <article class="result-card model-card">
+            <article class="result-card recommendation-card">
                 <div class="card-head">
-                    <h3 id="model-title">{{ bundle.labels.model }}</h3>
-                    <span class="subtle-chip" id="model-chip">{{ bundle.ui.modelChip }}</span>
+                    <h3 id="top-crops-title">{{ bundle.labels.top_crops }}</h3>
                 </div>
-                <div class="model-grid" id="model-grid"></div>
-                <p class="fine-print" id="accuracy-note"></p>
+                <ul id="top-crops-list" class="recommendation-list"></ul>
+                <div class="interest-notes hidden" id="interest-notes">
+                    <h4 id="interest-title">{{ bundle.ui.interestTitle }}</h4>
+                    <ul id="interest-list" class="recommendation-list"></ul>
+                </div>
             </article>
+
+            {% if feedback_enabled %}
+            <div class="feedback-bar" id="feedback-bar">
+                <p class="feedback-question" id="feedback-question">{{ bundle.ui.feedbackQuestion }}</p>
+                <div class="feedback-buttons">
+                    <button type="button" class="feedback-btn" data-useful="true" id="feedback-yes"><span aria-hidden="true">&#128077;</span> <span id="feedback-yes-label">{{ bundle.ui.feedbackYes }}</span></button>
+                    <button type="button" class="feedback-btn" data-useful="false" id="feedback-no"><span aria-hidden="true">&#128078;</span> <span id="feedback-no-label">{{ bundle.ui.feedbackNo }}</span></button>
+                </div>
+                <form class="feedback-more hidden" id="feedback-more">
+                    <input type="text" id="feedback-comment" maxlength="280" placeholder="{{ bundle.ui.feedbackCommentPlaceholder }}">
+                    <button type="submit" class="feedback-send" id="feedback-send">{{ bundle.ui.feedbackSend }}</button>
+                </form>
+                <p class="fine-print" id="feedback-status" role="status" aria-live="polite"></p>
+            </div>
+            {% endif %}
+
+            <details class="details-panel" id="details-panel">
+                <summary id="details-summary">{{ bundle.ui.detailsToggle }}</summary>
+
+                <div class="overview-grid" id="overview-strip"></div>
+
+                <div class="results-grid">
+                    <article class="result-card advisory-card">
+                        <div class="advisory-block">
+                            <h3 id="irrigation-title">{{ bundle.labels.irrigation }}</h3>
+                            <p id="irrigation-text"></p>
+                        </div>
+                        <div class="advisory-block">
+                            <h3 id="fertilizer-title">{{ bundle.labels.fertilizer }}</h3>
+                            <p id="fertilizer-text"></p>
+                        </div>
+                        <p class="fine-print" id="translation-note"></p>
+                    </article>
+
+                    <article class="result-card alert-card">
+                        <h3 id="alerts-title">{{ bundle.labels.alerts }}</h3>
+                        <ul id="alerts-list" class="alert-list"></ul>
+                    </article>
+                </div>
+
+                <article class="result-card model-card">
+                    <div class="card-head">
+                        <h3 id="model-title">{{ bundle.labels.model }}</h3>
+                        <span class="subtle-chip" id="model-chip">{{ bundle.ui.modelChip }}</span>
+                    </div>
+                    <div class="model-grid" id="model-grid"></div>
+                    <p class="fine-print" id="accuracy-note"></p>
+                </article>
+            </details>
         </section>
 
         <section class="control-panel photo-panel" id="photo-panel">
@@ -206,6 +243,8 @@
     <script>
         const districtsByState = {{ districts|tojson }};
         const photosEnabled = {{ photos_enabled|tojson }};
+        const serverSpeech = {{ speech_enabled|tojson }};
+        const feedbackEnabled = {{ feedback_enabled|tojson }};
         const bundleCache = {};
         let bundle = {{ bundle|tojson }};
         bundleCache[bundle.language] = bundle;
@@ -226,10 +265,32 @@
         const maxUploadBytes = {{ max_upload_mb }} * 1024 * 1024;
         const allowedTypes = ["image/jpeg", "image/png", "image/webp"];
         const totalStates = new Set(districtsByState.map(item => item.state)).size;
+        const SAVED_KEY = "farmsaarthi:last-analysis";
         let activeRecognition = null;
         let isListening = false;
         let latestAnalysis = null;
         let galleryRequest = 0;
+        let speakables = [];
+        let feedbackId = null;
+
+        // Simple line icons, drawn inline so nothing loads from outside.
+        const ICON_PATHS = {
+            seed: "M12 21v-9M12 12C12 7.5 8.5 4 3.5 4c0 4.5 3.5 8 8.5 8zM12 14c0-4 3-7 8.5-7 0 4-3.5 7-8.5 7zM6 21h12",
+            water: "M12 3C8.5 8 6 11.4 6 14.5a6 6 0 0 0 12 0C18 11.4 15.5 8 12 3z",
+            rain: "M7 14.5a4 4 0 1 1 .9-7.9A5.5 5.5 0 0 1 18.5 8.5a3 3 0 0 1-.5 6zM8.5 17.5l-1 3M12.5 17.5l-1 3M16.5 17.5l-1 3",
+            heat: "M14 14.8V4.5a2 2 0 0 0-4 0v10.3a4 4 0 1 0 4 0zM12 9v7",
+            sun: "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+            "no-spray": "M9 9h6v11a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zM10 9V6h4v3M14 6h3M3 3l18 18",
+            spray: "M9 9h6v11a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1zM10 9V6h4v3M14 6h3M19 4h.01M21 7h.01M19 10h.01",
+            bug: "M12 8a4 4 0 0 1 4 4v3a4 4 0 0 1-8 0v-3a4 4 0 0 1 4-4zM12 8V6M9 3.5l1.5 2.5M15 3.5L13.5 6M8 12H4M20 12h-4M8 16H4.5M19.5 16H16M12 12v7",
+            fungus: "M5 20C5 11 10.5 5 20 4c0 9.5-6 15-15 16zM5 20l7-7M11 9.5h.01M15 11h.01M13.5 14.5h.01",
+            soil: "M3 17h18M5 20.5h14M12 17v-5M12 12c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5zM12 13.5c0-2.5 2-4.5 5-4.5 0 2.5-2 4.5-5 4.5z"
+        };
+        const SPEAKER = "M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13";
+
+        function svg(path, extraClass = "") {
+            return `<svg class="icon ${extraClass}" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="${path}"/></svg>`;
+        }
 
         function esc(value) {
             return String(value ?? "").replace(/[&<>"']/g, ch => ({"&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"}[ch]));
@@ -257,6 +318,12 @@
             return `<div class="model-stat"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`;
         }
 
+        function speakButton(item) {
+            if (!item) return "";
+            const index = speakables.push(item) - 1;
+            return `<button type="button" class="speak-btn" data-speak="${index}" aria-label="${esc(bundle.ui.readAloud)}" title="${esc(bundle.ui.readAloud)}">${svg(SPEAKER)}</button>`;
+        }
+
         function populateDistricts(selectedState, selectedDistrict = "") {
             districtSelect.innerHTML = "";
             const placeholder = document.createElement("option");
@@ -279,19 +346,69 @@
             setText("district-count-pill", `${matches.length} ${bundle.ui.districtsInState}`);
         }
 
-        function renderResults(data) {
+        // ----- results -----------------------------------------------------
+
+        function renderResults(data, savedAt = null) {
             const labels = bundle.labels;
             const ui = bundle.ui;
             const d = data.district;
             const live = d.sources.weather === "live";
+            stopSpeaking();
+            speakables = [];
             latestAnalysis = data;
 
+            const banner = $("offline-banner");
+            if (savedAt) {
+                banner.textContent = `${ui.offlineBanner} ${new Date(savedAt).toLocaleString()}`;
+                banner.classList.remove("hidden");
+            } else {
+                banner.classList.add("hidden");
+            }
+
             setText("decision-score", `${labels.impact}: ${data.decision_score}/100`);
-            setText("irrigation-text", data.irrigation_advice);
-            setText("fertilizer-text", data.fertilizer_advice);
             const chip = $("weather-chip");
             chip.textContent = live ? ui.weatherLive : ui.weatherEstimate;
             chip.className = live ? "source-chip live" : "source-chip estimated";
+
+            $("action-grid").innerHTML = (data.actions || []).map(action => `
+                <article class="action-card level-${esc(action.level)}">
+                    <div class="action-icon">${svg(ICON_PATHS[action.icon] || ICON_PATHS.seed)}</div>
+                    <div class="action-body">
+                        <h4>${esc(action.title)}</h4>
+                        <p>${esc(action.text)}${action.estimate ? ` <em class="estimate-tag">${esc(ui.estimate)}</em>` : ""}</p>
+                    </div>
+                    ${speakButton(action.speak)}
+                </article>`).join("");
+            $("read-all-btn").dataset.speak = data.speak_all ? String(speakables.push(data.speak_all) - 1) : "";
+
+            $("top-crops-list").innerHTML = data.top_crops.map(item => `
+                <li class="crop-item">
+                    <div class="crop-head">
+                        <div>
+                            <strong>${esc(item.crop)}</strong>
+                            <p>${esc(item.reasons.join(" "))}</p>
+                        </div>
+                        <div class="crop-side">
+                            <span class="mini-score">${esc(item.score)}/100</span>
+                            ${speakButton(item.speak)}
+                        </div>
+                    </div>
+                </li>
+            `).join("");
+
+            const notes = data.interest_notes || [];
+            $("interest-notes").classList.toggle("hidden", notes.length === 0);
+            $("interest-list").innerHTML = notes.map(note => `
+                <li class="crop-item">
+                    <div class="crop-head">
+                        <div><strong>${esc(note.crop)}</strong><p>${esc(note.text)}</p></div>
+                        <div class="crop-side">${speakButton(note.speak)}</div>
+                    </div>
+                </li>`).join("");
+
+            setText("irrigation-text", data.irrigation_advice);
+            setText("fertilizer-text", data.fertilizer_advice);
+            $("alerts-list").innerHTML = data.alerts.map(alert => `<li>${esc(alert)}</li>`).join("");
 
             const cards = [
                 metricCard(labels.state, d.state),
@@ -312,20 +429,6 @@
             );
             $("overview-strip").innerHTML = cards.join("");
 
-            $("top-crops-list").innerHTML = data.top_crops.map(item => `
-                <li class="crop-item">
-                    <div class="crop-head">
-                        <div>
-                            <strong>${esc(item.crop)}</strong>
-                            <p>${esc(item.reasons.join(" "))}</p>
-                        </div>
-                        <span class="mini-score">${esc(item.score)}/100</span>
-                    </div>
-                </li>
-            `).join("");
-
-            $("alerts-list").innerHTML = data.alerts.map(alert => `<li>${esc(alert)}</li>`).join("");
-
             const t = data.translation || {};
             setText("translation-note", t.requested ? (t.applied ? ui.translatedNote : ui.notTranslatedNote) : "");
 
@@ -339,7 +442,36 @@
             ].join("");
             setText("accuracy-note", m.accuracy_note);
 
+            resetFeedback(savedAt !== null);
             resultsSection.classList.remove("hidden");
+        }
+
+        function saveAnalysis(data) {
+            try {
+                localStorage.setItem(SAVED_KEY, JSON.stringify({savedAt: new Date().toISOString(), data}));
+            } catch (error) {
+                // Storage can be full or blocked (private mode); saving is only a convenience.
+            }
+        }
+
+        function loadSavedAnalysis() {
+            try {
+                return JSON.parse(localStorage.getItem(SAVED_KEY) || "null");
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function showSavedAnalysis() {
+            const saved = loadSavedAnalysis();
+            if (saved && saved.data) {
+                renderResults(saved.data, saved.savedAt);
+                setStatus("status-line", "");
+                return true;
+            }
+            resultsSection.classList.add("hidden");
+            setStatus("status-line", bundle.ui.offlineNoSaved, true);
+            return false;
         }
 
         async function runAnalysis(scroll = true) {
@@ -352,27 +484,38 @@
                 setStatus("status-line", labels.select_district, true);
                 return;
             }
+            if (!navigator.onLine) {
+                showSavedAnalysis();
+                return;
+            }
 
             analyzeButton.disabled = true;
             analyzeButton.textContent = labels.loading;
             setStatus("status-line", labels.loading);
 
             try {
-                const response = await fetch("/analyze", {
-                    method: "POST",
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({
-                        language: languageSelect.value,
-                        state: stateSelect.value,
-                        district: districtSelect.value,
-                        crop_interest: cropInterestInput.value
-                    })
-                });
+                let response;
+                try {
+                    response = await fetch("/analyze", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({
+                            language: languageSelect.value,
+                            state: stateSelect.value,
+                            district: districtSelect.value,
+                            crop_interest: cropInterestInput.value
+                        })
+                    });
+                } catch (networkError) {
+                    showSavedAnalysis();  // the connection dropped: fall back to the last saved advice
+                    return;
+                }
                 const data = await response.json();
                 if (!response.ok) {
                     throw new Error(data.error || bundle.ui.analysisFailed);
                 }
                 renderResults(data);
+                saveAnalysis(data);
                 setStatus("status-line", bundle.labels.success);
                 if (scroll) {
                     resultsSection.scrollIntoView({behavior: "smooth", block: "start"});
@@ -392,6 +535,175 @@
             runAnalysis();
         });
 
+        // ----- read aloud ----------------------------------------------------
+
+        let currentAudio = null;
+        let currentButton = null;
+        let browserVoices = [];
+
+        function loadBrowserVoices() {
+            if ("speechSynthesis" in window) {
+                browserVoices = window.speechSynthesis.getVoices();
+            }
+        }
+        loadBrowserVoices();
+        if ("speechSynthesis" in window) {
+            window.speechSynthesis.addEventListener("voiceschanged", loadBrowserVoices);
+        }
+
+        function stopSpeaking() {
+            if (currentAudio) {
+                currentAudio.pause();
+                URL.revokeObjectURL(currentAudio.src);
+                currentAudio = null;
+            }
+            if ("speechSynthesis" in window) {
+                window.speechSynthesis.cancel();
+            }
+            if (currentButton) {
+                currentButton.classList.remove("playing");
+                if (currentButton.id === "read-all-btn") currentButton.textContent = bundle.ui.readAll;
+                currentButton = null;
+            }
+        }
+
+        function finished(button) {
+            if (currentButton === button) {
+                stopSpeaking();
+            }
+        }
+
+        function speakWithBrowser(item, button) {
+            if (!("speechSynthesis" in window)) return false;
+            const locale = (bundle.speech_locale || "en-IN").toLowerCase();
+            const short = locale.split("-")[0];
+            const voice = browserVoices.find(v => v.lang.toLowerCase().replace("_", "-") === locale)
+                || browserVoices.find(v => v.lang.toLowerCase().startsWith(short));
+            if (!voice && short !== "en") return false;  // a wrong-language voice would read gibberish
+            const utterance = new SpeechSynthesisUtterance(item.text);
+            utterance.lang = bundle.speech_locale || "en-IN";
+            if (voice) utterance.voice = voice;
+            utterance.rate = 0.9;
+            utterance.onend = () => finished(button);
+            utterance.onerror = () => finished(button);
+            window.speechSynthesis.speak(utterance);
+            return true;
+        }
+
+        async function speak(item, button) {
+            if (currentButton === button) {
+                stopSpeaking();
+                return;
+            }
+            stopSpeaking();
+            currentButton = button;
+            button.classList.add("playing");
+            if (button.id === "read-all-btn") button.textContent = bundle.ui.stopReading;
+
+            if (serverSpeech && navigator.onLine) {
+                try {
+                    const response = await fetch("/speak", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({text: item.text, sig: item.sig, language: bundle.language})
+                    });
+                    if (response.ok && currentButton === button) {
+                        const audio = new Audio(URL.createObjectURL(await response.blob()));
+                        currentAudio = audio;
+                        audio.onended = () => finished(button);
+                        await audio.play();
+                        return;
+                    }
+                } catch (error) {
+                    // fall through to the phone's own voice
+                }
+            }
+            if (currentButton !== button) return;
+            if (!speakWithBrowser(item, button)) {
+                stopSpeaking();
+                setStatus("status-line", bundle.ui.speechUnavailable, true);
+            }
+        }
+
+        resultsSection.addEventListener("click", function(event) {
+            const button = event.target.closest("[data-speak]");
+            if (!button || button.dataset.speak === "") return;
+            const item = speakables[Number(button.dataset.speak)];
+            if (item) speak(item, button);
+        });
+
+        // ----- feedback ------------------------------------------------------
+
+        function resetFeedback(offline) {
+            if (!feedbackEnabled) return;
+            feedbackId = null;
+            $("feedback-bar").classList.toggle("hidden", offline);
+            $("feedback-more").classList.add("hidden");
+            $("feedback-comment").value = "";
+            setText("feedback-status", "");
+            document.querySelectorAll(".feedback-btn").forEach(button => {
+                button.disabled = false;
+                button.classList.remove("chosen");
+            });
+        }
+
+        async function sendFeedback(useful, comment = "") {
+            const response = await fetch("/feedback", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({
+                    useful,
+                    comment,
+                    feedback_id: feedbackId,
+                    analysis_id: latestAnalysis && latestAnalysis.analysis_id,
+                    state: latestAnalysis.district.state,
+                    district: latestAnalysis.district.name,
+                    language: bundle.language,
+                    top_crop: latestAnalysis.top_crops[0] && latestAnalysis.top_crops[0].crop_id
+                })
+            });
+            const data = await response.json();
+            if (!response.ok) throw new Error(data.error);
+            feedbackId = data.feedback_id;
+        }
+
+        if (feedbackEnabled) {
+            let lastAnswer = null;
+            document.querySelectorAll(".feedback-btn").forEach(button => {
+                button.addEventListener("click", async function() {
+                    if (!latestAnalysis) return;
+                    lastAnswer = button.dataset.useful === "true";
+                    document.querySelectorAll(".feedback-btn").forEach(b => { b.disabled = true; b.classList.toggle("chosen", b === button); });
+                    try {
+                        await sendFeedback(lastAnswer);
+                        setText("feedback-status", bundle.ui.feedbackThanks);
+                        $("feedback-more").classList.remove("hidden");
+                    } catch (error) {
+                        setText("feedback-status", bundle.ui.feedbackFailed);
+                        document.querySelectorAll(".feedback-btn").forEach(b => { b.disabled = false; });
+                    }
+                });
+            });
+
+            $("feedback-more").addEventListener("submit", async function(event) {
+                event.preventDefault();
+                const comment = $("feedback-comment").value.trim();
+                if (!comment || lastAnswer === null) return;
+                $("feedback-send").disabled = true;
+                try {
+                    await sendFeedback(lastAnswer, comment);
+                    setText("feedback-status", bundle.ui.feedbackSaved);
+                    $("feedback-more").classList.add("hidden");
+                } catch (error) {
+                    setText("feedback-status", bundle.ui.feedbackFailed);
+                } finally {
+                    $("feedback-send").disabled = false;
+                }
+            });
+        }
+
+        // ----- language ------------------------------------------------------
+
         function applyTranslations() {
             const labels = bundle.labels;
             const ui = bundle.ui;
@@ -404,6 +716,7 @@
             setText("hero-tag-1", ui.heroTag1);
             setText("hero-tag-2", ui.heroTag2);
             setText("hero-tag-3", ui.heroTag3);
+            setText("install-btn", ui.installApp);
             setText("coverage-label", ui.coverage);
             setText("coverage-value", `${totalStates} States / UTs`);
             setText("coverage-note", ui.coverageNote);
@@ -427,7 +740,11 @@
             setText("voice-help", ui.voiceHelp);
             analyzeButton.textContent = labels.analyze;
             setText("coverage-pill", `${totalStates} ${ui.statesLoaded}`);
+            setText("actions-title", ui.actionsTitle);
+            setText("read-all-btn", ui.readAll);
             setText("top-crops-title", labels.top_crops);
+            setText("interest-title", ui.interestTitle);
+            setText("details-summary", ui.detailsToggle);
             setText("irrigation-title", labels.irrigation);
             setText("fertilizer-title", labels.fertilizer);
             setText("alerts-title", labels.alerts);
@@ -435,6 +752,13 @@
             setText("model-chip", ui.modelChip);
             setText("overview-label", labels.overview);
             setText("results-title", labels.results);
+            if (feedbackEnabled) {
+                setText("feedback-question", ui.feedbackQuestion);
+                setText("feedback-yes-label", ui.feedbackYes);
+                setText("feedback-no-label", ui.feedbackNo);
+                setText("feedback-send", ui.feedbackSend);
+                $("feedback-comment").placeholder = ui.feedbackCommentPlaceholder;
+            }
             setText("photo-eyebrow", ui.photoEyebrow);
             setText("photo-title", ui.photoTitle);
             setText("photo-copy", ui.photoCopy);
@@ -472,13 +796,14 @@
             } catch (error) {
                 return;
             }
+            stopSpeaking();
             const url = new URL(window.location.href);
             url.searchParams.set("language", bundle.language);
             window.history.replaceState(null, "", url);
             applyTranslations();
             setStatus("status-line", "");
             renderGalleryScope();
-            if (latestAnalysis) {
+            if (latestAnalysis && navigator.onLine) {
                 runAnalysis(false);  // advice is written by the server, so fetch it again in the new language
             }
         });
@@ -491,7 +816,7 @@
 
         districtSelect.addEventListener("change", loadGallery);
 
-        // ----- voice input -------------------------------------------------
+        // ----- voice input ---------------------------------------------------
 
         function setVoiceButtonState(listening) {
             isListening = listening;
@@ -603,7 +928,7 @@
 
         async function loadGallery() {
             renderGalleryScope();
-            if (!photosEnabled) {
+            if (!photosEnabled || !navigator.onLine) {
                 galleryGrid.innerHTML = "";
                 return;
             }
@@ -647,6 +972,7 @@
             const file = photoInput.files[0];
 
             if (!photosEnabled) return setStatus("photo-status", ui.storageOff, true);
+            if (!navigator.onLine) return setStatus("photo-status", ui.offlineUpload, true);
             if (!stateSelect.value) return setStatus("photo-status", bundle.labels.select_state, true);
             if (!districtSelect.value) return setStatus("photo-status", bundle.labels.select_district, true);
             if (!file) return setStatus("photo-status", ui.photoNoFile, true);
@@ -683,10 +1009,41 @@
             photoForm.querySelectorAll("input, select, button").forEach(node => { node.disabled = true; });
         }
 
+        // ----- install and offline -----------------------------------------
+
+        let installPrompt = null;
+        window.addEventListener("beforeinstallprompt", function(event) {
+            event.preventDefault();
+            installPrompt = event;
+            $("install-btn").classList.remove("hidden");
+        });
+        $("install-btn").addEventListener("click", async function() {
+            if (!installPrompt) return;
+            installPrompt.prompt();
+            await installPrompt.userChoice;
+            installPrompt = null;
+            $("install-btn").classList.add("hidden");
+        });
+        window.addEventListener("appinstalled", () => $("install-btn").classList.add("hidden"));
+
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => navigator.serviceWorker.register("/sw.js").catch(() => {}));
+        }
+
+        // ----- start -----------------------------------------------------------
+
         stateSelect.value = {{ (states[0] if states else '')|tojson }};
         populateDistricts(stateSelect.value);
         applyTranslations();
         loadGallery();
+        if (!navigator.onLine) {
+            const saved = loadSavedAnalysis();
+            if (saved && saved.data) {
+                stateSelect.value = saved.data.district.state;
+                populateDistricts(stateSelect.value, saved.data.district.name);
+                renderResults(saved.data, saved.savedAt);
+            }
+        }
     </script>
 </body>
 </html>

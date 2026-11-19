@@ -159,6 +159,12 @@ class I18n:
         for crop in result["top_crops"]:
             slots.append((crop, "crop"))
             slots.extend((crop["reasons"], i) for i in range(len(crop["reasons"])))
+        for action in result.get("actions", []):
+            slots.append((action, "title"))
+            slots.append((action, "text"))
+        for note in result.get("interest_notes", []):
+            slots.append((note, "crop"))
+            slots.append((note, "text"))
         slots.append((result, "irrigation_advice"))
         slots.append((result, "fertilizer_advice"))
         slots.extend((result["alerts"], i) for i in range(len(result["alerts"])))

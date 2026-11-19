@@ -77,3 +77,10 @@ def test_client_returns_none_when_offline():
 def test_client_returns_none_on_bad_payload():
     client = WeatherClient(session=CountingSession({"unexpected": True}))
     assert client.get(30.9, 75.85, TODAY) is None
+
+
+def test_summary_lists_the_next_seven_days():
+    days = summarize(fake_daily(future_rain=4.0), TODAY)["next_days"]
+    assert len(days) == 7
+    assert days[0]["date"] == TODAY.isoformat()
+    assert all(day["rain_mm"] == 4.0 for day in days)

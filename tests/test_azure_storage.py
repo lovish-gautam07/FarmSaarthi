@@ -51,3 +51,33 @@ def test_round_trip(store, make_image):
     assert signed.headers["Content-Type"] == "image/jpeg"
     assert len(Image.open(io.BytesIO(signed.content)).getexif()) == 0
     assert requests.get(second["url"].split("?")[0], timeout=10).status_code in (403, 404)
+
+
+def test_event_log_and_audio_cache_round_trip():
+    from azure.data.tables import TableServiceClient
+    from azure.storage.blob import BlobServiceClient
+
+    from events import EventLog
+    from speech import BlobAudioCache
+
+    suffix = uuid.uuid4().hex[:8]
+    table = TableServiceClient.from_connection_string(AZURITE).get_table_client(f"TestEvents{suffix}")
+    log = EventLog(table)
+    try:
+        log.record("analysis", {"state": "Punjab", "district": "Ludhiana", "language": "pa", "top_crop": "wheat", "weather": "live"})
+        feedback_id = log.record("feedback", {"useful": True, "language": "pa"})
+        assert log.record("feedback", {"useful": True, "comment": "Clear advice"}, row_key=feedback_id) == feedback_id
+        summary = log.summary()
+        assert summary["analyses"] == 1 and summary["feedback"] == 1 and summary["comments"] == 1
+        assert log.rows("feedback")[0]["language"] == "pa"  # merge kept the first write's fields
+    finally:
+        table.delete_table()
+
+    blob_service = BlobServiceClient.from_connection_string(AZURITE)
+    cache = BlobAudioCache(blob_service, container=f"test-speech-{suffix}")
+    try:
+        assert cache.get("missing") is None
+        cache.put("abc", b"ID3-audio")
+        assert cache.get("abc") == b"ID3-audio"
+    finally:
+        cache.container.delete_container()

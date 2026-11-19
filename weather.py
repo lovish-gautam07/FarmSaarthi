@@ -94,5 +94,13 @@ def summarize(daily, today):
         "rain_next_14_days_mm": round(sum(_values(daily, "precipitation_sum", next_14)), 1),
         "max_daily_rain_next_7_days_mm": round(max(rain_next_7, default=0.0), 1),
         "max_temperature_next_7_days": round(max(_values(daily, "temperature_2m_max", next_7), default=temperature), 1),
+        "next_days": [
+            {
+                "date": daily["time"][i],
+                "rain_mm": round(daily["precipitation_sum"][i] or 0.0, 1),
+                "max_temp": daily["temperature_2m_max"][i],
+            }
+            for i in next_7
+        ],
         "fetched_at": datetime.now(timezone.utc).isoformat(timespec="seconds"),
     }

@@ -215,6 +215,11 @@ class PhotoStore:
                 break
         return records
 
+    def count(self):
+        self.ensure_ready()
+        rows = self.table.query_entities("PartitionKey eq @pk", parameters={"pk": PARTITION}, select=["RowKey"])
+        return sum(1 for _ in rows)
+
     def _public(self, entity):
         return {
             "id": entity["photo_id"],

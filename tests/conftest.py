@@ -11,12 +11,12 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 # Tests must never pick up a developer's real keys from .env.
-for name in ("AZURE_STORAGE_CONNECTION_STRING", "AZURE_TRANSLATOR_KEY"):
-    os.environ.pop(name, None)
-os.environ["AZURE_STORAGE_CONNECTION_STRING"] = ""
-os.environ["AZURE_TRANSLATOR_KEY"] = ""
+for name in ("AZURE_STORAGE_CONNECTION_STRING", "AZURE_TRANSLATOR_KEY", "AZURE_SPEECH_KEY", "SECRET_KEY"):
+    os.environ[name] = ""
 
 from engine import FarmSaarthiEngine  # noqa: E402
+from events import new_row_key, summarize  # noqa: E402
+from speech import AzureSpeech  # noqa: E402
 from translations import AzureTranslator, I18n  # noqa: E402
 
 RABI_DAY = date(2026, 11, 19)
@@ -37,6 +37,10 @@ class FakeWeather:
             "rain_next_14_days_mm": 6.0,
             "max_daily_rain_next_7_days_mm": 2.0,
             "max_temperature_next_7_days": 26.0,
+            "next_days": [
+                {"date": (RABI_DAY.replace(day=19 + offset)).isoformat(), "rain_mm": 0.0, "max_temp": 26.0}
+                for offset in range(7)
+            ],
             "fetched_at": "2026-11-19T06:00:00+00:00",
         }
         self.summary.update(overrides)
@@ -88,6 +92,38 @@ class FakePhotoStore:
         return rows[:limit]
 
 
+class FakeEvents:
+    """In-memory stand-in for the Azure Table event log."""
+
+    def __init__(self):
+        self.rows = {}
+
+    def record(self, kind, data, row_key=None):
+        row_key = row_key or new_row_key()
+        existing = self.rows.get((kind, row_key), {})
+        self.rows[(kind, row_key)] = {**existing, **data, "PartitionKey": kind, "RowKey": row_key,
+                                      "recorded_at": "2026-11-19T06:00:00+00:00"}
+        return row_key
+
+    def of_kind(self, kind):
+        return [row for (k, _), row in self.rows.items() if k == kind]
+
+    def summary(self):
+        return summarize(self.of_kind("analysis"), self.of_kind("feedback"))
+
+
+class FakeSpeech(AzureSpeech):
+    """Azure Speech that returns fake MP3 bytes without any network call."""
+
+    def __init__(self, enabled=True):
+        super().__init__(key="test-key" if enabled else "", region="centralindia")
+        self.spoken = []
+
+    def synthesize(self, text, locale):
+        self.spoken.append((text, locale))
+        return b"ID3-fake-mp3"
+
+
 @pytest.fixture(scope="session")
 def engine():
     """One trained engine for the whole run (training takes well under a second)."""
@@ -115,9 +151,10 @@ def i18n_offline():
 def client(engine, i18n_offline):
     from app import create_app
 
-    store = FakePhotoStore()
-    app = create_app(engine=engine, i18n=i18n_offline, photo_store=store)
+    store, events, speech = FakePhotoStore(), FakeEvents(), FakeSpeech()
+    app = create_app(engine=engine, i18n=i18n_offline, photo_store=store, speech=speech, events=events,
+                     secret_key="test-secret", inline_background=True)
     app.config["TESTING"] = True
     test_client = app.test_client()
-    test_client.store = store
+    test_client.store, test_client.events, test_client.speech = store, events, speech
     return test_client
