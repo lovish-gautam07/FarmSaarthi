@@ -1,0 +1,42 @@
+name: Deploy to Azure App Service
+
+# Runs after every push to main once the app is set up on Azure.
+# One-time setup (see AZURE_SETUP.md):
+#   - repository variable  AZURE_WEBAPP_NAME             = your App Service name
+#   - repository secret    AZURE_WEBAPP_PUBLISH_PROFILE  = the publish profile XML
+# Until AZURE_WEBAPP_NAME is set, the deploy job is skipped.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    uses: ./.github/workflows/tests.yml
+
+  deploy:
+    needs: tests
+    if: ${{ vars.AZURE_WEBAPP_NAME != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    concurrency:
+      group: azure-deploy
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Package the app (without tests and dev files)
+        run: |
+          mkdir -p "$RUNNER_TEMP/package"
+          cp -r app.py engine.py photos.py translations.py weather.py requirements.txt .python-version data static templates "$RUNNER_TEMP/package/"
+
+      - name: Deploy
+        uses: azure/webapps-deploy@v3
+        with:
+          app-name: ${{ vars.AZURE_WEBAPP_NAME }}
+          publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+          package: ${{ runner.temp }}/package
