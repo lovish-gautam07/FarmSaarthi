@@ -10,7 +10,7 @@
     --accent-soft: #e3f1e9;
     --warm: #d58b44;
     --border: rgba(25, 49, 38, 0.1);
-    --shadow: 0 24px 70px rgba(54, 64, 48, 0.12);
+    --shadow: 0 12px 32px rgba(54, 64, 48, 0.10);
     --radius-xl: 28px;
     --radius-lg: 22px;
     --radius-md: 16px;
@@ -63,14 +63,36 @@ strong {
 
 h1 {
     max-width: 9ch;
-    font-size: clamp(3.2rem, 6vw, 5.8rem);
-    line-height: 0.92;
-    letter-spacing: -0.04em;
+    font-size: clamp(3rem, 6vw, 5.6rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
 }
 
 h2 {
-    font-size: clamp(2rem, 3vw, 3rem);
-    line-height: 1;
+    font-size: clamp(1.9rem, 3vw, 3rem);
+    line-height: 1.12;
+}
+
+/* Indian scripts and Urdu put vowel marks above and below the line; tight
+   line-height clips them and letter-spacing breaks joined letters. */
+:root:not([lang="en"]) h1 {
+    max-width: none;
+    line-height: 1.3;
+    letter-spacing: 0;
+}
+
+:root:not([lang="en"]) h2 {
+    line-height: 1.35;
+}
+
+:root:not([lang="en"]) :is(.eyebrow, .stat-card span, .model-stat span, .overview-card span, .stats-tables th) {
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+/* Bigger-text button */
+:root.big-text {
+    font-size: 112.5%;
 }
 
 h3 {
@@ -106,8 +128,7 @@ h3 {
     padding: 10px 14px;
     border-radius: 999px;
     border: 1px solid var(--border);
-    background: rgba(255, 255, 255, 0.58);
-    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.72);
     font-weight: 700;
 }
 
@@ -125,7 +146,6 @@ h3 {
     border: 1px solid var(--border);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow);
-    backdrop-filter: blur(16px);
 }
 
 .stat-card {
@@ -284,8 +304,9 @@ input:focus {
     margin-top: 28px;
 }
 
+/* Wins over any component's own display rule, wherever it sits in the file. */
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .results-head {
@@ -590,14 +611,28 @@ input:focus {
     flex-shrink: 0;
 }
 
+.speak-btn {
+    position: relative;
+}
+
 .speak-btn.playing {
     background: var(--accent);
     color: white;
-    animation: pulse 1.2s ease-in-out infinite;
 }
 
-@keyframes pulse {
-    50% { box-shadow: 0 0 0 8px rgba(29, 122, 88, 0.15); }
+.speak-btn.playing::after {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: 50%;
+    border: 3px solid rgba(29, 122, 88, 0.45);
+    animation: ring 1.3s ease-out infinite;
+    pointer-events: none;
+}
+
+@keyframes ring {
+    from { transform: scale(1); opacity: 0.9; }
+    to { transform: scale(1.45); opacity: 0; }
 }
 
 .crop-side {
@@ -1061,6 +1096,399 @@ input:focus {
     margin-top: 14px;
 }
 
+/* ----- round 3: field scene, farm bar, week strip, lead card, share, skeleton, motion ----- */
+
+.hero-scene {
+    display: block;
+    width: min(100%, 380px);
+    height: auto;
+    margin-bottom: 18px;
+}
+
+.hero-scene .sun-rays {
+    transform-origin: 62px 40px;
+    animation: spin 40s linear infinite;
+}
+
+.hero-scene .sprout {
+    transform-box: fill-box;
+    transform-origin: 50% 100%;
+    animation: sway 4.5s ease-in-out infinite alternate;
+}
+
+.hero-scene .sprout:nth-of-type(2n) {
+    animation-delay: -1.5s;
+}
+
+.hero-scene .sprout:nth-of-type(3n) {
+    animation-delay: -3s;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes sway {
+    from { transform: rotate(-4deg); }
+    to { transform: rotate(4deg); }
+}
+
+.text-size-btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(29, 122, 88, 0.3);
+    background: white;
+    color: var(--accent-deep);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.farm-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 14px 18px;
+    border-radius: var(--radius-lg);
+    background: var(--good-bg);
+    border: 1px solid var(--good-line);
+    color: var(--good-ink);
+}
+
+.farm-bar strong {
+    font-size: 1.1rem;
+}
+
+.farm-bar-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.farm-bar .submit-btn {
+    min-width: 0;
+    padding: 12px 20px;
+}
+
+.link-btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    border-radius: 999px;
+    border: 1px solid var(--good-line);
+    background: white;
+    color: var(--good-ink);
+    font-weight: 800;
+    cursor: pointer;
+}
+
+/* Lead card and level words: urgency is never shown by colour alone. */
+.action-card.lead {
+    grid-column: 1 / -1;
+    border-width: 2px;
+    padding: 22px;
+}
+
+.action-card.lead .action-body h4 {
+    font-size: 1.3rem;
+}
+
+.level-tag {
+    display: inline-block;
+    margin-bottom: 6px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    font-size: 0.78rem;
+    font-weight: 800;
+    background: rgba(255, 255, 255, 0.85);
+}
+
+.level-tag.do-first {
+    background: currentColor;
+}
+
+.level-tag.do-first span {
+    color: white;
+}
+
+.level-alert .level-tag.do-first span,
+.level-warn .level-tag.do-first span {
+    color: white;
+}
+
+/* Next 7 days */
+.week-strip {
+    margin-bottom: 18px;
+    padding: 18px;
+    border-radius: var(--radius-lg);
+    background: var(--surface-strong);
+    border: 1px solid var(--border);
+}
+
+.week-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 12px;
+}
+
+.week-days {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 6px;
+}
+
+.week-day {
+    display: grid;
+    justify-items: center;
+    gap: 4px;
+    padding: 8px 2px;
+    border-radius: 14px;
+    background: rgba(25, 49, 38, 0.04);
+    text-align: center;
+    min-width: 0;
+}
+
+.week-day.is-today {
+    background: var(--accent-soft);
+    outline: 2px solid rgba(29, 122, 88, 0.35);
+}
+
+.week-day .day-name {
+    font-size: 0.78rem;
+    font-weight: 800;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.rain-bar {
+    position: relative;
+    width: 14px;
+    height: 54px;
+    border-radius: 7px;
+    background: rgba(25, 49, 38, 0.08);
+    overflow: hidden;
+}
+
+.rain-bar span {
+    position: absolute;
+    inset: 0;
+    background: #4b8fd6;
+    transform-origin: bottom;
+    transform: scaleY(var(--fill, 0));
+}
+
+.week-day.heavy .rain-bar span {
+    background: #a7472e;
+}
+
+.week-day .rain-mm,
+.week-day .max-temp {
+    font-size: 0.8rem;
+    font-variant-numeric: tabular-nums;
+}
+
+.week-day .max-temp {
+    color: #8a5418;
+    font-weight: 700;
+}
+
+.spray-mark {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.spray-mark.ok { background: var(--good-bg); color: var(--good-ink); }
+.spray-mark.no { background: var(--alert-bg); color: var(--alert-ink); }
+.spray-mark.early { background: var(--warn-bg); color: var(--warn-ink); }
+.spray-mark.none { background: transparent; color: var(--muted); }
+
+.week-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 14px;
+    margin-top: 12px;
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.week-legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.week-legend .spray-mark {
+    width: 20px;
+    height: 20px;
+    font-size: 0.7rem;
+}
+
+/* Crop rank and score meter */
+.rank-badge {
+    display: inline-grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    margin-inline-end: 8px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: white;
+    font-size: 0.9rem;
+    font-weight: 900;
+    vertical-align: middle;
+}
+
+.score-meter {
+    display: block;
+    height: 8px;
+    margin-top: 10px;
+    border-radius: 999px;
+    background: rgba(25, 49, 38, 0.08);
+    overflow: hidden;
+}
+
+.score-meter span {
+    display: block;
+    height: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #279368, #1d7a58);
+    transform-origin: left;
+    transform: scaleX(var(--score, 0));
+}
+
+[dir="rtl"] .score-meter span {
+    transform-origin: right;
+}
+
+/* Share */
+.share-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin: 4px 0 18px;
+}
+
+.share-btn,
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    font-weight: 800;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.share-btn {
+    border: 0;
+    background: var(--ink);
+    color: white;
+}
+
+.whatsapp-btn {
+    border: 1px solid rgba(37, 211, 102, 0.5);
+    background: #e9fbef;
+    color: #12733a;
+}
+
+.share-btn .icon,
+.whatsapp-btn .icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Skeleton while advice loads */
+.results-skeleton {
+    margin-top: 28px;
+    display: grid;
+    gap: 14px;
+}
+
+.skeleton-block {
+    height: 96px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(90deg, rgba(25, 49, 38, 0.06) 0%, rgba(25, 49, 38, 0.12) 50%, rgba(25, 49, 38, 0.06) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 1.2s linear infinite;
+}
+
+.skeleton-block.short {
+    height: 54px;
+    width: 60%;
+}
+
+.skeleton-block.tall {
+    height: 140px;
+}
+
+@keyframes shimmer {
+    from { background-position: 100% 0; }
+    to { background-position: -100% 0; }
+}
+
+/* Entrance: cards rise in one after another; the score and rain bars fill. */
+.results.reveal .action-card,
+.results.reveal .week-day,
+.results.reveal .crop-item {
+    animation: rise 0.42s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(min(var(--i, 0), 7) * 60ms);
+}
+
+.results.reveal .score-meter span {
+    animation: fill-x 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: 0.25s;
+}
+
+.results.reveal .rain-bar span {
+    animation: fill-y 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(min(var(--i, 0), 7) * 60ms + 0.15s);
+}
+
+@keyframes rise {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: none; }
+}
+
+@keyframes fill-x {
+    from { transform: scaleX(0); }
+}
+
+@keyframes fill-y {
+    from { transform: scaleY(0); }
+}
+
+/* Press feedback for every button */
+button:active:not(:disabled),
+.whatsapp-btn:active,
+.schemes-link:active {
+    transform: scale(0.97);
+}
+
+/* Hover lift only where a real mouse exists */
+@media (hover: none) {
+    .voice-btn:hover,
+    .submit-btn:hover {
+        transform: none;
+    }
+}
+
 /* ----- photo upload and gallery ----- */
 
 .photo-panel {
@@ -1286,5 +1714,50 @@ select:disabled {
 
     .soil-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .hero-scene {
+        width: min(100%, 300px);
+        margin-bottom: 10px;
+    }
+
+    .week-strip {
+        padding: 14px 10px;
+    }
+
+    .week-days {
+        gap: 4px;
+    }
+
+    .week-day {
+        padding: 6px 0;
+    }
+
+    .week-day .rain-mm,
+    .week-day .max-temp {
+        font-size: 0.72rem;
+    }
+
+    .farm-bar-actions {
+        width: 100%;
+    }
+
+    .farm-bar .submit-btn {
+        flex: 1;
+    }
+}
+
+/* ----- Motion safety: everything above stays still for people who ask for it ----- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+
+    .skeleton-block {
+        background: rgba(25, 49, 38, 0.08);
     }
 }

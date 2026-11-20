@@ -1,6 +1,6 @@
 import json
 import re
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import numpy as np
@@ -81,6 +81,35 @@ def clean_soil_input(raw):
 # IMD calls 64.5 mm or more of rain in one day "heavy rainfall".
 HEAVY_RAIN_MM_PER_DAY = 64.5
 HEAT_ALERT_CELSIUS = 38
+SPRAY_LOOKAHEAD_DAYS = 3   # a spray needs this many dry days; the card and the 7-day strip share the rule
+IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def india_today(now=None):
+    """Today's date in India. Azure App Service runs on UTC, so date.today() would be
+    yesterday for Indian farmers between midnight and 05:30 IST."""
+    return (now or datetime.now(timezone.utc)).astimezone(IST).date()
+
+
+def with_day_flags(forecast):
+    """A copy of the forecast whose daily rows also say whether rain is heavy and what
+    spraying looks like. spray is "no" if that day or the next two get SPRAY_RAIN_MM or
+    more (the rule behind the "Don't spray now" card), "early" in a week with a heat alert,
+    "ok" otherwise, and None when there are too few days left to judge. The weather client
+    caches one dict for all requests, so new rows are built instead of changing it."""
+    rows = forecast.get("next_days") or []
+    hot_week = forecast.get("max_temperature_next_7_days", 0) >= HEAT_ALERT_CELSIUS
+    days = []
+    for i, day in enumerate(rows):
+        window = rows[i:i + SPRAY_LOOKAHEAD_DAYS]
+        if len(window) < SPRAY_LOOKAHEAD_DAYS:
+            spray = None
+        elif any(d["rain_mm"] >= SPRAY_RAIN_MM for d in window):
+            spray = "no"
+        else:
+            spray = "early" if hot_week else "ok"
+        days.append({**day, "spray": spray, "heavy_rain": day["rain_mm"] >= HEAVY_RAIN_MM_PER_DAY})
+    return {**forecast, "next_days": days}
 
 STATE_PROFILES = {
     "Andhra Pradesh": {"soils": ["black", "loamy"], "temperature": (27, 34), "humidity": (58, 82), "rainfall": (65, 120), "ph": (6.2, 7.8), "season": "kharif", "nitrogen": (62, 88), "phosphorus": (30, 52), "potassium": (34, 58)},
@@ -246,7 +275,7 @@ class FarmSaarthiEngine:
         if not raw_district:
             return {"error": "District not found for the selected state."}
 
-        today = today or date.today()
+        today = today or india_today()
         district = self._build_district_context(raw_district, today, soil)
         features = pd.DataFrame([self._district_features(district)], columns=FEATURES)
         probabilities = self.model.predict_proba(features)[0]
@@ -390,6 +419,8 @@ class FarmSaarthiEngine:
         forecast = None
         if self.weather is not None and lat is not None:
             forecast = self.weather.get(lat, lon, today)
+            if forecast:
+                forecast = with_day_flags(forecast)
 
         if forecast:
             temperature = forecast["temperature"]
@@ -618,7 +649,7 @@ class FarmSaarthiEngine:
                 add("alert", "sun", "Dry spell",
                     "Very little monsoon rain recently and none expected for two weeks. Save water and mulch the soil.")
 
-            rain_soon = next(((i, d) for i, d in enumerate(days[:3]) if d["rain_mm"] >= SPRAY_RAIN_MM), None)
+            rain_soon = next(((i, d) for i, d in enumerate(days[:SPRAY_LOOKAHEAD_DAYS]) if d["rain_mm"] >= SPRAY_RAIN_MM), None)
             if rain_soon:
                 index, day = rain_soon
                 add("warn", "no-spray", "Don't spray now",

@@ -107,6 +107,7 @@ class I18n:
         with I18N_PATH.open(encoding="utf-8") as file:
             data = json.load(file)
         self.language_names = data["language_names"]
+        self.native_names = data.get("native_names", {})
         self.labels = data["labels"]
         self.ui = data["ui"]
         self.rtl = set(data["rtl"])

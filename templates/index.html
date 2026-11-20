@@ -15,6 +15,25 @@
     <main class="page-shell">
         <section class="hero">
             <div class="hero-copy">
+                <svg class="hero-scene" viewBox="0 0 380 120" role="presentation" aria-hidden="true" focusable="false">
+                    <rect x="0" y="0" width="380" height="120" rx="22" fill="#eaf3e3"/>
+                    <g class="sun">
+                        <g class="sun-rays" stroke="#e7a54b" stroke-width="3" stroke-linecap="round">
+                            <path d="M62 12v8M62 60v8M34 40h8M82 40h8M42 20l6 6M76 54l6 6M42 60l6-6M76 26l6-6"/>
+                        </g>
+                        <circle cx="62" cy="40" r="13" fill="#f2b65a"/>
+                    </g>
+                    <path d="M0 92 C 70 70, 140 74, 210 86 S 330 96, 380 80 V120 H0 Z" fill="#a9cf8e"/>
+                    <path d="M0 104 C 90 88, 180 92, 260 100 S 350 108, 380 100 V120 H0 Z" fill="#6fae6a"/>
+                    <g fill="none" stroke="#1d7a58" stroke-width="3" stroke-linecap="round">
+                        <path class="sprout" d="M150 102v-16M150 92c-7-1-11-6-11-12 6 0 11 4 11 12zM150 88c6-1 10-6 10-11-6 0-10 4-10 11z"/>
+                        <path class="sprout" d="M190 104v-20M190 94c-8-1-13-7-13-14 7 0 13 5 13 14zM190 90c7-1 12-7 12-13-7 0-12 5-12 13z"/>
+                        <path class="sprout" d="M230 104v-16M230 94c-7-1-11-6-11-12 6 0 11 4 11 12zM230 90c6-1 10-6 10-11-6 0-10 4-10 11z"/>
+                        <path class="sprout" d="M270 103v-13M270 95c-6-1-9-5-9-10 5 0 9 4 9 10zM270 92c5-1 8-5 8-9-5 0-8 4-8 9z"/>
+                        <path class="sprout" d="M110 104v-12M110 97c-5-1-8-5-8-9 5 0 8 3 8 9z"/>
+                        <path class="sprout" d="M310 102v-12M310 95c5-1 8-5 8-9-5 0-8 3-8 9z"/>
+                    </g>
+                </svg>
                 <p class="eyebrow" id="hero-eyebrow">{{ bundle.ui.heroEyebrow }}</p>
                 <h1 id="hero-title">{{ bundle.labels.title }}</h1>
                 <p class="subtitle" id="hero-subtitle">{{ bundle.labels.subtitle }}</p>
@@ -26,6 +45,7 @@
                 <div class="hero-links">
                     <a class="schemes-link" id="schemes-link" href="/schemes?language={{ selected_language }}">{{ bundle.ui.schemesLink }}</a>
                     <button type="button" class="install-btn hidden" id="install-btn">{{ bundle.ui.installApp }}</button>
+                    <button type="button" class="text-size-btn" id="text-size-btn" aria-pressed="false">A+ <span id="text-size-label">{{ bundle.ui.textBigger }}</span></button>
                 </div>
             </div>
 
@@ -49,6 +69,16 @@
         </section>
 
         <section class="control-panel">
+            <div class="farm-bar hidden" id="farm-bar" role="region" aria-labelledby="farm-bar-label">
+                <div>
+                    <span class="fine-print" id="farm-bar-label">{{ bundle.ui.myFarm }}</span><br>
+                    <strong id="farm-bar-place"></strong>
+                </div>
+                <div class="farm-bar-actions">
+                    <button type="button" class="submit-btn" id="farm-check-btn">{{ bundle.ui.checkToday }}</button>
+                    <button type="button" class="link-btn" id="farm-change-btn">{{ bundle.ui.changePlace }}</button>
+                </div>
+            </div>
             <div class="panel-head">
                 <div>
                     <p class="eyebrow" id="field-input-label">{{ bundle.ui.fieldInput }}</p>
@@ -62,7 +92,7 @@
                     <span id="label-language">{{ bundle.labels.language }}</span>
                     <select name="language" id="language-select">
                         {% for code, name in language_names.items() %}
-                        <option value="{{ code }}" {% if code == selected_language %}selected{% endif %}>{{ name }} ({{ code.upper() }})</option>
+                        <option value="{{ code }}" {% if code == selected_language %}selected{% endif %} lang="{{ code }}">{% if code != 'en' and native_names.get(code) %}{{ native_names[code] }} · {% endif %}{{ name }} ({{ code.upper() }})</option>
                         {% endfor %}
                     </select>
                 </label>
@@ -127,6 +157,13 @@
             <div class="status-line" id="status-line" role="status" aria-live="polite"></div>
         </section>
 
+        <div class="results-skeleton hidden" id="results-skeleton" aria-hidden="true">
+            <div class="skeleton-block short"></div>
+            <div class="skeleton-block tall"></div>
+            <div class="skeleton-block"></div>
+            <div class="skeleton-block"></div>
+        </div>
+
         <section class="results hidden" id="results">
             <div class="results-head">
                 <div>
@@ -146,6 +183,21 @@
                 <button type="button" class="read-all-btn" id="read-all-btn">{{ bundle.ui.readAll }}</button>
             </div>
             <div class="action-grid" id="action-grid"></div>
+
+            <section class="week-strip hidden" id="week-strip" aria-labelledby="week-title">
+                <div class="week-head">
+                    <h3 id="week-title">{{ bundle.ui.weekTitle }}</h3>
+                    <span class="fine-print" id="week-units"></span>
+                </div>
+                <ul class="week-days" id="week-days" role="list"></ul>
+                <div class="week-legend" id="week-legend"></div>
+            </section>
+
+            <div class="share-bar" id="share-bar">
+                <button type="button" class="share-btn" id="share-btn"></button>
+                <a class="whatsapp-btn" id="whatsapp-btn" href="#" target="_blank" rel="noopener"></a>
+                <span class="fine-print" id="share-status" role="status" aria-live="polite"></span>
+            </div>
 
             {% if alerts_enabled %}
             <div class="alert-bar hidden" id="alert-bar">
@@ -443,26 +495,38 @@
 
             setText("decision-score", `${labels.impact}: ${data.decision_score}/100`);
             const chip = $("weather-chip");
-            chip.textContent = live ? ui.weatherLive : ui.weatherEstimate;
+            const age = live && d.forecast ? timeAgo(d.forecast.fetched_at) : "";
+            chip.textContent = (live ? ui.weatherLive : ui.weatherEstimate) + (age ? ` · ${ui.updatedAgo || "updated"} ${age}` : "");
             chip.className = live ? "source-chip live" : "source-chip estimated";
 
-            $("action-grid").innerHTML = (data.actions || []).map(action => `
-                <article class="action-card level-${esc(action.level)}">
+            // The most urgent card leads, and every card says its level in words, not only in colour.
+            const levelWords = {alert: ui.levelAlert || "Urgent", warn: ui.levelWarn || "Caution", good: ui.levelGood || "Good news", info: ui.levelInfo || "Tip"};
+            $("action-grid").innerHTML = (data.actions || []).map((action, index) => {
+                const lead = index === 0 && (action.level === "alert" || action.level === "warn");
+                const tag = lead
+                    ? `<span class="level-tag do-first"><span>${esc(ui.doFirst || "Do this first")}</span></span>`
+                    : `<span class="level-tag">${esc(levelWords[action.level] || "")}</span>`;
+                return `
+                <article class="action-card level-${esc(action.level)}${lead ? " lead" : ""}" style="--i:${index}">
                     <div class="action-icon">${svg(ICON_PATHS[action.icon] || ICON_PATHS.seed)}</div>
                     <div class="action-body">
+                        ${tag}
                         <h4>${esc(action.title)}</h4>
                         <p>${esc(action.text)}${action.estimate ? ` <em class="estimate-tag">${esc(ui.estimate)}</em>` : ""}</p>
                     </div>
                     ${speakButton(action.speak)}
-                </article>`).join("");
+                </article>`;
+            }).join("");
+            renderWeek(d.forecast);
             $("read-all-btn").dataset.speak = data.speak_all ? String(speakables.push(data.speak_all) - 1) : "";
 
-            $("top-crops-list").innerHTML = data.top_crops.map(item => `
-                <li class="crop-item">
+            $("top-crops-list").innerHTML = data.top_crops.map((item, index) => `
+                <li class="crop-item" style="--i:${index + 1}">
                     <div class="crop-head">
                         <div>
-                            <strong>${esc(item.crop)}</strong>
+                            <strong><span class="rank-badge" aria-hidden="true">${index + 1}</span>${esc(item.crop)}</strong>
                             <p>${esc(item.reasons.join(" "))}</p>
+                            <span class="score-meter" aria-hidden="true"><span style="--score:${Math.max(0, Math.min(1, Number(item.score) / 100))}"></span></span>
                         </div>
                         <div class="crop-side">
                             <span class="mini-score">${esc(item.score)}/100</span>
@@ -530,8 +594,183 @@
             resetFeedback(savedAt !== null);
             updateAlertBar(savedAt !== null);
             resultsSection.classList.remove("hidden");
+            playReveal();
+            updateShare(data);
             if (!savedAt) loadPrices(data);
         }
+
+        // ----- motion helpers ------------------------------------------------
+
+        const reducedMotion = window.matchMedia ? window.matchMedia("(prefers-reduced-motion: reduce)") : {matches: false};
+
+        function playReveal() {
+            resultsSection.classList.remove("reveal");
+            void resultsSection.offsetWidth;  // restart the entrance animation for new advice
+            resultsSection.classList.add("reveal");
+        }
+
+        function timeAgo(iso) {
+            const then = Date.parse(iso || "");
+            if (!then) return "";
+            const minutes = Math.max(0, Math.round((Date.now() - then) / 60000));
+            try {
+                const format = new Intl.RelativeTimeFormat(bundle.language, {numeric: "auto"});
+                return minutes < 60 ? format.format(-minutes, "minute") : format.format(-Math.round(minutes / 60), "hour");
+            } catch (error) {
+                return minutes < 60 ? `${minutes} min` : `${Math.round(minutes / 60)} h`;
+            }
+        }
+
+        // ----- next 7 days -----------------------------------------------------
+
+        function dayName(isoDate, index) {
+            if (index === 0) return bundle.ui.today || "Today";
+            const date = new Date(`${isoDate}T12:00:00+05:30`);
+            try {
+                return date.toLocaleDateString(bundle.language === "en" ? "en-IN" : bundle.language, {weekday: "short", timeZone: "Asia/Kolkata"});
+            } catch (error) {
+                return date.toLocaleDateString("en-IN", {weekday: "short"});
+            }
+        }
+
+        function renderWeek(forecast) {
+            const strip = $("week-strip");
+            const days = (forecast && forecast.next_days) || [];
+            if (!days.length) {
+                strip.classList.add("hidden");
+                return;
+            }
+            const ui = bundle.ui;
+            const marks = {
+                ok: ["✓", ui.sprayOk || "Good to spray"],
+                no: ["✕", ui.sprayNo || "Don't spray"],
+                early: ["☀", ui.sprayEarly || "Spray early morning"]
+            };
+            const maxRain = Math.max(20, ...days.map(day => Number(day.rain_mm) || 0));
+            setText("week-title", ui.weekTitle || "Next 7 days");
+            setText("week-units", `${ui.weekRain || "Rain (mm)"} · ${ui.weekMaxTemp || "Max °C"}`);
+            $("week-days").innerHTML = days.map((day, index) => {
+                const rain = Number(day.rain_mm) || 0;
+                const temp = day.max_temp === null || day.max_temp === undefined ? "–" : Math.round(day.max_temp);
+                const mark = marks[day.spray];
+                const label = `${dayName(day.date, index)}: ${rain} mm, ${temp} °C${mark ? `, ${mark[1]}` : ""}`;
+                return `
+                    <li class="week-day${index === 0 ? " is-today" : ""}${day.heavy_rain ? " heavy" : ""}" style="--i:${index}" aria-label="${esc(label)}">
+                        <span class="day-name">${esc(dayName(day.date, index))}</span>
+                        <span class="rain-bar" aria-hidden="true"><span style="--fill:${Math.min(1, rain / maxRain).toFixed(3)}"></span></span>
+                        <span class="rain-mm" aria-hidden="true">${esc(rain.toFixed(rain < 10 ? 1 : 0))}</span>
+                        <span class="max-temp" aria-hidden="true">${esc(temp)}°</span>
+                        <span class="spray-mark ${mark ? esc(day.spray) : "none"}" aria-hidden="true" title="${mark ? esc(mark[1]) : ""}">${mark ? mark[0] : "·"}</span>
+                    </li>`;
+            }).join("");
+            $("week-legend").innerHTML = Object.entries(marks).map(([key, [symbol, text]]) =>
+                `<span><span class="spray-mark ${key}" aria-hidden="true">${symbol}</span>${esc(text)}</span>`).join("");
+            strip.classList.remove("hidden");
+        }
+
+        // ----- share today's advice --------------------------------------------
+
+        function shareText(data) {
+            const d = data.district;
+            const ui = bundle.ui;
+            const when = new Date().toLocaleDateString(bundle.language === "en" ? "en-IN" : bundle.language, {day: "numeric", month: "short", timeZone: "Asia/Kolkata"});
+            const lines = [`${ui.shareHeading || "FarmSaarthi advice for"} ${d.name}, ${d.state} (${when})`];
+            (data.actions || []).slice(0, 4).forEach(action => lines.push(`• ${action.title}: ${action.text}`));
+            const crops = (data.top_crops || []).map(crop => crop.crop).join(", ");
+            if (crops) lines.push(`${ui.shareBestCrops || "Best crops"}: ${crops}`);
+            const link = new URL("/", window.location.origin);
+            link.searchParams.set("language", bundle.language);
+            link.searchParams.set("state", d.state);
+            link.searchParams.set("district", d.name);
+            lines.push(link.href);
+            return lines.join("\n");
+        }
+
+        function updateShare(data) {
+            const text = shareText(data);
+            $("whatsapp-btn").href = `https://wa.me/?text=${encodeURIComponent(text)}`;
+            $("share-btn").dataset.text = text;
+            setText("share-status", "");
+        }
+
+        $("share-btn").addEventListener("click", async function() {
+            const text = this.dataset.text || "";
+            if (navigator.share) {
+                try {
+                    await navigator.share({title: "FarmSaarthi", text});
+                    return;
+                } catch (error) {
+                    if (error && error.name === "AbortError") return;  // the farmer closed the share sheet
+                }
+            }
+            try {
+                await navigator.clipboard.writeText(text);
+                setText("share-status", bundle.ui.shareCopied || "Advice copied.");
+            } catch (error) {
+                window.open($("whatsapp-btn").href, "_blank", "noopener");
+            }
+        });
+
+        // ----- remember my farm --------------------------------------------------
+
+        const FARM_KEY = "farmsaarthi:farm";
+        const TEXT_KEY = "farmsaarthi:big-text";
+
+        function loadFarm() {
+            try {
+                const farm = JSON.parse(localStorage.getItem(FARM_KEY) || "null");
+                const valid = farm && districtsByState.some(item => item.state === farm.state && item.district === farm.district);
+                return valid ? farm : null;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function saveFarm() {
+            try {
+                localStorage.setItem(FARM_KEY, JSON.stringify({language: bundle.language, state: stateSelect.value, district: districtSelect.value}));
+            } catch (error) {
+                // only a convenience
+            }
+        }
+
+        function showFarmBar(farm) {
+            if (!farm) return;
+            setText("farm-bar-place", `${farm.district}, ${farm.state}`);
+            $("farm-bar").classList.remove("hidden");
+        }
+
+        $("farm-check-btn").addEventListener("click", function() {
+            const farm = loadFarm();
+            if (!farm) return;
+            stateSelect.value = farm.state;
+            populateDistricts(farm.state, farm.district);
+            loadGallery();
+            runAnalysis();
+        });
+
+        $("farm-change-btn").addEventListener("click", function() {
+            $("farm-bar").classList.add("hidden");
+            stateSelect.focus();
+        });
+
+        // ----- bigger text -------------------------------------------------------
+
+        function applyTextSize(big) {
+            document.documentElement.classList.toggle("big-text", big);
+            $("text-size-btn").setAttribute("aria-pressed", big ? "true" : "false");
+            setText("text-size-label", big ? (bundle.ui.textNormal || "Normal text") : (bundle.ui.textBigger || "Bigger text"));
+        }
+
+        $("text-size-btn").addEventListener("click", function() {
+            const big = !document.documentElement.classList.contains("big-text");
+            applyTextSize(big);
+            try {
+                localStorage.setItem(TEXT_KEY, big ? "1" : "0");
+            } catch (error) {
+                // only a convenience
+            }
+        });
 
         // ----- mandi prices --------------------------------------------------
 
@@ -652,6 +891,8 @@
             analyzeButton.disabled = true;
             analyzeButton.textContent = labels.loading;
             setStatus("status-line", labels.loading);
+            const skeleton = $("results-skeleton");
+            if (resultsSection.classList.contains("hidden")) skeleton.classList.remove("hidden");
 
             try {
                 let response;
@@ -675,17 +916,20 @@
                 if (!response.ok) {
                     throw new Error(data.error || bundle.ui.analysisFailed);
                 }
+                skeleton.classList.add("hidden");
                 renderResults(data);
                 saveAnalysis(data);
+                saveFarm();
                 setStatus("status-line", bundle.labels.success);
                 if (scroll) {
-                    resultsSection.scrollIntoView({behavior: "smooth", block: "start"});
+                    resultsSection.scrollIntoView({behavior: reducedMotion.matches ? "auto" : "smooth", block: "start"});
                 }
             } catch (error) {
                 resultsSection.classList.add("hidden");
                 latestAnalysis = null;
                 setStatus("status-line", error.message || bundle.ui.analysisFailed, true);
             } finally {
+                skeleton.classList.add("hidden");
                 analyzeButton.disabled = false;
                 analyzeButton.textContent = bundle.labels.analyze;
             }
@@ -878,6 +1122,13 @@
             setText("hero-tag-2", ui.heroTag2);
             setText("hero-tag-3", ui.heroTag3);
             setText("install-btn", ui.installApp);
+            applyTextSize(document.documentElement.classList.contains("big-text"));
+            setText("farm-bar-label", ui.myFarm || "Your farm");
+            setText("farm-check-btn", ui.checkToday || "Check today");
+            setText("farm-change-btn", ui.changePlace || "Change");
+            setText("share-btn", ui.shareButton || "Share advice");
+            $("whatsapp-btn").textContent = ui.shareWhatsApp || "WhatsApp";
+            if (latestAnalysis) updateShare(latestAnalysis);
             setText("coverage-label", ui.coverage);
             setText("coverage-value", `${totalStates} States / UTs`);
             setText("coverage-note", ui.coverageNote);
@@ -982,6 +1233,14 @@
             const url = new URL(window.location.href);
             url.searchParams.set("language", bundle.language);
             window.history.replaceState(null, "", url);
+            const farm = loadFarm();
+            if (farm) {
+                try {
+                    localStorage.setItem(FARM_KEY, JSON.stringify({...farm, language: bundle.language}));
+                } catch (error) {
+                    // only a convenience
+                }
+            }
             applyTranslations();
             setStatus("status-line", "");
             renderGalleryScope();
@@ -1308,9 +1567,14 @@
             if (!districtSelect.value) return setStatus("photo-status", bundle.labels.select_district, true);
             if (!file) return setStatus("photo-status", ui.photoNoFile, true);
             if (!allowedTypes.includes(file.type)) return setStatus("photo-status", ui.photoWrongType, true);
-            if (file.size > maxUploadBytes) return setStatus("photo-status", ui.photoTooLarge, true);
+
+            uploadButton.disabled = true;
+            const upload = await shrinkPhoto(file);
+            uploadButton.disabled = false;
+            if (upload.size > maxUploadBytes) return setStatus("photo-status", ui.photoTooLarge, true);
 
             const body = new FormData(photoForm);
+            body.set("photo", upload, upload.name);
             body.set("state", stateSelect.value);
             body.set("district", districtSelect.value);
             body.set("language", languageSelect.value);
@@ -1340,6 +1604,33 @@
             photoForm.querySelectorAll("input, select, button").forEach(node => { node.disabled = true; });
         }
 
+        // Phone photos are often 3-8 MB. Shrinking them on the phone (longest side
+        // 1600 px, the size the server keeps anyway) saves the farmer's mobile data.
+        async function shrinkPhoto(file) {
+            const MAX_SIDE = 1600;
+            if (file.size < 600 * 1024 || !window.createImageBitmap || !document.createElement("canvas").getContext) {
+                return file;
+            }
+            try {
+                setStatus("photo-status", bundle.ui.photoShrinking || "Making the photo smaller...");
+                const bitmap = await createImageBitmap(file, {imageOrientation: "from-image"});
+                const scale = Math.min(1, MAX_SIDE / Math.max(bitmap.width, bitmap.height));
+                const canvas = document.createElement("canvas");
+                canvas.width = Math.round(bitmap.width * scale);
+                canvas.height = Math.round(bitmap.height * scale);
+                const context = canvas.getContext("2d");
+                context.fillStyle = "#ffffff";  // transparent PNG areas become white, as on the server
+                context.fillRect(0, 0, canvas.width, canvas.height);
+                context.drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+                if (bitmap.close) bitmap.close();
+                const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/jpeg", 0.85));
+                if (!blob || blob.size >= file.size) return file;
+                return new File([blob], file.name.replace(/\.[^.]+$/, "") + ".jpg", {type: "image/jpeg"});
+            } catch (error) {
+                return file;  // any problem: send the original, the server checks it anyway
+            }
+        }
+
         // ----- install and offline -----------------------------------------
 
         let installPrompt = null;
@@ -1363,10 +1654,39 @@
 
         // ----- start -----------------------------------------------------------
 
+        // A returning farmer gets their own language back without hunting for it.
+        const savedFarm = loadFarm();
+        const urlHasLanguage = new URLSearchParams(window.location.search).has("language");
+        let redirecting = false;
+        try {
+            if (savedFarm && !urlHasLanguage && savedFarm.language && savedFarm.language !== bundle.language
+                && languageSelect.querySelector(`option[value="${savedFarm.language}"]`) && navigator.onLine
+                && !sessionStorage.getItem("farmsaarthi:redirected")) {
+                sessionStorage.setItem("farmsaarthi:redirected", "1");
+                const url = new URL(window.location.href);
+                url.searchParams.set("language", savedFarm.language);
+                redirecting = true;
+                window.location.replace(url.href);
+            }
+        } catch (error) {
+            redirecting = false;
+        }
+
+        try {
+            applyTextSize(localStorage.getItem(TEXT_KEY) === "1");
+        } catch (error) {
+            applyTextSize(false);
+        }
+
         stateSelect.value = {{ (states[0] if states else '')|tojson }};
         populateDistricts(stateSelect.value);
         applyTranslations();
         restoreSoil();
+        if (savedFarm && !preset.state && !redirecting) {
+            stateSelect.value = savedFarm.state;
+            populateDistricts(savedFarm.state, savedFarm.district);
+            showFarmBar(savedFarm);
+        }
         // Links from weather-alert notifications open straight on the farmer's district.
         const presetValid = preset.state && districtsByState.some(item => item.state === preset.state && item.district === preset.district);
         if (presetValid) {

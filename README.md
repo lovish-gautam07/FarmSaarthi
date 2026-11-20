@@ -1,5 +1,7 @@
 # FarmSaarthi
 
+**Live:** <https://farmsaarthi.azurewebsites.net> (Azure App Service, free F1 plan)
+
 FarmSaarthi is a vernacular crop-advice web app for Indian farmers. A farmer picks a language, state and district, and optionally types or speaks the crop they are interested in. They get:
 
 - **"What to do now" cards**: short, colour-coded actions such as "Irrigate this week" or "Don't spray now" (rain is coming)

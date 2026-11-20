@@ -17,6 +17,8 @@ from collections import defaultdict
 from datetime import date, datetime, timezone
 from urllib.parse import urlencode
 
+from engine import india_today
+
 PARTITION = "sub"
 PUSH_TTL_SECONDS = 12 * 60 * 60
 
@@ -153,7 +155,7 @@ def urgent_actions(result):
 
 def run_alerts(engine, translator, store, sender, today=None):
     """Check every subscribed district and send any new urgent alerts."""
-    today = today or date.today()
+    today = today or india_today()
     subscriptions = store.all()
     by_district = defaultdict(list)
     for subscription in subscriptions:

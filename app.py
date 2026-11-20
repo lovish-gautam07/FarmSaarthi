@@ -178,6 +178,7 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
             states=engine.list_states(),
             bundle=i18n.bundle(language),
             language_names=i18n.language_names,
+            native_names=i18n.native_names,
             selected_language=language,
             crop_choices=crop_choices,
             soil_types=SOIL_TYPES,

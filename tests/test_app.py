@@ -330,3 +330,39 @@ def test_schemes_page(client):
     assert "Shown in English" not in page
     hindi = client.get("/schemes?language=hi").get_data(as_text=True)
     assert "सरकारी योजनाएँ" in hindi and "अंग्रेज़ी में दिखाया गया है" in hindi  # no Translator key in tests
+
+
+# ----- round 3: visual and motion upgrades ----------------------------------------------
+
+def test_page_has_round_three_pieces(client):
+    page = client.get("/").get_data(as_text=True)
+    for marker in ('id="week-strip"', 'id="share-btn"', 'id="whatsapp-btn"', 'id="farm-bar"', 'id="results-skeleton"',
+                   'id="text-size-btn"', 'class="hero-scene"'):
+        assert marker in page, marker
+    # Language names are shown in their own script, while the English names stay for search and tests.
+    assert "हिन्दी · Hindi (HI)" in page and "اردو · Urdu (UR)" in page and "ଓଡ଼ିଆ · Odia (OR)" in page
+
+
+def test_styles_respect_reduced_motion_and_drop_blur(client):
+    css = client.get("/static/styles.css").get_data(as_text=True)
+    assert "@media (prefers-reduced-motion: reduce)" in css
+    assert "backdrop-filter" not in css
+    assert "line-height: 0.92" not in css
+    # The reduced-motion block comes after every animation in the file, so its !important rules win.
+    guard = css.rfind("@media (prefers-reduced-motion: reduce)")
+    assert "animation: none !important" in css[guard:]
+    real_animations = [i for i in range(len(css)) if css.startswith("animation:", i) and not css.startswith("animation: none", i)]
+    assert real_animations and max(real_animations) < guard
+
+
+def test_new_interface_text_is_hand_written_in_english_and_hindi(i18n_offline):
+    keys = ["weekTitle", "sprayOk", "sprayNo", "sprayEarly", "doFirst", "levelAlert", "shareButton", "myFarm", "checkToday", "textBigger"]
+    for language in ("en", "hi"):
+        for key in keys:
+            assert i18n_offline.ui[language].get(key), (language, key)
+    assert set(i18n_offline.native_names) == set(i18n_offline.language_names)
+
+
+def test_hidden_always_wins(client):
+    css = client.get("/static/styles.css").get_data(as_text=True)
+    assert ".hidden {\n    display: none !important;\n}" in css

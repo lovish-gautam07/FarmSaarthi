@@ -218,3 +218,34 @@ def test_soil_type_alone_is_the_farmers_choice(engine):
     assert result["district"]["soil"] == "clay"
     assert result["district"]["sources"]["soil"] == "farmer"
     assert result["district"]["soil_card"] is None
+
+
+# ----- India date and the 7-day strip ------------------------------------------------
+
+def test_india_today_is_ahead_of_utc_after_6_30_pm():
+    from datetime import date, datetime, timezone
+
+    from engine import india_today
+
+    assert india_today(datetime(2026, 11, 19, 20, 0, tzinfo=timezone.utc)) == date(2026, 11, 20)
+    assert india_today(datetime(2026, 11, 19, 10, 0, tzinfo=timezone.utc)) == date(2026, 11, 19)
+
+
+def test_day_flags_follow_the_spray_rule_without_changing_the_cache():
+    from engine import with_day_flags
+
+    rows = [{"date": f"2026-11-{20 + i}", "rain_mm": rain, "max_temp": 30.0} for i, rain in enumerate([0, 0, 0, 6, 0, 0, 80])]
+    cached = {"max_temperature_next_7_days": 30.0, "next_days": rows}
+    flagged = with_day_flags(cached)
+    assert [d["spray"] for d in flagged["next_days"]] == ["ok", "no", "no", "no", "no", None, None]
+    assert flagged["next_days"][6]["heavy_rain"] is True
+    assert "spray" not in rows[0]  # the shared cached forecast is untouched
+
+    hot = with_day_flags({**cached, "max_temperature_next_7_days": 40.0})
+    assert hot["next_days"][0]["spray"] == "early"
+
+
+def test_analysis_carries_flagged_days():
+    result = FarmSaarthiEngine(weather_client=FakeWeather()).recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)
+    days = result["district"]["forecast"]["next_days"]
+    assert len(days) == 7 and all("spray" in d and "heavy_rain" in d for d in days)

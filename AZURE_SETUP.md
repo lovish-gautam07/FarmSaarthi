@@ -8,7 +8,12 @@ This guide takes you from no account to a live app:
 
 Azure renames portal menus from time to time. If a label below doesn't match exactly, look for the nearest equivalent.
 
-Use one **region** for everything. **Central India** is a good choice.
+**Regions.** Azure for Students subscriptions only allow a few regions. Check yours in the portal under **Policy → Assignments → "Allowed resource deployment regions"**. The FarmSaarthi deployment (November 2026) used:
+
+- **India South Central** (Hyderabad) for the web app and the storage account. It is close to Indian farmers and keeps photos in India.
+- **East Asia** for Translator and Speech, because India South Central has no free (F0) tier for them. Only short text is sent there.
+
+Wherever this guide says **Central India**, use the allowed region that fits.
 
 ## 1. Create your Azure for Students account
 
