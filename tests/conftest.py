@@ -11,9 +11,12 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
 # Tests must never pick up a developer's real keys from .env.
-for name in ("AZURE_STORAGE_CONNECTION_STRING", "AZURE_TRANSLATOR_KEY", "AZURE_SPEECH_KEY", "SECRET_KEY"):
+for name in ("AZURE_STORAGE_CONNECTION_STRING", "AZURE_TRANSLATOR_KEY", "AZURE_SPEECH_KEY", "SECRET_KEY",
+             "DATA_GOV_IN_API_KEY", "VAPID_PUBLIC_KEY", "VAPID_PRIVATE_KEY", "VAPID_SUBJECT", "TASK_KEY"):
     os.environ[name] = ""
 
+from alerts import PushSender  # noqa: E402
+from datagov import KCC_RESOURCE, MANDI_RESOURCE, DataGovClient  # noqa: E402
 from engine import FarmSaarthiEngine  # noqa: E402
 from events import new_row_key, summarize  # noqa: E402
 from speech import AzureSpeech  # noqa: E402
@@ -124,6 +127,91 @@ class FakeSpeech(AzureSpeech):
         return b"ID3-fake-mp3"
 
 
+MANDI_ROWS = {
+    ("Punjab", "Wheat"): [
+        {"state": "Punjab", "district": "Patiala", "market": "Rajpura APMC", "commodity": "Wheat", "modal_price": "2500", "min_price": "2400", "max_price": "2550", "arrival_date": "19/11/2026"},
+        {"state": "Punjab", "district": "Ludhiana", "market": "Khanna APMC", "commodity": "Wheat", "modal_price": "2425", "min_price": "2400", "max_price": "2450", "arrival_date": "19/11/2026"},
+        {"state": "Punjab", "district": "Amritsar", "market": "Amritsar APMC", "commodity": "Wheat", "modal_price": "2450", "min_price": "2400", "max_price": "2500", "arrival_date": "19/11/2026"},
+    ],
+}
+
+KCC_ROWS = [
+    {"StateName": "PUNJAB", "DistrictName": "LUDHIANA", "Crop": "Wheat", "QueryType": "Plant Protection",
+     "QueryText": "How to control yellow rust in wheat?", "KccAns": "ਪੀਲੀ ਕੁੰਗੀ ਦੀ ਰੋਕਥਾਮ ਲਈ ਮਾਹਿਰ ਦੀ ਸਲਾਹ ਲਵੋ", "CreatedOn": "2026-01-10T10:00:00"},
+    {"StateName": "PUNJAB", "DistrictName": "PATIALA", "Crop": "Wheat", "QueryType": "Weather",
+     "QueryText": "Farmer asked query on Weather", "KccAns": "Light rain expected", "CreatedOn": "2026-01-11T10:00:00"},
+    {"StateName": "PUNJAB", "DistrictName": "MOGA", "Crop": "Wheat", "QueryType": "Nutrient Management",
+     "QueryText": "Information regarding urea dose for wheat", "KccAns": "Apply urea in two splits", "CreatedOn": "2026-01-09T10:00:00"},
+]
+
+
+class FakeDataGov(DataGovClient):
+    """data.gov.in stand-in. Set `down = True` to simulate the API failing."""
+
+    def __init__(self):
+        super().__init__(api_key="test-key")
+        self.calls = []
+        self.down = False
+
+    def records(self, resource, filters, limit, sort=None, cache_seconds=0):
+        self.calls.append((resource, dict(filters)))
+        if self.down:
+            return None
+        if resource == MANDI_RESOURCE:
+            return MANDI_ROWS.get((filters.get("state.keyword"), filters.get("commodity.keyword")), [])
+        if resource == KCC_RESOURCE:
+            rows = [row for row in KCC_ROWS if row["StateName"] == filters.get("StateName")]
+            if "Crop" in filters:
+                rows = [row for row in rows if row["Crop"] == filters["Crop"]]
+            return rows
+        return []
+
+
+class FakeAlertStore:
+    def __init__(self):
+        self.subs = {}
+
+    def subscribe(self, subscription, state, district, language):
+        from alerts import endpoint_key
+
+        key = endpoint_key(subscription["endpoint"])
+        self.subs[key] = {"RowKey": key, "endpoint": subscription["endpoint"], "p256dh": subscription["keys"]["p256dh"],
+                          "auth": subscription["keys"]["auth"], "state": state, "district": district,
+                          "language": language, "last_alert_key": ""}
+        return key
+
+    def unsubscribe(self, endpoint):
+        from alerts import endpoint_key
+
+        self.subs.pop(endpoint_key(endpoint), None)
+
+    def delete(self, row_key):
+        self.subs.pop(row_key, None)
+
+    def all(self):
+        return [dict(sub) for sub in self.subs.values()]
+
+    def mark_sent(self, row_key, alert_key):
+        self.subs[row_key]["last_alert_key"] = alert_key
+
+
+class FakePush(PushSender):
+    def __init__(self, result="ok"):
+        super().__init__("BPublicKeyForTests", "private", "https://farmsaarthi.example")
+        self.result = result
+        self.sent = []
+
+    def send(self, subscription, payload):
+        self.sent.append((subscription["endpoint"], payload))
+        return self.result
+
+
+BROWSER_SUBSCRIPTION = {
+    "endpoint": "https://fcm.googleapis.com/fcm/send/test-endpoint-123",
+    "keys": {"p256dh": "B" + "x" * 86, "auth": "a" * 22},
+}
+
+
 @pytest.fixture(scope="session")
 def engine():
     """One trained engine for the whole run (training takes well under a second)."""
@@ -152,9 +240,12 @@ def client(engine, i18n_offline):
     from app import create_app
 
     store, events, speech = FakePhotoStore(), FakeEvents(), FakeSpeech()
+    datagov, alert_store, push = FakeDataGov(), FakeAlertStore(), FakePush()
     app = create_app(engine=engine, i18n=i18n_offline, photo_store=store, speech=speech, events=events,
-                     secret_key="test-secret", inline_background=True)
+                     secret_key="test-secret", inline_background=True, datagov=datagov,
+                     alert_store=alert_store, push=push, task_key="task-secret")
     app.config["TESTING"] = True
     test_client = app.test_client()
     test_client.store, test_client.events, test_client.speech = store, events, speech
+    test_client.datagov, test_client.alert_store, test_client.push = datagov, alert_store, push
     return test_client

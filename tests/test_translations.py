@@ -77,3 +77,28 @@ def test_action_cards_and_notes_are_translated(engine):
     assert i18n.translate_analysis(result, "ta")
     assert all(a["title"].startswith("[ta] ") and a["text"].startswith("[ta] ") for a in result["actions"])
     assert all(n["text"].startswith("[ta] ") for n in result["interest_notes"])
+
+
+def test_auto_detect_leaves_out_the_source_language():
+    class Session:
+        def __init__(self):
+            self.params = []
+
+        def post(self, url, params=None, headers=None, json=None, timeout=None):
+            self.params.append(params)
+
+            class Response:
+                def raise_for_status(self):
+                    pass
+
+                def json(self):
+                    return [{"translations": [{"text": "translated"}]} for _ in json]
+
+            return Response()
+
+    session = Session()
+    translator = AzureTranslator(key="k", region="centralindia", session=session)
+    assert translator.translate(["ਸਤ ਸ੍ਰੀ ਅਕਾਲ"], "hi", from_lang=None) == ["translated"]
+    assert "from" not in session.params[0] and session.params[0]["to"] == "hi"
+    translator.translate(["hello"], "hi")
+    assert session.params[1]["from"] == "en"

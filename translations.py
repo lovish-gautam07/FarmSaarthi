@@ -45,7 +45,11 @@ class AzureTranslator:
         return bool(self.key)
 
     def translate(self, texts, to_lang, from_lang="en"):
-        """Translate a list of strings. Returns None if the service is off or fails."""
+        """Translate a list of strings. Returns None if the service is off or fails.
+
+        from_lang=None lets Azure detect the source language (used for Kisan
+        Call Centre answers, which are written in the state's own language).
+        """
         texts = list(texts)
         if to_lang == from_lang or not texts:
             return texts
@@ -53,7 +57,7 @@ class AzureTranslator:
             return None
 
         with self._lock:
-            missing = list(dict.fromkeys(t for t in texts if t and (to_lang, t) not in self._cache))
+            missing = list(dict.fromkeys(t for t in texts if t and (to_lang, from_lang, t) not in self._cache))
 
         for chunk in self._chunks(missing):
             translated = self._call(chunk, to_lang, from_lang)
@@ -63,10 +67,10 @@ class AzureTranslator:
             with self._lock:
                 if len(self._cache) > MAX_CACHE_ENTRIES:
                     self._cache.clear()
-                self._cache.update({(to_lang, src): dst for src, dst in zip(chunk, translated)})
+                self._cache.update({(to_lang, from_lang, src): dst for src, dst in zip(chunk, translated)})
 
         with self._lock:
-            return [self._cache.get((to_lang, t), t) if t else t for t in texts]
+            return [self._cache.get((to_lang, from_lang, t), t) if t else t for t in texts]
 
     @staticmethod
     def _chunks(items):
@@ -87,7 +91,7 @@ class AzureTranslator:
         try:
             response = self.session.post(
                 f"{self.endpoint}/translate",
-                params={"api-version": "3.0", "from": from_lang, "to": to_lang, "textType": "plain"},
+                params={"api-version": "3.0", "to": to_lang, "textType": "plain", **({"from": from_lang} if from_lang else {})},
                 headers=headers,
                 json=[{"Text": text} for text in chunk],
                 timeout=REQUEST_TIMEOUT,

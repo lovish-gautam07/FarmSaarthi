@@ -81,3 +81,24 @@ def test_event_log_and_audio_cache_round_trip():
         assert cache.get("abc") == b"ID3-audio"
     finally:
         cache.container.delete_container()
+
+
+def test_alert_store_round_trip():
+    from azure.data.tables import TableServiceClient
+
+    from alerts import AlertStore
+    from conftest import BROWSER_SUBSCRIPTION
+
+    table = TableServiceClient.from_connection_string(AZURITE).get_table_client(f"TestAlerts{uuid.uuid4().hex[:8]}")
+    store = AlertStore(table)
+    try:
+        key = store.subscribe(BROWSER_SUBSCRIPTION, "Punjab", "Ludhiana", "pa")
+        store.subscribe(BROWSER_SUBSCRIPTION, "Punjab", "Patiala", "pa")  # same browser moves district
+        rows = store.all()
+        assert len(rows) == 1 and rows[0]["district"] == "Patiala"
+        store.mark_sent(key, "abc123")
+        assert store.all()[0]["last_alert_key"] == "abc123"
+        store.unsubscribe(BROWSER_SUBSCRIPTION["endpoint"])
+        assert store.all() == []
+    finally:
+        table.delete_table()

@@ -34,6 +34,50 @@ SPRAY_RAIN_MM = 5          # rain that would wash off a spray
 MAX_ACTIONS = 6
 ACTION_ORDER = {"alert": 0, "warn": 1, "good": 2, "info": 3}
 
+SOIL_TYPES = ("clay", "loamy", "black", "sandy")
+
+# Soil Health Card ratings (kg/ha of available nutrient; organic carbon in %).
+SHC_LIMITS = {"n": (280, 560), "p": (10, 25), "k": (110, 280), "oc": (0.5, 0.75)}
+# A card rating is placed at this point of the training data's nutrient scale.
+RATING_QUANTILE = {"low": 0.2, "medium": 0.5, "high": 0.8}
+SOIL_INPUT_RANGES = {"n": (0, 1500), "p": (0, 400), "k": (0, 2000), "ph": (3.0, 10.5), "oc": (0, 5)}
+
+
+def shc_rating(nutrient, value):
+    low, high = SHC_LIMITS[nutrient]
+    if value < low:
+        return "low"
+    if value > high:
+        return "high"
+    return "medium"
+
+
+def clean_soil_input(raw):
+    """Validate optional Soil Health Card values. Returns (soil dict or None, error message or None)."""
+    if not raw:
+        return None, None
+    if not isinstance(raw, dict):
+        return None, "Soil values must be numbers."
+    soil = {}
+    soil_type = raw.get("type") or ""
+    if soil_type:
+        if soil_type not in SOIL_TYPES:
+            return None, "Unknown soil type."
+        soil["type"] = soil_type
+    for key, (low, high) in SOIL_INPUT_RANGES.items():
+        value = raw.get(key)
+        if value in (None, ""):
+            continue
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return None, f"Soil value '{key}' must be a number."
+        if not low <= value <= high:
+            return None, f"Soil value '{key}' must be between {low:g} and {high:g}."
+        soil[key] = round(value, 2)
+    return (soil or None), None
+
+
 # IMD calls 64.5 mm or more of rain in one day "heavy rainfall".
 HEAVY_RAIN_MM_PER_DAY = 64.5
 HEAT_ALERT_CELSIUS = 38
@@ -153,6 +197,10 @@ class FarmSaarthiEngine:
         self.generated_rows = 0
         self.training_data = self._build_training_dataset()
         self.crop_ranges = self._crop_ranges()
+        self.nutrient_scale = {
+            column: {rating: float(self.training_data[column].quantile(q)) for rating, q in RATING_QUANTILE.items()}
+            for column in ("N", "P", "K")
+        }
         self.model_accuracy = 0.0
         self.model = self._train_model()
 
@@ -193,13 +241,13 @@ class FarmSaarthiEngine:
 
     # ----- recommendation --------------------------------------------------
 
-    def recommend(self, district_name, preferred_language, crop_interest="", state_name=None, today=None):
+    def recommend(self, district_name, preferred_language, crop_interest="", state_name=None, today=None, soil=None):
         raw_district = self.get_district(district_name, state_name)
         if not raw_district:
             return {"error": "District not found for the selected state."}
 
         today = today or date.today()
-        district = self._build_district_context(raw_district, today)
+        district = self._build_district_context(raw_district, today, soil)
         features = pd.DataFrame([self._district_features(district)], columns=FEATURES)
         probabilities = self.model.predict_proba(features)[0]
         interest_terms = self._interest_terms(crop_interest)
@@ -325,13 +373,13 @@ class FarmSaarthiEngine:
 
     # ----- district conditions ---------------------------------------------
 
-    def _build_district_context(self, raw_district, today):
+    def _build_district_context(self, raw_district, today, soil=None):
         profile = STATE_PROFILES.get(raw_district["state"], DEFAULT_PROFILE)
         seed = sum(ord(char) for char in f"{raw_district['state']}-{raw_district['district']}")
 
         # Soil and market values are state-level estimates: there is no free
         # district-level soil or mandi-price feed wired in yet.
-        soil = profile["soils"][seed % len(profile["soils"])]
+        soil_type = profile["soils"][seed % len(profile["soils"])]
         ph = round(self._spread(profile["ph"], seed, 4, decimal=True), 1)
         nitrogen = int(self._spread(profile["nitrogen"], seed, 5))
         phosphorus = int(self._spread(profile["phosphorus"], seed, 6))
@@ -352,6 +400,32 @@ class FarmSaarthiEngine:
             humidity = self._spread(profile["humidity"], seed, 2)
             rainfall = self._spread(profile["rainfall"], seed, 3)
 
+        soil_card, soil_source = None, "estimate"
+        if soil:
+            soil_type = soil.get("type", soil_type)
+            soil_source = "farmer"
+            soil_card = {}
+            for key, column in (("n", "N"), ("p", "P"), ("k", "K")):
+                if key in soil:
+                    rating = shc_rating(key, soil[key])
+                    soil_card[key] = {"value": soil[key], "rating": rating}
+                    value = int(round(self.nutrient_scale[column][rating]))
+                    if key == "n":
+                        nitrogen = value
+                    elif key == "p":
+                        phosphorus = value
+                    else:
+                        potassium = value
+            if "ph" in soil:
+                ph = round(soil["ph"], 1)
+                soil_card["ph"] = {"value": ph}
+            if "oc" in soil:
+                soil_card["oc"] = {"value": soil["oc"], "rating": shc_rating("oc", soil["oc"])}
+            if soil_card:
+                soil_source = "card"
+            else:
+                soil_card = None
+
         humidity_risk = humidity >= 80 or rainfall >= 140
         if humidity_risk and temperature > 28:
             pest_risk = "high"
@@ -367,7 +441,8 @@ class FarmSaarthiEngine:
             "district_code": raw_district["districtCode"],
             "lat": lat,
             "lon": lon,
-            "soil": soil,
+            "soil": soil_type,
+            "soil_card": soil_card,
             "temperature": round(float(temperature), 1),
             "humidity": int(round(humidity)),
             "rainfall_monthly_mm": int(round(rainfall)),
@@ -382,7 +457,7 @@ class FarmSaarthiEngine:
             "forecast": forecast,
             "sources": {
                 "weather": "live" if forecast else "estimate",
-                "soil": "estimate",
+                "soil": soil_source,
                 "market": "estimate"
             }
         }
@@ -588,7 +663,7 @@ class FarmSaarthiEngine:
         elif district["pest_risk"] == "medium":
             add("info", "bug", "Check for pests every week", "Look at leaves and stems for insects, eggs and holes.")
 
-        add("info", "soil", "Fertilizer tip", self._fertilizer_tips(district)[0], estimate=True)
+        add("info", "soil", "Fertilizer tip", self._fertilizer_tips(district)[0], estimate=not district["soil_card"])
 
         cards.sort(key=lambda card: ACTION_ORDER[card["level"]])
         return cards[:MAX_ACTIONS]
@@ -615,11 +690,41 @@ class FarmSaarthiEngine:
         return "High rainfall is expected. Reduce extra irrigation and keep field drainage channels clear to prevent waterlogging."
 
     def _fertilizer_advice(self, district):
-        tips = self._fertilizer_tips(district)[:2]
-        tips.append("These soil values are state-level estimates; a Soil Health Card test gives exact values for your field.")
+        tips = self._fertilizer_tips(district)[:3 if district["soil_card"] else 2]
+        if district["soil_card"]:
+            tips.append("Based on your Soil Health Card; follow the crop-wise doses printed on it.")
+        else:
+            tips.append("These soil values are state-level estimates; a Soil Health Card test gives exact values for your field.")
         return " ".join(tips)
 
+    def _card_tips(self, card):
+        tips = []
+        n, p, k, ph, oc = (card.get(key) for key in ("n", "p", "k", "ph", "oc"))
+        if n and n["rating"] == "low":
+            tips.append(f"Nitrogen is low ({n['value']:g} kg/ha). Apply it in 2–3 split doses instead of all at once.")
+        elif n and n["rating"] == "high":
+            tips.append(f"Nitrogen is high ({n['value']:g} kg/ha). You can use less urea than usual.")
+        if p and p["rating"] == "low":
+            tips.append(f"Phosphorus is low ({p['value']:g} kg/ha). Apply phosphorus fertilizer at sowing, close to the roots.")
+        elif p and p["rating"] == "high":
+            tips.append(f"Phosphorus is high ({p['value']:g} kg/ha). You can reduce or skip phosphorus fertilizer this season.")
+        if k and k["rating"] == "low":
+            tips.append(f"Potassium is low ({k['value']:g} kg/ha). Add potash to improve stress tolerance and grain filling.")
+        if ph and ph["value"] < 5.5:
+            tips.append(f"Soil is acidic (pH {ph['value']:g}). Liming can help; ask your KVK for the right amount.")
+        elif ph and ph["value"] > 8.5:
+            tips.append(f"Soil is strongly alkaline (pH {ph['value']:g}). Gypsum and organic manure can help; ask your KVK.")
+        elif ph and ph["value"] > 7.6:
+            tips.append(f"Soil is slightly alkaline (pH {ph['value']:g}). Organic compost improves micronutrient availability.")
+        if oc and oc["rating"] == "low":
+            tips.append(f"Organic carbon is low ({oc['value']:g}%). Add farmyard manure or compost and keep crop residue in the field.")
+        if not tips:
+            tips.append("Your soil nutrients are balanced. Keep using the doses on your card and avoid extra fertilizer.")
+        return tips
+
     def _fertilizer_tips(self, district):
+        if district["soil_card"]:
+            return self._card_tips(district["soil_card"])
         tips = []
 
         if district["nitrogen"] < 55:

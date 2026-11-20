@@ -1,4 +1,5 @@
 import hashlib
+import hmac
 import json
 import logging
 import os
@@ -16,7 +17,9 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 load_dotenv()  # reads .env for local development; real servers use app settings
 
-from engine import FarmSaarthiEngine  # noqa: E402
+from alerts import AlertStore, PushSender, run_alerts, valid_subscription  # noqa: E402
+from datagov import DataGovClient, KccSearch, MandiPrices  # noqa: E402
+from engine import SOIL_TYPES, FarmSaarthiEngine, clean_soil_input  # noqa: E402
 from events import EventLog, new_row_key  # noqa: E402
 from photos import MAX_NOTE_LENGTH, MAX_UPLOAD_BYTES, PhotoError, PhotoStore, clean_text, process_image  # noqa: E402
 from speech import MAX_SPEECH_CHARS, AzureSpeech, BlobAudioCache, SpeechSigner  # noqa: E402
@@ -32,6 +35,9 @@ FEEDBACK_PER_WINDOW = 20
 WINDOW_SECONDS = 10 * 60
 MAX_GALLERY_ITEMS = 24
 MAX_COMMENT_LENGTH = 280
+MAX_QUESTION_LENGTH = 300
+ASK_PER_WINDOW = 20
+ALERT_CHANGES_PER_WINDOW = 10
 ROW_KEY = re.compile(r"^[0-9]{13}_[0-9a-f]{32}$")
 
 
@@ -66,7 +72,8 @@ def asset_version():
 
 
 def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env", events="from_env",
-               secret_key=None, inline_background=False):
+               secret_key=None, inline_background=False, datagov="from_env", alert_store="from_env",
+               push="from_env", task_key=None):
     app = Flask(__name__)
     # Room for a 5 MB photo plus the other form fields.
     app.config["MAX_CONTENT_LENGTH"] = MAX_UPLOAD_BYTES + 256 * 1024
@@ -96,6 +103,23 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
             log.exception("Usage and feedback records disabled")
             events = None
 
+    if datagov == "from_env":
+        datagov = DataGovClient.from_env()
+    prices = MandiPrices(datagov)
+    kcc = KccSearch(datagov)
+
+    if alert_store == "from_env":
+        try:
+            alert_store = AlertStore.from_env()
+        except Exception:
+            log.exception("Weather alerts disabled")
+            alert_store = None
+    if push == "from_env":
+        push = PushSender.from_env()
+    alerts_enabled = alert_store is not None and push.enabled
+    task_key = (task_key if task_key is not None else os.environ.get("TASK_KEY", "")).strip()
+    schemes = json.loads((ROOT / "data" / "schemes.json").read_text(encoding="utf-8"))["schemes"]
+
     secret = secret_key or os.environ.get("SECRET_KEY", "").strip()
     if not secret:
         secret = secrets.token_hex(32)
@@ -107,6 +131,8 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
     upload_limiter = RateLimiter(UPLOADS_PER_WINDOW, WINDOW_SECONDS)
     speech_limiter = RateLimiter(SPEECH_PER_WINDOW, WINDOW_SECONDS)
     feedback_limiter = RateLimiter(FEEDBACK_PER_WINDOW, WINDOW_SECONDS)
+    ask_limiter = RateLimiter(ASK_PER_WINDOW, WINDOW_SECONDS)
+    alert_limiter = RateLimiter(ALERT_CHANGES_PER_WINDOW, WINDOW_SECONDS)
     crop_choices = sorted(({"id": key, "name": meta["name"]} for key, meta in engine.crop_meta.items()), key=lambda c: c["name"])
     crop_ids = {crop["id"] for crop in crop_choices}
 
@@ -154,9 +180,15 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
             language_names=i18n.language_names,
             selected_language=language,
             crop_choices=crop_choices,
+            soil_types=SOIL_TYPES,
             photos_enabled=store is not None,
             speech_enabled=speech.enabled,
             feedback_enabled=events is not None,
+            prices_enabled=prices.enabled,
+            ask_enabled=kcc.enabled,
+            alerts_enabled=alerts_enabled,
+            vapid_public_key=push.public_key if alerts_enabled else "",
+            preset={"state": request.args.get("state", ""), "district": request.args.get("district", "")},
             max_upload_mb=MAX_UPLOAD_BYTES // (1024 * 1024),
             asset_version=version,
         )
@@ -196,12 +228,16 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
     def analyze():
         payload = request.get_json(silent=True) or request.form
         language = i18n.normalize(payload.get("language", "en"))
+        soil, soil_problem = clean_soil_input(payload.get("soil"))
+        if soil_problem:
+            return error("bad_soil", soil_problem, 400)
 
         result = engine.recommend(
             payload.get("district", ""),
             language,
             payload.get("crop_interest", ""),
             payload.get("state", ""),
+            soil=soil,
         )
         if result.get("error"):
             return jsonify(result), 400
@@ -221,6 +257,127 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
                 "weather": result["district"]["sources"]["weather"],
             }, result["analysis_id"])
         return jsonify(result)
+
+    # ----- mandi prices and Kisan Call Centre answers ----------------------------
+
+    @app.get("/prices")
+    def mandi_prices():
+        if not prices.enabled:
+            return error("prices_off", "Mandi prices are not set up on this server.", 503)
+        state, district = request.args.get("state", ""), request.args.get("district", "")
+        if not engine.get_district(district, state):
+            return error("bad_district", "Select a valid state and district.", 400)
+        crops = [crop for crop in request.args.get("crops", "").split(",") if crop in crop_ids][:4]
+        if not crops:
+            return error("bad_crop", "Choose at least one crop.", 400)
+        response = jsonify({"state": state, "district": district, "prices": prices.for_crops(state, district, crops)})
+        response.headers["Cache-Control"] = "private, max-age=900"
+        return response
+
+    @app.post("/ask")
+    def ask():
+        if not kcc.enabled:
+            return error("ask_off", "Question search is not set up on this server.", 503)
+        payload = request.get_json(silent=True) or {}
+        question = clean_text(payload.get("question"), MAX_QUESTION_LENGTH)
+        if len(question) < 3:
+            return error("bad_question", "Type or speak your question first.", 400)
+        state, district = payload.get("state", ""), payload.get("district", "")
+        if not engine.get_district(district, state):
+            return error("bad_district", "Select a valid state and district.", 400)
+        crop = payload.get("crop") or ""
+        if crop and crop not in crop_ids:
+            return error("bad_crop", "Unknown crop.", 400)
+        language = i18n.normalize(payload.get("language", "en"))
+        if not ask_limiter.allow(client_address()):
+            return error("rate_limited", "Too many questions. Please wait a few minutes.", 429)
+
+        translator = i18n.translator
+        question_en = question
+        if language != "en":
+            translated = translator.translate([question], "en", from_lang=None)
+            if translated:
+                question_en = translated[0]
+
+        result = kcc.search(question_en, state, crop_id=crop or None, district=district)
+        answers = result["answers"]
+        translated_ok = language == "en"
+        if answers:
+            asked = [item["question"] for item in answers]
+            replies = [item["answer"] for item in answers]
+            asked_local = translator.translate(asked, language) if language != "en" else asked
+            replies_local = translator.translate(replies, language, from_lang=None)
+            translated_ok = replies_local is not None and (asked_local is not None)
+            for item, local_q, local_a in zip(answers, asked_local or asked, replies_local or replies):
+                item["question_local"], item["answer_local"] = local_q, local_a
+                item["speak"] = speakable(f"{local_q} {local_a}", language)
+        return jsonify({"status": result["status"], "question_en": question_en, "answers": answers,
+                        "translated": translated_ok})
+
+    # ----- weather alerts ------------------------------------------------------
+
+    @app.post("/alerts/subscribe")
+    def subscribe_alerts():
+        if not alerts_enabled:
+            return error("alerts_off", "Weather alerts are not set up on this server.", 503)
+        payload = request.get_json(silent=True) or {}
+        subscription = payload.get("subscription")
+        if not valid_subscription(subscription):
+            return error("bad_subscription", "This browser did not give a valid alert address.", 400)
+        state, district = payload.get("state", ""), payload.get("district", "")
+        if not engine.get_district(district, state):
+            return error("bad_district", "Select a valid state and district.", 400)
+        if not alert_limiter.allow(client_address()):
+            return error("rate_limited", "Too many requests. Please wait a few minutes.", 429)
+        try:
+            alert_store.subscribe(subscription, state, district, i18n.normalize(payload.get("language", "en")))
+        except Exception:
+            log.exception("Could not save alert subscription")
+            return error("storage_error", "Alerts could not be turned on.", 502)
+        return jsonify({"ok": True}), 201
+
+    @app.post("/alerts/unsubscribe")
+    def unsubscribe_alerts():
+        if not alerts_enabled:
+            return error("alerts_off", "Weather alerts are not set up on this server.", 503)
+        endpoint = (request.get_json(silent=True) or {}).get("endpoint")
+        if not isinstance(endpoint, str) or not endpoint.startswith("https://"):
+            return error("bad_subscription", "Unknown alert address.", 400)
+        try:
+            alert_store.unsubscribe(endpoint)
+        except Exception:
+            log.exception("Could not remove alert subscription")
+            return error("storage_error", "Alerts could not be turned off.", 502)
+        return jsonify({"ok": True})
+
+    @app.post("/tasks/send-alerts")
+    def send_alerts():
+        # Called once a day by the GitHub Actions schedule (see .github/workflows/daily-alerts.yml).
+        if not task_key or not alerts_enabled:
+            return error("not_found", "Not found.", 404)
+        if not hmac.compare_digest(request.headers.get("X-Task-Key", ""), task_key):
+            return error("forbidden", "Wrong task key.", 403)
+        return jsonify(run_alerts(engine, i18n.translator, alert_store, push))
+
+    # ----- government schemes ------------------------------------------------------
+
+    @app.get("/schemes")
+    def schemes_page():
+        language = i18n.normalize(request.args.get("language", "en"))
+        items = [dict(item) for item in schemes]
+        translated = language == "en"
+        if language != "en":
+            fields = [(item, key) for item in items for key in ("name", "summary", "how")]
+            texts = i18n.translator.translate([item[key] for item, key in fields], language)
+            if texts:
+                translated = True
+                for (item, key), text in zip(fields, texts):
+                    item[key] = text
+        for item in items:
+            item["speak"] = speakable(f"{item['name']}. {item['summary']} {item['how']}", language)
+        return render_template("schemes.html", schemes=items, bundle=i18n.bundle(language),
+                               language_names=i18n.language_names, selected_language=language,
+                               translated=translated, speech_enabled=speech.enabled, asset_version=version)
 
     # ----- read aloud --------------------------------------------------------
 
@@ -386,6 +543,9 @@ def create_app(engine=None, i18n=None, photo_store="from_env", speech="from_env"
             "translator": i18n.translator.enabled,
             "speech": speech.enabled,
             "feedback": events is not None,
+            "prices": prices.enabled,
+            "ask": kcc.enabled,
+            "alerts": alerts_enabled,
         })
 
     return app

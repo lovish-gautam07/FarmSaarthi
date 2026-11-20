@@ -53,6 +53,38 @@ async function cacheFirst(request) {
     return response;
 }
 
+// Weather alerts sent by /tasks/send-alerts arrive here, even when the app is closed.
+self.addEventListener("push", (event) => {
+    let data = {};
+    try {
+        data = event.data ? event.data.json() : {};
+    } catch (error) {
+        data = {body: event.data ? event.data.text() : ""};
+    }
+    event.waitUntil(self.registration.showNotification(data.title || "FarmSaarthi", {
+        body: data.body || "",
+        icon: "/static/icons/icon-192.png",
+        badge: "/static/icons/favicon.png",
+        tag: data.tag || "farmsaarthi",
+        data: {url: data.url || "/"},
+    }));
+});
+
+self.addEventListener("notificationclick", (event) => {
+    event.notification.close();
+    const url = new URL((event.notification.data && event.notification.data.url) || "/", self.location.origin).href;
+    event.waitUntil(
+        self.clients.matchAll({type: "window", includeUncontrolled: true}).then((windows) => {
+            for (const client of windows) {
+                if ("focus" in client && "navigate" in client) {
+                    return client.navigate(url).then((c) => (c || client).focus());
+                }
+            }
+            return self.clients.openWindow(url);
+        })
+    );
+});
+
 self.addEventListener("fetch", (event) => {
     const request = event.request;
     const url = new URL(request.url);

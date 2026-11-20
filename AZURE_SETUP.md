@@ -62,6 +62,27 @@ To see uploads later, open the storage account and go to **Storage browser**:
 
 FarmSaarthi saves every sentence it has already spoken in Blob Storage, so the same advice is never sent to Azure twice. If the free quota runs out, or the key is missing, the page uses the phone's own voice instead.
 
+## 4c. Get a free data.gov.in API key (mandi prices and farmer questions)
+
+This one isn't Azure. Mandi prices and Kisan Call Centre answers come from the Government of India's open data API.
+
+1. Go to <https://data.gov.in> and choose **Sign Up**. It's free; you verify by email or mobile.
+2. After logging in, open **My Account**. Your **API key** is shown there; copy it.
+3. Use it as `DATA_GOV_IN_API_KEY` below.
+4. Optional but recommended: run `python scripts/check_market_names.py` with the key set. It checks that each crop's name matches the government datasets. A count of 0 means a name needs fixing in `data/market_names.json`.
+
+`.env.example` contains data.gov.in's public sample key so you can try things straight away. It returns at most 10 records per request and is shared by everyone, so it often hits its limit. Use your own key.
+
+## 4d. Make the weather-alert keys
+
+Browser notifications need a key pair. Make it once, on your own computer:
+
+```bash
+python scripts/make_vapid_keys.py
+```
+
+It prints `VAPID_PUBLIC_KEY=...` and `VAPID_PRIVATE_KEY=...`. Keep the private key secret. Also choose a `TASK_KEY`: any long random text, for example from `python -c "import secrets; print(secrets.token_hex(32))"`.
+
 ## 5. Try it locally with your real Azure resources (optional)
 
 In your project's `.env` file (never commit it):
@@ -73,6 +94,11 @@ AZURE_TRANSLATOR_REGION=centralindia
 AZURE_SPEECH_KEY=<KEY 1 from step 4b>
 AZURE_SPEECH_REGION=centralindia
 SECRET_KEY=<any long random text>
+DATA_GOV_IN_API_KEY=<key from step 4c>
+VAPID_PUBLIC_KEY=<from step 4d>
+VAPID_PRIVATE_KEY=<from step 4d>
+VAPID_SUBJECT=http://localhost:8000
+TASK_KEY=<any long random text>
 ```
 
 To make a random `SECRET_KEY`, run `python -c "import secrets; print(secrets.token_hex(32))"`.
@@ -101,6 +127,11 @@ Run `python app.py`, upload a photo, and check it appears in **Storage browser**
    | `AZURE_SPEECH_KEY` | KEY 1 from step 4b |
    | `AZURE_SPEECH_REGION` | `centralindia` |
    | `SECRET_KEY` | a long random text (see step 5) |
+   | `DATA_GOV_IN_API_KEY` | key from step 4c |
+   | `VAPID_PUBLIC_KEY` | from step 4d |
+   | `VAPID_PRIVATE_KEY` | from step 4d |
+   | `VAPID_SUBJECT` | `https://<your-app-name>.azurewebsites.net` |
+   | `TASK_KEY` | the task key from step 4d |
    | `SCM_DO_BUILD_DURING_DEPLOYMENT` | `true` |
 
 5. Go to **Settings → Configuration → General settings**:
@@ -116,10 +147,21 @@ Run `python app.py`, upload a photo, and check it appears in **Storage browser**
    - **Secrets** tab → **New repository secret**. Name: `AZURE_WEBAPP_PUBLISH_PROFILE`. Value: the whole contents of the downloaded file.
    - **Variables** tab → **New repository variable**. Name: `AZURE_WEBAPP_NAME`. Value: your web app name, for example `farmsaarthi-<yourname>`.
 3. Push to `main`, or open **Actions → Deploy to Azure App Service → Run workflow**. The workflow runs the tests first and only deploys if they pass.
-4. Open `https://<your-app-name>.azurewebsites.net/healthz`. Every service should say `true`: `photo_storage`, `translator`, `speech` and `feedback`.
+4. Open `https://<your-app-name>.azurewebsites.net/healthz`. Every service should say `true`: `photo_storage`, `translator`, `speech`, `feedback`, `prices`, `ask` and `alerts`.
 5. Usage and feedback totals for your report are at `https://<your-app-name>.azurewebsites.net/stats`. Written comments are in the storage account under **Storage browser → Tables → AppEvents**.
 
 The first start after a deploy can take a minute or two while Azure installs the packages.
+
+## 8. Turn on the daily weather alerts
+
+1. On GitHub, go to **Settings → Secrets and variables → Actions**.
+   - **Variables** tab: add `APP_URL` = `https://<your-app-name>.azurewebsites.net`.
+   - **Secrets** tab: add `TASK_KEY` with the same value as in App Service.
+2. Open **Actions → Daily weather alerts → Run workflow** once to test it. The log shows how many districts were checked and how many alerts were sent.
+
+From then on it runs every morning at 06:00 India time, for free. GitHub pauses scheduled workflows in repositories with no activity for 60 days, so push something or run it by hand now and then.
+
+Notifications work in Chrome on Android, and on iPhone only after the app has been added to the home screen.
 
 ## Keeping keys safe
 

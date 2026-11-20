@@ -1,0 +1,68 @@
+{
+  "_about": "Central government schemes shown on /schemes. English source text; other languages come from Azure Translator. Figures checked against PIB releases (Nov 2026). Link only to official .gov.in sites.",
+  "schemes": [
+    {
+      "id": "pm-kisan",
+      "icon": "rupee",
+      "name": "PM-KISAN",
+      "summary": "₹6,000 a year for landholding farmer families, paid in three instalments of ₹2,000 straight into the bank account.",
+      "how": "Register on the PM-KISAN website, at a Common Service Centre (CSC) or through your village agriculture officer. Keep Aadhaar, bank and land details ready. The Kisan e-Mitra chatbot on the website answers questions by voice.",
+      "link": "https://pmkisan.gov.in",
+      "link_label": "pmkisan.gov.in"
+    },
+    {
+      "id": "pmfby",
+      "icon": "shield",
+      "name": "Crop insurance (PM Fasal Bima Yojana)",
+      "summary": "Insures your crop against drought, flood, hail, pests and other losses. You pay at most 2% of the insured amount for kharif crops, 1.5% for rabi food and oilseed crops, and 5% for commercial and horticulture crops. The government pays the rest.",
+      "how": "Enrol through your bank, a CSC or the PMFBY website before the last date of the season. If a hailstorm, flood or similar event damages your crop, report it within 72 hours through the Crop Insurance app or the free number 14447.",
+      "link": "https://pmfby.gov.in",
+      "link_label": "pmfby.gov.in",
+      "phone": "14447"
+    },
+    {
+      "id": "kcc",
+      "icon": "card",
+      "name": "Kisan Credit Card",
+      "summary": "Crop loans from banks at low interest for seeds, fertilizer and other farm costs. Paying back on time earns an extra interest discount.",
+      "how": "Apply at your bank branch or cooperative society with land records and an identity document. Animal and fish farmers can also apply.",
+      "link": "https://www.myscheme.gov.in",
+      "link_label": "myscheme.gov.in"
+    },
+    {
+      "id": "soil-health-card",
+      "icon": "soil",
+      "name": "Soil Health Card",
+      "summary": "Free testing of your field's soil. The card shows nutrient levels and the fertilizer doses for each crop.",
+      "how": "Ask your agriculture officer or Krishi Vigyan Kendra (KVK) for soil sampling, or check the Soil Health Card portal. Enter the card values in FarmSaarthi to get advice for your own field.",
+      "link": "https://soilhealth.dac.gov.in",
+      "link_label": "soilhealth.dac.gov.in"
+    },
+    {
+      "id": "enam",
+      "icon": "market",
+      "name": "e-NAM (online mandi)",
+      "summary": "An online trading platform that links mandis across India, so more buyers can bid for your produce.",
+      "how": "Register through your nearest e-NAM mandi or on the e-NAM website.",
+      "link": "https://enam.gov.in",
+      "link_label": "enam.gov.in"
+    },
+    {
+      "id": "pm-kusum",
+      "icon": "sun",
+      "name": "PM-KUSUM (solar pumps)",
+      "summary": "Support for solar irrigation pumps and for converting grid pumps to solar, to cut diesel and electricity costs.",
+      "how": "Apply through your state's nodal agency; the PM-KUSUM portal lists the steps for each state.",
+      "link": "https://pmkusum.mnre.gov.in",
+      "link_label": "pmkusum.mnre.gov.in"
+    },
+    {
+      "id": "kisan-call-centre",
+      "icon": "phone",
+      "name": "Kisan Call Centre",
+      "summary": "Free phone advice from agriculture experts in your own language.",
+      "how": "Call 1800-180-1551 free from any phone.",
+      "phone": "1800-180-1551"
+    }
+  ]
+}

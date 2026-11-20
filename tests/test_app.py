@@ -1,7 +1,9 @@
 import io
 
 from app import UPLOADS_PER_WINDOW, create_app
-from conftest import FakeSpeech
+from alerts import PushSender
+from conftest import BROWSER_SUBSCRIPTION, FakeSpeech
+from datagov import DataGovClient
 from photos import MAX_UPLOAD_BYTES
 
 
@@ -81,9 +83,15 @@ def test_uploads_are_rate_limited(client, make_image):
     assert response.get_json()["error_code"] == "rate_limited"
 
 
+def bare_app(engine, i18n_offline):
+    """An app with no outside services configured at all."""
+    return create_app(engine=engine, i18n=i18n_offline, photo_store=None, speech=FakeSpeech(enabled=False),
+                      events=None, secret_key="x", inline_background=True, datagov=DataGovClient(""),
+                      alert_store=None, push=PushSender(), task_key="")
+
+
 def test_photo_routes_without_storage(engine, i18n_offline, make_image):
-    app = create_app(engine=engine, i18n=i18n_offline, photo_store=None, speech=FakeSpeech(enabled=False),
-                     events=None, secret_key="x", inline_background=True)
+    app = bare_app(engine, i18n_offline)
     client = app.test_client()
     assert client.get("/photos").status_code == 503
     assert upload(client, make_image()).get_json()["error_code"] == "storage_off"
@@ -98,6 +106,7 @@ def test_photo_routes_without_storage(engine, i18n_offline, make_image):
 def test_health(client):
     assert client.get("/healthz").get_json() == {
         "status": "ok", "photo_storage": True, "translator": False, "speech": True, "feedback": True,
+        "prices": True, "ask": True, "alerts": True,
     }
 
 
@@ -148,8 +157,7 @@ def test_speak_refuses_unsigned_or_changed_text(client):
 
 
 def test_speak_when_speech_is_off(engine, i18n_offline):
-    app = create_app(engine=engine, i18n=i18n_offline, photo_store=None, speech=FakeSpeech(enabled=False),
-                     events=None, secret_key="x", inline_background=True)
+    app = bare_app(engine, i18n_offline)
     client = app.test_client()
     item = client.post("/analyze", json={"state": "Punjab", "district": "Ludhiana"}).get_json()["actions"][0]["speak"]
     response = client.post("/speak", json={"text": item["text"], "sig": item["sig"], "language": "en"})
@@ -216,3 +224,109 @@ def test_service_worker_and_manifest(client):
 
     page = client.get("/").get_data(as_text=True)
     assert 'rel="manifest"' in page and "serviceWorker" in page
+
+
+
+# ----- round 2: soil card, prices, questions, alerts, schemes ----------------------
+
+def test_analysis_with_soil_health_card(client):
+    soil = {"type": "black", "n": 210, "p": 32, "k": 150, "ph": 8.1, "oc": 0.4}
+    data = analyze(client, soil=soil)
+    district = data["district"]
+    assert district["sources"]["soil"] == "card"
+    assert district["soil"] == "black"
+    assert district["soil_card"]["n"] == {"value": 210, "rating": "low"}
+    assert "Based on your Soil Health Card" in data["fertilizer_advice"]
+
+
+def test_bad_soil_values_are_refused(client):
+    response = client.post("/analyze", json={"state": "Punjab", "district": "Ludhiana", "soil": {"ph": 15}})
+    assert response.status_code == 400 and response.get_json()["error_code"] == "bad_soil"
+
+
+def test_prices_for_suggested_crops(client):
+    data = client.get("/prices?state=Punjab&district=Ludhiana&crops=wheat,coffee,maize").get_json()["prices"]
+    wheat = data["wheat"]
+    assert wheat["status"] == "ok"
+    assert wheat["markets"][0]["market"] == "Khanna APMC"   # the farmer's own district comes first
+    assert wheat["markets"][1]["modal_price"] == 2500       # then the best price
+    assert wheat["state_median"] == 2450
+    assert data["coffee"]["status"] == "not_traded"
+    assert data["maize"]["status"] == "none"
+
+
+def test_prices_when_the_api_is_down(client):
+    client.datagov.down = True
+    data = client.get("/prices?state=Punjab&district=Ludhiana&crops=wheat").get_json()["prices"]
+    assert data["wheat"]["status"] == "unavailable"
+
+
+def test_prices_validation(client):
+    assert client.get("/prices?state=Punjab&district=Nowhere&crops=wheat").status_code == 400
+    assert client.get("/prices?state=Punjab&district=Ludhiana&crops=dragonfruit").status_code == 400
+
+
+def test_ask_finds_similar_kcc_question(client):
+    response = client.post("/ask", json={"question": "yellow rust in my wheat crop", "state": "Punjab",
+                                         "district": "Ludhiana", "crop": "wheat", "language": "en"})
+    data = response.get_json()
+    assert data["status"] == "ok"
+    assert data["answers"][0]["question"] == "How to control yellow rust in wheat?"
+    assert data["answers"][0]["district"] == "Ludhiana"
+    assert all("Weather" not in a["question"] for a in data["answers"])
+    assert data["answers"][0]["speak"]["sig"]
+    # Without Translator, the Punjabi answer stays as the expert wrote it and the page says so.
+    assert data["translated"] is False
+
+
+def test_ask_validation_and_outage(client):
+    base = {"state": "Punjab", "district": "Ludhiana"}
+    assert client.post("/ask", json={**base, "question": "hi"}).get_json()["error_code"] == "bad_question"
+    assert client.post("/ask", json={"question": "urea dose", "state": "Punjab", "district": "Nowhere"}).status_code == 400
+    client.datagov.down = True
+    assert client.post("/ask", json={**base, "question": "urea dose for wheat"}).get_json()["status"] == "unavailable"
+
+
+def test_alert_subscription_lifecycle(client):
+    body = {"subscription": BROWSER_SUBSCRIPTION, "state": "Punjab", "district": "Ludhiana", "language": "pa"}
+    assert client.post("/alerts/subscribe", json=body).status_code == 201
+    assert len(client.alert_store.all()) == 1 and client.alert_store.all()[0]["language"] == "pa"
+    bad = {**body, "subscription": {"endpoint": "http://insecure.example", "keys": {}}}
+    assert client.post("/alerts/subscribe", json=bad).status_code == 400
+    assert client.post("/alerts/unsubscribe", json={"endpoint": BROWSER_SUBSCRIPTION["endpoint"]}).status_code == 200
+    assert client.alert_store.all() == []
+
+
+def test_send_alerts_task_needs_the_key(client):
+    assert client.post("/tasks/send-alerts").status_code == 403
+    assert client.post("/tasks/send-alerts", headers={"X-Task-Key": "wrong"}).status_code == 403
+    response = client.post("/tasks/send-alerts", headers={"X-Task-Key": "task-secret"})
+    assert response.status_code == 200 and response.get_json()["subscriptions"] == 0
+
+
+def test_round_two_features_hidden_when_not_configured(engine, i18n_offline):
+    client = bare_app(engine, i18n_offline).test_client()
+    page = client.get("/").get_data(as_text=True)
+    assert 'id="ask-panel"' not in page and 'id="alert-bar"' not in page
+    assert client.get("/prices?state=Punjab&district=Ludhiana&crops=wheat").get_json()["error_code"] == "prices_off"
+    assert client.post("/ask", json={"question": "urea dose"}).get_json()["error_code"] == "ask_off"
+    assert client.post("/alerts/subscribe", json={}).get_json()["error_code"] == "alerts_off"
+    assert client.post("/tasks/send-alerts", headers={"X-Task-Key": ""}).status_code == 404
+
+
+def test_page_shows_round_two_sections_when_configured(client):
+    page = client.get("/?state=Punjab&district=Ludhiana").get_data(as_text=True)
+    assert 'id="ask-panel"' in page and 'id="alert-bar"' in page and 'id="soil-panel"' in page
+    assert '"district": "Ludhiana"' in page  # notification links open the right district
+    assert 'href="/schemes?language=en"' in page
+
+
+def test_schemes_page(client):
+    page = client.get("/schemes").get_data(as_text=True)
+    for name in ("PM-KISAN", "Crop insurance", "Kisan Credit Card", "Soil Health Card", "e-NAM", "PM-KUSUM", "Kisan Call Centre"):
+        assert name in page
+    assert 'href="https://pmkisan.gov.in"' in page and 'href="tel:18001801551"' in page
+    assert page.count('data-speak="') == 7
+    assert "Shown in English" not in page
+    hindi = client.get("/schemes?language=hi").get_data(as_text=True)
+    assert "सरकारी योजनाएँ" in hindi and "अंग्रेज़ी में दिखाया गया है" in hindi  # no Translator key in tests

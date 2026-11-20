@@ -5,6 +5,8 @@ FarmSaarthi is a vernacular crop-advice web app for Indian farmers. A farmer pic
 - **"What to do now" cards**: short, colour-coded actions such as "Irrigate this week" or "Don't spray now" (rain is coming)
 - the top 3 crops to grow now, with reasons
 - all advice **read aloud** in their language
+- **today's mandi prices** for the suggested crops
+- answers to their own farming questions from **Kisan Call Centre** experts
 - irrigation and fertilizer advice, and weather, pest and disease alerts, under "More details"
 
 They can also upload a photo of their crop, which is stored in **Azure cloud storage** and shown in a per-district gallery. The app can be installed on a phone and still shows the last advice without internet.
@@ -37,7 +39,20 @@ They can also upload a photo of their crop, which is stored in **Azure cloud sto
 - **Installable and offline-ready**:
   - Works as a progressive web app (manifest and service worker) with an "Install app" button on Android.
   - The page opens without internet and shows the last saved advice with an "offline" banner.
-- **Honest labels**: the page shows whether weather is live or estimated. Soil and market values are marked as estimates.
+- **Soil Health Card entry** (optional): soil type, N, P, K (kg/ha), pH and organic carbon.
+  - Card ratings (low/medium/high) replace the state estimates in the model.
+  - Fertilizer tips quote the farmer's own values.
+  - The values are remembered on the phone.
+- **Mandi prices**: today's Agmarknet prices for each suggested crop, from the free data.gov.in API. Shows the farmer's own district first, then the best price, plus the state's middle price.
+- **Ask a farming question**: typed or spoken, in any of the 13 languages.
+  - FarmSaarthi searches past questions that Kisan Call Centre experts answered in the farmer's state (48 million records on data.gov.in). It ranks them by text similarity (TF-IDF, no paid AI) and translates the answers with Azure Translator.
+  - Each answer has read-aloud and a note to confirm chemical doses with the local KVK.
+- **Weather alerts as free browser notifications** (Web Push):
+  - The farmer taps "Get weather alerts" for a district.
+  - A free GitHub Actions schedule asks the app once a day to check every subscribed district.
+  - Notifications are sent only for heavy rain, heat, dry spells or rain before spraying, never the same alert twice.
+- **Government schemes page** (`/schemes`): PM-KISAN, crop insurance, Kisan Credit Card, Soil Health Card, e-NAM, PM-KUSUM and the Kisan Call Centre number. Each has a plain-language summary, official links, tap-to-call and read-aloud.
+- **Honest labels**: the page shows whether weather is live or estimated. Soil and market index values are marked as estimates unless they come from the farmer's Soil Health Card.
 
 ## How it fits together
 
@@ -50,6 +65,8 @@ Flask app (app.py)
    ├── translations.py  interface text           ──► Azure Translator
    ├── speech.py        read aloud               ──► Azure AI Speech (+ audio kept in Blob Storage)
    ├── events.py        usage + feedback         ──► Azure Table Storage (AppEvents)
+   ├── datagov.py       mandi prices, KCC answers ──► data.gov.in API (Agmarknet, Kisan Call Centre)
+   ├── alerts.py        weather notifications    ──► Web Push + Azure Table Storage (AlertSubscriptions)
    └── photos.py        image checks             ──► Azure Blob Storage (photo files)
                                                  ──► Azure Table Storage (photo records)
 ```
@@ -65,6 +82,13 @@ Flask app (app.py)
 | `photos.py` | Photo checks and clean-up, and Azure Blob + Table Storage |
 | `speech.py` | Azure AI Speech text-to-speech, signed text, audio cache |
 | `events.py` | Usage and feedback records, and the `/stats` numbers |
+| `datagov.py` | data.gov.in client: mandi prices and Kisan Call Centre search |
+| `alerts.py` | Weather-alert subscriptions and sending (Web Push) |
+| `data/market_names.json` | How each crop and state is named in Agmarknet and Kisan Call Centre data |
+| `data/schemes.json` | Text and official links for the schemes page |
+| `templates/schemes.html` | The `/schemes` page |
+| `scripts/check_market_names.py` | Checks the crop names against the live API (needs your key) |
+| `scripts/make_vapid_keys.py` | Makes the key pair for weather-alert notifications |
 | `templates/sw.js` | Service worker: offline copy of the page and styles |
 | `templates/stats.html` | The `/stats` evaluation page |
 | `static/icons/` | App icons for installing on a phone |
@@ -118,6 +142,11 @@ Open http://127.0.0.1:8000.
 | `AZURE_SPEECH_REGION` | Region of the Speech resource | empty |
 | `AZURE_STORAGE_EVENTS_TABLE` | Table for usage and feedback records | `AppEvents` |
 | `SECRET_KEY` | Signs read-aloud text; set it so links survive restarts | random per start |
+| `DATA_GOV_IN_API_KEY` | Mandi prices and question answers (both off if empty) | empty |
+| `KCC_FETCH_LIMIT` | How many recent Kisan Call Centre records to search per question | `200` |
+| `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | Weather-alert notifications (off if empty) | empty |
+| `AZURE_STORAGE_ALERTS_TABLE` | Table for alert subscriptions | `AlertSubscriptions` |
+| `TASK_KEY` | Secret the daily alert job must send | empty (job disabled) |
 | `PORT` | Port for `python app.py` | `8000` |
 
 Never commit `.env` or real keys. `.gitignore` already excludes `.env`.
@@ -148,6 +177,11 @@ GitHub Actions runs the full suite, including the emulator round trip, on every 
 | `POST /speak` | JSON `{text, sig, language}` (text and signature come from `/analyze`) returns MP3 audio |
 | `POST /feedback` | JSON `{useful, state, district, language, analysis_id, comment?, feedback_id?}` |
 | `GET /stats`, `GET /stats.json` | Usage and feedback totals |
+| `GET /prices?state=&district=&crops=wheat,maize` | Today's mandi prices for up to 4 crops |
+| `POST /ask` | JSON `{question, state, district, crop?, language}` returns similar answered Kisan Call Centre questions |
+| `POST /alerts/subscribe`, `POST /alerts/unsubscribe` | Turn weather alerts on or off for one browser |
+| `POST /tasks/send-alerts` | Daily alert run; needs header `X-Task-Key` |
+| `GET /schemes?language=hi` | Government schemes page |
 | `GET /sw.js`, `GET /manifest.webmanifest` | Install and offline support |
 | `GET /healthz` | Shows which Azure services are configured |
 
@@ -157,4 +191,8 @@ GitHub Actions runs the full suite, including the emulator round trip, on every 
 - **Wheat, sugarcane and millets** are missing from that dataset. 100 rows each are generated from the hand-written ranges in `data/farm_data.json`.
 - **Weather**: [Open-Meteo](https://open-meteo.com/), CC BY 4.0.
 - **District coordinates**: Open-Meteo geocoding (GeoNames, CC BY 4.0) and OpenStreetMap Nominatim (© OpenStreetMap contributors, ODbL). One district, Shahid Bhagat Singh Nagar, has no match and uses the average of Punjab's districts.
-- **Soil N/P/K, pH, soil type and the market index** are state-level estimates, not measurements. The app says so, and points farmers to a Soil Health Card test.
+- **Soil N/P/K, pH, soil type and the market index** are state-level estimates, not measurements, unless the farmer enters Soil Health Card values. The app labels which is which.
+- **Mandi prices and Kisan Call Centre answers**: [data.gov.in](https://data.gov.in), Government Open Data License – India. Prices are today's reported arrivals (₹ per quintal) and can be missing for a crop or state on a given day. Answers are past advice given to other farmers, so the page asks farmers to confirm chemical doses with their KVK.
+- **Crop names in those datasets** (`data/market_names.json`) were checked against the live API on 19 November 2026. Every Kisan Call Centre name has records, and every mandi name had prices that day except arhar and rajma. Run `scripts/check_market_names.py` to check again.
+- **data.gov.in ignores requests that use Python's default User-Agent**, so the client sends `FarmSaarthi/1.0` (see `datagov.py`).
+- **Scheme facts** (amounts, premium limits, the 72-hour loss-reporting rule) were checked against PIB releases in November 2026. They can change, so the page links to each official site.

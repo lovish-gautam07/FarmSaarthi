@@ -8,3 +8,4 @@ azure-data-tables==12.7.0
 Pillow==13.0.0
 requests==2.34.2
 python-dotenv==1.2.4
+pywebpush==2.5.0

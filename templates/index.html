@@ -23,7 +23,10 @@
                     <span id="hero-tag-2">{{ bundle.ui.heroTag2 }}</span>
                     <span id="hero-tag-3">{{ bundle.ui.heroTag3 }}</span>
                 </div>
-                <button type="button" class="install-btn hidden" id="install-btn">{{ bundle.ui.installApp }}</button>
+                <div class="hero-links">
+                    <a class="schemes-link" id="schemes-link" href="/schemes?language={{ selected_language }}">{{ bundle.ui.schemesLink }}</a>
+                    <button type="button" class="install-btn hidden" id="install-btn">{{ bundle.ui.installApp }}</button>
+                </div>
             </div>
 
             <div class="hero-stats">
@@ -91,6 +94,27 @@
                     <p id="voice-help">{{ bundle.ui.voiceHelp }}</p>
                 </div>
 
+                <details class="soil-card-panel" id="soil-panel">
+                    <summary id="soil-card-toggle">{{ bundle.ui.soilCardToggle }}</summary>
+                    <p class="fine-print" id="soil-card-help">{{ bundle.ui.soilCardHelp }}</p>
+                    <div class="soil-grid">
+                        <label class="soil-field">
+                            <span id="label-soil-type">{{ bundle.ui.soilType }}</span>
+                            <select id="soil-type">
+                                <option value="" id="soil-type-unknown">{{ bundle.ui.soilTypeUnknown }}</option>
+                                {% for soil_type in soil_types %}
+                                <option value="{{ soil_type }}" id="soil-opt-{{ soil_type }}">{{ bundle.ui['soil' ~ soil_type|capitalize] }}</option>
+                                {% endfor %}
+                            </select>
+                        </label>
+                        <label class="soil-field"><span id="label-soil-n">{{ bundle.ui.soilN }}</span><input type="number" id="soil-n" min="0" max="1500" step="1" inputmode="decimal"></label>
+                        <label class="soil-field"><span id="label-soil-p">{{ bundle.ui.soilP }}</span><input type="number" id="soil-p" min="0" max="400" step="0.1" inputmode="decimal"></label>
+                        <label class="soil-field"><span id="label-soil-k">{{ bundle.ui.soilK }}</span><input type="number" id="soil-k" min="0" max="2000" step="1" inputmode="decimal"></label>
+                        <label class="soil-field"><span id="label-soil-ph">{{ bundle.ui.soilPh }}</span><input type="number" id="soil-ph" min="3" max="10.5" step="0.1" inputmode="decimal"></label>
+                        <label class="soil-field"><span id="label-soil-oc">{{ bundle.ui.soilOc }}</span><input type="number" id="soil-oc" min="0" max="5" step="0.01" inputmode="decimal"></label>
+                    </div>
+                </details>
+
                 <div class="action-band field-wide">
                     <button type="submit" class="submit-btn" id="analyze-btn">{{ bundle.labels.analyze }}</button>
                     <div class="action-meta">
@@ -123,11 +147,23 @@
             </div>
             <div class="action-grid" id="action-grid"></div>
 
+            {% if alerts_enabled %}
+            <div class="alert-bar hidden" id="alert-bar">
+                <div class="alert-bar-copy">
+                    <strong id="alert-bar-text">{{ bundle.ui.alertsButton }}</strong>
+                    <p class="fine-print" id="alerts-help">{{ bundle.ui.alertsHelp }}</p>
+                </div>
+                <button type="button" class="alert-btn" id="alerts-btn"><span aria-hidden="true">&#128276;</span> <span id="alerts-btn-label">{{ bundle.ui.alertsButton }}</span></button>
+                <p class="fine-print" id="alerts-status" role="status" aria-live="polite"></p>
+            </div>
+            {% endif %}
+
             <article class="result-card recommendation-card">
                 <div class="card-head">
                     <h3 id="top-crops-title">{{ bundle.labels.top_crops }}</h3>
                 </div>
                 <ul id="top-crops-list" class="recommendation-list"></ul>
+                {% if prices_enabled %}<p class="fine-print hidden" id="prices-source">{{ bundle.ui.pricesSource }}</p>{% endif %}
                 <div class="interest-notes hidden" id="interest-notes">
                     <h4 id="interest-title">{{ bundle.ui.interestTitle }}</h4>
                     <ul id="interest-list" class="recommendation-list"></ul>
@@ -184,6 +220,34 @@
             </details>
         </section>
 
+        {% if ask_enabled %}
+        <section class="control-panel ask-panel" id="ask-panel">
+            <div class="panel-head">
+                <div>
+                    <p class="eyebrow" id="ask-eyebrow">{{ bundle.ui.askEyebrow }}</p>
+                    <h2 id="ask-title">{{ bundle.ui.askTitle }}</h2>
+                </div>
+                <p class="panel-copy" id="ask-copy">{{ bundle.ui.askCopy }}</p>
+            </div>
+            <form id="ask-form" class="ask-form">
+                <textarea id="ask-question" rows="3" maxlength="300" placeholder="{{ bundle.ui.askPlaceholder }}"></textarea>
+                <div class="ask-controls">
+                    <select id="ask-crop" aria-label="{{ bundle.ui.crop }}">
+                        <option value="">{{ bundle.ui.crop }}: -</option>
+                        {% for crop in crop_choices %}
+                        <option value="{{ crop.id }}">{{ crop.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <button type="button" class="voice-btn" id="ask-voice-btn">{{ bundle.ui.askVoice }}</button>
+                    <button type="submit" class="submit-btn" id="ask-btn">{{ bundle.ui.askButton }}</button>
+                </div>
+            </form>
+            <div class="status-line" id="ask-status" role="status" aria-live="polite"></div>
+            <ul class="answer-list" id="answer-list"></ul>
+            <p class="fine-print" id="ask-disclaimer">{{ bundle.ui.askDisclaimer }}</p>
+        </section>
+        {% endif %}
+
         <section class="control-panel photo-panel" id="photo-panel">
             <div class="panel-head">
                 <div>
@@ -236,7 +300,8 @@
         <footer class="site-footer fine-print">
             Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo.com</a> (CC BY 4.0).
             District locations from GeoNames and © OpenStreetMap contributors.
-            Soil and market values are state-level estimates.
+            Mandi prices (Agmarknet) and Kisan Call Centre answers from <a href="https://data.gov.in" target="_blank" rel="noopener">data.gov.in</a> (Government Open Data License – India).
+            Soil and market index values are state-level estimates unless you enter your Soil Health Card.
         </footer>
     </main>
 
@@ -245,6 +310,14 @@
         const photosEnabled = {{ photos_enabled|tojson }};
         const serverSpeech = {{ speech_enabled|tojson }};
         const feedbackEnabled = {{ feedback_enabled|tojson }};
+        const pricesEnabled = {{ prices_enabled|tojson }};
+        const askEnabled = {{ ask_enabled|tojson }};
+        const alertsEnabled = {{ alerts_enabled|tojson }};
+        const vapidPublicKey = {{ vapid_public_key|tojson }};
+        const preset = {{ preset|tojson }};
+        const SOIL_KEY = "farmsaarthi:soil";
+        const ALERTS_KEY = "farmsaarthi:alerts";
+        const SOIL_FIELDS = ["type", "n", "p", "k", "ph", "oc"];
         const bundleCache = {};
         let bundle = {{ bundle|tojson }};
         bundleCache[bundle.language] = bundle;
@@ -309,10 +382,13 @@
             line.className = isError ? "status-line error" : "status-line";
         }
 
-        function metricCard(label, value, estimated = false) {
-            const tag = estimated ? ` <em class="estimate-tag">${esc(bundle.ui.estimate)}</em>` : "";
-            return `<article class="overview-card"><span>${esc(label)}${tag}</span><strong>${esc(value)}</strong></article>`;
+        function metricCard(label, value, tag = null) {
+            const text = tag === true ? bundle.ui.estimate : tag;
+            const badge = text ? ` <em class="estimate-tag${tag === true ? "" : " card-tag"}">${esc(text)}</em>` : "";
+            return `<article class="overview-card"><span>${esc(label)}${badge}</span><strong>${esc(value)}</strong></article>`;
         }
+
+        const rupees = (value) => "₹" + Number(value).toLocaleString("en-IN");
 
         function modelStat(label, value) {
             return `<div class="model-stat"><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`;
@@ -393,8 +469,10 @@
                             ${speakButton(item.speak)}
                         </div>
                     </div>
+                    ${pricesEnabled && !savedAt ? `<p class="price-line" data-price-crop="${esc(item.crop_id)}">${esc(ui.pricesLoading)}</p>` : ""}
                 </li>
             `).join("");
+            if ($("prices-source")) $("prices-source").classList.toggle("hidden", !pricesEnabled || savedAt !== null);
 
             const notes = data.interest_notes || [];
             $("interest-notes").classList.toggle("hidden", notes.length === 0);
@@ -421,12 +499,19 @@
             if (d.forecast) {
                 cards.push(metricCard(ui.rainNext7, `${d.forecast.rain_next_7_days_mm} mm`));
             }
+            const card = d.soil_card || {};
+            const soilTag = d.sources.soil === "estimate" ? true : (d.sources.soil === "card" ? ui.soilFromCard : ui.soilFromFarmer);
+            const hasNutrients = card.n || card.p || card.k;
+            const show = (entry) => entry ? entry.value : "–";
             cards.push(
-                metricCard(ui.soil, d.soil, true),
-                metricCard("pH", d.ph, true),
-                metricCard("N / P / K", `${d.nitrogen} / ${d.phosphorus} / ${d.potassium}`, true),
+                metricCard(ui.soil, d.soil, d.sources.soil === "estimate" ? true : ui.soilFromFarmer),
+                metricCard("pH", d.ph, card.ph ? ui.soilFromCard : true),
+                hasNutrients
+                    ? metricCard("N / P / K (kg/ha)", `${show(card.n)} / ${show(card.p)} / ${show(card.k)}`, ui.soilFromCard)
+                    : metricCard("N / P / K", `${d.nitrogen} / ${d.phosphorus} / ${d.potassium}`, true),
                 metricCard(ui.market, d.market_price_index, true)
             );
+            if (card.oc) cards.push(metricCard("OC (%)", card.oc.value, soilTag));
             $("overview-strip").innerHTML = cards.join("");
 
             const t = data.translation || {};
@@ -443,7 +528,82 @@
             setText("accuracy-note", m.accuracy_note);
 
             resetFeedback(savedAt !== null);
+            updateAlertBar(savedAt !== null);
             resultsSection.classList.remove("hidden");
+            if (!savedAt) loadPrices(data);
+        }
+
+        // ----- mandi prices --------------------------------------------------
+
+        async function loadPrices(data) {
+            if (!pricesEnabled) return;
+            const crops = data.top_crops.map(item => item.crop_id);
+            const lines = (crop) => document.querySelectorAll(`[data-price-crop="${crop}"]`);
+            const params = new URLSearchParams({state: data.district.state, district: data.district.name, crops: crops.join(",")});
+            let prices = {};
+            try {
+                const response = await fetch(`/prices?${params}`);
+                if (response.ok) prices = (await response.json()).prices;
+            } catch (error) {
+                // shown as "not responding" below
+            }
+            if (latestAnalysis !== data) return;  // a newer analysis replaced this one
+            const ui = bundle.ui;
+            crops.forEach(crop => {
+                const info = prices[crop] || {status: "unavailable"};
+                let html;
+                if (info.status === "ok") {
+                    const top = info.markets[0];
+                    html = `<strong>${esc(ui.pricesTitle)}: ${esc(rupees(top.modal_price))}</strong> ${esc(ui.perQuintal)} · ${esc(top.market)} (${esc(top.district)}) · ${esc(top.date)}`
+                        + (info.market_count > 1 ? `<br><span>${esc(ui.stateMedian)}: ${esc(rupees(info.state_median))} · ${info.market_count} ${esc(ui.mandis)}</span>` : "");
+                } else if (info.status === "none") {
+                    html = esc(ui.pricesNone);
+                } else if (info.status === "not_traded") {
+                    html = esc(ui.pricesNotTraded);
+                } else {
+                    html = esc(ui.pricesUnavailable);
+                }
+                lines(crop).forEach(line => {
+                    line.innerHTML = html;
+                    line.classList.toggle("price-ok", info.status === "ok");
+                });
+            });
+        }
+
+        // ----- soil health card ----------------------------------------------
+
+        function soilInputs() {
+            return Object.fromEntries(SOIL_FIELDS.map(field => [field, $(`soil-${field}`)]));
+        }
+
+        function soilPayload() {
+            const soil = {};
+            for (const [field, input] of Object.entries(soilInputs())) {
+                if (input.value !== "") soil[field] = field === "type" ? input.value : Number(input.value);
+            }
+            return Object.keys(soil).length ? soil : null;
+        }
+
+        function saveSoil() {
+            try {
+                localStorage.setItem(SOIL_KEY, JSON.stringify(soilPayload() || {}));
+            } catch (error) {
+                // only a convenience
+            }
+        }
+
+        function restoreSoil() {
+            let saved = {};
+            try {
+                saved = JSON.parse(localStorage.getItem(SOIL_KEY) || "{}") || {};
+            } catch (error) {
+                saved = {};
+            }
+            for (const [field, input] of Object.entries(soilInputs())) {
+                if (saved[field] !== undefined) input.value = saved[field];
+                input.addEventListener("change", saveSoil);
+            }
+            if (Object.keys(saved).some(field => field !== "type")) $("soil-panel").open = true;
         }
 
         function saveAnalysis(data) {
@@ -503,7 +663,8 @@
                             language: languageSelect.value,
                             state: stateSelect.value,
                             district: districtSelect.value,
-                            crop_interest: cropInterestInput.value
+                            crop_interest: cropInterestInput.value,
+                            soil: soilPayload()
                         })
                     });
                 } catch (networkError) {
@@ -625,7 +786,7 @@
             }
         }
 
-        resultsSection.addEventListener("click", function(event) {
+        document.addEventListener("click", function(event) {
             const button = event.target.closest("[data-speak]");
             if (!button || button.dataset.speak === "") return;
             const item = speakables[Number(button.dataset.speak)];
@@ -769,6 +930,27 @@
             uploadButton.textContent = ui.uploadButton;
             setText("photo-privacy", `${ui.photoPrivacy} (max {{ max_upload_mb }} MB · JPG, PNG, WEBP)`);
             setText("gallery-title", ui.galleryTitle);
+            const schemesLink = $("schemes-link");
+            schemesLink.textContent = ui.schemesLink;
+            schemesLink.href = `/schemes?language=${encodeURIComponent(bundle.language)}`;
+            setText("soil-card-toggle", ui.soilCardToggle);
+            setText("soil-card-help", ui.soilCardHelp);
+            setText("label-soil-type", ui.soilType);
+            setText("soil-type-unknown", ui.soilTypeUnknown);
+            ["clay", "loamy", "black", "sandy"].forEach(type => setText(`soil-opt-${type}`, ui["soil" + type[0].toUpperCase() + type.slice(1)]));
+            [["n", "soilN"], ["p", "soilP"], ["k", "soilK"], ["ph", "soilPh"], ["oc", "soilOc"]].forEach(([id, key]) => setText(`label-soil-${id}`, ui[key]));
+            if ($("prices-source")) setText("prices-source", ui.pricesSource);
+            if (askEnabled) {
+                setText("ask-eyebrow", ui.askEyebrow);
+                setText("ask-title", ui.askTitle);
+                setText("ask-copy", ui.askCopy);
+                $("ask-question").placeholder = ui.askPlaceholder;
+                $("ask-crop").options[0].textContent = `${ui.crop}: -`;
+                if (!(isListening && listeningButton.id === "ask-voice-btn")) setText("ask-voice-btn", ui.askVoice);
+                setText("ask-btn", ui.askButton);
+                setText("ask-disclaimer", ui.askDisclaimer);
+            }
+            if (latestAnalysis) updateAlertBar(!navigator.onLine);
             populateDistricts(stateSelect.value, districtSelect.value);
             if (!latestAnalysis) {
                 setText("decision-score", `${labels.impact}: 0/100`);
@@ -818,10 +1000,13 @@
 
         // ----- voice input ---------------------------------------------------
 
+        let listeningButton = voiceButton;
+        let listeningIdleLabel = () => bundle.labels.voice;
+
         function setVoiceButtonState(listening) {
             isListening = listening;
-            voiceButton.classList.toggle("listening", listening);
-            voiceButton.textContent = listening ? bundle.ui.stopListening : bundle.labels.voice;
+            listeningButton.classList.toggle("listening", listening);
+            listeningButton.textContent = listening ? bundle.ui.stopListening : listeningIdleLabel();
         }
 
         async function ensureMicrophoneAccess() {
@@ -832,16 +1017,18 @@
             stream.getTracks().forEach(track => track.stop());
         }
 
-        voiceButton.addEventListener("click", async function() {
+        async function listenInto(targetInput, button, idleLabel, statusId) {
             const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
             if (!SpeechRecognition) {
-                setStatus("status-line", bundle.ui.voiceNotSupported, true);
+                setStatus(statusId, bundle.ui.voiceNotSupported, true);
                 return;
             }
             if (isListening && activeRecognition) {
                 activeRecognition.stop();
                 return;
             }
+            listeningButton = button;
+            listeningIdleLabel = idleLabel;
 
             try {
                 await ensureMicrophoneAccess();
@@ -855,7 +1042,7 @@
 
                 recognition.onstart = function() {
                     setVoiceButtonState(true);
-                    setStatus("status-line", bundle.ui.listeningPrompt);
+                    setStatus(statusId, bundle.ui.listeningPrompt);
                 };
 
                 recognition.onresult = function(event) {
@@ -863,7 +1050,7 @@
                     for (let i = event.resultIndex; i < event.results.length; i += 1) {
                         transcript += event.results[i][0].transcript;
                     }
-                    cropInterestInput.value = transcript.trim();
+                    targetInput.value = transcript.trim();
                 };
 
                 recognition.onerror = function(event) {
@@ -875,14 +1062,14 @@
                         "network": bundle.ui.networkError,
                         "language-not-supported": bundle.ui.langNotSupported
                     };
-                    setStatus("status-line", errors[event.error] || bundle.ui.voiceFailed, true);
+                    setStatus(statusId, errors[event.error] || bundle.ui.voiceFailed, true);
                 };
 
                 recognition.onend = function() {
                     setVoiceButtonState(false);
                     activeRecognition = null;
-                    if (cropInterestInput.value.trim()) {
-                        setStatus("status-line", bundle.ui.voiceCaptured);
+                    if (targetInput.value.trim()) {
+                        setStatus(statusId, bundle.ui.voiceCaptured);
                     }
                 };
 
@@ -890,9 +1077,153 @@
             } catch (error) {
                 setVoiceButtonState(false);
                 activeRecognition = null;
-                setStatus("status-line", error.message || bundle.ui.micNotSupported, true);
+                setStatus(statusId, error.message || bundle.ui.micNotSupported, true);
             }
-        });
+        }
+
+        voiceButton.addEventListener("click", () => listenInto(cropInterestInput, voiceButton, () => bundle.labels.voice, "status-line"));
+
+        // ----- ask a question (Kisan Call Centre answers) ---------------------
+
+        if (askEnabled) {
+            const askButton = $("ask-btn");
+            const askVoiceButton = $("ask-voice-btn");
+            askVoiceButton.addEventListener("click", () => listenInto($("ask-question"), askVoiceButton, () => bundle.ui.askVoice, "ask-status"));
+
+            $("ask-form").addEventListener("submit", async function(event) {
+                event.preventDefault();
+                const ui = bundle.ui;
+                const question = $("ask-question").value.trim();
+                if (question.length < 3) return setStatus("ask-status", ui.askQuestionTooShort, true);
+                if (!stateSelect.value) return setStatus("ask-status", bundle.labels.select_state, true);
+                if (!districtSelect.value) return setStatus("ask-status", bundle.labels.select_district, true);
+                if (!navigator.onLine) return setStatus("ask-status", ui.askUnavailable, true);
+
+                askButton.disabled = true;
+                setStatus("ask-status", ui.askSearching);
+                $("answer-list").innerHTML = "";
+                try {
+                    const response = await fetch("/ask", {
+                        method: "POST",
+                        headers: {"Content-Type": "application/json"},
+                        body: JSON.stringify({question, state: stateSelect.value, district: districtSelect.value,
+                                              crop: $("ask-crop").value, language: bundle.language})
+                    });
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.error || ui.askUnavailable);
+                    if (data.status === "unavailable") return setStatus("ask-status", ui.askUnavailable, true);
+                    if (!data.answers.length) return setStatus("ask-status", ui.askNoMatch);
+                    setStatus("ask-status", data.translated ? "" : ui.askNotTranslated);
+                    $("answer-list").innerHTML = data.answers.map(item => `
+                        <li class="answer-item">
+                            <div class="answer-head">
+                                <strong>${esc(item.question_local || item.question)}</strong>
+                                ${speakButton(item.speak)}
+                            </div>
+                            <p>${esc(item.answer_local || item.answer)}</p>
+                            <span class="answer-meta">${esc([item.crop, item.district, item.date].filter(Boolean).join(" · "))}</span>
+                        </li>`).join("");
+                } catch (error) {
+                    setStatus("ask-status", error.message || ui.askUnavailable, true);
+                } finally {
+                    askButton.disabled = false;
+                }
+            });
+        }
+
+        // ----- weather alerts (browser notifications) ---------------------------
+
+        function loadAlertSetting() {
+            try {
+                return JSON.parse(localStorage.getItem(ALERTS_KEY) || "null");
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function storeAlertSetting(value) {
+            try {
+                if (value) localStorage.setItem(ALERTS_KEY, JSON.stringify(value));
+                else localStorage.removeItem(ALERTS_KEY);
+            } catch (error) {
+                // only a convenience
+            }
+        }
+
+        function alertsSupported() {
+            return "serviceWorker" in navigator && "PushManager" in window && "Notification" in window;
+        }
+
+        function updateAlertBar(offline) {
+            if (!alertsEnabled) return;
+            const bar = $("alert-bar");
+            bar.classList.toggle("hidden", offline || !latestAnalysis);
+            if (!latestAnalysis) return;
+            const ui = bundle.ui;
+            const current = loadAlertSetting();
+            const district = latestAnalysis.district;
+            const on = current && current.state === district.state && current.district === district.name;
+            setText("alert-bar-text", on ? `${ui.alertsOn} ${district.name}` : `${ui.alertsButton}: ${district.name}`);
+            setText("alerts-btn-label", on ? ui.alertsOff : ui.alertsButton);
+            $("alerts-btn").dataset.on = on ? "1" : "";
+            setText("alerts-help", ui.alertsHelp);
+            setText("alerts-status", "");
+        }
+
+        function keyToBytes(base64) {
+            const padded = (base64 + "=".repeat((4 - base64.length % 4) % 4)).replace(/-/g, "+").replace(/_/g, "/");
+            return Uint8Array.from(atob(padded), ch => ch.charCodeAt(0));
+        }
+
+        async function readyRegistration() {
+            return Promise.race([
+                navigator.serviceWorker.ready,
+                new Promise((resolve, reject) => setTimeout(() => reject(new Error("no service worker")), 6000))
+            ]);
+        }
+
+        if (alertsEnabled) {
+            $("alerts-btn").addEventListener("click", async function() {
+                const ui = bundle.ui;
+                const button = $("alerts-btn");
+                if (!latestAnalysis) return;
+                if (!alertsSupported()) return setText("alerts-status", ui.alertsUnsupported);
+                button.disabled = true;
+                try {
+                    const registration = await readyRegistration();
+                    if (button.dataset.on) {
+                        const subscription = await registration.pushManager.getSubscription();
+                        if (subscription) {
+                            await fetch("/alerts/unsubscribe", {method: "POST", headers: {"Content-Type": "application/json"},
+                                                                body: JSON.stringify({endpoint: subscription.endpoint})});
+                            await subscription.unsubscribe();
+                        }
+                        storeAlertSetting(null);
+                    } else {
+                        const permission = await Notification.requestPermission();
+                        if (permission !== "granted") {
+                            setText("alerts-status", ui.alertsDenied);
+                            return;
+                        }
+                        const subscription = await registration.pushManager.getSubscription()
+                            || await registration.pushManager.subscribe({userVisibleOnly: true, applicationServerKey: keyToBytes(vapidPublicKey)});
+                        const district = latestAnalysis.district;
+                        const response = await fetch("/alerts/subscribe", {
+                            method: "POST",
+                            headers: {"Content-Type": "application/json"},
+                            body: JSON.stringify({subscription: subscription.toJSON(), state: district.state, district: district.name, language: bundle.language})
+                        });
+                        if (!response.ok) throw new Error("subscribe failed");
+                        storeAlertSetting({state: district.state, district: district.name});
+                    }
+                    updateAlertBar(false);
+                } catch (error) {
+                    setText("alerts-status", error.message === "no service worker" ? ui.alertsUnsupported : ui.alertsFailed);
+                } finally {
+                    button.disabled = false;
+                }
+            });
+        }
 
         // ----- photo upload and gallery ------------------------------------
 
@@ -1035,7 +1366,17 @@
         stateSelect.value = {{ (states[0] if states else '')|tojson }};
         populateDistricts(stateSelect.value);
         applyTranslations();
+        restoreSoil();
+        // Links from weather-alert notifications open straight on the farmer's district.
+        const presetValid = preset.state && districtsByState.some(item => item.state === preset.state && item.district === preset.district);
+        if (presetValid) {
+            stateSelect.value = preset.state;
+            populateDistricts(preset.state, preset.district);
+        }
         loadGallery();
+        if (presetValid && navigator.onLine) {
+            runAnalysis();
+        }
         if (!navigator.onLine) {
             const saved = loadSavedAnalysis();
             if (saved && saved.data) {

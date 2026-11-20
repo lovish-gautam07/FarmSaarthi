@@ -800,6 +800,267 @@ input:focus {
     letter-spacing: 0.05em;
 }
 
+/* ----- round 2: links, soil card, prices, alerts, questions, schemes ----- */
+
+.hero-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.hero-links .install-btn {
+    margin-top: 0;
+}
+
+.schemes-link,
+.scheme-link,
+.scheme-call {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    border: 1px solid rgba(29, 122, 88, 0.3);
+    background: white;
+    color: var(--accent-deep);
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.scheme-call {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.soil-card-panel {
+    grid-column: 1 / -1;
+    border: 1px dashed rgba(29, 122, 88, 0.3);
+    border-radius: var(--radius-lg);
+    padding: 14px 18px;
+    background: rgba(255, 255, 255, 0.45);
+}
+
+.soil-card-panel summary {
+    cursor: pointer;
+    font-weight: 800;
+    color: var(--accent-deep);
+}
+
+.soil-card-panel[open] summary {
+    margin-bottom: 8px;
+}
+
+.soil-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.soil-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.soil-field input,
+.soil-field select {
+    padding: 12px 14px;
+    border-radius: 14px;
+}
+
+.card-tag {
+    background: var(--good-bg);
+    color: var(--good-ink);
+}
+
+.price-line {
+    margin: 10px 0 0;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: rgba(25, 49, 38, 0.05);
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+}
+
+.price-line.price-ok {
+    background: var(--warn-bg);
+    color: var(--warn-ink);
+}
+
+.price-line span {
+    font-size: 0.85rem;
+}
+
+.alert-bar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px 18px;
+    margin-bottom: 18px;
+    padding: 16px 20px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.7);
+    border: 1px solid var(--border);
+}
+
+.alert-bar-copy {
+    flex: 1 1 260px;
+}
+
+.alert-bar .fine-print:empty {
+    display: none;
+}
+
+.alert-bar > .fine-print {
+    flex-basis: 100%;
+}
+
+.alert-btn {
+    min-height: 48px;
+    padding: 10px 20px;
+    border-radius: 999px;
+    border: 0;
+    background: linear-gradient(135deg, #279368 0%, #176748 100%);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.alert-btn[data-on="1"] {
+    background: white;
+    color: var(--alert-ink);
+    border: 1px solid var(--alert-line);
+}
+
+.ask-panel {
+    margin-top: 28px;
+}
+
+.ask-form {
+    display: grid;
+    gap: 12px;
+}
+
+.ask-form textarea {
+    width: 100%;
+    border: 1px solid rgba(29, 122, 88, 0.15);
+    border-radius: 20px;
+    padding: 16px 18px;
+    background: var(--surface-strong);
+    color: var(--ink);
+    font: inherit;
+    resize: vertical;
+}
+
+.ask-form textarea:focus {
+    outline: none;
+    border-color: rgba(29, 122, 88, 0.38);
+    box-shadow: 0 0 0 6px rgba(29, 122, 88, 0.08);
+}
+
+.ask-controls {
+    display: grid;
+    grid-template-columns: minmax(160px, 1fr) auto auto;
+    gap: 12px;
+}
+
+.ask-controls .submit-btn {
+    min-width: 0;
+}
+
+.answer-list {
+    list-style: none;
+    margin: 6px 0 14px;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.answer-item {
+    padding: 16px 18px;
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid var(--border);
+}
+
+.answer-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.answer-item p {
+    margin: 8px 0;
+    line-height: 1.55;
+    white-space: pre-line;
+}
+
+.answer-meta {
+    color: var(--muted);
+    font-size: 0.85rem;
+}
+
+.schemes-page h1 {
+    margin: 0 0 12px;
+}
+
+.schemes-language {
+    margin: 18px 0 8px;
+    max-width: 320px;
+}
+
+.schemes-language label {
+    display: grid;
+    gap: 6px;
+    font-weight: 700;
+}
+
+.scheme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 16px;
+    margin-top: 18px;
+}
+
+.scheme-card h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    flex: 1;
+}
+
+.scheme-card h3 {
+    margin: 14px 0 4px;
+    font-size: 0.95rem;
+    color: var(--muted);
+}
+
+.scheme-card p {
+    margin: 8px 0;
+    line-height: 1.55;
+}
+
+.scheme-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.scheme-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 14px;
+}
+
 /* ----- photo upload and gallery ----- */
 
 .photo-panel {
@@ -1013,5 +1274,17 @@ select:disabled {
 
     .feedback-more {
         flex-direction: column;
+    }
+
+    .ask-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .scheme-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .soil-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 }

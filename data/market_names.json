@@ -1,0 +1,41 @@
+{
+  "_about": "How FarmSaarthi's crops and states are named in two data.gov.in datasets: Agmarknet daily mandi prices ('agmarknet') and Kisan Call Centre queries ('kcc'). An empty agmarknet list means the crop is not normally sold in mandis. States not listed use the same name (Agmarknet) or the upper-case name (KCC). Checked against the live API on 19 Nov 2026: every KCC name has records, and every mandi name had prices that day except arhar and rajma (none reported; possibly off-season). Re-run scripts/check_market_names.py to re-check.",
+  "agmarknet_states": {
+    "National Capital Territory of Delhi": "NCT of Delhi",
+    "Chhattisgarh": "Chattisgarh",
+    "Puducherry": "Pondicherry",
+    "Dadra and Nagar Haveli and Daman and Diu": "Dadra and Nagar Haveli"
+  },
+  "kcc_states": {
+    "Tamil Nadu": "TAMILNADU",
+    "National Capital Territory of Delhi": "DELHI",
+    "Dadra and Nagar Haveli and Daman and Diu": "DADRA AND NAGAR HAVELI"
+  },
+  "crops": {
+    "rice":        {"agmarknet": ["Paddy(Common)", "Rice"],                        "kcc": ["Paddy (Dhan)"]},
+    "wheat":       {"agmarknet": ["Wheat"],                                               "kcc": ["Wheat"]},
+    "maize":       {"agmarknet": ["Maize"],                                               "kcc": ["Maize (Makka)"]},
+    "chickpea":    {"agmarknet": ["Bengal Gram(Gram)(Whole)"],                            "kcc": ["Bengal Gram (Gram)(Whole)"]},
+    "kidneybeans": {"agmarknet": ["Rajma"],                                               "kcc": ["Rajmash"]},
+    "pigeonpeas":  {"agmarknet": ["Arhar(Tur/Red Gram)(Whole)", "Arhar (Tur/Red Gram)(Whole)"],                         "kcc": ["Red Gram (Arhar/Tur)"]},
+    "mothbeans":   {"agmarknet": ["Moath Dal"],                                           "kcc": ["Moth Bean"]},
+    "mungbean":    {"agmarknet": ["Green Gram(Moong)(Whole)"],                           "kcc": ["Green Gram (Moong Bean)"]},
+    "blackgram":   {"agmarknet": ["Black Gram(Urd Beans)(Whole)"],                       "kcc": ["Black Gram (urd bean)"]},
+    "lentil":      {"agmarknet": ["Lentil(Masur)(Whole)"],                               "kcc": ["Lentil (Masur)"]},
+    "pomegranate": {"agmarknet": ["Pomegranate"],                                         "kcc": ["Pomegranate"]},
+    "banana":      {"agmarknet": ["Banana"],                                              "kcc": ["Banana"]},
+    "mango":       {"agmarknet": ["Mango"],                                               "kcc": ["Mango"]},
+    "grapes":      {"agmarknet": ["Grapes"],                                              "kcc": ["Grape"]},
+    "watermelon":  {"agmarknet": ["Water Melon"],                                         "kcc": ["Water Melon"]},
+    "muskmelon":   {"agmarknet": ["Karbuja(Musk Melon)"],                                 "kcc": ["Musk Melon"]},
+    "apple":       {"agmarknet": ["Apple"],                                               "kcc": ["Apple"]},
+    "orange":      {"agmarknet": ["Orange", "Kinnow"],                                    "kcc": ["Orange"]},
+    "papaya":      {"agmarknet": ["Papaya"],                                              "kcc": ["Papaya"]},
+    "coconut":     {"agmarknet": ["Coconut"],                                             "kcc": ["Coconut"]},
+    "cotton":      {"agmarknet": ["Cotton"],                                              "kcc": ["Cotton (Kapas)"]},
+    "jute":        {"agmarknet": ["Jute"],                                                "kcc": ["Jute"]},
+    "coffee":      {"agmarknet": [],                                                      "kcc": ["Coffee"]},
+    "sugarcane":   {"agmarknet": [],                                                      "kcc": ["Sugarcane (Noble Cane)"]},
+    "millets":     {"agmarknet": ["Bajra(Pearl Millet/Cumbu)", "Jowar(Sorghum)", "Ragi(Finger Millet)"], "kcc": ["Bajra (Pearl Millet/Bulrush Millet)", "Jowar (Sorghum)", "Ragi (Finger Millet)"]}
+  }
+}

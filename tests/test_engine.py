@@ -179,3 +179,42 @@ def test_offline_cards_are_marked_as_estimates(engine):
     cards = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)["actions"]
     weather_cards = [c for c in cards if c["icon"] in {"water", "rain", "heat"}]
     assert weather_cards and all(c["estimate"] for c in weather_cards)
+
+
+# ----- Soil Health Card -----------------------------------------------------------
+
+def test_soil_input_validation():
+    from engine import clean_soil_input
+
+    assert clean_soil_input(None) == (None, None)
+    assert clean_soil_input({"n": "", "type": ""}) == (None, None)
+    soil, problem = clean_soil_input({"type": "loamy", "n": "300", "ph": 6.8})
+    assert problem is None and soil == {"type": "loamy", "n": 300.0, "ph": 6.8}
+    assert clean_soil_input({"n": "lots"})[1]
+    assert clean_soil_input({"ph": 2})[1]
+    assert clean_soil_input({"type": "rocky"})[1]
+    assert clean_soil_input(["n", 1])[1]
+
+
+def test_card_values_replace_estimates(engine):
+    plain = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY)
+    card = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY,
+                            soil={"n": 600, "p": 5, "k": 300, "ph": 5.2, "oc": 0.9})
+    district = card["district"]
+    assert plain["district"]["sources"]["soil"] == "estimate"
+    assert district["sources"]["soil"] == "card"
+    assert district["nitrogen"] == round(engine.nutrient_scale["N"]["high"])
+    assert district["phosphorus"] == round(engine.nutrient_scale["P"]["low"])
+    assert district["ph"] == 5.2
+    tips = card["fertilizer_advice"]
+    assert "Nitrogen is high (600 kg/ha)" in tips and "Phosphorus is low (5 kg/ha)" in tips
+    assert "acidic (pH 5.2)" in tips
+    soil_card = next(a for a in card["actions"] if a["icon"] == "soil")
+    assert soil_card["estimate"] is False
+
+
+def test_soil_type_alone_is_the_farmers_choice(engine):
+    result = engine.recommend("Ludhiana", "en", "", "Punjab", today=RABI_DAY, soil={"type": "clay"})
+    assert result["district"]["soil"] == "clay"
+    assert result["district"]["sources"]["soil"] == "farmer"
+    assert result["district"]["soil_card"] is None
