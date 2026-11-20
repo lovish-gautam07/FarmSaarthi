@@ -1,4 +1,6 @@
 import json
+import re
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 import numpy as np
@@ -8,27 +10,106 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
 
-CROP_DATA_PATH = Path(__file__).parent / "data" / "farm_data.json"
-LOCATION_DATA_PATH = Path(__file__).parent / "data" / "india_districts.json"
+DATA_DIR = Path(__file__).parent / "data"
+DATASET_PATH = DATA_DIR / "crop_recommendation.csv"
+CROP_PROFILE_PATH = DATA_DIR / "farm_data.json"
+CROP_META_PATH = DATA_DIR / "crop_meta.json"
+LOCATION_DATA_PATH = DATA_DIR / "india_districts.json"
 
-SOIL_MAP = {
-    "clay": 0,
-    "loamy": 1,
-    "black": 2,
-    "sandy": 3
-}
-
-SEASON_MAP = {
-    "kharif": 0,
-    "rabi": 1,
-    "zaid": 2
-}
+FEATURES = ["N", "P", "K", "temperature", "humidity", "ph", "rainfall"]
+GENERATED_ROWS_PER_CROP = 100  # same as each crop in the public dataset
 
 PEST_MAP = {
     "low": 0,
     "medium": 1,
     "high": 2
 }
+
+CHECK_WEIGHTS = {"soil": 12, "temperature": 10, "ph": 8, "rainfall": 10, "humidity": 8}
+OUT_OF_SEASON_FACTOR = 0.55
+OUT_OF_REGION_FACTOR = 0.5
+
+SEASON_MONTHS = {"kharif": "June–October", "rabi": "November–February", "zaid": "March–May"}
+SPRAY_RAIN_MM = 5          # rain that would wash off a spray
+MAX_ACTIONS = 6
+ACTION_ORDER = {"alert": 0, "warn": 1, "good": 2, "info": 3}
+
+SOIL_TYPES = ("clay", "loamy", "black", "sandy")
+
+# Soil Health Card ratings (kg/ha of available nutrient; organic carbon in %).
+SHC_LIMITS = {"n": (280, 560), "p": (10, 25), "k": (110, 280), "oc": (0.5, 0.75)}
+# A card rating is placed at this point of the training data's nutrient scale.
+RATING_QUANTILE = {"low": 0.2, "medium": 0.5, "high": 0.8}
+SOIL_INPUT_RANGES = {"n": (0, 1500), "p": (0, 400), "k": (0, 2000), "ph": (3.0, 10.5), "oc": (0, 5)}
+
+
+def shc_rating(nutrient, value):
+    low, high = SHC_LIMITS[nutrient]
+    if value < low:
+        return "low"
+    if value > high:
+        return "high"
+    return "medium"
+
+
+def clean_soil_input(raw):
+    """Validate optional Soil Health Card values. Returns (soil dict or None, error message or None)."""
+    if not raw:
+        return None, None
+    if not isinstance(raw, dict):
+        return None, "Soil values must be numbers."
+    soil = {}
+    soil_type = raw.get("type") or ""
+    if soil_type:
+        if soil_type not in SOIL_TYPES:
+            return None, "Unknown soil type."
+        soil["type"] = soil_type
+    for key, (low, high) in SOIL_INPUT_RANGES.items():
+        value = raw.get(key)
+        if value in (None, ""):
+            continue
+        try:
+            value = float(value)
+        except (TypeError, ValueError):
+            return None, f"Soil value '{key}' must be a number."
+        if not low <= value <= high:
+            return None, f"Soil value '{key}' must be between {low:g} and {high:g}."
+        soil[key] = round(value, 2)
+    return (soil or None), None
+
+
+# IMD calls 64.5 mm or more of rain in one day "heavy rainfall".
+HEAVY_RAIN_MM_PER_DAY = 64.5
+HEAT_ALERT_CELSIUS = 38
+SPRAY_LOOKAHEAD_DAYS = 3   # a spray needs this many dry days; the card and the 7-day strip share the rule
+IST = timezone(timedelta(hours=5, minutes=30))
+
+
+def india_today(now=None):
+    """Today's date in India. Azure App Service runs on UTC, so date.today() would be
+    yesterday for Indian farmers between midnight and 05:30 IST."""
+    return (now or datetime.now(timezone.utc)).astimezone(IST).date()
+
+
+def with_day_flags(forecast):
+    """A copy of the forecast whose daily rows also say whether rain is heavy and what
+    spraying looks like. spray is "no" if that day or the next two get SPRAY_RAIN_MM or
+    more (the rule behind the "Don't spray now" card), "early" in a week with a heat alert,
+    "ok" otherwise, and None when there are too few days left to judge. The weather client
+    caches one dict for all requests, so new rows are built instead of changing it."""
+    rows = forecast.get("next_days") or []
+    hot_week = forecast.get("max_temperature_next_7_days", 0) >= HEAT_ALERT_CELSIUS
+    days = []
+    for i, day in enumerate(rows):
+        window = rows[i:i + SPRAY_LOOKAHEAD_DAYS]
+        if len(window) < SPRAY_LOOKAHEAD_DAYS:
+            spray = None
+        elif any(d["rain_mm"] >= SPRAY_RAIN_MM for d in window):
+            spray = "no"
+        else:
+            spray = "early" if hot_week else "ok"
+        days.append({**day, "spray": spray, "heavy_rain": day["rain_mm"] >= HEAVY_RAIN_MM_PER_DAY})
+    return {**forecast, "next_days": days}
 
 STATE_PROFILES = {
     "Andhra Pradesh": {"soils": ["black", "loamy"], "temperature": (27, 34), "humidity": (58, 82), "rainfall": (65, 120), "ph": (6.2, 7.8), "season": "kharif", "nitrogen": (62, 88), "phosphorus": (30, 52), "potassium": (34, 58)},
@@ -121,16 +202,38 @@ DEFAULT_PROFILE = {
 }
 
 
+def season_for(today):
+    """Indian cropping season for a date: kharif (Jun-Oct), rabi (Nov-Feb), zaid (Mar-May)."""
+    if 6 <= today.month <= 10:
+        return "kharif"
+    if today.month in (11, 12, 1, 2):
+        return "rabi"
+    return "zaid"
+
+
 class FarmSaarthiEngine:
-    def __init__(self):
-        with CROP_DATA_PATH.open("r", encoding="utf-8") as file:
-            self.crop_data = json.load(file)["crops"]
+    def __init__(self, weather_client=None):
+        with CROP_PROFILE_PATH.open("r", encoding="utf-8") as file:
+            self.crop_profiles = json.load(file)["crops"]
+        with CROP_META_PATH.open("r", encoding="utf-8") as file:
+            self.crop_meta = json.load(file)["crops"]
         with LOCATION_DATA_PATH.open("r", encoding="utf-8") as file:
             self.location_data = json.load(file)["districts"]
 
+        self.weather = weather_client
+        self.state_centers = self._state_centers()
+        self.dataset_rows = 0
+        self.generated_rows = 0
         self.training_data = self._build_training_dataset()
+        self.crop_ranges = self._crop_ranges()
+        self.nutrient_scale = {
+            column: {rating: float(self.training_data[column].quantile(q)) for rating, q in RATING_QUANTILE.items()}
+            for column in ("N", "P", "K")
+        }
         self.model_accuracy = 0.0
         self.model = self._train_model()
+
+    # ----- locations -------------------------------------------------------
 
     def list_states(self):
         return sorted({item["state"] for item in self.location_data})
@@ -138,43 +241,72 @@ class FarmSaarthiEngine:
     def list_districts(self):
         return self.location_data
 
+    def district_options(self):
+        """Just what the page needs to fill the state and district pickers."""
+        return [{"state": item["state"], "district": item["district"]} for item in self.location_data]
+
     def get_district(self, district_name, state_name=None):
         for district in self.location_data:
-            if district["district"].lower() == district_name.lower():
+            if district["district"].lower() == (district_name or "").lower():
                 if state_name and district["state"] != state_name:
                     continue
                 return district
         return None
 
-    def recommend(self, district_name, preferred_language, crop_interest="", state_name=None):
+    def _state_centers(self):
+        sums = {}
+        for item in self.location_data:
+            if "lat" in item and "lon" in item:
+                total = sums.setdefault(item["state"], [0.0, 0.0, 0])
+                total[0] += item["lat"]
+                total[1] += item["lon"]
+                total[2] += 1
+        return {state: (lat / n, lon / n) for state, (lat, lon, n) in sums.items()}
+
+    def _coordinates(self, raw_district):
+        if "lat" in raw_district and "lon" in raw_district:
+            return raw_district["lat"], raw_district["lon"]
+        return self.state_centers.get(raw_district["state"], (None, None))
+
+    # ----- recommendation --------------------------------------------------
+
+    def recommend(self, district_name, preferred_language, crop_interest="", state_name=None, today=None, soil=None):
         raw_district = self.get_district(district_name, state_name)
         if not raw_district:
             return {"error": "District not found for the selected state."}
 
-        district = self._build_district_context(raw_district)
-        features = self._district_features(district)
-        probabilities = self.model.predict_proba(pd.DataFrame([features]))[0]
-        classes = self.model.classes_
+        today = today or india_today()
+        district = self._build_district_context(raw_district, today, soil)
+        features = pd.DataFrame([self._district_features(district)], columns=FEATURES)
+        probabilities = self.model.predict_proba(features)[0]
+        interest_terms = self._interest_terms(crop_interest)
         prediction_rows = []
 
-        for crop_name, probability in zip(classes, probabilities):
-            crop_profile = self._get_crop_profile(crop_name)
-            score = self._blend_score(district, crop_profile, float(probability), crop_interest)
+        for label, probability in zip(self.model.classes_, probabilities):
+            checks = self._checks(district, label)
+            interested = self._matches_interest(label, interest_terms)
             prediction_rows.append(
                 {
-                    "crop": crop_name,
-                    "score": score,
-                    "reasons": self._build_reasons(district, crop_profile, crop_interest)
+                    "crop": self.crop_meta[label]["name"],
+                    "crop_id": label,
+                    "score": self._blend_score(float(probability), checks, interested),
+                    "in_season": checks["season"],
+                    "in_region": checks["region"],
+                    "interested": interested,
+                    "reasons": self._build_reasons(district, label, checks, interested)
                 }
             )
 
-        prediction_rows.sort(key=lambda item: item["score"], reverse=True)
+        # Crops grown in this state and sown now come first; the rest only fill gaps.
+        prediction_rows.sort(key=lambda item: (item["in_region"], item["in_season"], item["score"]), reverse=True)
         top_crops = prediction_rows[:3]
 
         return {
             "district": district,
             "language": preferred_language,
             "top_crops": top_crops,
+            "interest_notes": self._interest_notes(district, prediction_rows, top_crops),
+            "actions": self._actions(district, top_crops),
             "irrigation_advice": self._irrigation_advice(district),
             "fertilizer_advice": self._fertilizer_advice(district),
             "alerts": self._generate_alerts(district),
@@ -182,36 +314,71 @@ class FarmSaarthiEngine:
             "model_summary": {
                 "algorithm": "Random Forest Classifier",
                 "training_rows": int(len(self.training_data)),
+                "dataset_rows": self.dataset_rows,
+                "generated_rows": self.generated_rows,
+                "crops": len(self.model.classes_),
                 "accuracy": round(self.model_accuracy * 100, 1),
+                "accuracy_note": "Measured on held-out rows of the training data, not tested in real fields.",
                 "districts_loaded": len(self.location_data)
             }
         }
 
-    def _build_training_dataset(self):
-        rows = []
-        rng = np.random.default_rng(42)
+    # ----- training --------------------------------------------------------
 
-        for crop in self.crop_data:
-            for _ in range(150):
-                rows.append(
+    def _build_training_dataset(self):
+        dataset = pd.read_csv(DATASET_PATH)
+        known = set(dataset["label"])
+        rng = np.random.default_rng(42)
+        generated = []
+
+        # Crops missing from the public dataset (wheat, sugarcane, millets) are
+        # generated from the hand-written growing ranges in farm_data.json.
+        for crop in self.crop_profiles:
+            label = crop["name"].lower()
+            if label in known:
+                continue
+            for _ in range(GENERATED_ROWS_PER_CROP):
+                generated.append(
                     {
-                        "nitrogen": int(rng.integers(crop["nitrogen"][0], crop["nitrogen"][1] + 1)),
-                        "phosphorus": int(rng.integers(crop["phosphorus"][0], crop["phosphorus"][1] + 1)),
-                        "potassium": int(rng.integers(crop["potassium"][0], crop["potassium"][1] + 1)),
+                        "N": int(rng.integers(crop["nitrogen"][0], crop["nitrogen"][1] + 1)),
+                        "P": int(rng.integers(crop["phosphorus"][0], crop["phosphorus"][1] + 1)),
+                        "K": int(rng.integers(crop["potassium"][0], crop["potassium"][1] + 1)),
                         "temperature": round(float(rng.uniform(crop["temp_min"], crop["temp_max"])), 1),
                         "humidity": round(float(rng.uniform(crop["humidity_min"], crop["humidity_max"])), 1),
                         "ph": round(float(rng.uniform(crop["ph_min"], crop["ph_max"])), 1),
                         "rainfall": round(float(rng.uniform(crop["rainfall_min"], crop["rainfall_max"])), 1),
-                        "soil_code": SOIL_MAP[crop["primary_soil"]],
-                        "season_code": SEASON_MAP[crop["primary_season"]],
-                        "label": crop["name"]
+                        "label": label
                     }
                 )
 
-        return pd.DataFrame(rows)
+        missing_meta = (known | {row["label"] for row in generated}) - set(self.crop_meta)
+        if missing_meta:
+            raise ValueError(f"crop_meta.json has no entry for: {sorted(missing_meta)}")
+
+        self.dataset_rows = int(len(dataset))
+        self.generated_rows = len(generated)
+        return pd.concat([dataset, pd.DataFrame(generated)], ignore_index=True)
+
+    def _crop_ranges(self):
+        """Comfortable range per crop: 5th-95th percentile of its training rows, widened a little.
+
+        The public dataset's ranges are very narrow (e.g. rice only between 20 and 27 °C),
+        so without widening almost no real district would ever "fit".
+        """
+        ranges = {}
+        for label, group in self.training_data.groupby("label"):
+            low = group[["temperature", "humidity", "ph", "rainfall"]].quantile(0.05)
+            high = group[["temperature", "humidity", "ph", "rainfall"]].quantile(0.95)
+            ranges[label] = {
+                "temperature": (low["temperature"] - 3, high["temperature"] + 3),
+                "humidity": (max(0.0, low["humidity"] - 10), min(100.0, high["humidity"] + 10)),
+                "ph": (low["ph"] - 0.3, high["ph"] + 0.3),
+                "rainfall": (low["rainfall"] * 0.7, high["rainfall"] * 1.3),
+            }
+        return ranges
 
     def _train_model(self):
-        features = self.training_data.drop(columns=["label"])
+        features = self.training_data[FEATURES]
         labels = self.training_data["label"]
 
         X_train, X_test, y_train, y_test = train_test_split(
@@ -233,19 +400,62 @@ class FarmSaarthiEngine:
         self.model_accuracy = accuracy_score(y_test, predictions)
         return model
 
-    def _build_district_context(self, raw_district):
+    # ----- district conditions ---------------------------------------------
+
+    def _build_district_context(self, raw_district, today, soil=None):
         profile = STATE_PROFILES.get(raw_district["state"], DEFAULT_PROFILE)
         seed = sum(ord(char) for char in f"{raw_district['state']}-{raw_district['district']}")
 
-        soil = profile["soils"][seed % len(profile["soils"])]
-        temperature = self._spread(profile["temperature"], seed, 1)
-        humidity = self._spread(profile["humidity"], seed, 2)
-        rainfall = self._spread(profile["rainfall"], seed, 3)
+        # Soil and market values are state-level estimates: there is no free
+        # district-level soil or mandi-price feed wired in yet.
+        soil_type = profile["soils"][seed % len(profile["soils"])]
         ph = round(self._spread(profile["ph"], seed, 4, decimal=True), 1)
         nitrogen = int(self._spread(profile["nitrogen"], seed, 5))
         phosphorus = int(self._spread(profile["phosphorus"], seed, 6))
         potassium = int(self._spread(profile["potassium"], seed, 7))
         market_price_index = int(62 + (seed % 27))
+
+        lat, lon = self._coordinates(raw_district)
+        forecast = None
+        if self.weather is not None and lat is not None:
+            forecast = self.weather.get(lat, lon, today)
+            if forecast:
+                forecast = with_day_flags(forecast)
+
+        if forecast:
+            temperature = forecast["temperature"]
+            humidity = forecast["humidity"]
+            rainfall = forecast["rainfall_monthly_mm"]
+        else:
+            temperature = self._spread(profile["temperature"], seed, 1)
+            humidity = self._spread(profile["humidity"], seed, 2)
+            rainfall = self._spread(profile["rainfall"], seed, 3)
+
+        soil_card, soil_source = None, "estimate"
+        if soil:
+            soil_type = soil.get("type", soil_type)
+            soil_source = "farmer"
+            soil_card = {}
+            for key, column in (("n", "N"), ("p", "P"), ("k", "K")):
+                if key in soil:
+                    rating = shc_rating(key, soil[key])
+                    soil_card[key] = {"value": soil[key], "rating": rating}
+                    value = int(round(self.nutrient_scale[column][rating]))
+                    if key == "n":
+                        nitrogen = value
+                    elif key == "p":
+                        phosphorus = value
+                    else:
+                        potassium = value
+            if "ph" in soil:
+                ph = round(soil["ph"], 1)
+                soil_card["ph"] = {"value": ph}
+            if "oc" in soil:
+                soil_card["oc"] = {"value": soil["oc"], "rating": shc_rating("oc", soil["oc"])}
+            if soil_card:
+                soil_source = "card"
+            else:
+                soil_card = None
 
         humidity_risk = humidity >= 80 or rainfall >= 140
         if humidity_risk and temperature > 28:
@@ -260,18 +470,27 @@ class FarmSaarthiEngine:
             "state": raw_district["state"],
             "state_code": raw_district["stateCode"],
             "district_code": raw_district["districtCode"],
-            "soil": soil,
-            "temperature": int(round(temperature)),
-            "rainfall_forecast": int(round(rainfall)),
+            "lat": lat,
+            "lon": lon,
+            "soil": soil_type,
+            "soil_card": soil_card,
+            "temperature": round(float(temperature), 1),
             "humidity": int(round(humidity)),
-            "season": profile["season"],
+            "rainfall_monthly_mm": int(round(rainfall)),
+            "season": season_for(today),
             "market_price_index": market_price_index,
             "pest_risk": pest_risk,
             "nitrogen": nitrogen,
             "phosphorus": phosphorus,
             "potassium": potassium,
             "ph": ph,
-            "languages": STATE_LANGUAGES.get(raw_district["state"], ["en", "hi"])
+            "languages": STATE_LANGUAGES.get(raw_district["state"], ["en", "hi"]),
+            "forecast": forecast,
+            "sources": {
+                "weather": "live" if forecast else "estimate",
+                "soil": soil_source,
+                "market": "estimate"
+            }
         }
 
     def _spread(self, bounds, seed, offset, decimal=False):
@@ -282,70 +501,261 @@ class FarmSaarthiEngine:
 
     def _district_features(self, district):
         return {
-            "nitrogen": district["nitrogen"],
-            "phosphorus": district["phosphorus"],
-            "potassium": district["potassium"],
+            "N": district["nitrogen"],
+            "P": district["phosphorus"],
+            "K": district["potassium"],
             "temperature": district["temperature"],
             "humidity": district["humidity"],
             "ph": district["ph"],
-            "rainfall": district["rainfall_forecast"],
-            "soil_code": SOIL_MAP[district["soil"]],
-            "season_code": SEASON_MAP[district["season"]]
+            "rainfall": district["rainfall_monthly_mm"]
         }
 
-    def _get_crop_profile(self, crop_name):
-        for crop in self.crop_data:
-            if crop["name"] == crop_name:
-                return crop
-        return None
+    # ----- scoring ---------------------------------------------------------
 
-    def _compatibility_score(self, district, crop_profile):
-        score = 0
-        if district["soil"] in crop_profile["soil"]:
-            score += 12
-        if crop_profile["temp_min"] <= district["temperature"] <= crop_profile["temp_max"]:
-            score += 10
-        if crop_profile["ph_min"] <= district["ph"] <= crop_profile["ph_max"]:
-            score += 8
-        if crop_profile["rainfall_min"] * 0.65 <= district["rainfall_forecast"] <= crop_profile["rainfall_max"] * 1.15:
-            score += 10
-        if crop_profile["humidity_min"] <= district["humidity"] <= crop_profile["humidity_max"]:
-            score += 8
-        return score
+    def _checks(self, district, label):
+        meta = self.crop_meta[label]
+        ranges = self.crop_ranges[label]
 
-    def _blend_score(self, district, crop_profile, probability, crop_interest):
-        score = probability * 62 + self._compatibility_score(district, crop_profile)
-        if crop_interest and crop_interest.lower() in crop_profile["name"].lower():
+        def within(name, value):
+            low, high = ranges[name]
+            return low <= value <= high
+
+        return {
+            "soil": district["soil"] in meta["soils"],
+            "temperature": within("temperature", district["temperature"]),
+            "ph": within("ph", district["ph"]),
+            "rainfall": within("rainfall", district["rainfall_monthly_mm"]),
+            "humidity": within("humidity", district["humidity"]),
+            "season": "perennial" in meta["seasons"] or district["season"] in meta["seasons"],
+            "region": not meta.get("states") or district["state"] in meta["states"],
+        }
+
+    def _blend_score(self, probability, checks, interested):
+        score = probability * 62 + sum(weight for name, weight in CHECK_WEIGHTS.items() if checks[name])
+        if interested:
             score += 8
+        if not checks["season"]:
+            score *= OUT_OF_SEASON_FACTOR
+        if not checks["region"]:
+            score *= OUT_OF_REGION_FACTOR
         return round(min(score, 99.5), 1)
 
-    def _build_reasons(self, district, crop_profile, crop_interest):
+    @staticmethod
+    def _interest_terms(crop_interest):
+        text = (crop_interest or "").strip().lower()
+        if not text:
+            return set(), ""
+        tokens = {token for token in re.split(r"[\s,/;।|]+", text) if token}
+        return tokens, f" {text} "
+
+    def _matches_interest(self, label, interest_terms):
+        tokens, text = interest_terms
+        if not tokens:
+            return False
+        meta = self.crop_meta[label]
+        for term in [label, meta["name"].lower(), *meta["aliases"]]:
+            term = term.lower()
+            if term in tokens or (" " in term and f" {term} " in text):
+                return True
+        return False
+
+    def _build_reasons(self, district, label, checks, interested):
+        meta = self.crop_meta[label]
         reasons = []
 
-        if district["soil"] in crop_profile["soil"]:
-            reasons.append(f"{crop_profile['name']} fits {district['soil']} soil.")
-        if crop_profile["temp_min"] <= district["temperature"] <= crop_profile["temp_max"]:
-            reasons.append("Temperature is within the recommended range.")
-        if crop_profile["ph_min"] <= district["ph"] <= crop_profile["ph_max"]:
-            reasons.append("Soil pH supports healthy growth.")
-        if crop_profile["rainfall_min"] * 0.65 <= district["rainfall_forecast"] <= crop_profile["rainfall_max"] * 1.15:
-            reasons.append("Rainfall conditions are favorable.")
-        if crop_interest and crop_interest.lower() in crop_profile["name"].lower():
+        if interested:
             reasons.append("Matches the farmer's stated crop interest.")
-
-        if not reasons:
-            reasons.append("Model confidence is driven mainly by similar crop-climate patterns in training data.")
+        if not checks["region"]:
+            reasons.append(f"Not commonly grown in {district['state']}.")
+        if not checks["season"]:
+            reasons.append(f"Usually sown in {self._season_names(meta['seasons'])}, not the current {district['season']} season.")
+        elif "perennial" in meta["seasons"]:
+            reasons.append("Orchard or plantation crop, not tied to one sowing season.")
+        else:
+            reasons.append(f"Suits the current {district['season']} season.")
+        if checks["soil"]:
+            reasons.append(f"Grows well in {district['soil']} soil.")
+        if checks["temperature"]:
+            reasons.append("Temperature is within the crop's comfortable range.")
+        if checks["rainfall"]:
+            reasons.append("Recent rainfall suits this crop.")
+        if checks["ph"]:
+            reasons.append("Soil pH supports healthy growth.")
+        if checks["humidity"]:
+            reasons.append("Humidity suits this crop.")
 
         return reasons[:3]
 
+    @staticmethod
+    def _season_names(seasons):
+        return " or ".join(f"{season} ({SEASON_MONTHS[season]})" for season in seasons if season in SEASON_MONTHS)
+
+    def _interest_notes(self, district, rows, top_crops):
+        """Explain crops the farmer asked about that did not make the top 3."""
+        shown = {row["crop_id"] for row in top_crops}
+        notes = []
+        for row in rows:
+            if not row["interested"] or row["crop_id"] in shown:
+                continue
+            meta = self.crop_meta[row["crop_id"]]
+            if not row["in_region"]:
+                text = f"{meta['name']} is not commonly grown in {district['state']}. Ask your local Krishi Vigyan Kendra before trying it."
+            elif not row["in_season"]:
+                text = f"{meta['name']} is usually sown in {self._season_names(meta['seasons'])}, not now in the {district['season']} season."
+            else:
+                text = f"{meta['name']} can be grown now, but current conditions suit the crops above better (score {row['score']}/100)."
+            notes.append({"crop": meta["name"], "crop_id": row["crop_id"], "score": row["score"], "text": text})
+        return notes[:3]
+
+    # ----- action cards ----------------------------------------------------
+
+    @staticmethod
+    def _day_name(day, index):
+        if index == 0:
+            return "today"
+        if index == 1:
+            return "tomorrow"
+        return "on " + date.fromisoformat(day["date"]).strftime("%A")
+
+    def _actions(self, district, top_crops):
+        """Short "what to do now" cards, most urgent first."""
+        cards = []
+
+        def add(level, icon, title, text, estimate=False):
+            cards.append({"level": level, "icon": icon, "title": title, "text": text, "estimate": estimate})
+
+        forecast = district["forecast"]
+        season = district["season"]
+
+        sow_now = [crop["crop"] for crop in top_crops if crop["in_season"] and crop["in_region"]]
+        if sow_now:
+            add("good", "seed", f"Best crops now: {', '.join(sow_now)}",
+                f"Best matches for {district['name']} in the {season} season ({SEASON_MONTHS[season]}).")
+        else:
+            add("warn", "seed", "No strong crop match this season",
+                "Talk to your local Krishi Vigyan Kendra before sowing.")
+
+        if forecast:
+            days = forecast.get("next_days", [])
+            heavy = next(((i, d) for i, d in enumerate(days) if d["rain_mm"] >= HEAVY_RAIN_MM_PER_DAY), None)
+            if heavy:
+                index, day = heavy
+                add("alert", "rain", f"Heavy rain {self._day_name(day, index)}",
+                    f"Up to {day['rain_mm']:.0f} mm in one day. Clear drainage channels and delay fertilizer.")
+            if forecast["max_temperature_next_7_days"] >= HEAT_ALERT_CELSIUS:
+                add("alert", "heat", f"Heat: up to {forecast['max_temperature_next_7_days']:.0f} °C this week",
+                    "Water in the early morning or evening. Avoid afternoon field work and spraying.")
+            if season == "kharif" and forecast["rain_past_30_days_mm"] < 30 and forecast["rain_next_14_days_mm"] < 10:
+                add("alert", "sun", "Dry spell",
+                    "Very little monsoon rain recently and none expected for two weeks. Save water and mulch the soil.")
+
+            rain_soon = next(((i, d) for i, d in enumerate(days[:SPRAY_LOOKAHEAD_DAYS]) if d["rain_mm"] >= SPRAY_RAIN_MM), None)
+            if rain_soon:
+                index, day = rain_soon
+                add("warn", "no-spray", "Don't spray now",
+                    f"About {day['rain_mm']:.0f} mm of rain is expected {self._day_name(day, index)}. Spray after the rain so it is not washed off.")
+            elif district["pest_risk"] != "low":
+                add("good", "spray", "Dry days ahead: good for spraying",
+                    "No rain expected for 3 days. If you need to spray, do it early morning or evening when it is calm.")
+
+            rain = forecast["rain_next_7_days_mm"]
+            if rain >= 50:
+                add("info", "rain", "Skip irrigation this week",
+                    f"About {rain:.0f} mm of rain is expected in the next 7 days. Keep drainage channels clear.")
+            elif rain >= 15:
+                add("info", "water", "Check soil before watering",
+                    f"About {rain:.0f} mm of rain is expected in the next 7 days. Water only if the top soil is dry.")
+            elif rain < 1:
+                add("warn", "water", "Irrigate this week",
+                    "No rain is expected in the next 7 days. Water early in the morning and mulch to save moisture.")
+            else:
+                add("warn", "water", "Irrigate this week",
+                    f"Only {rain:.0f} mm of rain is expected in the next 7 days. Water early in the morning and mulch to save moisture.")
+        else:
+            rainfall = district["rainfall_monthly_mm"]
+            if district["temperature"] >= 34:
+                add("alert", "heat", "Hot weather",
+                    "Water in the early morning or evening. Avoid afternoon field work and spraying.", estimate=True)
+            if rainfall < 45:
+                add("warn", "water", "Plan irrigation",
+                    "Rainfall is usually low at this time. Use drip or mulching to save water.", estimate=True)
+            elif rainfall > 150:
+                add("info", "rain", "Keep drainage clear",
+                    "Rainfall is usually high at this time. Avoid waterlogging around roots.", estimate=True)
+            else:
+                add("info", "water", "Check soil before watering",
+                    "Moderate rain is usual now. Water only if the top soil is dry.", estimate=True)
+
+        if district["humidity"] > 82:
+            add("warn", "fungus", "High fungal disease risk",
+                "Humid weather favours leaf spots and mildew. Check the underside of leaves and remove infected ones.")
+        if district["pest_risk"] == "high":
+            add("warn", "bug", "Check for pests twice a week", "Look at leaves and stems for insects, eggs and holes.")
+        elif district["pest_risk"] == "medium":
+            add("info", "bug", "Check for pests every week", "Look at leaves and stems for insects, eggs and holes.")
+
+        add("info", "soil", "Fertilizer tip", self._fertilizer_tips(district)[0], estimate=not district["soil_card"])
+
+        cards.sort(key=lambda card: ACTION_ORDER[card["level"]])
+        return cards[:MAX_ACTIONS]
+
+    # ----- advice ----------------------------------------------------------
+
     def _irrigation_advice(self, district):
-        if district["rainfall_forecast"] < 45:
+        forecast = district["forecast"]
+        if forecast:
+            rain = forecast["rain_next_7_days_mm"]
+            if rain >= 50:
+                return f"About {rain:.0f} mm of rain is forecast in the next 7 days. Skip extra irrigation and keep drainage channels clear to prevent waterlogging."
+            if rain >= 15:
+                return f"About {rain:.0f} mm of rain is forecast in the next 7 days. Check field moisture before irrigating and avoid unnecessary watering."
+            if rain < 1:
+                return "No rain is forecast in the next 7 days. Plan irrigation; drip, mulching and early-morning watering reduce moisture loss."
+            return f"Only {rain:.0f} mm of rain is forecast in the next 7 days. Plan irrigation; drip, mulching and early-morning watering reduce moisture loss."
+
+        rainfall = district["rainfall_monthly_mm"]
+        if rainfall < 45:
             return "Low rainfall is expected. Use drip irrigation, mulching, and early-morning watering to reduce moisture loss."
-        if district["rainfall_forecast"] < 95:
+        if rainfall < 95:
             return "Moderate rainfall is expected. Schedule irrigation after checking field moisture and avoid unnecessary watering."
         return "High rainfall is expected. Reduce extra irrigation and keep field drainage channels clear to prevent waterlogging."
 
     def _fertilizer_advice(self, district):
+        tips = self._fertilizer_tips(district)[:3 if district["soil_card"] else 2]
+        if district["soil_card"]:
+            tips.append("Based on your Soil Health Card; follow the crop-wise doses printed on it.")
+        else:
+            tips.append("These soil values are state-level estimates; a Soil Health Card test gives exact values for your field.")
+        return " ".join(tips)
+
+    def _card_tips(self, card):
+        tips = []
+        n, p, k, ph, oc = (card.get(key) for key in ("n", "p", "k", "ph", "oc"))
+        if n and n["rating"] == "low":
+            tips.append(f"Nitrogen is low ({n['value']:g} kg/ha). Apply it in 2–3 split doses instead of all at once.")
+        elif n and n["rating"] == "high":
+            tips.append(f"Nitrogen is high ({n['value']:g} kg/ha). You can use less urea than usual.")
+        if p and p["rating"] == "low":
+            tips.append(f"Phosphorus is low ({p['value']:g} kg/ha). Apply phosphorus fertilizer at sowing, close to the roots.")
+        elif p and p["rating"] == "high":
+            tips.append(f"Phosphorus is high ({p['value']:g} kg/ha). You can reduce or skip phosphorus fertilizer this season.")
+        if k and k["rating"] == "low":
+            tips.append(f"Potassium is low ({k['value']:g} kg/ha). Add potash to improve stress tolerance and grain filling.")
+        if ph and ph["value"] < 5.5:
+            tips.append(f"Soil is acidic (pH {ph['value']:g}). Liming can help; ask your KVK for the right amount.")
+        elif ph and ph["value"] > 8.5:
+            tips.append(f"Soil is strongly alkaline (pH {ph['value']:g}). Gypsum and organic manure can help; ask your KVK.")
+        elif ph and ph["value"] > 7.6:
+            tips.append(f"Soil is slightly alkaline (pH {ph['value']:g}). Organic compost improves micronutrient availability.")
+        if oc and oc["rating"] == "low":
+            tips.append(f"Organic carbon is low ({oc['value']:g}%). Add farmyard manure or compost and keep crop residue in the field.")
+        if not tips:
+            tips.append("Your soil nutrients are balanced. Keep using the doses on your card and avoid extra fertilizer.")
+        return tips
+
+    def _fertilizer_tips(self, district):
+        if district["soil_card"]:
+            return self._card_tips(district["soil_card"])
         tips = []
 
         if district["nitrogen"] < 55:
@@ -361,24 +771,33 @@ class FarmSaarthiEngine:
 
         if not tips:
             tips.append("NPK balance looks stable. Prefer soil-test-based micronutrient correction and avoid over-application.")
-
-        return " ".join(tips[:2])
+        return tips
 
     def _generate_alerts(self, district):
         alerts = []
+        forecast = district["forecast"]
 
-        if district["temperature"] >= 34:
-            alerts.append("Heat alert: protect young plants, avoid afternoon spraying, and irrigate during cooler hours.")
-        if district["rainfall_forecast"] < 35:
-            alerts.append("Dry spell alert: conserve water and improve soil moisture retention.")
-        if district["rainfall_forecast"] > 150:
-            alerts.append("Heavy rainfall alert: monitor drainage and prevent root-zone waterlogging.")
+        if forecast:
+            if forecast["max_temperature_next_7_days"] >= HEAT_ALERT_CELSIUS:
+                alerts.append(f"Heat alert: up to {forecast['max_temperature_next_7_days']:.0f} °C is forecast this week. Protect young plants, avoid afternoon spraying, and irrigate during cooler hours.")
+            if forecast["max_daily_rain_next_7_days_mm"] >= HEAVY_RAIN_MM_PER_DAY:
+                alerts.append(f"Heavy rainfall alert: up to {forecast['max_daily_rain_next_7_days_mm']:.0f} mm in a single day is forecast this week. Clear drainage and delay spraying and fertilizer.")
+            if district["season"] == "kharif" and forecast["rain_past_30_days_mm"] < 30 and forecast["rain_next_14_days_mm"] < 10:
+                alerts.append("Dry spell alert: very little monsoon rain in the last 30 days and none expected for two weeks. Conserve water and protect soil moisture.")
+        else:
+            if district["temperature"] >= 34:
+                alerts.append("Heat alert: protect young plants, avoid afternoon spraying, and irrigate during cooler hours.")
+            if district["rainfall_monthly_mm"] < 35:
+                alerts.append("Dry spell alert: conserve water and improve soil moisture retention.")
+            if district["rainfall_monthly_mm"] > 150:
+                alerts.append("Heavy rainfall alert: monitor drainage and prevent root-zone waterlogging.")
+
         if district["humidity"] > 82:
             alerts.append("Disease alert: humidity is high, so fungal risk may increase.")
         if PEST_MAP[district["pest_risk"]] >= 1:
             alerts.append("Pest alert: inspect leaves and stems regularly for early infestation signs.")
         if district["market_price_index"] >= 84:
-            alerts.append("Market alert: local price conditions are favorable for near-term selling.")
+            alerts.append("Market alert (estimated index, not live mandi prices): conditions look favorable for near-term selling.")
         if not alerts:
             alerts.append("No major risk flag today. Continue normal crop monitoring.")
 

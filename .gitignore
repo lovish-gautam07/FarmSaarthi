@@ -1,3 +1,17 @@
 __pycache__/
 *.pyc
 tmp_index_script.js
+
+# Local environments and secrets
+venv/
+.venv/
+.env
+
+# OS / editor
+.DS_Store
+
+# Test and tool caches
+.pytest_cache/
+.coverage
+.azurite/
+__azurite_db_*

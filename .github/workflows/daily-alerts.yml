@@ -1,0 +1,31 @@
+name: Daily weather alerts
+
+# Once a day, ask the live app to check the forecast for every subscribed
+# district and send browser notifications for urgent weather.
+# One-time setup (see AZURE_SETUP.md):
+#   - repository variable  APP_URL   = https://<your-app>.azurewebsites.net
+#   - repository secret    TASK_KEY  = the same TASK_KEY set in App Service settings
+# Until APP_URL is set, the job is skipped.
+
+on:
+  schedule:
+    - cron: "30 0 * * *"   # 06:00 India time
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    if: ${{ vars.APP_URL != '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Send alerts
+        env:
+          APP_URL: ${{ vars.APP_URL }}
+          TASK_KEY: ${{ secrets.TASK_KEY }}
+        run: |
+          # The free App Service plan sleeps; the first call may take a minute to wake it.
+          curl --fail-with-body --silent --show-error --retry 2 --retry-delay 20 --max-time 240 \
+            -X POST "$APP_URL/tasks/send-alerts" -H "X-Task-Key: $TASK_KEY"

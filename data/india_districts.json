@@ -8,7 +8,10 @@
 			"headquarters": "Paderu",
 			"population": 954000,
 			"area": 12251,
-			"density": 77
+			"density": 77,
+			"lat": 18.0778,
+			"lon": 82.6604,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -18,7 +21,10 @@
 			"headquarters": "Anakapalli",
 			"population": 1727000,
 			"area": 4292,
-			"density": 402
+			"density": 402,
+			"lat": 17.6715,
+			"lon": 82.7748,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -28,7 +34,10 @@
 			"headquarters": "Ananthapuramu",
 			"population": 2241100,
 			"area": 10205,
-			"density": 219
+			"density": 219,
+			"lat": 14.0127,
+			"lon": 78.418,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -38,7 +47,10 @@
 			"headquarters": "Rayachoti",
 			"population": 1697300,
 			"area": 7954,
-			"density": 213
+			"density": 213,
+			"lat": 14.0572,
+			"lon": 78.7506,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -48,7 +60,10 @@
 			"headquarters": "Bapatla",
 			"population": 1587000,
 			"area": 3829,
-			"density": 414
+			"density": 414,
+			"lat": 15.9042,
+			"lon": 80.4674,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -58,7 +73,10 @@
 			"headquarters": "Chittoor",
 			"population": 1873000,
 			"area": 6855,
-			"density": 273
+			"density": 273,
+			"lat": 13.2105,
+			"lon": 79.0956,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -68,7 +86,10 @@
 			"headquarters": "Amalapuram",
 			"population": 1719100,
 			"area": 2083,
-			"density": 825
+			"density": 825,
+			"lat": 16.5787,
+			"lon": 82.0061,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -78,7 +99,10 @@
 			"headquarters": "Rajamahendravaram",
 			"population": 1832300,
 			"area": 2561,
-			"density": 715
+			"density": 715,
+			"lat": 17.0052,
+			"lon": 81.7778,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -88,7 +112,10 @@
 			"headquarters": "Eluru",
 			"population": 2071700,
 			"area": 6679,
-			"density": 310
+			"density": 310,
+			"lat": 16.7131,
+			"lon": 81.1044,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -98,7 +125,10 @@
 			"headquarters": "Guntur",
 			"population": 2091000,
 			"area": 2443,
-			"density": 855
+			"density": 855,
+			"lat": 16.2997,
+			"lon": 80.4573,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -108,7 +138,10 @@
 			"headquarters": "Kakinada",
 			"population": 2092300,
 			"area": 3019,
-			"density": 693
+			"density": 693,
+			"lat": 16.9604,
+			"lon": 82.2381,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -118,7 +151,10 @@
 			"headquarters": "Machilipatnam",
 			"population": 1735000,
 			"area": 3775,
-			"density": 459
+			"density": 459,
+			"lat": 16.1875,
+			"lon": 81.1389,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -128,7 +164,10 @@
 			"headquarters": "Kurnool",
 			"population": 2271700,
 			"area": 7980,
-			"density": 284
+			"density": 284,
+			"lat": 15.8289,
+			"lon": 78.036,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -138,7 +177,10 @@
 			"headquarters": "Nandyal",
 			"population": 1781800,
 			"area": 9682,
-			"density": 184
+			"density": 184,
+			"lat": 15.478,
+			"lon": 78.4836,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -148,7 +190,10 @@
 			"headquarters": "Vijayawada",
 			"population": 2218000,
 			"area": 3316,
-			"density": 668
+			"density": 668,
+			"lat": 16.5074,
+			"lon": 80.6466,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -158,7 +203,10 @@
 			"headquarters": "Narasaraopet",
 			"population": 2042000,
 			"area": 7298,
-			"density": 279
+			"density": 279,
+			"lat": 16.2349,
+			"lon": 80.0493,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -168,7 +216,10 @@
 			"headquarters": "Parvathipuram",
 			"population": 925300,
 			"area": 3659,
-			"density": 252
+			"density": 252,
+			"lat": 15.6005,
+			"lon": 79.6329,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -178,7 +229,10 @@
 			"headquarters": "Ongole",
 			"population": 2288000,
 			"area": 14322,
-			"density": 160
+			"density": 160,
+			"lat": 15.5036,
+			"lon": 80.0445,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -188,7 +242,10 @@
 			"headquarters": "Srikakulam",
 			"population": 2191471,
 			"area": 4591,
-			"density": 477
+			"density": 477,
+			"lat": 18.2989,
+			"lon": 83.8975,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -198,7 +255,10 @@
 			"headquarters": "Nellore",
 			"population": 2469700,
 			"area": 10441,
-			"density": 236
+			"density": 236,
+			"lat": 14.4499,
+			"lon": 79.987,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -208,7 +268,10 @@
 			"headquarters": "Puttaparthi",
 			"population": 1840000,
 			"area": 8925,
-			"density": 206
+			"density": 206,
+			"lat": 14.1652,
+			"lon": 77.8117,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -218,7 +281,10 @@
 			"headquarters": "Tirupati",
 			"population": 2197000,
 			"area": 8231,
-			"density": 241
+			"density": 241,
+			"lat": 13.6355,
+			"lon": 79.4199,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -228,7 +294,10 @@
 			"headquarters": "Visakhapatnam",
 			"population": 1959500,
 			"area": 1048,
-			"density": 1869
+			"density": 1869,
+			"lat": 17.6801,
+			"lon": 83.2016,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -238,7 +307,10 @@
 			"headquarters": "Vizianagaram",
 			"population": 1930800,
 			"area": 4122,
-			"density": 468
+			"density": 468,
+			"lat": 18.1169,
+			"lon": 83.4115,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -248,7 +320,10 @@
 			"headquarters": "Bhimavaram",
 			"population": 1780000,
 			"area": 2178,
-			"density": 817
+			"density": 817,
+			"lat": 16.5408,
+			"lon": 81.5232,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andhra Pradesh",
@@ -258,7 +333,10 @@
 			"headquarters": "Kadapa",
 			"population": 2060700,
 			"area": 11228,
-			"density": 183
+			"density": 183,
+			"lat": 14.48,
+			"lon": 78.8235,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -268,7 +346,10 @@
 			"headquarters": "Hawai",
 			"population": 21089,
 			"area": 6190,
-			"density": 3
+			"density": 3,
+			"lat": 27.8868,
+			"lon": 96.8017,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -278,7 +359,10 @@
 			"headquarters": "Changlang",
 			"population": 147951,
 			"area": 4662,
-			"density": 32
+			"density": 32,
+			"lat": 27.1318,
+			"lon": 95.7349,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -288,7 +372,10 @@
 			"headquarters": "Seppa",
 			"population": 78413,
 			"area": 4134,
-			"density": 19
+			"density": 19,
+			"lat": 27.3617,
+			"lon": 93.0399,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -298,7 +385,10 @@
 			"headquarters": "Pasighat",
 			"population": 99019,
 			"area": 3603,
-			"density": 27
+			"density": 27,
+			"lat": 28.0663,
+			"lon": 95.3268,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -308,27 +398,36 @@
 			"headquarters": "Itanagar",
 			"population": 122930,
 			"area": 200,
-			"density": 614
+			"density": 614,
+			"lat": 27.0869,
+			"lon": 93.6099,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Kamle",
 			"headquarters": "Raga",
 			"population": 22256,
 			"area": 200,
-			"density": 111
+			"density": 111,
+			"lat": 27.7993,
+			"lon": 94.0743,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Kra Daadi",
 			"headquarters": "Palin",
 			"population": 22290,
 			"area": 2202,
-			"density": 10
+			"density": 10,
+			"lat": 27.6963,
+			"lon": 93.6247,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -338,17 +437,23 @@
 			"headquarters": "Koloriang",
 			"population": 89717,
 			"area": 6040,
-			"density": 15
+			"density": 15,
+			"lat": 27.91,
+			"lon": 93.355,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Lepa Rada",
 			"headquarters": "Basar",
 			"population": 0,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 27.9901,
+			"lon": 94.6945,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -358,7 +463,10 @@
 			"headquarters": "Tezu",
 			"population": 145538,
 			"area": 2402,
-			"density": 61
+			"density": 61,
+			"lat": 27.9126,
+			"lon": 96.1288,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -368,7 +476,10 @@
 			"headquarters": "Longding",
 			"population": 60000,
 			"area": 1200,
-			"density": 50
+			"density": 50,
+			"lat": 26.8841,
+			"lon": 95.3195,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -378,17 +489,23 @@
 			"headquarters": "Roing",
 			"population": 53986,
 			"area": 3900,
-			"density": 14
+			"density": 14,
+			"lat": 28.1432,
+			"lon": 95.8447,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Lower Siang",
 			"headquarters": "Likabali",
 			"population": 22630,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 27.8007,
+			"lon": 94.565,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -398,27 +515,36 @@
 			"headquarters": "Ziro",
 			"population": 82839,
 			"area": 3508,
-			"density": 24
+			"density": 24,
+			"lat": 27.595,
+			"lon": 93.8385,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Namsai",
 			"headquarters": "Namsai",
 			"population": 95950,
 			"area": 1587,
-			"density": 60
+			"density": 60,
+			"lat": 27.669,
+			"lon": 95.864,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Pakke-Kessang",
 			"headquarters": "Lemmi",
 			"population": 15358,
 			"area": 1932,
-			"density": 7
+			"density": 7,
+			"lat": 27.1467,
+			"lon": 93.2464,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -428,27 +554,36 @@
 			"headquarters": "Yupia",
 			"population": 176385,
 			"area": 2875,
-			"density": 61
+			"density": 61,
+			"lat": 27.1467,
+			"lon": 93.7192,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Shi Yomi",
 			"headquarters": "Tato",
 			"population": 13310,
 			"area": 2875,
-			"density": 5
+			"density": 5,
+			"lat": 28.5275,
+			"lon": 94.3725,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
 			"stateCode": "AR",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Siang",
 			"headquarters": "Boleng",
 			"population": 31920,
 			"area": 2919,
-			"density": 11
+			"density": 11,
+			"lat": 28.3341,
+			"lon": 94.9623,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -458,7 +593,10 @@
 			"headquarters": "Tawang",
 			"population": 49950,
 			"area": 2085,
-			"density": 24
+			"density": 24,
+			"lat": 27.5742,
+			"lon": 91.795,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -468,7 +606,10 @@
 			"headquarters": "Khonsa",
 			"population": 111997,
 			"area": 2362,
-			"density": 47
+			"density": 47,
+			"lat": 27.0167,
+			"lon": 95.5667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -478,7 +619,10 @@
 			"headquarters": "Anini",
 			"population": 8004,
 			"area": 9129,
-			"density": 1
+			"density": 1,
+			"lat": 28.7979,
+			"lon": 95.9023,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -488,7 +632,10 @@
 			"headquarters": "Yingkiong",
 			"population": 35289,
 			"area": 6188,
-			"density": 6
+			"density": 6,
+			"lat": 28.6104,
+			"lon": 95.0475,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -498,7 +645,10 @@
 			"headquarters": "Daporijo",
 			"population": 83205,
 			"area": 7032,
-			"density": 12
+			"density": 12,
+			"lat": 27.9911,
+			"lon": 94.2296,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -508,7 +658,10 @@
 			"headquarters": "Bomdila",
 			"population": 87013,
 			"area": 7422,
-			"density": 12
+			"density": 12,
+			"lat": 27.2647,
+			"lon": 92.4247,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Arunachal Pradesh",
@@ -518,7 +671,10 @@
 			"headquarters": "Aalo",
 			"population": 112272,
 			"area": 8325,
-			"density": 13
+			"density": 13,
+			"lat": 28.2163,
+			"lon": 94.8539,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -528,7 +684,10 @@
 			"headquarters": "Mushalpur",
 			"population": 953773,
 			"area": 2008,
-			"density": 475
+			"density": 475,
+			"lat": 26.5792,
+			"lon": 91.4261,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -538,7 +697,10 @@
 			"headquarters": "Barpeta",
 			"population": 1693622,
 			"area": 3245,
-			"density": 520
+			"density": 520,
+			"lat": 26.3229,
+			"lon": 91.0063,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -548,7 +710,10 @@
 			"headquarters": "Bongaigaon",
 			"population": 732639,
 			"area": 1724,
-			"density": 425
+			"density": 425,
+			"lat": 26.477,
+			"lon": 90.5581,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -558,7 +723,10 @@
 			"headquarters": "Silchar",
 			"population": 1736319,
 			"area": 3786,
-			"density": 459
+			"density": 459,
+			"lat": 24.8273,
+			"lon": 92.7979,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -568,7 +736,10 @@
 			"headquarters": "Sonari",
 			"population": 471418,
 			"area": 1069,
-			"density": 440
+			"density": 440,
+			"lat": 27.0734,
+			"lon": 95.0275,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -578,7 +749,10 @@
 			"headquarters": "Kajalgaon",
 			"population": 481818,
 			"area": 1975,
-			"density": 244
+			"density": 244,
+			"lat": 26.6464,
+			"lon": 90.6242,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Assam",
@@ -588,7 +762,10 @@
 			"headquarters": "Mangaldoi",
 			"population": 908090,
 			"area": 1849,
-			"density": 491
+			"density": 491,
+			"lat": 26.6333,
+			"lon": 92.8,
+			"geo_source": "district"
 		},
 		{
 			"state": "Assam",
@@ -598,7 +775,10 @@
 			"headquarters": "Dhemaji",
 			"population": 688077,
 			"area": 3237,
-			"density": 213
+			"density": 213,
+			"lat": 27.4833,
+			"lon": 94.5833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -608,7 +788,10 @@
 			"headquarters": "Dhubri",
 			"population": 1948632,
 			"area": 2838,
-			"density": 687
+			"density": 687,
+			"lat": 26.0186,
+			"lon": 89.9856,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -618,7 +801,10 @@
 			"headquarters": "Dibrugarh",
 			"population": 1327748,
 			"area": 3381,
-			"density": 393
+			"density": 393,
+			"lat": 27.4799,
+			"lon": 94.9084,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -628,7 +814,10 @@
 			"headquarters": "Haflong",
 			"population": 213529,
 			"area": 4888,
-			"density": 44
+			"density": 44,
+			"lat": 25.1648,
+			"lon": 93.0174,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -638,7 +827,10 @@
 			"headquarters": "Goalpara",
 			"population": 1008959,
 			"area": 1824,
-			"density": 553
+			"density": 553,
+			"lat": 26.1767,
+			"lon": 90.6263,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -648,7 +840,10 @@
 			"headquarters": "Golaghat",
 			"population": 1058674,
 			"area": 3502,
-			"density": 302
+			"density": 302,
+			"lat": 26.5117,
+			"lon": 93.9595,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -658,7 +853,10 @@
 			"headquarters": "Hailakandi",
 			"population": 659260,
 			"area": 1327,
-			"density": 497
+			"density": 497,
+			"lat": 24.6839,
+			"lon": 92.561,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -668,7 +866,10 @@
 			"headquarters": "Jorhat",
 			"population": 1091295,
 			"area": 2851,
-			"density": 383
+			"density": 383,
+			"lat": 26.7575,
+			"lon": 94.2031,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -678,7 +879,10 @@
 			"headquarters": "Amingaon",
 			"population": 1517202,
 			"area": 3480,
-			"density": 436
+			"density": 436,
+			"lat": 26.1849,
+			"lon": 91.6786,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -688,7 +892,10 @@
 			"headquarters": "Guwahati",
 			"population": 1260419,
 			"area": 627,
-			"density": 2010
+			"density": 2010,
+			"lat": 26.1844,
+			"lon": 91.7458,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -698,7 +905,10 @@
 			"headquarters": "Diphu",
 			"population": 965280,
 			"area": 10434,
-			"density": 93
+			"density": 93,
+			"lat": 25.8434,
+			"lon": 93.4312,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -708,7 +918,10 @@
 			"headquarters": "Karimganj",
 			"population": 1217002,
 			"area": 1809,
-			"density": 673
+			"density": 673,
+			"lat": 24.8692,
+			"lon": 92.3554,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -718,7 +931,10 @@
 			"headquarters": "Kokrajhar",
 			"population": 886999,
 			"area": 3129,
-			"density": 283
+			"density": 283,
+			"lat": 26.4011,
+			"lon": 90.2729,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -728,7 +944,10 @@
 			"headquarters": "North Lakhimpur",
 			"population": 1040644,
 			"area": 2277,
-			"density": 457
+			"density": 457,
+			"lat": 27.2352,
+			"lon": 94.1036,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -738,7 +957,10 @@
 			"headquarters": "Garamur",
 			"population": 167304,
 			"area": 880,
-			"density": 300
+			"density": 300,
+			"lat": 26.9489,
+			"lon": 94.172,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -748,7 +970,10 @@
 			"headquarters": "Marigaon",
 			"population": 957853,
 			"area": 1704,
-			"density": 562
+			"density": 562,
+			"lat": 26.2491,
+			"lon": 92.3476,
+			"geo_source": "district"
 		},
 		{
 			"state": "Assam",
@@ -758,7 +983,10 @@
 			"headquarters": "Nagaon",
 			"population": 2826006,
 			"area": 3831,
-			"density": 738
+			"density": 738,
+			"lat": 26.35,
+			"lon": 92.6667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -768,7 +996,10 @@
 			"headquarters": "Nalbari",
 			"population": 769919,
 			"area": 1009,
-			"density": 763
+			"density": 763,
+			"lat": 26.4394,
+			"lon": 91.4404,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -778,7 +1009,10 @@
 			"headquarters": "Sibsagar",
 			"population": 1150253,
 			"area": 2668,
-			"density": 431
+			"density": 431,
+			"lat": 26.9843,
+			"lon": 94.6378,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -788,7 +1022,10 @@
 			"headquarters": "Tezpur",
 			"population": 1925975,
 			"area": 5324,
-			"density": 362
+			"density": 362,
+			"lat": 26.6333,
+			"lon": 92.8,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -798,7 +1035,10 @@
 			"headquarters": "Hatsingimari",
 			"population": 555114,
 			"area": 568,
-			"density": 980
+			"density": 980,
+			"lat": 25.7099,
+			"lon": 89.9008,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -808,7 +1048,10 @@
 			"headquarters": "Tinsukia",
 			"population": 1316948,
 			"area": 3790,
-			"density": 347
+			"density": 347,
+			"lat": 27.489,
+			"lon": 95.3599,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -818,7 +1061,10 @@
 			"headquarters": "Udalguri",
 			"population": 832769,
 			"area": 1676,
-			"density": 497
+			"density": 497,
+			"lat": 26.7537,
+			"lon": 92.1021,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Assam",
@@ -828,7 +1074,10 @@
 			"headquarters": "Hamren",
 			"population": 300320,
 			"area": 3035,
-			"density": 99
+			"density": 99,
+			"lat": 25.9335,
+			"lon": 92.6166,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -838,7 +1087,10 @@
 			"headquarters": "Araria",
 			"population": 2806200,
 			"area": 2829,
-			"density": 992
+			"density": 992,
+			"lat": 26.1493,
+			"lon": 87.5132,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -848,7 +1100,10 @@
 			"headquarters": "Arwal",
 			"population": 700843,
 			"area": 638,
-			"density": 1098
+			"density": 1098,
+			"lat": 25.2428,
+			"lon": 84.6657,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -858,7 +1113,10 @@
 			"headquarters": "Aurangabad",
 			"population": 2511243,
 			"area": 3303,
-			"density": 760
+			"density": 760,
+			"lat": 24.752,
+			"lon": 84.3742,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -868,7 +1126,10 @@
 			"headquarters": "Banka",
 			"population": 2029339,
 			"area": 3018,
-			"density": 672
+			"density": 672,
+			"lat": 24.8809,
+			"lon": 86.9226,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -878,7 +1139,10 @@
 			"headquarters": "Begusarai",
 			"population": 2954367,
 			"area": 1917,
-			"density": 1540
+			"density": 1540,
+			"lat": 25.4185,
+			"lon": 86.1339,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -888,7 +1152,10 @@
 			"headquarters": "Bhagalpur",
 			"population": 3032226,
 			"area": 2569,
-			"density": 1180
+			"density": 1180,
+			"lat": 25.2445,
+			"lon": 86.9718,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -898,7 +1165,10 @@
 			"headquarters": "Arrah",
 			"population": 2720155,
 			"area": 2473,
-			"density": 1136
+			"density": 1136,
+			"lat": 25.5563,
+			"lon": 84.6633,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -908,7 +1178,10 @@
 			"headquarters": "Buxar",
 			"population": 1707643,
 			"area": 1624,
-			"density": 1003
+			"density": 1003,
+			"lat": 25.5755,
+			"lon": 83.9804,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -918,7 +1191,10 @@
 			"headquarters": "Darbhanga",
 			"population": 3921971,
 			"area": 2278,
-			"density": 1721
+			"density": 1721,
+			"lat": 26.1522,
+			"lon": 85.8971,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -928,7 +1204,10 @@
 			"headquarters": "Motihari",
 			"population": 5082868,
 			"area": 3969,
-			"density": 1281
+			"density": 1281,
+			"lat": 27.0983,
+			"lon": 84.5492,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -938,7 +1217,10 @@
 			"headquarters": "Gaya",
 			"population": 4379383,
 			"area": 4978,
-			"density": 880
+			"density": 880,
+			"lat": 24.7969,
+			"lon": 85.0038,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -948,7 +1230,10 @@
 			"headquarters": "Gopalganj",
 			"population": 2558037,
 			"area": 2033,
-			"density": 1258
+			"density": 1258,
+			"lat": 26.4673,
+			"lon": 84.4404,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -958,7 +1243,10 @@
 			"headquarters": "Jamui",
 			"population": 1756078,
 			"area": 3099,
-			"density": 567
+			"density": 567,
+			"lat": 24.9261,
+			"lon": 86.2253,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -968,7 +1256,10 @@
 			"headquarters": "Jehanabad",
 			"population": 1124176,
 			"area": 1569,
-			"density": 1206
+			"density": 1206,
+			"lat": 25.2137,
+			"lon": 84.9871,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -978,7 +1269,10 @@
 			"headquarters": "Bhabua",
 			"population": 1626900,
 			"area": 3363,
-			"density": 488
+			"density": 488,
+			"lat": 25.0405,
+			"lon": 83.6075,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -988,7 +1282,10 @@
 			"headquarters": "Katihar",
 			"population": 3068149,
 			"area": 3056,
-			"density": 1004
+			"density": 1004,
+			"lat": 25.5385,
+			"lon": 87.5704,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -998,7 +1295,10 @@
 			"headquarters": "Khagaria",
 			"population": 1657599,
 			"area": 1486,
-			"density": 1115
+			"density": 1115,
+			"lat": 25.5022,
+			"lon": 86.4671,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1008,7 +1308,10 @@
 			"headquarters": "Kishanganj",
 			"population": 1690948,
 			"area": 1884,
-			"density": 898
+			"density": 898,
+			"lat": 26.1022,
+			"lon": 87.9553,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1018,7 +1321,10 @@
 			"headquarters": "Lakhisarai",
 			"population": 1000717,
 			"area": 1229,
-			"density": 815
+			"density": 815,
+			"lat": 25.1544,
+			"lon": 86.1745,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Bihar",
@@ -1028,7 +1334,10 @@
 			"headquarters": "Madhepura",
 			"population": 1994618,
 			"area": 1787,
-			"density": 1116
+			"density": 1116,
+			"lat": 25.9213,
+			"lon": 86.7927,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1038,7 +1347,10 @@
 			"headquarters": "Madhubani",
 			"population": 4476044,
 			"area": 3501,
-			"density": 1279
+			"density": 1279,
+			"lat": 26.3537,
+			"lon": 86.0717,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1048,7 +1360,10 @@
 			"headquarters": "Munger",
 			"population": 1359054,
 			"area": 1419,
-			"density": 958
+			"density": 958,
+			"lat": 25.3746,
+			"lon": 86.4745,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1058,7 +1373,10 @@
 			"headquarters": "Muzaffarpur",
 			"population": 4778610,
 			"area": 3173,
-			"density": 1506
+			"density": 1506,
+			"lat": 26.1226,
+			"lon": 85.3906,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1068,7 +1386,10 @@
 			"headquarters": "Bihar Sharif",
 			"population": 2872523,
 			"area": 2354,
-			"density": 1220
+			"density": 1220,
+			"lat": 25.2008,
+			"lon": 85.5239,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1078,7 +1399,10 @@
 			"headquarters": "Nawada",
 			"population": 2216653,
 			"area": 2492,
-			"density": 889
+			"density": 889,
+			"lat": 24.8867,
+			"lon": 85.5436,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1088,7 +1412,10 @@
 			"headquarters": "Patna",
 			"population": 5772804,
 			"area": 3202,
-			"density": 1803
+			"density": 1803,
+			"lat": 25.5941,
+			"lon": 85.1356,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1098,7 +1425,10 @@
 			"headquarters": "Purnia",
 			"population": 3273127,
 			"area": 3228,
-			"density": 1014
+			"density": 1014,
+			"lat": 25.7789,
+			"lon": 87.4742,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1108,7 +1438,10 @@
 			"headquarters": "Sasaram",
 			"population": 2962593,
 			"area": 3850,
-			"density": 763
+			"density": 763,
+			"lat": 24.9494,
+			"lon": 84.0165,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1118,7 +1451,10 @@
 			"headquarters": "Saharsa",
 			"population": 1897102,
 			"area": 1702,
-			"density": 1125
+			"density": 1125,
+			"lat": 25.875,
+			"lon": 86.5961,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1128,7 +1464,10 @@
 			"headquarters": "Samastipur",
 			"population": 4254782,
 			"area": 2905,
-			"density": 1465
+			"density": 1465,
+			"lat": 25.8622,
+			"lon": 85.7795,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1138,7 +1477,10 @@
 			"headquarters": "Chhapra",
 			"population": 3943098,
 			"area": 2641,
-			"density": 1493
+			"density": 1493,
+			"lat": 26.4005,
+			"lon": 85.3721,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1148,7 +1490,10 @@
 			"headquarters": "Sheikhpura",
 			"population": 634927,
 			"area": 689,
-			"density": 922
+			"density": 922,
+			"lat": 25.1399,
+			"lon": 85.841,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1158,7 +1503,10 @@
 			"headquarters": "Sheohar",
 			"population": 656916,
 			"area": 443,
-			"density": 1882
+			"density": 1882,
+			"lat": 26.5139,
+			"lon": 85.2934,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1168,7 +1516,10 @@
 			"headquarters": "Sitamarhi",
 			"population": 3419622,
 			"area": 2199,
-			"density": 1491
+			"density": 1491,
+			"lat": 26.5936,
+			"lon": 85.4906,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1178,7 +1529,10 @@
 			"headquarters": "Siwan",
 			"population": 3318176,
 			"area": 2219,
-			"density": 1495
+			"density": 1495,
+			"lat": 26.221,
+			"lon": 84.3561,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1188,7 +1542,10 @@
 			"headquarters": "Supaul",
 			"population": 2228397,
 			"area": 2410,
-			"density": 919
+			"density": 919,
+			"lat": 26.1153,
+			"lon": 86.5951,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1198,7 +1555,10 @@
 			"headquarters": "Hajipur",
 			"population": 3495021,
 			"area": 2036,
-			"density": 1717
+			"density": 1717,
+			"lat": 25.6854,
+			"lon": 85.2098,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Bihar",
@@ -1208,37 +1568,49 @@
 			"headquarters": "Bettiah",
 			"population": 3935042,
 			"area": 5229,
-			"density": 753
+			"density": 753,
+			"lat": 26.8023,
+			"lon": 84.5031,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Balod",
 			"headquarters": "Balod",
 			"population": 826165,
 			"area": 3527,
-			"density": 234
+			"density": 234,
+			"lat": 20.7308,
+			"lon": 81.2058,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Baloda Bazar",
 			"headquarters": "Baloda Bazar",
 			"population": 1305343,
 			"area": 4748,
-			"density": 275
+			"density": 275,
+			"lat": 21.6568,
+			"lon": 82.1606,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Balrampur-Ramanujganj",
 			"headquarters": "Balrampur",
 			"population": 730491,
 			"area": 3806,
-			"density": 190
+			"density": 190,
+			"lat": 23.6122,
+			"lon": 83.6111,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1248,17 +1620,23 @@
 			"headquarters": "Jagdalpur",
 			"population": 834873,
 			"area": 4030,
-			"density": 210
+			"density": 210,
+			"lat": 19.0814,
+			"lon": 82.0213,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Bemetara",
 			"headquarters": "Bemetara",
 			"population": 795759,
 			"area": 2855,
-			"density": 270
+			"density": 270,
+			"lat": 21.7156,
+			"lon": 81.5342,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1268,7 +1646,10 @@
 			"headquarters": "Bijapur",
 			"population": 229832,
 			"area": 6562,
-			"density": 35
+			"density": 35,
+			"lat": 18.7939,
+			"lon": 80.816,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1278,7 +1659,10 @@
 			"headquarters": "Bilaspur",
 			"population": 1961922,
 			"area": 3508,
-			"density": 460
+			"density": 460,
+			"lat": 22.08,
+			"lon": 82.1554,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1288,7 +1672,10 @@
 			"headquarters": "Dantewada",
 			"population": 533638,
 			"area": 3411,
-			"density": 59
+			"density": 59,
+			"lat": 18.8641,
+			"lon": 81.3834,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1298,7 +1685,10 @@
 			"headquarters": "Dhamtari",
 			"population": 799199,
 			"area": 2029,
-			"density": 394
+			"density": 394,
+			"lat": 20.7072,
+			"lon": 81.5487,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1308,27 +1698,36 @@
 			"headquarters": "Durg",
 			"population": 1721726,
 			"area": 2238,
-			"density": 770
+			"density": 770,
+			"lat": 21.1915,
+			"lon": 81.2762,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Gariaband",
 			"headquarters": "Gariaband",
 			"population": 597653,
 			"area": 5823,
-			"density": 103
+			"density": 103,
+			"lat": 20.6332,
+			"lon": 82.0622,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Gaurela-Pendra-Marwahi",
 			"headquarters": "Gaurela",
 			"population": 336420,
 			"area": 2307,
-			"density": 150
+			"density": 150,
+			"lat": 22.7545,
+			"lon": 81.9011,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1338,7 +1737,10 @@
 			"headquarters": "Janjgir",
 			"population": 1620632,
 			"area": 3848,
-			"density": 421
+			"density": 421,
+			"lat": 22.0092,
+			"lon": 82.5778,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1348,7 +1750,10 @@
 			"headquarters": "Jashpur Nagar",
 			"population": 852043,
 			"area": 5825,
-			"density": 146
+			"density": 146,
+			"lat": 22.8878,
+			"lon": 84.1386,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1358,7 +1763,10 @@
 			"headquarters": "Kawardha",
 			"population": 584667,
 			"area": 4237,
-			"density": 195
+			"density": 195,
+			"lat": 22.0085,
+			"lon": 81.2315,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1368,27 +1776,36 @@
 			"headquarters": "Kanker",
 			"population": 748593,
 			"area": 6513,
-			"density": 115
+			"density": 115,
+			"lat": 20.2719,
+			"lon": 81.4918,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Khairagarh-Chhuikhadan-Gandai",
 			"headquarters": "Khairagarh",
 			"population": 368444,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 21.4186,
+			"lon": 80.9794,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Kondagaon",
 			"headquarters": "Kondagaon",
 			"population": 578326,
 			"area": 7768,
-			"density": 74
+			"density": 74,
+			"lat": 19.5908,
+			"lon": 81.664,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1398,7 +1815,10 @@
 			"headquarters": "Korba",
 			"population": 1206563,
 			"area": 6615,
-			"density": 183
+			"density": 183,
+			"lat": 22.3458,
+			"lon": 82.6963,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1408,7 +1828,10 @@
 			"headquarters": "Baikunthpur",
 			"population": 659039,
 			"area": 6578,
-			"density": 100
+			"density": 100,
+			"lat": 23.2621,
+			"lon": 82.5605,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1418,7 +1841,10 @@
 			"headquarters": "Mahasamund",
 			"population": 1032275,
 			"area": 4779,
-			"density": 216
+			"density": 216,
+			"lat": 21.1074,
+			"lon": 82.0948,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1428,7 +1854,10 @@
 			"headquarters": "Manendragarh",
 			"population": 422248,
 			"area": 1726,
-			"density": 0
+			"density": 0,
+			"lat": 23.2134,
+			"lon": 82.2023,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1438,17 +1867,23 @@
 			"headquarters": "Mohla",
 			"population": 283947,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 20.8405,
+			"lon": 81.237,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Mungeli",
 			"headquarters": "Mungeli",
 			"population": 701707,
 			"area": 2750,
-			"density": 255
+			"density": 255,
+			"lat": 22.0657,
+			"lon": 81.6854,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1458,7 +1893,10 @@
 			"headquarters": "Narayanpur",
 			"population": 140206,
 			"area": 6640,
-			"density": 20
+			"density": 20,
+			"lat": 19.7179,
+			"lon": 81.2444,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1468,7 +1906,10 @@
 			"headquarters": "Raigarh",
 			"population": 1493627,
 			"area": 7068,
-			"density": 211
+			"density": 211,
+			"lat": 21.8976,
+			"lon": 83.3966,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1478,7 +1919,10 @@
 			"headquarters": "Raipur",
 			"population": 2160876,
 			"area": 2892,
-			"density": 750
+			"density": 750,
+			"lat": 21.2333,
+			"lon": 81.6333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1488,7 +1932,10 @@
 			"headquarters": "Rajnandgaon",
 			"population": 1537520,
 			"area": 8062,
-			"density": 191
+			"density": 191,
+			"lat": 21.0684,
+			"lon": 80.7971,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1498,7 +1945,10 @@
 			"headquarters": "Sarangarh",
 			"population": 607434,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 21.5861,
+			"lon": 83.0785,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1508,7 +1958,10 @@
 			"headquarters": "Sakti",
 			"population": 653036,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 22.0266,
+			"lon": 82.9609,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1518,17 +1971,23 @@
 			"headquarters": "Sukma",
 			"population": 250159,
 			"area": 5897,
-			"density": 42
+			"density": 42,
+			"lat": 18.3901,
+			"lon": 81.6594,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
 			"stateCode": "CG",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Surajpur",
 			"headquarters": "Surajpur",
 			"population": 789043,
 			"area": 2787,
-			"density": 280
+			"density": 280,
+			"lat": 23.2135,
+			"lon": 82.8684,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chhattisgarh",
@@ -1538,7 +1997,10 @@
 			"headquarters": "Ambikapur",
 			"population": 839661,
 			"area": 3265,
-			"density": 150
+			"density": 150,
+			"lat": 23.1189,
+			"lon": 83.1954,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Goa",
@@ -1548,7 +2010,10 @@
 			"headquarters": "Panaji",
 			"population": 817761,
 			"area": 1736,
-			"density": 471
+			"density": 471,
+			"lat": 15.6039,
+			"lon": 73.9967,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Goa",
@@ -1558,7 +2023,10 @@
 			"headquarters": "Margao",
 			"population": 639962,
 			"area": 1966,
-			"density": 326
+			"density": 326,
+			"lat": 15.275,
+			"lon": 73.9579,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1568,7 +2036,10 @@
 			"headquarters": "Ahmedabad",
 			"population": 7208200,
 			"area": 7170,
-			"density": 890
+			"density": 890,
+			"lat": 23.0258,
+			"lon": 72.5873,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1578,7 +2049,10 @@
 			"headquarters": "Amreli",
 			"population": 1513614,
 			"area": 6760,
-			"density": 205
+			"density": 205,
+			"lat": 21.5998,
+			"lon": 71.2117,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1588,7 +2062,10 @@
 			"headquarters": "Anand",
 			"population": 2090276,
 			"area": 2942,
-			"density": 711
+			"density": 711,
+			"lat": 22.5525,
+			"lon": 72.9552,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1598,7 +2075,10 @@
 			"headquarters": "Modasa",
 			"population": 1051746,
 			"area": 3217,
-			"density": 327
+			"density": 327,
+			"lat": 23.4625,
+			"lon": 73.2986,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1608,7 +2088,10 @@
 			"headquarters": "Palanpur",
 			"population": 3116045,
 			"area": 12703,
-			"density": 290
+			"density": 290,
+			"lat": 24.1713,
+			"lon": 72.4383,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1618,7 +2101,10 @@
 			"headquarters": "Bharuch",
 			"population": 1550822,
 			"area": 6524,
-			"density": 238
+			"density": 238,
+			"lat": 21.6948,
+			"lon": 72.9805,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1628,7 +2114,10 @@
 			"headquarters": "Bhavnagar",
 			"population": 2877961,
 			"area": 11155,
-			"density": 288
+			"density": 288,
+			"lat": 21.7629,
+			"lon": 72.1533,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1638,7 +2127,10 @@
 			"headquarters": "Botad",
 			"population": 656005,
 			"area": 2564,
-			"density": 256
+			"density": 256,
+			"lat": 22.1692,
+			"lon": 71.6667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1648,7 +2140,10 @@
 			"headquarters": "Chhota Udaipur",
 			"population": 1071831,
 			"area": 3237,
-			"density": 331
+			"density": 331,
+			"lat": 22.2224,
+			"lon": 73.7779,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Gujarat",
@@ -1658,7 +2153,10 @@
 			"headquarters": "Dahod",
 			"population": 2126558,
 			"area": 3642,
-			"density": 582
+			"density": 582,
+			"lat": 22.9194,
+			"lon": 74.1343,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Gujarat",
@@ -1668,7 +2166,10 @@
 			"headquarters": "Ahwa",
 			"population": 226769,
 			"area": 1764,
-			"density": 129
+			"density": 129,
+			"lat": 20.7572,
+			"lon": 73.6863,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1678,7 +2179,10 @@
 			"headquarters": "Khambhalia",
 			"population": 752484,
 			"area": 5684,
-			"density": 132
+			"density": 132,
+			"lat": 22.2068,
+			"lon": 69.6503,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1688,7 +2192,10 @@
 			"headquarters": "Gandhinagar",
 			"population": 1387478,
 			"area": 2163,
-			"density": 660
+			"density": 660,
+			"lat": 23.2167,
+			"lon": 72.6833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1698,7 +2205,10 @@
 			"headquarters": "Veraval",
 			"population": 1217477,
 			"area": 3754,
-			"density": 324
+			"density": 324,
+			"lat": 20.9077,
+			"lon": 70.3679,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1708,7 +2218,10 @@
 			"headquarters": "Jamnagar",
 			"population": 2159130,
 			"area": 14125,
-			"density": 153
+			"density": 153,
+			"lat": 22.4729,
+			"lon": 70.0667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1718,7 +2231,10 @@
 			"headquarters": "Junagadh",
 			"population": 2742291,
 			"area": 8839,
-			"density": 310
+			"density": 310,
+			"lat": 21.5197,
+			"lon": 70.4598,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1728,7 +2244,10 @@
 			"headquarters": "Nadiad",
 			"population": 2298934,
 			"area": 4215,
-			"density": 541
+			"density": 541,
+			"lat": 22.6939,
+			"lon": 72.8616,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1738,7 +2257,10 @@
 			"headquarters": "Bhuj",
 			"population": 2090313,
 			"area": 45652,
-			"density": 46
+			"density": 46,
+			"lat": 23.254,
+			"lon": 69.6693,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1748,7 +2270,10 @@
 			"headquarters": "Lunavada",
 			"population": 994624,
 			"area": 2500,
-			"density": 440
+			"density": 440,
+			"lat": 23.1284,
+			"lon": 73.6104,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1758,7 +2283,10 @@
 			"headquarters": "Mehsana",
 			"population": 2027727,
 			"area": 4386,
-			"density": 462
+			"density": 462,
+			"lat": 23.5986,
+			"lon": 72.3847,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1768,7 +2296,10 @@
 			"headquarters": "Morbi",
 			"population": 960329,
 			"area": 4871,
-			"density": 197
+			"density": 197,
+			"lat": 22.8004,
+			"lon": 70.8862,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Gujarat",
@@ -1778,7 +2309,10 @@
 			"headquarters": "Rajpipla",
 			"population": 590379,
 			"area": 2749,
-			"density": 214
+			"density": 214,
+			"lat": 21.8667,
+			"lon": 73.5,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1788,7 +2322,10 @@
 			"headquarters": "Navsari",
 			"population": 1330711,
 			"area": 2211,
-			"density": 602
+			"density": 602,
+			"lat": 20.9424,
+			"lon": 72.9247,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1798,7 +2335,10 @@
 			"headquarters": "Godhra",
 			"population": 2388267,
 			"area": 5219,
-			"density": 458
+			"density": 458,
+			"lat": 22.7755,
+			"lon": 73.6149,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1808,7 +2348,10 @@
 			"headquarters": "Patan",
 			"population": 1342746,
 			"area": 5738,
-			"density": 234
+			"density": 234,
+			"lat": 23.8507,
+			"lon": 72.1296,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1818,7 +2361,10 @@
 			"headquarters": "Porbandar",
 			"population": 586062,
 			"area": 2294,
-			"density": 255
+			"density": 255,
+			"lat": 21.6422,
+			"lon": 69.6093,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1828,7 +2374,10 @@
 			"headquarters": "Rajkot",
 			"population": 3157676,
 			"area": 11203,
-			"density": 282
+			"density": 282,
+			"lat": 22.2916,
+			"lon": 70.7932,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1838,7 +2387,10 @@
 			"headquarters": "Himatnagar",
 			"population": 2427346,
 			"area": 7390,
-			"density": 328
+			"density": 328,
+			"lat": 23.5989,
+			"lon": 72.966,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1848,7 +2400,10 @@
 			"headquarters": "Surat",
 			"population": 6081322,
 			"area": 4418,
-			"density": 953
+			"density": 953,
+			"lat": 21.1959,
+			"lon": 72.8302,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1858,7 +2413,10 @@
 			"headquarters": "Surendranagar",
 			"population": 1755873,
 			"area": 10489,
-			"density": 167
+			"density": 167,
+			"lat": 22.7271,
+			"lon": 71.6486,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1868,7 +2426,10 @@
 			"headquarters": "Vyara",
 			"population": 806489,
 			"area": 3435,
-			"density": 249
+			"density": 249,
+			"lat": 21.1108,
+			"lon": 73.3936,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1878,7 +2439,10 @@
 			"headquarters": "Vadodara",
 			"population": 3639775,
 			"area": 4312,
-			"density": 467
+			"density": 467,
+			"lat": 22.2994,
+			"lon": 73.2081,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Gujarat",
@@ -1888,7 +2452,10 @@
 			"headquarters": "Valsad",
 			"population": 1703068,
 			"area": 3034,
-			"density": 561
+			"density": 561,
+			"lat": 20.6101,
+			"lon": 72.9343,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1898,7 +2465,10 @@
 			"headquarters": "Ambala",
 			"population": 1136784,
 			"area": 1569,
-			"density": 722
+			"density": 722,
+			"lat": 30.361,
+			"lon": 76.7978,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1908,7 +2478,10 @@
 			"headquarters": "Bhiwani",
 			"population": 1629109,
 			"area": 5140,
-			"density": 341
+			"density": 341,
+			"lat": 28.793,
+			"lon": 76.1397,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1918,7 +2491,10 @@
 			"headquarters": "Charkhi Dadri",
 			"population": 502276,
 			"area": 1370,
-			"density": 367
+			"density": 367,
+			"lat": 28.5917,
+			"lon": 76.2716,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1928,7 +2504,10 @@
 			"headquarters": "Faridabad",
 			"population": 1798954,
 			"area": 783,
-			"density": 2298
+			"density": 2298,
+			"lat": 28.4112,
+			"lon": 77.3132,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1938,7 +2517,10 @@
 			"headquarters": "Fatehabad",
 			"population": 941522,
 			"area": 2538,
-			"density": 371
+			"density": 371,
+			"lat": 29.5153,
+			"lon": 75.4555,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1948,7 +2530,10 @@
 			"headquarters": "Gurugram",
 			"population": 1514085,
 			"area": 1258,
-			"density": 1241
+			"density": 1241,
+			"lat": 28.4601,
+			"lon": 77.0263,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1958,7 +2543,10 @@
 			"headquarters": "Hisar",
 			"population": 1742815,
 			"area": 3788,
-			"density": 438
+			"density": 438,
+			"lat": 29.1539,
+			"lon": 75.7229,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1968,7 +2556,10 @@
 			"headquarters": "Jhajjar",
 			"population": 956907,
 			"area": 1868,
-			"density": 522
+			"density": 522,
+			"lat": 28.6063,
+			"lon": 76.6565,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1978,7 +2569,10 @@
 			"headquarters": "Jind",
 			"population": 1332042,
 			"area": 2702,
-			"density": 493
+			"density": 493,
+			"lat": 29.3158,
+			"lon": 76.315,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1988,7 +2582,10 @@
 			"headquarters": "Kaithal",
 			"population": 1072861,
 			"area": 2799,
-			"density": 467
+			"density": 467,
+			"lat": 29.8015,
+			"lon": 76.3996,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -1998,7 +2595,10 @@
 			"headquarters": "Karnal",
 			"population": 1506323,
 			"area": 2471,
-			"density": 598
+			"density": 598,
+			"lat": 29.692,
+			"lon": 76.9845,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2008,7 +2608,10 @@
 			"headquarters": "Kurukshetra",
 			"population": 964231,
 			"area": 1530,
-			"density": 630
+			"density": 630,
+			"lat": 29.9657,
+			"lon": 76.837,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2018,7 +2621,10 @@
 			"headquarters": "Narnaul",
 			"population": 921680,
 			"area": 1900,
-			"density": 485
+			"density": 485,
+			"lat": 28.0444,
+			"lon": 76.1083,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2028,7 +2634,10 @@
 			"headquarters": "Nuh",
 			"population": 1089406,
 			"area": 1765,
-			"density": 729
+			"density": 729,
+			"lat": 28.103,
+			"lon": 77.0014,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2038,7 +2647,10 @@
 			"headquarters": "Palwal",
 			"population": 1040493,
 			"area": 1367,
-			"density": 761
+			"density": 761,
+			"lat": 28.1447,
+			"lon": 77.3255,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2048,7 +2660,10 @@
 			"headquarters": "Panchkula",
 			"population": 558890,
 			"area": 816,
-			"density": 622
+			"density": 622,
+			"lat": 30.6946,
+			"lon": 76.8504,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2058,7 +2673,10 @@
 			"headquarters": "Panipat",
 			"population": 1202811,
 			"area": 1250,
-			"density": 949
+			"density": 949,
+			"lat": 29.3875,
+			"lon": 76.9682,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2068,7 +2686,10 @@
 			"headquarters": "Rewari",
 			"population": 896129,
 			"area": 1559,
-			"density": 562
+			"density": 562,
+			"lat": 28.199,
+			"lon": 76.6183,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2078,7 +2699,10 @@
 			"headquarters": "Rohtak",
 			"population": 1058683,
 			"area": 1668,
-			"density": 607
+			"density": 607,
+			"lat": 28.8945,
+			"lon": 76.5892,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2088,7 +2712,10 @@
 			"headquarters": "Sirsa",
 			"population": 1295114,
 			"area": 4276,
-			"density": 303
+			"density": 303,
+			"lat": 29.5349,
+			"lon": 75.029,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2098,7 +2725,10 @@
 			"headquarters": "Sonipat",
 			"population": 1480080,
 			"area": 2260,
-			"density": 697
+			"density": 697,
+			"lat": 28.9948,
+			"lon": 77.0194,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Haryana",
@@ -2108,7 +2738,10 @@
 			"headquarters": "Yamunanagar",
 			"population": 1214162,
 			"area": 1756,
-			"density": 687
+			"density": 687,
+			"lat": 30.128,
+			"lon": 77.2837,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2118,7 +2751,10 @@
 			"headquarters": "Bilaspur",
 			"population": 382056,
 			"area": 1167,
-			"density": 327
+			"density": 327,
+			"lat": 31.3303,
+			"lon": 76.7566,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2128,7 +2764,10 @@
 			"headquarters": "Chamba",
 			"population": 518844,
 			"area": 6528,
-			"density": 80
+			"density": 80,
+			"lat": 32.5553,
+			"lon": 76.1265,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2138,7 +2777,10 @@
 			"headquarters": "Hamirpur",
 			"population": 454293,
 			"area": 1118,
-			"density": 406
+			"density": 406,
+			"lat": 31.6841,
+			"lon": 76.5251,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2148,7 +2790,10 @@
 			"headquarters": "Dharamshala",
 			"population": 1507223,
 			"area": 5739,
-			"density": 263
+			"density": 263,
+			"lat": 32.0913,
+			"lon": 76.2627,
+			"geo_source": "district"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2158,7 +2803,10 @@
 			"headquarters": "Reckong Peo",
 			"population": 84298,
 			"area": 6401,
-			"density": 13
+			"density": 13,
+			"lat": 31.5399,
+			"lon": 78.2721,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2168,7 +2816,10 @@
 			"headquarters": "Kullu",
 			"population": 437474,
 			"area": 5503,
-			"density": 79
+			"density": 79,
+			"lat": 31.9583,
+			"lon": 77.1082,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2178,7 +2829,10 @@
 			"headquarters": "Keylong",
 			"population": 31528,
 			"area": 13835,
-			"density": 2
+			"density": 2,
+			"lat": 32.5019,
+			"lon": 77.5794,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2188,7 +2842,10 @@
 			"headquarters": "Mandi",
 			"population": 999518,
 			"area": 3950,
-			"density": 253
+			"density": 253,
+			"lat": 31.7119,
+			"lon": 76.9327,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2198,7 +2855,10 @@
 			"headquarters": "Shimla",
 			"population": 813384,
 			"area": 5131,
-			"density": 159
+			"density": 159,
+			"lat": 31.1044,
+			"lon": 77.1666,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2208,7 +2868,10 @@
 			"headquarters": "Nahan",
 			"population": 530164,
 			"area": 2825,
-			"density": 188
+			"density": 188,
+			"lat": 30.5603,
+			"lon": 77.2943,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2218,7 +2881,10 @@
 			"headquarters": "Solan",
 			"population": 576670,
 			"area": 1936,
-			"density": 298
+			"density": 298,
+			"lat": 30.9091,
+			"lon": 77.1087,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Himachal Pradesh",
@@ -2228,7 +2894,10 @@
 			"headquarters": "Una",
 			"population": 521057,
 			"area": 1540,
-			"density": 328
+			"density": 328,
+			"lat": 31.4649,
+			"lon": 76.2691,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2238,7 +2907,10 @@
 			"headquarters": "Bokaro",
 			"population": 2061918,
 			"area": 2883,
-			"density": 716
+			"density": 716,
+			"lat": 23.6693,
+			"lon": 86.1516,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2248,7 +2920,10 @@
 			"headquarters": "Chatra",
 			"population": 1042304,
 			"area": 3700,
-			"density": 275
+			"density": 275,
+			"lat": 24.2065,
+			"lon": 84.8709,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2258,7 +2933,10 @@
 			"headquarters": "Deoghar",
 			"population": 1491879,
 			"area": 2479,
-			"density": 602
+			"density": 602,
+			"lat": 24.4898,
+			"lon": 86.699,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2268,7 +2946,10 @@
 			"headquarters": "Dhanbad",
 			"population": 2682662,
 			"area": 2040,
-			"density": 1316
+			"density": 1316,
+			"lat": 23.7976,
+			"lon": 86.4299,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2278,7 +2959,10 @@
 			"headquarters": "Dumka",
 			"population": 1321096,
 			"area": 4404,
-			"density": 300
+			"density": 300,
+			"lat": 24.2678,
+			"lon": 87.2485,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2288,7 +2972,10 @@
 			"headquarters": "Jamshedpur",
 			"population": 2291032,
 			"area": 3562,
-			"density": 648
+			"density": 648,
+			"lat": 22.8028,
+			"lon": 86.1855,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2298,7 +2985,10 @@
 			"headquarters": "Garhwa",
 			"population": 1322387,
 			"area": 4064,
-			"density": 327
+			"density": 327,
+			"lat": 24.16,
+			"lon": 83.8076,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2308,7 +2998,10 @@
 			"headquarters": "Giridih",
 			"population": 2445203,
 			"area": 4887,
-			"density": 497
+			"density": 497,
+			"lat": 24.1862,
+			"lon": 86.3088,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2318,7 +3011,10 @@
 			"headquarters": "Godda",
 			"population": 1311382,
 			"area": 2110,
-			"density": 622
+			"density": 622,
+			"lat": 24.827,
+			"lon": 87.2125,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2328,7 +3024,10 @@
 			"headquarters": "Gumla",
 			"population": 1025656,
 			"area": 5360,
-			"density": 191
+			"density": 191,
+			"lat": 23.0427,
+			"lon": 84.5443,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2338,7 +3037,10 @@
 			"headquarters": "Hazaribag",
 			"population": 1734495,
 			"area": 3555,
-			"density": 488
+			"density": 488,
+			"lat": 23.9924,
+			"lon": 85.3616,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2348,7 +3050,10 @@
 			"headquarters": "Jamtara",
 			"population": 790207,
 			"area": 1802,
-			"density": 439
+			"density": 439,
+			"lat": 23.963,
+			"lon": 86.8029,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2358,7 +3063,10 @@
 			"headquarters": "Khunti",
 			"population": 530299,
 			"area": 2535,
-			"density": 210
+			"density": 210,
+			"lat": 23.076,
+			"lon": 85.2782,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2368,7 +3076,10 @@
 			"headquarters": "Koderma",
 			"population": 716259,
 			"area": 2540,
-			"density": 282
+			"density": 282,
+			"lat": 24.4931,
+			"lon": 85.5561,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Jharkhand",
@@ -2378,7 +3089,10 @@
 			"headquarters": "Latehar",
 			"population": 725673,
 			"area": 3630,
-			"density": 200
+			"density": 200,
+			"lat": 23.7442,
+			"lon": 84.4998,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2388,7 +3102,10 @@
 			"headquarters": "Lohardaga",
 			"population": 461738,
 			"area": 1502,
-			"density": 307
+			"density": 307,
+			"lat": 23.4331,
+			"lon": 84.6799,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2398,7 +3115,10 @@
 			"headquarters": "Pakur",
 			"population": 899200,
 			"area": 1805,
-			"density": 498
+			"density": 498,
+			"lat": 24.6393,
+			"lon": 87.8424,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2408,7 +3128,10 @@
 			"headquarters": "Daltonganj",
 			"population": 1936319,
 			"area": 4393,
-			"density": 442
+			"density": 442,
+			"lat": 24.0397,
+			"lon": 84.0658,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2418,7 +3141,10 @@
 			"headquarters": "Ramgarh",
 			"population": 949159,
 			"area": 1341,
-			"density": 708
+			"density": 708,
+			"lat": 23.6303,
+			"lon": 85.5216,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2428,7 +3154,10 @@
 			"headquarters": "Ranchi",
 			"population": 2912022,
 			"area": 5097,
-			"density": 572
+			"density": 572,
+			"lat": 23.3432,
+			"lon": 85.3094,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2438,7 +3167,10 @@
 			"headquarters": "Sahebganj",
 			"population": 1150038,
 			"area": 2063,
-			"density": 558
+			"density": 558,
+			"lat": 25.2443,
+			"lon": 87.6348,
+			"geo_source": "district"
 		},
 		{
 			"state": "Jharkhand",
@@ -2448,7 +3180,10 @@
 			"headquarters": "Seraikela",
 			"population": 1063458,
 			"area": 2657,
-			"density": 401
+			"density": 401,
+			"lat": 22.8232,
+			"lon": 85.9197,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Jharkhand",
@@ -2458,7 +3193,10 @@
 			"headquarters": "Simdega",
 			"population": 599813,
 			"area": 3750,
-			"density": 160
+			"density": 160,
+			"lat": 22.6152,
+			"lon": 84.5021,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jharkhand",
@@ -2468,7 +3206,10 @@
 			"headquarters": "Chaibasa",
 			"population": 1501619,
 			"area": 7224,
-			"density": 209
+			"density": 209,
+			"lat": 22.5504,
+			"lon": 85.8025,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2478,7 +3219,10 @@
 			"headquarters": "Bagalakote",
 			"population": 1890826,
 			"area": 6583,
-			"density": 288
+			"density": 288,
+			"lat": 16.1589,
+			"lon": 75.6617,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2488,7 +3232,10 @@
 			"headquarters": "Ballari",
 			"population": 1400970,
 			"area": 4252,
-			"density": 330
+			"density": 330,
+			"lat": 15.142,
+			"lon": 76.924,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2498,7 +3245,10 @@
 			"headquarters": "Belagavi",
 			"population": 4778439,
 			"area": 13415,
-			"density": 356
+			"density": 356,
+			"lat": 15.8521,
+			"lon": 74.5045,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2508,7 +3258,10 @@
 			"headquarters": "Bengaluru",
 			"population": 987257,
 			"area": 2239,
-			"density": 441
+			"density": 441,
+			"lat": 12.9719,
+			"lon": 77.5937,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2518,7 +3271,10 @@
 			"headquarters": "Bengaluru",
 			"population": 9588910,
 			"area": 2190,
-			"density": 4378
+			"density": 4378,
+			"lat": 12.9719,
+			"lon": 77.5937,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2528,7 +3284,10 @@
 			"headquarters": "Bidar",
 			"population": 1700018,
 			"area": 5448,
-			"density": 312
+			"density": 312,
+			"lat": 17.908,
+			"lon": 77.5152,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2538,7 +3297,10 @@
 			"headquarters": "Chamarajanagara",
 			"population": 1020962,
 			"area": 5102,
-			"density": 200
+			"density": 200,
+			"lat": 11.9279,
+			"lon": 76.9364,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2548,7 +3310,10 @@
 			"headquarters": "Chikkaballapura",
 			"population": 1254377,
 			"area": 4208,
-			"density": 298
+			"density": 298,
+			"lat": 13.5898,
+			"lon": 77.7788,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2558,7 +3323,10 @@
 			"headquarters": "Chikkamagaluru",
 			"population": 1137753,
 			"area": 7201,
-			"density": 158
+			"density": 158,
+			"lat": 13.3223,
+			"lon": 75.774,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2568,7 +3336,10 @@
 			"headquarters": "Chitradurga",
 			"population": 1660378,
 			"area": 8437,
-			"density": 197
+			"density": 197,
+			"lat": 14.2226,
+			"lon": 76.4004,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2578,7 +3349,10 @@
 			"headquarters": "Mangalore",
 			"population": 2083625,
 			"area": 4559,
-			"density": 457
+			"density": 457,
+			"lat": 12.8465,
+			"lon": 74.8406,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2588,7 +3362,10 @@
 			"headquarters": "Davangere",
 			"population": 1643494,
 			"area": 4460,
-			"density": 370
+			"density": 370,
+			"lat": 14.4669,
+			"lon": 75.9269,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2598,7 +3375,10 @@
 			"headquarters": "Dharwada",
 			"population": 1846993,
 			"area": 4265,
-			"density": 434
+			"density": 434,
+			"lat": 15.5,
+			"lon": 75.3333,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2608,7 +3388,10 @@
 			"headquarters": "Gadag-Betageri",
 			"population": 1065235,
 			"area": 4651,
-			"density": 229
+			"density": 229,
+			"lat": 15.4167,
+			"lon": 75.6167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2618,7 +3401,10 @@
 			"headquarters": "Kalaburagi",
 			"population": 2564892,
 			"area": 10990,
-			"density": 233
+			"density": 233,
+			"lat": 17.3358,
+			"lon": 76.8376,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2628,7 +3414,10 @@
 			"headquarters": "Hassan",
 			"population": 1776221,
 			"area": 6814,
-			"density": 261
+			"density": 261,
+			"lat": 13.0071,
+			"lon": 76.0962,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2638,7 +3427,10 @@
 			"headquarters": "Haveri",
 			"population": 1598506,
 			"area": 4825,
-			"density": 331
+			"density": 331,
+			"lat": 14.7935,
+			"lon": 75.4045,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2648,7 +3440,10 @@
 			"headquarters": "Madikeri",
 			"population": 554762,
 			"area": 4102,
-			"density": 135
+			"density": 135,
+			"lat": 12.426,
+			"lon": 75.7382,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2658,7 +3453,10 @@
 			"headquarters": "Kolar",
 			"population": 1540231,
 			"area": 4012,
-			"density": 384
+			"density": 384,
+			"lat": 13.1377,
+			"lon": 78.13,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2668,7 +3466,10 @@
 			"headquarters": "Koppala",
 			"population": 1391292,
 			"area": 5565,
-			"density": 250
+			"density": 250,
+			"lat": 13.0301,
+			"lon": 75.4173,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2678,7 +3479,10 @@
 			"headquarters": "Mandya",
 			"population": 1808680,
 			"area": 4961,
-			"density": 365
+			"density": 365,
+			"lat": 12.5223,
+			"lon": 76.8975,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2688,7 +3492,10 @@
 			"headquarters": "Mysuru",
 			"population": 2994744,
 			"area": 6854,
-			"density": 437
+			"density": 437,
+			"lat": 12.2979,
+			"lon": 76.6393,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2698,7 +3505,10 @@
 			"headquarters": "Raichuru",
 			"population": 1924773,
 			"area": 6839,
-			"density": 228
+			"density": 228,
+			"lat": 16.0833,
+			"lon": 77.1667,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2708,7 +3518,10 @@
 			"headquarters": "Ramanagara",
 			"population": 1082739,
 			"area": 3573,
-			"density": 303
+			"density": 303,
+			"lat": 12.728,
+			"lon": 77.2745,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Karnataka",
@@ -2718,7 +3531,10 @@
 			"headquarters": "Shivamogga",
 			"population": 1755512,
 			"area": 8495,
-			"density": 207
+			"density": 207,
+			"lat": 13.9316,
+			"lon": 75.5679,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2728,7 +3544,10 @@
 			"headquarters": "Tumakuru",
 			"population": 2681449,
 			"area": 10598,
-			"density": 253
+			"density": 253,
+			"lat": 13.3414,
+			"lon": 77.1022,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2738,7 +3557,10 @@
 			"headquarters": "Udupi",
 			"population": 1177908,
 			"area": 3879,
-			"density": 304
+			"density": 304,
+			"lat": 13.3347,
+			"lon": 74.7462,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2748,7 +3570,10 @@
 			"headquarters": "Karwar",
 			"population": 1353299,
 			"area": 10291,
-			"density": 132
+			"density": 132,
+			"lat": 14.8136,
+			"lon": 74.1297,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2758,7 +3583,10 @@
 			"headquarters": "Hospete",
 			"population": 1353628,
 			"area": 5644,
-			"density": 240
+			"density": 240,
+			"lat": 13.4048,
+			"lon": 77.3055,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2768,7 +3596,10 @@
 			"headquarters": "Vijayapura",
 			"population": 2175102,
 			"area": 10517,
-			"density": 207
+			"density": 207,
+			"lat": 16.8244,
+			"lon": 75.7154,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Karnataka",
@@ -2778,7 +3609,10 @@
 			"headquarters": "Yadgiri",
 			"population": 1172985,
 			"area": 5225,
-			"density": 224
+			"density": 224,
+			"lat": 16.7443,
+			"lon": 77.13,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Kerala",
@@ -2788,7 +3622,10 @@
 			"headquarters": "Alappuzha",
 			"population": 2121943,
 			"area": 1415,
-			"density": 1501
+			"density": 1501,
+			"lat": 9.49,
+			"lon": 76.3264,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2798,7 +3635,10 @@
 			"headquarters": "Kakkanad",
 			"population": 3279860,
 			"area": 3063,
-			"density": 1069
+			"density": 1069,
+			"lat": 10.0164,
+			"lon": 76.3417,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2808,7 +3648,10 @@
 			"headquarters": "Painavu",
 			"population": 1107453,
 			"area": 4356,
-			"density": 254
+			"density": 254,
+			"lat": 9.85,
+			"lon": 76.9667,
+			"geo_source": "district"
 		},
 		{
 			"state": "Kerala",
@@ -2818,7 +3661,10 @@
 			"headquarters": "Kannur",
 			"population": 2525637,
 			"area": 2961,
-			"density": 852
+			"density": 852,
+			"lat": 11.8675,
+			"lon": 75.3576,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2828,7 +3674,10 @@
 			"headquarters": "Kasaragod",
 			"population": 1302600,
 			"area": 1989,
-			"density": 654
+			"density": 654,
+			"lat": 12.4984,
+			"lon": 74.9896,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2838,7 +3687,10 @@
 			"headquarters": "Kollam",
 			"population": 2629703,
 			"area": 2483,
-			"density": 1056
+			"density": 1056,
+			"lat": 8.8811,
+			"lon": 76.5847,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2848,7 +3700,10 @@
 			"headquarters": "Kottayam",
 			"population": 1979384,
 			"area": 2206,
-			"density": 896
+			"density": 896,
+			"lat": 9.5869,
+			"lon": 76.5213,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2858,7 +3713,10 @@
 			"headquarters": "Kozhikode",
 			"population": 3089543,
 			"area": 2345,
-			"density": 1318
+			"density": 1318,
+			"lat": 11.248,
+			"lon": 75.7804,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2868,7 +3726,10 @@
 			"headquarters": "Malappuram",
 			"population": 4110956,
 			"area": 3554,
-			"density": 1058
+			"density": 1058,
+			"lat": 11.042,
+			"lon": 76.0815,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2878,7 +3739,10 @@
 			"headquarters": "Palakkad",
 			"population": 2810892,
 			"area": 4482,
-			"density": 627
+			"density": 627,
+			"lat": 10.7732,
+			"lon": 76.6537,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2888,7 +3752,10 @@
 			"headquarters": "Pathanamthitta",
 			"population": 1195537,
 			"area": 2652,
-			"density": 453
+			"density": 453,
+			"lat": 9.2667,
+			"lon": 76.7833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2898,7 +3765,10 @@
 			"headquarters": "Thiruvananthapuram",
 			"population": 3307284,
 			"area": 2189,
-			"density": 1509
+			"density": 1509,
+			"lat": 8.4855,
+			"lon": 76.9492,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2908,7 +3778,10 @@
 			"headquarters": "Thrissur",
 			"population": 3110327,
 			"area": 3027,
-			"density": 1026
+			"density": 1026,
+			"lat": 10.5167,
+			"lon": 76.2167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Kerala",
@@ -2918,7 +3791,10 @@
 			"headquarters": "Kalpetta",
 			"population": 816558,
 			"area": 2130,
-			"density": 383
+			"density": 383,
+			"lat": 11.7151,
+			"lon": 76.1271,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2928,7 +3804,10 @@
 			"headquarters": "Agar",
 			"population": 571275,
 			"area": 2785,
-			"density": 205
+			"density": 205,
+			"lat": 23.7118,
+			"lon": 76.0157,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2938,7 +3817,10 @@
 			"headquarters": "Alirajpur",
 			"population": 728677,
 			"area": 3182,
-			"density": 229
+			"density": 229,
+			"lat": 22.3039,
+			"lon": 74.3557,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2948,7 +3830,10 @@
 			"headquarters": "Anuppur",
 			"population": 749521,
 			"area": 3747,
-			"density": 200
+			"density": 200,
+			"lat": 23.1034,
+			"lon": 81.6908,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2958,7 +3843,10 @@
 			"headquarters": "Ashoknagar",
 			"population": 844979,
 			"area": 4674,
-			"density": 181
+			"density": 181,
+			"lat": 24.5758,
+			"lon": 77.7312,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2968,7 +3856,10 @@
 			"headquarters": "Balaghat",
 			"population": 1701156,
 			"area": 9229,
-			"density": 184
+			"density": 184,
+			"lat": 21.8156,
+			"lon": 80.1885,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2978,7 +3869,10 @@
 			"headquarters": "Barwani",
 			"population": 1385659,
 			"area": 5432,
-			"density": 256
+			"density": 256,
+			"lat": 22.0323,
+			"lon": 74.8998,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2988,7 +3882,10 @@
 			"headquarters": "Betul",
 			"population": 1575247,
 			"area": 10043,
-			"density": 157
+			"density": 157,
+			"lat": 21.9006,
+			"lon": 77.9023,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -2998,7 +3895,10 @@
 			"headquarters": "Bhind",
 			"population": 1703562,
 			"area": 4459,
-			"density": 382
+			"density": 382,
+			"lat": 26.5667,
+			"lon": 78.7873,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3008,7 +3908,10 @@
 			"headquarters": "Bhopal",
 			"population": 2368145,
 			"area": 2772,
-			"density": 854
+			"density": 854,
+			"lat": 23.2547,
+			"lon": 77.4029,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3018,7 +3921,10 @@
 			"headquarters": "Burhanpur",
 			"population": 756993,
 			"area": 3427,
-			"density": 221
+			"density": 221,
+			"lat": 21.3087,
+			"lon": 76.2303,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3028,7 +3934,10 @@
 			"headquarters": "Chhatarpur",
 			"population": 1762857,
 			"area": 8687,
-			"density": 203
+			"density": 203,
+			"lat": 24.9177,
+			"lon": 79.5887,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3038,7 +3947,10 @@
 			"headquarters": "Chhindwara",
 			"population": 2090306,
 			"area": 11815,
-			"density": 177
+			"density": 177,
+			"lat": 22.057,
+			"lon": 78.9396,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3048,7 +3960,10 @@
 			"headquarters": "Damoh",
 			"population": 1263703,
 			"area": 7306,
-			"density": 173
+			"density": 173,
+			"lat": 23.8331,
+			"lon": 79.4419,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3058,7 +3973,10 @@
 			"headquarters": "Datia",
 			"population": 786375,
 			"area": 2694,
-			"density": 292
+			"density": 292,
+			"lat": 25.6731,
+			"lon": 78.4591,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3068,7 +3986,10 @@
 			"headquarters": "Dewas",
 			"population": 1563107,
 			"area": 7020,
-			"density": 223
+			"density": 223,
+			"lat": 22.9658,
+			"lon": 76.0553,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3078,7 +3999,10 @@
 			"headquarters": "Dhar",
 			"population": 2184672,
 			"area": 8153,
-			"density": 268
+			"density": 268,
+			"lat": 22.5937,
+			"lon": 75.2977,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3088,7 +4012,10 @@
 			"headquarters": "Dindori",
 			"population": 704218,
 			"area": 7427,
-			"density": 94
+			"density": 94,
+			"lat": 22.9414,
+			"lon": 81.0798,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3098,7 +4025,10 @@
 			"headquarters": "Guna",
 			"population": 1240938,
 			"area": 6485,
-			"density": 194
+			"density": 194,
+			"lat": 24.6469,
+			"lon": 77.3113,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3108,7 +4038,10 @@
 			"headquarters": "Gwalior",
 			"population": 2030543,
 			"area": 5465,
-			"density": 445
+			"density": 445,
+			"lat": 26.2298,
+			"lon": 78.1734,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3118,7 +4051,10 @@
 			"headquarters": "Harda",
 			"population": 570302,
 			"area": 3339,
-			"density": 171
+			"density": 171,
+			"lat": 22.3441,
+			"lon": 77.0954,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3128,7 +4064,10 @@
 			"headquarters": "Hoshangabad",
 			"population": 1240975,
 			"area": 6698,
-			"density": 185
+			"density": 185,
+			"lat": 22.6503,
+			"lon": 77.7509,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3138,7 +4077,10 @@
 			"headquarters": "Indore",
 			"population": 3272335,
 			"area": 3898,
-			"density": 839
+			"density": 839,
+			"lat": 22.7179,
+			"lon": 75.8333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3148,7 +4090,10 @@
 			"headquarters": "Jabalpur",
 			"population": 2460714,
 			"area": 5210,
-			"density": 472
+			"density": 472,
+			"lat": 23.167,
+			"lon": 79.9501,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3158,7 +4103,10 @@
 			"headquarters": "Jhabua",
 			"population": 1024091,
 			"area": 6782,
-			"density": 285
+			"density": 285,
+			"lat": 22.7677,
+			"lon": 74.5909,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3168,7 +4116,10 @@
 			"headquarters": "Katni",
 			"population": 1291684,
 			"area": 4947,
-			"density": 261
+			"density": 261,
+			"lat": 23.8378,
+			"lon": 80.394,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3178,7 +4129,10 @@
 			"headquarters": "Khandwa",
 			"population": 1309443,
 			"area": 7349,
-			"density": 178
+			"density": 178,
+			"lat": 21.8243,
+			"lon": 76.3509,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3188,7 +4142,10 @@
 			"headquarters": "Khargone",
 			"population": 1872413,
 			"area": 8010,
-			"density": 233
+			"density": 233,
+			"lat": 21.8229,
+			"lon": 75.6139,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3198,7 +4155,10 @@
 			"headquarters": "Mandla",
 			"population": 1053522,
 			"area": 5805,
-			"density": 182
+			"density": 182,
+			"lat": 22.5988,
+			"lon": 80.3712,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3208,7 +4168,10 @@
 			"headquarters": "Mandsaur",
 			"population": 1339832,
 			"area": 5530,
-			"density": 242
+			"density": 242,
+			"lat": 24.0718,
+			"lon": 75.0699,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3218,7 +4181,10 @@
 			"headquarters": "Morena",
 			"population": 1965137,
 			"area": 4991,
-			"density": 394
+			"density": 394,
+			"lat": 26.4989,
+			"lon": 77.9953,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3228,7 +4194,10 @@
 			"headquarters": "Narsinghpur",
 			"population": 1092141,
 			"area": 5133,
-			"density": 213
+			"density": 213,
+			"lat": 22.9494,
+			"lon": 79.1836,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3238,17 +4207,23 @@
 			"headquarters": "Neemuch",
 			"population": 825958,
 			"area": 4267,
-			"density": 194
+			"density": 194,
+			"lat": 24.6306,
+			"lon": 75.1829,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Madhya Pradesh",
 			"stateCode": "MP",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Niwari",
 			"headquarters": "Niwari",
 			"population": 404807,
 			"area": 1170,
-			"density": 345
+			"density": 345,
+			"lat": 24.0397,
+			"lon": 79.1736,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3258,7 +4233,10 @@
 			"headquarters": "Panna",
 			"population": 1016028,
 			"area": 7135,
-			"density": 142
+			"density": 142,
+			"lat": 24.7209,
+			"lon": 80.1877,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3268,7 +4246,10 @@
 			"headquarters": "Raisen",
 			"population": 1331699,
 			"area": 8466,
-			"density": 157
+			"density": 157,
+			"lat": 23.3303,
+			"lon": 77.7811,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3278,7 +4259,10 @@
 			"headquarters": "Rajgarh",
 			"population": 1546541,
 			"area": 6143,
-			"density": 251
+			"density": 251,
+			"lat": 24.0083,
+			"lon": 76.7325,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3288,7 +4272,10 @@
 			"headquarters": "Ratlam",
 			"population": 1454483,
 			"area": 4861,
-			"density": 299
+			"density": 299,
+			"lat": 23.3303,
+			"lon": 75.0403,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3298,7 +4285,10 @@
 			"headquarters": "Rewa",
 			"population": 2363744,
 			"area": 6314,
-			"density": 374
+			"density": 374,
+			"lat": 24.5326,
+			"lon": 81.2923,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3308,7 +4298,10 @@
 			"headquarters": "Sagar",
 			"population": 2378295,
 			"area": 10252,
-			"density": 272
+			"density": 272,
+			"lat": 23.8388,
+			"lon": 78.7387,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3318,7 +4311,10 @@
 			"headquarters": "Satna",
 			"population": 2228619,
 			"area": 7502,
-			"density": 297
+			"density": 297,
+			"lat": 24.5773,
+			"lon": 80.8272,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3328,7 +4324,10 @@
 			"headquarters": "Sehore",
 			"population": 1311008,
 			"area": 6578,
-			"density": 199
+			"density": 199,
+			"lat": 23.2,
+			"lon": 77.0833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3338,7 +4337,10 @@
 			"headquarters": "Seoni",
 			"population": 1378876,
 			"area": 8758,
-			"density": 157
+			"density": 157,
+			"lat": 22.085,
+			"lon": 79.5504,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3348,7 +4350,10 @@
 			"headquarters": "Shahdol",
 			"population": 1064989,
 			"area": 6205,
-			"density": 172
+			"density": 172,
+			"lat": 23.2936,
+			"lon": 81.3619,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3358,7 +4363,10 @@
 			"headquarters": "Shajapur",
 			"population": 1512353,
 			"area": 6196,
-			"density": 244
+			"density": 244,
+			"lat": 23.4264,
+			"lon": 76.2777,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3368,7 +4376,10 @@
 			"headquarters": "Sheopur",
 			"population": 687952,
 			"area": 6585,
-			"density": 104
+			"density": 104,
+			"lat": 25.6647,
+			"lon": 76.6962,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3378,7 +4389,10 @@
 			"headquarters": "Shivpuri",
 			"population": 1725818,
 			"area": 10290,
-			"density": 168
+			"density": 168,
+			"lat": 25.4238,
+			"lon": 77.6622,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3388,7 +4402,10 @@
 			"headquarters": "Sidhi",
 			"population": 1126515,
 			"area": 10520,
-			"density": 232
+			"density": 232,
+			"lat": 24.4038,
+			"lon": 81.8795,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3398,7 +4415,10 @@
 			"headquarters": "Waidhan",
 			"population": 1178132,
 			"area": 5672,
-			"density": 208
+			"density": 208,
+			"lat": 24.0661,
+			"lon": 82.6267,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3408,7 +4428,10 @@
 			"headquarters": "Tikamgarh",
 			"population": 1444920,
 			"area": 5055,
-			"density": 286
+			"density": 286,
+			"lat": 24.7433,
+			"lon": 78.8306,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3418,7 +4441,10 @@
 			"headquarters": "Ujjain",
 			"population": 1986864,
 			"area": 6091,
-			"density": 356
+			"density": 356,
+			"lat": 23.1824,
+			"lon": 75.7764,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3428,7 +4454,10 @@
 			"headquarters": "Umaria",
 			"population": 643579,
 			"area": 4062,
-			"density": 158
+			"density": 158,
+			"lat": 23.5247,
+			"lon": 80.8372,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Madhya Pradesh",
@@ -3438,7 +4467,10 @@
 			"headquarters": "Vidisha",
 			"population": 1458212,
 			"area": 7362,
-			"density": 198
+			"density": 198,
+			"lat": 23.526,
+			"lon": 77.8109,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3448,7 +4480,10 @@
 			"headquarters": "Ahmednagar",
 			"population": 4543083,
 			"area": 17048,
-			"density": 266
+			"density": 266,
+			"lat": 19.1628,
+			"lon": 74.858,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Maharashtra",
@@ -3458,7 +4493,10 @@
 			"headquarters": "Akola",
 			"population": 1818617,
 			"area": 5429,
-			"density": 321
+			"density": 321,
+			"lat": 20.7096,
+			"lon": 76.9981,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3468,7 +4506,10 @@
 			"headquarters": "Amravati",
 			"population": 2887826,
 			"area": 12235,
-			"density": 237
+			"density": 237,
+			"lat": 20.9333,
+			"lon": 77.75,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3478,7 +4519,10 @@
 			"headquarters": "Beed",
 			"population": 2585962,
 			"area": 10693,
-			"density": 242
+			"density": 242,
+			"lat": 18.9892,
+			"lon": 75.7563,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3488,7 +4532,10 @@
 			"headquarters": "Bhandara",
 			"population": 1198810,
 			"area": 3890,
-			"density": 293
+			"density": 293,
+			"lat": 21.1682,
+			"lon": 79.6488,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3498,7 +4545,10 @@
 			"headquarters": "Buldhana",
 			"population": 2588039,
 			"area": 9661,
-			"density": 268
+			"density": 268,
+			"lat": 20.5628,
+			"lon": 76.4087,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Maharashtra",
@@ -3508,7 +4558,10 @@
 			"headquarters": "Chandrapur",
 			"population": 2194262,
 			"area": 11443,
-			"density": 192
+			"density": 192,
+			"lat": 19.9508,
+			"lon": 79.2952,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3518,7 +4571,10 @@
 			"headquarters": "Osmanabad",
 			"population": 1660311,
 			"area": 7569,
-			"density": 219
+			"density": 219,
+			"lat": 18.2799,
+			"lon": 76.0563,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3528,7 +4584,10 @@
 			"headquarters": "Dhule",
 			"population": 2048781,
 			"area": 8095,
-			"density": 285
+			"density": 285,
+			"lat": 20.9013,
+			"lon": 74.7774,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3538,7 +4597,10 @@
 			"headquarters": "Gadchiroli",
 			"population": 1071795,
 			"area": 14412,
-			"density": 74
+			"density": 74,
+			"lat": 20.1806,
+			"lon": 80.0052,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3548,7 +4610,10 @@
 			"headquarters": "Gondia",
 			"population": 1322331,
 			"area": 5431,
-			"density": 253
+			"density": 253,
+			"lat": 21.4603,
+			"lon": 80.192,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3558,7 +4623,10 @@
 			"headquarters": "Hingoli",
 			"population": 1178973,
 			"area": 4526,
-			"density": 244
+			"density": 244,
+			"lat": 19.7146,
+			"lon": 77.1424,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3568,7 +4636,10 @@
 			"headquarters": "Jalgaon",
 			"population": 4224442,
 			"area": 11765,
-			"density": 359
+			"density": 359,
+			"lat": 21.0029,
+			"lon": 75.566,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3578,7 +4649,10 @@
 			"headquarters": "Jalna",
 			"population": 1958483,
 			"area": 7718,
-			"density": 255
+			"density": 255,
+			"lat": 19.841,
+			"lon": 75.8864,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3588,7 +4662,10 @@
 			"headquarters": "Kolhapur",
 			"population": 3874015,
 			"area": 7685,
-			"density": 504
+			"density": 504,
+			"lat": 16.6956,
+			"lon": 74.2317,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3598,7 +4675,10 @@
 			"headquarters": "Latur",
 			"population": 2455543,
 			"area": 7157,
-			"density": 343
+			"density": 343,
+			"lat": 18.3972,
+			"lon": 76.5678,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3608,7 +4688,10 @@
 			"headquarters": "Mumbai",
 			"population": 3145966,
 			"area": 157,
-			"density": 20036
+			"density": 20036,
+			"lat": 19.0728,
+			"lon": 72.8826,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3618,7 +4701,10 @@
 			"headquarters": "Bandra (East)",
 			"population": 9332481,
 			"area": 446,
-			"density": 21000
+			"density": 21000,
+			"lat": 19.131,
+			"lon": 72.8895,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Maharashtra",
@@ -3628,7 +4714,10 @@
 			"headquarters": "Nanded",
 			"population": 3356566,
 			"area": 10528,
-			"density": 319
+			"density": 319,
+			"lat": 19.1602,
+			"lon": 77.315,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3638,7 +4727,10 @@
 			"headquarters": "Nandurbar",
 			"population": 1646177,
 			"area": 5055,
-			"density": 276
+			"density": 276,
+			"lat": 21.3667,
+			"lon": 74.2405,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3648,7 +4740,10 @@
 			"headquarters": "Nagpur",
 			"population": 4653171,
 			"area": 9892,
-			"density": 470
+			"density": 470,
+			"lat": 21.1463,
+			"lon": 79.0849,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3658,7 +4753,10 @@
 			"headquarters": "Nashik",
 			"population": 6109052,
 			"area": 15539,
-			"density": 393
+			"density": 393,
+			"lat": 19.9973,
+			"lon": 73.791,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3668,7 +4766,10 @@
 			"headquarters": "Palghar",
 			"population": 2990116,
 			"area": 5344,
-			"density": 560
+			"density": 560,
+			"lat": 19.6969,
+			"lon": 72.7654,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3678,7 +4779,10 @@
 			"headquarters": "Parbhani",
 			"population": 1835982,
 			"area": 6511,
-			"density": 295
+			"density": 295,
+			"lat": 19.2686,
+			"lon": 76.7708,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3688,7 +4792,10 @@
 			"headquarters": "Pune",
 			"population": 9426959,
 			"area": 15643,
-			"density": 603
+			"density": 603,
+			"lat": 18.5196,
+			"lon": 73.8554,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3698,7 +4805,10 @@
 			"headquarters": "Alibag",
 			"population": 2635394,
 			"area": 7152,
-			"density": 368
+			"density": 368,
+			"lat": 18.6481,
+			"lon": 72.8758,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3708,7 +4818,10 @@
 			"headquarters": "Ratnagiri",
 			"population": 1612672,
 			"area": 8208,
-			"density": 196
+			"density": 196,
+			"lat": 16.9915,
+			"lon": 73.3102,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3718,7 +4831,10 @@
 			"headquarters": "Aurangabad",
 			"population": 3695928,
 			"area": 10107,
-			"density": 365
+			"density": 365,
+			"lat": 19.8776,
+			"lon": 75.3423,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3728,7 +4844,10 @@
 			"headquarters": "Sangli",
 			"population": 2820575,
 			"area": 8572,
-			"density": 329
+			"density": 329,
+			"lat": 16.8544,
+			"lon": 74.5642,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3738,7 +4857,10 @@
 			"headquarters": "Satara",
 			"population": 3003922,
 			"area": 10475,
-			"density": 287
+			"density": 287,
+			"lat": 17.6859,
+			"lon": 73.9933,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3748,7 +4870,10 @@
 			"headquarters": "Oros",
 			"population": 848868,
 			"area": 5207,
-			"density": 163
+			"density": 163,
+			"lat": 16.1156,
+			"lon": 73.7069,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3758,7 +4883,10 @@
 			"headquarters": "Solapur",
 			"population": 4315527,
 			"area": 14895,
-			"density": 290
+			"density": 290,
+			"lat": 17.6715,
+			"lon": 75.9104,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3768,7 +4896,10 @@
 			"headquarters": "Thane",
 			"population": 8070032,
 			"area": 4214,
-			"density": 1915
+			"density": 1915,
+			"lat": 19.197,
+			"lon": 72.9635,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3778,7 +4909,10 @@
 			"headquarters": "Wardha",
 			"population": 1296157,
 			"area": 6309,
-			"density": 205
+			"density": 205,
+			"lat": 20.7393,
+			"lon": 78.5978,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3788,7 +4922,10 @@
 			"headquarters": "Washim",
 			"population": 1196714,
 			"area": 5155,
-			"density": 244
+			"density": 244,
+			"lat": 20.1113,
+			"lon": 77.133,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Maharashtra",
@@ -3798,7 +4935,10 @@
 			"headquarters": "Yavatmal",
 			"population": 2775457,
 			"area": 13582,
-			"density": 204
+			"density": 204,
+			"lat": 20.3932,
+			"lon": 78.132,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3808,7 +4948,10 @@
 			"headquarters": "Bishnupur",
 			"population": 240363,
 			"area": 496,
-			"density": 415
+			"density": 415,
+			"lat": 24.6285,
+			"lon": 93.7618,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3818,7 +4961,10 @@
 			"headquarters": "Chandel",
 			"population": 144028,
 			"area": 3317,
-			"density": 37
+			"density": 37,
+			"lat": 24.3299,
+			"lon": 94.0038,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3828,7 +4974,10 @@
 			"headquarters": "Churachandpur",
 			"population": 271274,
 			"area": 4574,
-			"density": 50
+			"density": 50,
+			"lat": 24.3335,
+			"lon": 93.67,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3838,7 +4987,10 @@
 			"headquarters": "Porompat",
 			"population": 452661,
 			"area": 710,
-			"density": 555
+			"density": 555,
+			"lat": 24.8327,
+			"lon": 94.0169,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Manipur",
@@ -3848,7 +5000,10 @@
 			"headquarters": "Lamphelpat",
 			"population": 514683,
 			"area": 519,
-			"density": 847
+			"density": 847,
+			"lat": 24.7591,
+			"lon": 93.8617,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Manipur",
@@ -3858,7 +5013,10 @@
 			"headquarters": "Jiribam",
 			"population": 43818,
 			"area": 232,
-			"density": 190
+			"density": 190,
+			"lat": 24.8043,
+			"lon": 93.1215,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3868,7 +5026,10 @@
 			"headquarters": "Kakching",
 			"population": 135481,
 			"area": 190,
-			"density": 710
+			"density": 710,
+			"lat": 24.4982,
+			"lon": 93.9813,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3878,7 +5039,10 @@
 			"headquarters": "Kamjong",
 			"population": 45616,
 			"area": 2000,
-			"density": 23
+			"density": 23,
+			"lat": 24.8585,
+			"lon": 94.5155,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3888,7 +5052,10 @@
 			"headquarters": "Kangpokpi",
 			"population": 193744,
 			"area": 1698,
-			"density": 110
+			"density": 110,
+			"lat": 25.1527,
+			"lon": 93.9717,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3898,7 +5065,10 @@
 			"headquarters": "Noney (Longmai)",
 			"population": 0,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 24.7787,
+			"lon": 93.5091,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Manipur",
@@ -3908,7 +5078,10 @@
 			"headquarters": "Pherzawl",
 			"population": 47250,
 			"area": 2285,
-			"density": 21
+			"density": 21,
+			"lat": 24.2623,
+			"lon": 93.1887,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3918,7 +5091,10 @@
 			"headquarters": "Senapati",
 			"population": 354772,
 			"area": 3269,
-			"density": 116
+			"density": 116,
+			"lat": 25.3934,
+			"lon": 94.1502,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Manipur",
@@ -3928,7 +5104,10 @@
 			"headquarters": "Tamenglong",
 			"population": 140143,
 			"area": 4391,
-			"density": 25
+			"density": 25,
+			"lat": 25.0164,
+			"lon": 93.4855,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3938,7 +5117,10 @@
 			"headquarters": "Tengnoupal",
 			"population": 59110,
 			"area": 1213,
-			"density": 49
+			"density": 49,
+			"lat": 24.3855,
+			"lon": 94.1472,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3948,7 +5130,10 @@
 			"headquarters": "Thoubal",
 			"population": 420517,
 			"area": 514,
-			"density": 713
+			"density": 713,
+			"lat": 24.6388,
+			"lon": 93.9964,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Manipur",
@@ -3958,7 +5143,10 @@
 			"headquarters": "Ukhrul",
 			"population": 183115,
 			"area": 4547,
-			"density": 31
+			"density": 31,
+			"lat": 25.1196,
+			"lon": 94.3642,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -3968,7 +5156,10 @@
 			"headquarters": "Williamnagar",
 			"population": 317618,
 			"area": 2603,
-			"density": 121
+			"density": 121,
+			"lat": 25.4955,
+			"lon": 90.6168,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -3978,37 +5169,49 @@
 			"headquarters": "Shillong",
 			"population": 824059,
 			"area": 2752,
-			"density": 292
+			"density": 292,
+			"lat": 25.5689,
+			"lon": 91.8831,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
 			"stateCode": "ML",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "East Jaintia Hills",
 			"headquarters": "Khliehriat",
 			"population": 122436,
 			"area": 2115,
-			"density": 58
+			"density": 58,
+			"lat": 25.3578,
+			"lon": 92.3664,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
 			"stateCode": "ML",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Eastern West Khasi Hills",
 			"headquarters": "Mairang",
 			"population": 131451,
 			"area": 1356,
-			"density": 97
+			"density": 97,
+			"lat": 25.5617,
+			"lon": 91.636,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
 			"stateCode": "ML",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "North Garo Hills",
 			"headquarters": "Resubelpara",
 			"population": 118325,
 			"area": 1113,
-			"density": 106
+			"density": 106,
+			"lat": 25.904,
+			"lon": 90.6075,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -4018,7 +5221,10 @@
 			"headquarters": "Nongpoh",
 			"population": 258380,
 			"area": 2378,
-			"density": 109
+			"density": 109,
+			"lat": 25.9023,
+			"lon": 91.8769,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -4028,27 +5234,36 @@
 			"headquarters": "Baghmara",
 			"population": 142574,
 			"area": 1850,
-			"density": 77
+			"density": 77,
+			"lat": 25.348,
+			"lon": 90.5658,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Meghalaya",
 			"stateCode": "ML",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "South West Garo Hills",
 			"headquarters": "Ampati",
 			"population": 172495,
 			"area": 822,
-			"density": 210
+			"density": 210,
+			"lat": 25.4623,
+			"lon": 89.9333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
 			"stateCode": "ML",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "South West Khasi Hills",
 			"headquarters": "Mawkyrwat",
 			"population": 110152,
 			"area": 1341,
-			"density": 82
+			"density": 82,
+			"lat": 25.3623,
+			"lon": 91.4584,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -4058,7 +5273,10 @@
 			"headquarters": "Tura",
 			"population": 642923,
 			"area": 3714,
-			"density": 173
+			"density": 173,
+			"lat": 25.5142,
+			"lon": 90.2024,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -4068,7 +5286,10 @@
 			"headquarters": "Jowai",
 			"population": 270352,
 			"area": 1693,
-			"density": 160
+			"density": 160,
+			"lat": 25.436,
+			"lon": 92.1913,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Meghalaya",
@@ -4078,7 +5299,10 @@
 			"headquarters": "Nongstoin",
 			"population": 385601,
 			"area": 5247,
-			"density": 73
+			"density": 73,
+			"lat": 25.517,
+			"lon": 91.2648,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4088,7 +5312,10 @@
 			"headquarters": "Aizawl",
 			"population": 404054,
 			"area": 3577,
-			"density": 113
+			"density": 113,
+			"lat": 23.7289,
+			"lon": 92.7179,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4098,7 +5325,10 @@
 			"headquarters": "Champhai",
 			"population": 125370,
 			"area": 3168,
-			"density": 39
+			"density": 39,
+			"lat": 23.5444,
+			"lon": 93.348,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Mizoram",
@@ -4108,7 +5338,10 @@
 			"headquarters": "Hnahthial",
 			"population": 28468,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 22.9661,
+			"lon": 92.9297,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4118,7 +5351,10 @@
 			"headquarters": "Khawzawl",
 			"population": 0,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 23.5177,
+			"lon": 93.1889,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4128,7 +5364,10 @@
 			"headquarters": "Kolasib",
 			"population": 83054,
 			"area": 1386,
-			"density": 60
+			"density": 60,
+			"lat": 24.2239,
+			"lon": 92.6787,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4138,7 +5377,10 @@
 			"headquarters": "Lawngtlai",
 			"population": 117444,
 			"area": 2519,
-			"density": 46
+			"density": 46,
+			"lat": 22.5325,
+			"lon": 92.899,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4148,7 +5390,10 @@
 			"headquarters": "Lunglei",
 			"population": 154094,
 			"area": 4572,
-			"density": 34
+			"density": 34,
+			"lat": 22.8925,
+			"lon": 92.7422,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4158,7 +5403,10 @@
 			"headquarters": "Mamit",
 			"population": 85757,
 			"area": 2967,
-			"density": 28
+			"density": 28,
+			"lat": 23.927,
+			"lon": 92.4897,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4168,7 +5416,10 @@
 			"headquarters": "Saiha",
 			"population": 56366,
 			"area": 1414,
-			"density": 40
+			"density": 40,
+			"lat": 22.4918,
+			"lon": 92.9814,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4178,7 +5429,10 @@
 			"headquarters": "Saitual",
 			"population": 0,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 23.6831,
+			"lon": 92.9671,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Mizoram",
@@ -4188,17 +5442,23 @@
 			"headquarters": "Serchhip",
 			"population": 64875,
 			"area": 1424,
-			"density": 46
+			"density": 46,
+			"lat": 23.2931,
+			"lon": 92.8468,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
 			"stateCode": "NL",
-			"districtCode": "\u2013",
-			"district": "Ch\u00fcmoukedima",
-			"headquarters": "Ch\u00fcmoukedima",
+			"districtCode": "–",
+			"district": "Chümoukedima",
+			"headquarters": "Chümoukedima",
 			"population": 125400,
 			"area": 570,
-			"density": 220
+			"density": 220,
+			"lat": 25.8087,
+			"lon": 93.7149,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Nagaland",
@@ -4208,7 +5468,10 @@
 			"headquarters": "Dimapur",
 			"population": 379769,
 			"area": 926,
-			"density": 410
+			"density": 410,
+			"lat": 25.9117,
+			"lon": 93.7217,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4218,7 +5481,10 @@
 			"headquarters": "Kiphire",
 			"population": 74033,
 			"area": 1255,
-			"density": 66
+			"density": 66,
+			"lat": 25.8679,
+			"lon": 94.7857,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4228,7 +5494,10 @@
 			"headquarters": "Kohima",
 			"population": 270063,
 			"area": 1041,
-			"density": 213
+			"density": 213,
+			"lat": 25.6747,
+			"lon": 94.111,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4238,7 +5507,10 @@
 			"headquarters": "Longleng",
 			"population": 50593,
 			"area": 885,
-			"density": 89
+			"density": 89,
+			"lat": 26.4899,
+			"lon": 94.8177,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4248,7 +5520,10 @@
 			"headquarters": "Mokokchung",
 			"population": 193171,
 			"area": 1615,
-			"density": 120
+			"density": 120,
+			"lat": 26.3248,
+			"lon": 94.5183,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4258,27 +5533,36 @@
 			"headquarters": "Mon",
 			"population": 259604,
 			"area": 1786,
-			"density": 145
+			"density": 145,
+			"lat": 26.7358,
+			"lon": 95.0584,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
 			"stateCode": "NL",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Niuland",
 			"headquarters": "Niuland",
 			"population": 11876,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 25.9076,
+			"lon": 93.9877,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
 			"stateCode": "NL",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Noklak",
 			"headquarters": "Noklak",
 			"population": 59300,
 			"area": 1152,
-			"density": 51
+			"density": 51,
+			"lat": 26.1985,
+			"lon": 95.0166,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4288,7 +5572,10 @@
 			"headquarters": "Peren",
 			"population": 163294,
 			"area": 2300,
-			"density": 55
+			"density": 55,
+			"lat": 25.5674,
+			"lon": 93.7606,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4298,27 +5585,36 @@
 			"headquarters": "Phek",
 			"population": 163294,
 			"area": 2026,
-			"density": 81
+			"density": 81,
+			"lat": 25.6701,
+			"lon": 94.3844,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Nagaland",
 			"stateCode": "NL",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Shamator",
 			"headquarters": "Shamator",
 			"population": 34223,
 			"area": 0,
-			"density": 0
+			"density": 0,
+			"lat": 26.0714,
+			"lon": 94.8745,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Nagaland",
 			"stateCode": "NL",
-			"districtCode": "\u2013",
-			"district": "Tseminy\u00fc",
-			"headquarters": "Tseminy\u00fc",
+			"districtCode": "–",
+			"district": "Tseminyü",
+			"headquarters": "Tseminyü",
 			"population": 63629,
 			"area": 256,
-			"density": 249
+			"density": 249,
+			"lat": 25.9247,
+			"lon": 94.2161,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4328,7 +5624,10 @@
 			"headquarters": "Tuensang",
 			"population": 414801,
 			"area": 4228,
-			"density": 98
+			"density": 98,
+			"lat": 26.267,
+			"lon": 94.8242,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4338,7 +5637,10 @@
 			"headquarters": "Wokha",
 			"population": 166239,
 			"area": 1628,
-			"density": 120
+			"density": 120,
+			"lat": 26.0972,
+			"lon": 94.2582,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Nagaland",
@@ -4348,7 +5650,10 @@
 			"headquarters": "Zunheboto",
 			"population": 141014,
 			"area": 1255,
-			"density": 112
+			"density": 112,
+			"lat": 25.9667,
+			"lon": 94.5167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4358,7 +5663,10 @@
 			"headquarters": "Angul",
 			"population": 1271703,
 			"area": 6232,
-			"density": 199
+			"density": 199,
+			"lat": 20.8409,
+			"lon": 85.1019,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4368,7 +5676,10 @@
 			"headquarters": "Boudh",
 			"population": 439917,
 			"area": 3098,
-			"density": 142
+			"density": 142,
+			"lat": 20.6407,
+			"lon": 83.997,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Odisha",
@@ -4378,7 +5689,10 @@
 			"headquarters": "Bhadrak",
 			"population": 1506522,
 			"area": 2505,
-			"density": 601
+			"density": 601,
+			"lat": 21.0545,
+			"lon": 86.5156,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4388,7 +5702,10 @@
 			"headquarters": "Balangir",
 			"population": 1648574,
 			"area": 6575,
-			"density": 251
+			"density": 251,
+			"lat": 20.7042,
+			"lon": 83.4903,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4398,7 +5715,10 @@
 			"headquarters": "Bargarh",
 			"population": 1478833,
 			"area": 5837,
-			"density": 253
+			"density": 253,
+			"lat": 21.3335,
+			"lon": 83.6191,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4408,7 +5728,10 @@
 			"headquarters": "Balasore",
 			"population": 2317419,
 			"area": 3634,
-			"density": 609
+			"density": 609,
+			"lat": 21.4927,
+			"lon": 86.9335,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4418,7 +5741,10 @@
 			"headquarters": "Cuttack",
 			"population": 2618708,
 			"area": 3932,
-			"density": 666
+			"density": 666,
+			"lat": 20.465,
+			"lon": 85.8793,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4428,7 +5754,10 @@
 			"headquarters": "Debagarh",
 			"population": 312164,
 			"area": 2781,
-			"density": 106
+			"density": 106,
+			"lat": 21.4478,
+			"lon": 84.7174,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Odisha",
@@ -4438,7 +5767,10 @@
 			"headquarters": "Dhenkanal",
 			"population": 1192948,
 			"area": 4452,
-			"density": 268
+			"density": 268,
+			"lat": 20.6574,
+			"lon": 85.5969,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4448,7 +5780,10 @@
 			"headquarters": "Chhatrapur",
 			"population": 3529031,
 			"area": 8206,
-			"density": 430
+			"density": 430,
+			"lat": 19.3557,
+			"lon": 84.9836,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4458,7 +5793,10 @@
 			"headquarters": "Paralakhemundi",
 			"population": 575880,
 			"area": 3850,
-			"density": 133
+			"density": 133,
+			"lat": 18.7762,
+			"lon": 84.095,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4468,7 +5806,10 @@
 			"headquarters": "Jharsuguda",
 			"population": 579499,
 			"area": 2081,
-			"density": 274
+			"density": 274,
+			"lat": 21.8553,
+			"lon": 84.007,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4478,7 +5819,10 @@
 			"headquarters": "Jajpur",
 			"population": 1826275,
 			"area": 2888,
-			"density": 630
+			"density": 630,
+			"lat": 20.8485,
+			"lon": 86.3373,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4488,7 +5832,10 @@
 			"headquarters": "Jagatsinghpur",
 			"population": 1136604,
 			"area": 1759,
-			"density": 681
+			"density": 681,
+			"lat": 20.2557,
+			"lon": 86.1711,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4498,7 +5845,10 @@
 			"headquarters": "Khordha",
 			"population": 2251673,
 			"area": 2813,
-			"density": 800
+			"density": 800,
+			"lat": 20.1827,
+			"lon": 85.6163,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4508,7 +5858,10 @@
 			"headquarters": "Kendujhar",
 			"population": 1802777,
 			"area": 8240,
-			"density": 217
+			"density": 217,
+			"lat": 21.5194,
+			"lon": 83.3636,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4518,7 +5871,10 @@
 			"headquarters": "Bhawanipatna",
 			"population": 1573054,
 			"area": 7920,
-			"density": 199
+			"density": 199,
+			"lat": 19.9072,
+			"lon": 83.167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4528,7 +5884,10 @@
 			"headquarters": "Phulbani",
 			"population": 731952,
 			"area": 8021,
-			"density": 91
+			"density": 91,
+			"lat": 20.481,
+			"lon": 84.2306,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4538,7 +5897,10 @@
 			"headquarters": "Koraput",
 			"population": 1376934,
 			"area": 8807,
-			"density": 156
+			"density": 156,
+			"lat": 18.812,
+			"lon": 82.7105,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4548,7 +5910,10 @@
 			"headquarters": "Kendrapara",
 			"population": 1439891,
 			"area": 2644,
-			"density": 545
+			"density": 545,
+			"lat": 20.5017,
+			"lon": 86.4223,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4558,7 +5923,10 @@
 			"headquarters": "Malkangiri",
 			"population": 612727,
 			"area": 5791,
-			"density": 106
+			"density": 106,
+			"lat": 18.2745,
+			"lon": 81.952,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Odisha",
@@ -4568,7 +5936,10 @@
 			"headquarters": "Baripada",
 			"population": 2513895,
 			"area": 10418,
-			"density": 241
+			"density": 241,
+			"lat": 21.9346,
+			"lon": 86.7285,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4578,7 +5949,10 @@
 			"headquarters": "Nabarangpur",
 			"population": 1218762,
 			"area": 5294,
-			"density": 230
+			"density": 230,
+			"lat": 19.2311,
+			"lon": 82.5483,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4588,7 +5962,10 @@
 			"headquarters": "Nuapada",
 			"population": 606490,
 			"area": 3408,
-			"density": 157
+			"density": 157,
+			"lat": 20.8167,
+			"lon": 82.5333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4598,7 +5975,10 @@
 			"headquarters": "Nayagarh",
 			"population": 962215,
 			"area": 3890,
-			"density": 247
+			"density": 247,
+			"lat": 20.1288,
+			"lon": 85.0963,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4608,7 +5988,10 @@
 			"headquarters": "Puri",
 			"population": 1697983,
 			"area": 3051,
-			"density": 488
+			"density": 488,
+			"lat": 19.7982,
+			"lon": 85.8249,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4618,7 +6001,10 @@
 			"headquarters": "Rayagada",
 			"population": 961959,
 			"area": 7584,
-			"density": 136
+			"density": 136,
+			"lat": 19.1713,
+			"lon": 83.4143,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4628,7 +6014,10 @@
 			"headquarters": "Sambalpur",
 			"population": 1044410,
 			"area": 6702,
-			"density": 158
+			"density": 158,
+			"lat": 21.4653,
+			"lon": 83.9757,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4638,7 +6027,10 @@
 			"headquarters": "Subarnapur",
 			"population": 652107,
 			"area": 2284,
-			"density": 279
+			"density": 279,
+			"lat": 20.8761,
+			"lon": 84.3709,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Odisha",
@@ -4648,7 +6040,10 @@
 			"headquarters": "Sundergarh",
 			"population": 2080664,
 			"area": 9712,
-			"density": 214
+			"density": 214,
+			"lat": 22.1167,
+			"lon": 84.0333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4658,7 +6053,10 @@
 			"headquarters": "Amritsar",
 			"population": 2490891,
 			"area": 2673,
-			"density": 932
+			"density": 932,
+			"lat": 31.6223,
+			"lon": 74.8753,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4668,7 +6066,10 @@
 			"headquarters": "Barnala",
 			"population": 596294,
 			"area": 1423,
-			"density": 419
+			"density": 419,
+			"lat": 30.3745,
+			"lon": 75.5487,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4678,7 +6079,10 @@
 			"headquarters": "Bathinda",
 			"population": 1388859,
 			"area": 3355,
-			"density": 414
+			"density": 414,
+			"lat": 30.2075,
+			"lon": 74.9389,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4688,7 +6092,10 @@
 			"headquarters": "Firozpur",
 			"population": 2026831,
 			"area": 5334,
-			"density": 380
+			"density": 380,
+			"lat": 30.9257,
+			"lon": 74.6131,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4698,7 +6105,10 @@
 			"headquarters": "Faridkot",
 			"population": 618008,
 			"area": 1472,
-			"density": 424
+			"density": 424,
+			"lat": 30.674,
+			"lon": 74.7558,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4708,7 +6118,10 @@
 			"headquarters": "Fatehgarh Sahib",
 			"population": 599814,
 			"area": 1180,
-			"density": 508
+			"density": 508,
+			"lat": 30.6634,
+			"lon": 76.3803,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Punjab",
@@ -4718,7 +6131,10 @@
 			"headquarters": "Fazilka",
 			"population": 1180483,
 			"area": 3113,
-			"density": 379
+			"density": 379,
+			"lat": 30.4021,
+			"lon": 74.0284,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4728,7 +6144,10 @@
 			"headquarters": "Gurdaspur",
 			"population": 2299026,
 			"area": 3542,
-			"density": 649
+			"density": 649,
+			"lat": 32.0393,
+			"lon": 75.4032,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4738,7 +6157,10 @@
 			"headquarters": "Hoshiarpur",
 			"population": 1582793,
 			"area": 3397,
-			"density": 466
+			"density": 466,
+			"lat": 31.5372,
+			"lon": 75.9127,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4748,7 +6170,10 @@
 			"headquarters": "Jalandhar",
 			"population": 2181753,
 			"area": 2625,
-			"density": 831
+			"density": 831,
+			"lat": 31.3256,
+			"lon": 75.5792,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4758,7 +6183,10 @@
 			"headquarters": "Kapurthala",
 			"population": 817668,
 			"area": 1646,
-			"density": 501
+			"density": 501,
+			"lat": 31.3801,
+			"lon": 75.3811,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4768,7 +6196,10 @@
 			"headquarters": "Ludhiana",
 			"population": 3487882,
 			"area": 3744,
-			"density": 975
+			"density": 975,
+			"lat": 30.912,
+			"lon": 75.8538,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4778,7 +6209,10 @@
 			"headquarters": "Malerkotla",
 			"population": 429754,
 			"area": 684,
-			"density": 629
+			"density": 629,
+			"lat": 30.5372,
+			"lon": 75.9089,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Punjab",
@@ -4788,7 +6222,10 @@
 			"headquarters": "Mansa",
 			"population": 768808,
 			"area": 2174,
-			"density": 350
+			"density": 350,
+			"lat": 29.9884,
+			"lon": 75.4017,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4798,7 +6235,10 @@
 			"headquarters": "Moga",
 			"population": 992289,
 			"area": 2235,
-			"density": 444
+			"density": 444,
+			"lat": 30.8138,
+			"lon": 75.1688,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4808,7 +6248,10 @@
 			"headquarters": "Sri Muktsar Sahib",
 			"population": 902702,
 			"area": 2596,
-			"density": 348
+			"density": 348,
+			"lat": 30.2867,
+			"lon": 74.5262,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Punjab",
@@ -4818,7 +6261,10 @@
 			"headquarters": "Pathankot",
 			"population": 626154,
 			"area": 929,
-			"density": 674
+			"density": 674,
+			"lat": 32.2748,
+			"lon": 75.6529,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4828,7 +6274,10 @@
 			"headquarters": "Patiala",
 			"population": 2892282,
 			"area": 3175,
-			"density": 596
+			"density": 596,
+			"lat": 30.3362,
+			"lon": 76.3922,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4838,7 +6287,10 @@
 			"headquarters": "Rupnagar",
 			"population": 683349,
 			"area": 1400,
-			"density": 488
+			"density": 488,
+			"lat": 30.2101,
+			"lon": 73.9943,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4848,7 +6300,10 @@
 			"headquarters": "Sahibzada Ajit Singh Nagar",
 			"population": 986147,
 			"area": 1188,
-			"density": 830
+			"density": 830,
+			"lat": 30.6488,
+			"lon": 76.7413,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Punjab",
@@ -4858,7 +6313,10 @@
 			"headquarters": "Sangrur",
 			"population": 1654408,
 			"area": 3685,
-			"density": 449
+			"density": 449,
+			"lat": 30.2451,
+			"lon": 75.8449,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Punjab",
@@ -4878,7 +6336,10 @@
 			"headquarters": "Tarn Taran Sahib",
 			"population": 1120070,
 			"area": 2414,
-			"density": 464
+			"density": 464,
+			"lat": 31.4519,
+			"lon": 74.9278,
+			"geo_source": "district"
 		},
 		{
 			"state": "Rajasthan",
@@ -4888,7 +6349,10 @@
 			"headquarters": "Ajmer",
 			"population": 2584913,
 			"area": 8481,
-			"density": 305
+			"density": 305,
+			"lat": 26.4521,
+			"lon": 74.6387,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4898,7 +6362,10 @@
 			"headquarters": "Alwar",
 			"population": 3671999,
 			"area": 8380,
-			"density": 438
+			"density": 438,
+			"lat": 27.5625,
+			"lon": 76.625,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4908,7 +6375,10 @@
 			"headquarters": "Bikaner",
 			"population": 2367745,
 			"area": 27244,
-			"density": 78
+			"density": 78,
+			"lat": 28.0176,
+			"lon": 73.3149,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4918,7 +6388,10 @@
 			"headquarters": "Barmer",
 			"population": 2604453,
 			"area": 28387,
-			"density": 92
+			"density": 92,
+			"lat": 25.7457,
+			"lon": 71.3921,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4928,7 +6401,10 @@
 			"headquarters": "Banswara",
 			"population": 1798194,
 			"area": 5037,
-			"density": 399
+			"density": 399,
+			"lat": 23.5411,
+			"lon": 74.4425,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4938,7 +6414,10 @@
 			"headquarters": "Bharatpur",
 			"population": 2549121,
 			"area": 5066,
-			"density": 503
+			"density": 503,
+			"lat": 27.2173,
+			"lon": 77.4901,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4948,7 +6427,10 @@
 			"headquarters": "Baran",
 			"population": 1223921,
 			"area": 6955,
-			"density": 175
+			"density": 175,
+			"lat": 25.1,
+			"lon": 76.5167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4958,7 +6440,10 @@
 			"headquarters": "Bundi",
 			"population": 1113725,
 			"area": 5550,
-			"density": 193
+			"density": 193,
+			"lat": 25.4385,
+			"lon": 75.6373,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4968,7 +6453,10 @@
 			"headquarters": "Bhilwara",
 			"population": 2410459,
 			"area": 10455,
-			"density": 230
+			"density": 230,
+			"lat": 25.3471,
+			"lon": 74.6408,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4978,7 +6466,10 @@
 			"headquarters": "Churu",
 			"population": 2041172,
 			"area": 16830,
-			"density": 148
+			"density": 148,
+			"lat": 28.3041,
+			"lon": 74.9672,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4988,7 +6479,10 @@
 			"headquarters": "Chittorgarh",
 			"population": 1544392,
 			"area": 10856,
-			"density": 193
+			"density": 193,
+			"lat": 24.8896,
+			"lon": 74.624,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -4998,7 +6492,10 @@
 			"headquarters": "Dausa",
 			"population": 1637226,
 			"area": 3429,
-			"density": 476
+			"density": 476,
+			"lat": 26.89,
+			"lon": 76.3358,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5008,7 +6505,10 @@
 			"headquarters": "Dholpur",
 			"population": 1207293,
 			"area": 3084,
-			"density": 398
+			"density": 398,
+			"lat": 26.6929,
+			"lon": 77.8797,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5018,7 +6518,10 @@
 			"headquarters": "Dungarpur",
 			"population": 1388906,
 			"area": 3771,
-			"density": 368
+			"density": 368,
+			"lat": 23.8431,
+			"lon": 73.7147,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5028,7 +6531,10 @@
 			"headquarters": "Sri Ganganagar",
 			"population": 1969520,
 			"area": 10990,
-			"density": 179
+			"density": 179,
+			"lat": 29.9201,
+			"lon": 73.875,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5038,7 +6544,10 @@
 			"headquarters": "Hanumangarh",
 			"population": 1779650,
 			"area": 9670,
-			"density": 184
+			"density": 184,
+			"lat": 29.5818,
+			"lon": 74.3294,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5048,7 +6557,10 @@
 			"headquarters": "Jhunjhunu",
 			"population": 2139658,
 			"area": 5928,
-			"density": 361
+			"density": 361,
+			"lat": 28.1256,
+			"lon": 75.398,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5058,7 +6570,10 @@
 			"headquarters": "Jalore",
 			"population": 1830151,
 			"area": 10640,
-			"density": 172
+			"density": 172,
+			"lat": 25.3456,
+			"lon": 72.6156,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5068,7 +6583,10 @@
 			"headquarters": "Jodhpur",
 			"population": 3685681,
 			"area": 22850,
-			"density": 161
+			"density": 161,
+			"lat": 26.2684,
+			"lon": 73.0059,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5078,7 +6596,10 @@
 			"headquarters": "Jaipur",
 			"population": 6626178,
 			"area": 11143,
-			"density": 595
+			"density": 595,
+			"lat": 26.9196,
+			"lon": 75.7878,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5088,7 +6609,10 @@
 			"headquarters": "Jaisalmer",
 			"population": 672008,
 			"area": 38401,
-			"density": 17
+			"density": 17,
+			"lat": 26.9176,
+			"lon": 70.9039,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5098,7 +6622,10 @@
 			"headquarters": "Jhalawar",
 			"population": 1411327,
 			"area": 6219,
-			"density": 227
+			"density": 227,
+			"lat": 24.5963,
+			"lon": 76.165,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5108,7 +6635,10 @@
 			"headquarters": "Karauli",
 			"population": 1458459,
 			"area": 5530,
-			"density": 264
+			"density": 264,
+			"lat": 26.4983,
+			"lon": 77.0276,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5118,7 +6648,10 @@
 			"headquarters": "Kota",
 			"population": 1950491,
 			"area": 5446,
-			"density": 374
+			"density": 374,
+			"lat": 25.1825,
+			"lon": 75.8391,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5128,7 +6661,10 @@
 			"headquarters": "Nagaur",
 			"population": 3309234,
 			"area": 17718,
-			"density": 187
+			"density": 187,
+			"lat": 27.202,
+			"lon": 73.7339,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5138,7 +6674,10 @@
 			"headquarters": "Pali",
 			"population": 2038533,
 			"area": 12387,
-			"density": 165
+			"density": 165,
+			"lat": 25.7728,
+			"lon": 73.3234,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5148,7 +6687,10 @@
 			"headquarters": "Pratapgarh",
 			"population": 867848,
 			"area": 4112,
-			"density": 211
+			"density": 211,
+			"lat": 24.0322,
+			"lon": 74.7816,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5158,7 +6700,10 @@
 			"headquarters": "Rajsamand",
 			"population": 1158283,
 			"area": 3853,
-			"density": 302
+			"density": 302,
+			"lat": 25.0714,
+			"lon": 73.8798,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5168,7 +6713,10 @@
 			"headquarters": "Sikar",
 			"population": 2677737,
 			"area": 7732,
-			"density": 346
+			"density": 346,
+			"lat": 27.6121,
+			"lon": 75.14,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5178,7 +6726,10 @@
 			"headquarters": "Sawai Madhopur",
 			"population": 1338114,
 			"area": 4500,
-			"density": 257
+			"density": 257,
+			"lat": 26.023,
+			"lon": 76.3441,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5188,7 +6739,10 @@
 			"headquarters": "Sirohi",
 			"population": 1037185,
 			"area": 5136,
-			"density": 202
+			"density": 202,
+			"lat": 24.8884,
+			"lon": 72.8479,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5198,7 +6752,10 @@
 			"headquarters": "Tonk",
 			"population": 1421711,
 			"area": 7194,
-			"density": 198
+			"density": 198,
+			"lat": 26.1664,
+			"lon": 75.7882,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Rajasthan",
@@ -5208,7 +6765,10 @@
 			"headquarters": "Udaipur",
 			"population": 3067549,
 			"area": 13430,
-			"density": 242
+			"density": 242,
+			"lat": 24.5858,
+			"lon": 73.7135,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5218,7 +6778,10 @@
 			"headquarters": "Gangtok",
 			"population": 281293,
 			"area": 954,
-			"density": 295
+			"density": 295,
+			"lat": 27.3257,
+			"lon": 88.6122,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5228,7 +6791,10 @@
 			"headquarters": "Mangan",
 			"population": 43354,
 			"area": 4226,
-			"density": 10
+			"density": 10,
+			"lat": 27.5097,
+			"lon": 88.5221,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5238,7 +6804,10 @@
 			"headquarters": "Pakyong",
 			"population": 74583,
 			"area": 404,
-			"density": 180
+			"density": 180,
+			"lat": 27.2418,
+			"lon": 88.5984,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5248,7 +6817,10 @@
 			"headquarters": "Soreng",
 			"population": 64760,
 			"area": 293,
-			"density": 221
+			"density": 221,
+			"lat": 27.169,
+			"lon": 88.2026,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5258,7 +6830,10 @@
 			"headquarters": "Namchi",
 			"population": 146742,
 			"area": 750,
-			"density": 196
+			"density": 196,
+			"lat": 27.1649,
+			"lon": 88.3638,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Sikkim",
@@ -5268,7 +6843,10 @@
 			"headquarters": "Gyalshing",
 			"population": 136299,
 			"area": 1166,
-			"density": 117
+			"density": 117,
+			"lat": 27.2895,
+			"lon": 88.2576,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5278,7 +6856,10 @@
 			"headquarters": "Ariyalur",
 			"population": 752481,
 			"area": 3208,
-			"density": 387
+			"density": 387,
+			"lat": 11.1385,
+			"lon": 79.0756,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5288,7 +6869,10 @@
 			"headquarters": "Chengalpattu",
 			"population": 2556244,
 			"area": 2945,
-			"density": 868
+			"density": 868,
+			"lat": 12.6918,
+			"lon": 79.9766,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5298,7 +6882,10 @@
 			"headquarters": "Chennai",
 			"population": 7139882,
 			"area": 426,
-			"density": 17000
+			"density": 17000,
+			"lat": 13.0878,
+			"lon": 80.2785,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5308,7 +6895,10 @@
 			"headquarters": "Coimbatore",
 			"population": 3472578,
 			"area": 4723,
-			"density": 748
+			"density": 748,
+			"lat": 11.0055,
+			"lon": 76.9661,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5318,7 +6908,10 @@
 			"headquarters": "Cuddalore",
 			"population": 2600880,
 			"area": 3999,
-			"density": 702
+			"density": 702,
+			"lat": 11.7562,
+			"lon": 79.7669,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5328,7 +6921,10 @@
 			"headquarters": "Dharmapuri",
 			"population": 1502900,
 			"area": 4532,
-			"density": 332
+			"density": 332,
+			"lat": 12.1277,
+			"lon": 78.1579,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5338,7 +6934,10 @@
 			"headquarters": "Dindigul",
 			"population": 2161367,
 			"area": 6058,
-			"density": 357
+			"density": 357,
+			"lat": 10.369,
+			"lon": 77.9804,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5348,7 +6947,10 @@
 			"headquarters": "Erode",
 			"population": 2259608,
 			"area": 5714,
-			"density": 397
+			"density": 397,
+			"lat": 11.3428,
+			"lon": 77.7274,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5358,7 +6960,10 @@
 			"headquarters": "Kallakurichi",
 			"population": 1682687,
 			"area": 3520,
-			"density": 478
+			"density": 478,
+			"lat": 11.7338,
+			"lon": 78.9592,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5368,7 +6973,10 @@
 			"headquarters": "Kanchipuram",
 			"population": 1166401,
 			"area": 1656,
-			"density": 704
+			"density": 704,
+			"lat": 12.8352,
+			"lon": 79.7001,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5378,7 +6986,10 @@
 			"headquarters": "Nagercoil",
 			"population": 1863178,
 			"area": 1685,
-			"density": 1106
+			"density": 1106,
+			"lat": 8.179,
+			"lon": 77.4323,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5388,7 +6999,10 @@
 			"headquarters": "Karur",
 			"population": 1076588,
 			"area": 2901,
-			"density": 371
+			"density": 371,
+			"lat": 10.9577,
+			"lon": 78.081,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5398,7 +7012,10 @@
 			"headquarters": "Krishnagiri",
 			"population": 1883731,
 			"area": 5086,
-			"density": 370
+			"density": 370,
+			"lat": 12.5192,
+			"lon": 78.2138,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5408,7 +7025,10 @@
 			"headquarters": "Madurai",
 			"population": 3191038,
 			"area": 3676,
-			"density": 823
+			"density": 823,
+			"lat": 9.919,
+			"lon": 78.1195,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5418,7 +7038,10 @@
 			"headquarters": "Mayiladuthurai",
 			"population": 918356,
 			"area": 1172,
-			"density": 784
+			"density": 784,
+			"lat": 11.1035,
+			"lon": 79.655,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5428,7 +7051,10 @@
 			"headquarters": "Nagapattinam",
 			"population": 1614069,
 			"area": 2716,
-			"density": 668
+			"density": 668,
+			"lat": 10.7638,
+			"lon": 79.8431,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5438,7 +7064,10 @@
 			"headquarters": "Ooty",
 			"population": 735071,
 			"area": 2549,
-			"density": 288
+			"density": 288,
+			"lat": 11.4134,
+			"lon": 76.6952,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5448,7 +7077,10 @@
 			"headquarters": "Namakkal",
 			"population": 1721179,
 			"area": 3429,
-			"density": 506
+			"density": 506,
+			"lat": 11.2213,
+			"lon": 78.1652,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5458,7 +7090,10 @@
 			"headquarters": "Perambalur",
 			"population": 564511,
 			"area": 1752,
-			"density": 323
+			"density": 323,
+			"lat": 11.2333,
+			"lon": 78.8833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5468,7 +7103,10 @@
 			"headquarters": "Pudukkottai",
 			"population": 1918725,
 			"area": 4651,
-			"density": 348
+			"density": 348,
+			"lat": 10.3813,
+			"lon": 78.8214,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5478,7 +7116,10 @@
 			"headquarters": "Ramanathapuram",
 			"population": 1337560,
 			"area": 4123,
-			"density": 320
+			"density": 320,
+			"lat": 9.3716,
+			"lon": 78.8308,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5488,7 +7129,10 @@
 			"headquarters": "Ranipettai",
 			"population": 1210277,
 			"area": 2234,
-			"density": 524
+			"density": 524,
+			"lat": 12.9247,
+			"lon": 79.3333,
+			"geo_source": "district"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5498,7 +7142,10 @@
 			"headquarters": "Salem",
 			"population": 3480008,
 			"area": 5245,
-			"density": 663
+			"density": 663,
+			"lat": 11.6538,
+			"lon": 78.1554,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5508,7 +7155,10 @@
 			"headquarters": "Sivagangai",
 			"population": 1341250,
 			"area": 4086,
-			"density": 324
+			"density": 324,
+			"lat": 9.847,
+			"lon": 78.4836,
+			"geo_source": "district"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5518,7 +7168,10 @@
 			"headquarters": "Tenkasi",
 			"population": 1407627,
 			"area": 2916,
-			"density": 483
+			"density": 483,
+			"lat": 8.96,
+			"lon": 77.3153,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5528,7 +7181,10 @@
 			"headquarters": "Tiruppur",
 			"population": 2471222,
 			"area": 5106,
-			"density": 476
+			"density": 476,
+			"lat": 11.1154,
+			"lon": 77.3546,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5538,7 +7194,10 @@
 			"headquarters": "Tiruchirappalli",
 			"population": 2713858,
 			"area": 4407,
-			"density": 602
+			"density": 602,
+			"lat": 10.8155,
+			"lon": 78.6965,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5548,7 +7207,10 @@
 			"headquarters": "Theni",
 			"population": 1243684,
 			"area": 3066,
-			"density": 433
+			"density": 433,
+			"lat": 10.0112,
+			"lon": 77.4777,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5558,7 +7220,10 @@
 			"headquarters": "Tirunelveli",
 			"population": 1665253,
 			"area": 3842,
-			"density": 433
+			"density": 433,
+			"lat": 8.7274,
+			"lon": 77.6838,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5568,7 +7233,10 @@
 			"headquarters": "Thanjavur",
 			"population": 2402781,
 			"area": 3397,
-			"density": 691
+			"density": 691,
+			"lat": 10.7852,
+			"lon": 79.1391,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5578,7 +7246,10 @@
 			"headquarters": "Thoothukudi",
 			"population": 1738376,
 			"area": 4594,
-			"density": 378
+			"density": 378,
+			"lat": 8.7674,
+			"lon": 78.1342,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5588,7 +7259,10 @@
 			"headquarters": "Tirupattur",
 			"population": 1111812,
 			"area": 1798,
-			"density": 618
+			"density": 618,
+			"lat": 12.4924,
+			"lon": 78.568,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5598,7 +7272,10 @@
 			"headquarters": "Tiruvallur",
 			"population": 3725697,
 			"area": 3424,
-			"density": 1049
+			"density": 1049,
+			"lat": 13.1438,
+			"lon": 79.9089,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5608,7 +7285,10 @@
 			"headquarters": "Thiruvarur",
 			"population": 1268094,
 			"area": 2377,
-			"density": 533
+			"density": 533,
+			"lat": 10.7727,
+			"lon": 79.6368,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5618,7 +7298,10 @@
 			"headquarters": "Tiruvannaamalai",
 			"population": 2468965,
 			"area": 6191,
-			"density": 399
+			"density": 399,
+			"lat": 12.2266,
+			"lon": 79.0746,
+			"geo_source": "district"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5628,7 +7311,10 @@
 			"headquarters": "Vellore",
 			"population": 1614242,
 			"area": 2080,
-			"density": 776
+			"density": 776,
+			"lat": 12.9184,
+			"lon": 79.1325,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5638,7 +7324,10 @@
 			"headquarters": "Viluppuram",
 			"population": 2093003,
 			"area": 3725,
-			"density": 562
+			"density": 562,
+			"lat": 12.1167,
+			"lon": 79.5989,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Tamil Nadu",
@@ -5648,7 +7337,10 @@
 			"headquarters": "Virudhunagar",
 			"population": 1943309,
 			"area": 3446,
-			"density": 454
+			"density": 454,
+			"lat": 9.4926,
+			"lon": 77.8632,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
@@ -5658,27 +7350,36 @@
 			"headquarters": "Adilabad",
 			"population": 708952,
 			"area": 4185,
-			"density": 171
+			"density": 171,
+			"lat": 19.672,
+			"lon": 78.5359,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Bhadradri Kothagudem",
 			"headquarters": "Kothagudem",
 			"population": 1304811,
 			"area": 8951,
-			"density": 143
+			"density": 143,
+			"lat": 17.5511,
+			"lon": 80.6178,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Hanamkonda",
 			"headquarters": "Hanamkonda",
 			"population": 1135707,
 			"area": 1304,
-			"density": 826
+			"density": 826,
+			"lat": 18.0101,
+			"lon": 79.5694,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5688,57 +7389,75 @@
 			"headquarters": "Hyderabad",
 			"population": 3943323,
 			"area": 217,
-			"density": 18172
+			"density": 18172,
+			"lat": 17.384,
+			"lon": 78.4564,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Jagtial",
 			"headquarters": "Jagtial",
 			"population": 983414,
 			"area": 3043,
-			"density": 407
+			"density": 407,
+			"lat": 18.7947,
+			"lon": 78.9166,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Jangaon",
 			"headquarters": "Jangaon",
 			"population": 582457,
 			"area": 2187,
-			"density": 259
+			"density": 259,
+			"lat": 17.726,
+			"lon": 79.1524,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Jayashankar Bhupalpally",
 			"headquarters": "Bhupalpally",
 			"population": 712257,
 			"area": 6361,
-			"density": 115
+			"density": 115,
+			"lat": 18.4287,
+			"lon": 79.8638,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Jogulamba Gadwal",
 			"headquarters": "Gadwal",
 			"population": 664971,
 			"area": 2928,
-			"density": 208
+			"density": 208,
+			"lat": 16.235,
+			"lon": 77.7956,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Kamareddy",
 			"headquarters": "Kamareddy",
 			"population": 972625,
 			"area": 3651,
-			"density": 266
+			"density": 266,
+			"lat": 18.3166,
+			"lon": 78.0539,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
@@ -5748,7 +7467,10 @@
 			"headquarters": "Karimnagar",
 			"population": 1016063,
 			"area": 2379,
-			"density": 473
+			"density": 473,
+			"lat": 18.4392,
+			"lon": 79.1286,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5758,27 +7480,36 @@
 			"headquarters": "Khammam",
 			"population": 1401639,
 			"area": 4453,
-			"density": 321
+			"density": 321,
+			"lat": 17.2477,
+			"lon": 80.1437,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Kumuram Bheem Asifabad",
 			"headquarters": "Asifabad",
 			"population": 515835,
 			"area": 4300,
-			"density": 106
+			"density": 106,
+			"lat": 19.3585,
+			"lon": 79.2841,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Mahabubabad",
 			"headquarters": "Mahabubabad",
 			"population": 770170,
 			"area": 2876,
-			"density": 269
+			"density": 269,
+			"lat": 17.7139,
+			"lon": 80.0413,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
@@ -5788,17 +7519,23 @@
 			"headquarters": "Mahbubnagar",
 			"population": 1318110,
 			"area": 4037,
-			"density": 281
+			"density": 281,
+			"lat": 16.7438,
+			"lon": 77.986,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Mancherial",
 			"headquarters": "Mancherial",
 			"population": 807037,
 			"area": 4056,
-			"density": 201
+			"density": 201,
+			"lat": 18.8707,
+			"lon": 79.4286,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5808,27 +7545,36 @@
 			"headquarters": "Medak",
 			"population": 767428,
 			"area": 2740,
-			"density": 275
+			"density": 275,
+			"lat": 18.0453,
+			"lon": 78.2608,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
-			"district": "Medchal\u2013Malkajgiri",
+			"districtCode": "–",
+			"district": "Medchal–Malkajgiri",
 			"headquarters": "Shamirpet",
 			"population": 2542203,
 			"area": 5005,
-			"density": 2251
+			"density": 2251,
+			"lat": 17.7371,
+			"lon": 79.1345,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Mulugu",
 			"headquarters": "Mulugu",
 			"population": 294671,
 			"area": 3881,
-			"density": 124
+			"density": 124,
+			"lat": 18.191,
+			"lon": 79.943,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5838,37 +7584,49 @@
 			"headquarters": "Nalgonda",
 			"population": 1631399,
 			"area": 2449,
-			"density": 227
+			"density": 227,
+			"lat": 17.0544,
+			"lon": 79.2671,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Narayanpet",
 			"headquarters": "Narayanpet",
 			"population": 566874,
 			"area": 2336,
-			"density": 243
+			"density": 243,
+			"lat": 16.748,
+			"lon": 77.4954,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Nagarkurnool",
 			"headquarters": "Nagarkurnool",
 			"population": 893308,
 			"area": 6545,
-			"density": 124
+			"density": 124,
+			"lat": 16.4158,
+			"lon": 78.683,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Nirmal",
 			"headquarters": "Nirmal",
 			"population": 709415,
 			"area": 3562,
-			"density": 185
+			"density": 185,
+			"lat": 19.0968,
+			"lon": 78.3441,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5878,27 +7636,36 @@
 			"headquarters": "Nizamabad",
 			"population": 1534428,
 			"area": 4153,
-			"density": 366
+			"density": 366,
+			"lat": 18.6715,
+			"lon": 78.0988,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Peddapalli",
 			"headquarters": "Peddapalli",
 			"population": 795332,
 			"area": 4614,
-			"density": 356
+			"density": 356,
+			"lat": 18.6136,
+			"lon": 79.3744,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Rajanna Sircilla",
 			"headquarters": "Sircilla",
 			"population": 546121,
 			"area": 2030,
-			"density": 273
+			"density": 273,
+			"lat": 18.4521,
+			"lon": 78.7646,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
@@ -5908,57 +7675,75 @@
 			"headquarters": "Hyderabad",
 			"population": 2551731,
 			"area": 5031,
-			"density": 486
+			"density": 486,
+			"lat": 17.384,
+			"lon": 78.4564,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Sangareddy",
 			"headquarters": "Sangareddy",
 			"population": 1527628,
 			"area": 4464,
-			"density": 347
+			"density": 347,
+			"lat": 17.8684,
+			"lon": 77.8227,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Siddipet",
 			"headquarters": "Siddipet",
 			"population": 993376,
 			"area": 3425,
-			"density": 279
+			"density": 279,
+			"lat": 18.1048,
+			"lon": 78.8486,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Suryapet",
 			"headquarters": "Suryapet",
 			"population": 1099560,
 			"area": 3374,
-			"density": 305
+			"density": 305,
+			"lat": 17.1405,
+			"lon": 79.6205,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Vikarabad",
 			"headquarters": "Vikarabad",
 			"population": 881250,
 			"area": 3385,
-			"density": 274
+			"density": 274,
+			"lat": 17.3381,
+			"lon": 77.9044,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Wanaparthy",
 			"headquarters": "Wanaparthy",
 			"population": 751553,
 			"area": 2938,
-			"density": 268
+			"density": 268,
+			"lat": 16.3674,
+			"lon": 78.0689,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
@@ -5968,17 +7753,23 @@
 			"headquarters": "Warangal",
 			"population": 716457,
 			"area": 2175,
-			"density": 330
+			"density": 330,
+			"lat": 17.9144,
+			"lon": 79.6022,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Telangana",
 			"stateCode": "TS",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Yadadri Bhuvanagiri",
 			"headquarters": "Bhongir",
 			"population": 726465,
 			"area": 3091,
-			"density": 239
+			"density": 239,
+			"lat": 17.5154,
+			"lon": 78.8856,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -5988,7 +7779,10 @@
 			"headquarters": "Ambassa",
 			"population": 377988,
 			"area": 2400,
-			"density": 157
+			"density": 157,
+			"lat": 23.936,
+			"lon": 91.8544,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -5998,7 +7792,10 @@
 			"headquarters": "Udaipur",
 			"population": 436868,
 			"area": 1522,
-			"density": 287
+			"density": 287,
+			"lat": 23.5333,
+			"lon": 91.4833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6008,7 +7805,10 @@
 			"headquarters": "Khowai",
 			"population": 327391,
 			"area": 1005,
-			"density": 326
+			"density": 326,
+			"lat": 24.0796,
+			"lon": 91.5997,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6018,7 +7818,10 @@
 			"headquarters": "Dharmanagar",
 			"population": 415946,
 			"area": 1444,
-			"density": 288
+			"density": 288,
+			"lat": 24.3667,
+			"lon": 92.1667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6028,7 +7831,10 @@
 			"headquarters": "Bishramganj",
 			"population": 484233,
 			"area": 1044,
-			"density": 463
+			"density": 463,
+			"lat": 23.6058,
+			"lon": 91.3435,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6038,7 +7844,10 @@
 			"headquarters": "Belonia",
 			"population": 433737,
 			"area": 1534,
-			"density": 283
+			"density": 283,
+			"lat": 23.2518,
+			"lon": 91.4541,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6048,7 +7857,10 @@
 			"headquarters": "Kailashahar",
 			"population": 277335,
 			"area": 591,
-			"density": 469
+			"density": 469,
+			"lat": 24.332,
+			"lon": 92.0039,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Tripura",
@@ -6058,7 +7870,10 @@
 			"headquarters": "Agartala",
 			"population": 917534,
 			"area": 942,
-			"density": 973
+			"density": 973,
+			"lat": 23.8361,
+			"lon": 91.2794,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6068,7 +7883,10 @@
 			"headquarters": "Agra",
 			"population": 4380793,
 			"area": 4027,
-			"density": 1084
+			"density": 1084,
+			"lat": 27.1833,
+			"lon": 78.0167,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6078,7 +7896,10 @@
 			"headquarters": "Aligarh",
 			"population": 3673849,
 			"area": 3747,
-			"density": 1007
+			"density": 1007,
+			"lat": 27.8815,
+			"lon": 78.0746,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6088,7 +7909,10 @@
 			"headquarters": "Akbarpur",
 			"population": 2398709,
 			"area": 2372,
-			"density": 1021
+			"density": 1021,
+			"lat": 26.4295,
+			"lon": 82.5343,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6098,7 +7922,10 @@
 			"headquarters": "Gauriganj",
 			"population": 2549935,
 			"area": 3063,
-			"density": 830
+			"density": 830,
+			"lat": 26.2081,
+			"lon": 81.6929,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6108,7 +7935,10 @@
 			"headquarters": "Amroha",
 			"population": 1838771,
 			"area": 2321,
-			"density": 818
+			"density": 818,
+			"lat": 28.9031,
+			"lon": 78.4698,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6118,7 +7948,10 @@
 			"headquarters": "Auraiya",
 			"population": 1372287,
 			"area": 2051,
-			"density": 681
+			"density": 681,
+			"lat": 26.4652,
+			"lon": 79.5092,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6128,7 +7961,10 @@
 			"headquarters": "Ayodhya",
 			"population": 2468371,
 			"area": 2765,
-			"density": 1054
+			"density": 1054,
+			"lat": 26.7991,
+			"lon": 82.2047,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6138,7 +7974,10 @@
 			"headquarters": "Azamgarh",
 			"population": 4616509,
 			"area": 4053,
-			"density": 1139
+			"density": 1139,
+			"lat": 26.0683,
+			"lon": 83.1836,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6148,7 +7987,10 @@
 			"headquarters": "Baghpat",
 			"population": 1302156,
 			"area": 1345,
-			"density": 986
+			"density": 986,
+			"lat": 28.9448,
+			"lon": 77.2186,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6158,7 +8000,10 @@
 			"headquarters": "Bahraich",
 			"population": 2384239,
 			"area": 4926,
-			"density": 415
+			"density": 415,
+			"lat": 27.5743,
+			"lon": 81.5947,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6168,7 +8013,10 @@
 			"headquarters": "Ballia",
 			"population": 3223642,
 			"area": 2981,
-			"density": 1081
+			"density": 1081,
+			"lat": 25.7567,
+			"lon": 84.1488,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6178,7 +8026,10 @@
 			"headquarters": "Balrampur",
 			"population": 2149066,
 			"area": 3349,
-			"density": 642
+			"density": 642,
+			"lat": 27.4295,
+			"lon": 82.1855,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6188,7 +8039,10 @@
 			"headquarters": "Banda",
 			"population": 1799541,
 			"area": 4413,
-			"density": 404
+			"density": 404,
+			"lat": 25.4776,
+			"lon": 80.3349,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6198,7 +8052,10 @@
 			"headquarters": "Barabanki",
 			"population": 3257983,
 			"area": 3825,
-			"density": 739
+			"density": 739,
+			"lat": 26.9421,
+			"lon": 81.3856,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6208,7 +8065,10 @@
 			"headquarters": "Bareilly",
 			"population": 4465344,
 			"area": 4120,
-			"density": 1084
+			"density": 1084,
+			"lat": 28.3668,
+			"lon": 79.4317,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6218,7 +8078,10 @@
 			"headquarters": "Basti",
 			"population": 2461056,
 			"area": 2687,
-			"density": 916
+			"density": 916,
+			"lat": 26.7882,
+			"lon": 82.7162,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6228,7 +8091,10 @@
 			"headquarters": "Gyanpur",
 			"population": 1554203,
 			"area": 960,
-			"density": 1531
+			"density": 1531,
+			"lat": 25.3327,
+			"lon": 82.4664,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6238,7 +8104,10 @@
 			"headquarters": "Bijnor",
 			"population": 3683896,
 			"area": 4561,
-			"density": 808
+			"density": 808,
+			"lat": 29.373,
+			"lon": 78.1364,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6248,7 +8117,10 @@
 			"headquarters": "Budaun",
 			"population": 3712738,
 			"area": 5168,
-			"density": 718
+			"density": 718,
+			"lat": 28.0381,
+			"lon": 79.1267,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6258,7 +8130,10 @@
 			"headquarters": "Bulandshahr",
 			"population": 3498507,
 			"area": 3719,
-			"density": 788
+			"density": 788,
+			"lat": 28.4039,
+			"lon": 77.8577,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6268,7 +8143,10 @@
 			"headquarters": "Chandauli",
 			"population": 1952713,
 			"area": 2554,
-			"density": 768
+			"density": 768,
+			"lat": 25.258,
+			"lon": 83.2682,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6278,7 +8156,10 @@
 			"headquarters": "Karwi",
 			"population": 990626,
 			"area": 3202,
-			"density": 315
+			"density": 315,
+			"lat": 25.2147,
+			"lon": 80.9164,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6288,7 +8169,10 @@
 			"headquarters": "Deoria",
 			"population": 3098637,
 			"area": 2535,
-			"density": 1220
+			"density": 1220,
+			"lat": 26.5017,
+			"lon": 83.7794,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6298,7 +8182,10 @@
 			"headquarters": "Etah",
 			"population": 1761152,
 			"area": 2456,
-			"density": 717
+			"density": 717,
+			"lat": 27.5588,
+			"lon": 78.6569,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6308,7 +8195,10 @@
 			"headquarters": "Etawah",
 			"population": 1579160,
 			"area": 2287,
-			"density": 683
+			"density": 683,
+			"lat": 26.7762,
+			"lon": 79.0213,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6318,7 +8208,10 @@
 			"headquarters": "Fatehgarh",
 			"population": 1887577,
 			"area": 2279,
-			"density": 865
+			"density": 865,
+			"lat": 27.3641,
+			"lon": 79.6311,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6328,7 +8221,10 @@
 			"headquarters": "Fatehpur",
 			"population": 2632684,
 			"area": 4152,
-			"density": 634
+			"density": 634,
+			"lat": 25.9277,
+			"lon": 80.8127,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6338,7 +8234,10 @@
 			"headquarters": "Firozabad",
 			"population": 2496761,
 			"area": 2361,
-			"density": 1044
+			"density": 1044,
+			"lat": 27.1509,
+			"lon": 78.3978,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6348,7 +8247,10 @@
 			"headquarters": "Noida",
 			"population": 1674714,
 			"area": 1269,
-			"density": 1252
+			"density": 1252,
+			"lat": 28.58,
+			"lon": 77.33,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6358,7 +8260,10 @@
 			"headquarters": "Ghaziabad",
 			"population": 4661452,
 			"area": 1175,
-			"density": 3967
+			"density": 3967,
+			"lat": 28.6654,
+			"lon": 77.4391,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6368,7 +8273,10 @@
 			"headquarters": "Ghazipur",
 			"population": 3622727,
 			"area": 3377,
-			"density": 1072
+			"density": 1072,
+			"lat": 25.5833,
+			"lon": 83.5853,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6378,7 +8286,10 @@
 			"headquarters": "Gonda",
 			"population": 3431386,
 			"area": 4425,
-			"density": 857
+			"density": 857,
+			"lat": 27.8313,
+			"lon": 77.8791,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6388,7 +8299,10 @@
 			"headquarters": "Gorakhpur",
 			"population": 4436275,
 			"area": 3325,
-			"density": 1336
+			"density": 1336,
+			"lat": 26.7663,
+			"lon": 83.3689,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6398,7 +8312,10 @@
 			"headquarters": "Hamirpur",
 			"population": 1104021,
 			"area": 4325,
-			"density": 268
+			"density": 268,
+			"lat": 25.9553,
+			"lon": 80.1484,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6408,7 +8325,10 @@
 			"headquarters": "Hapur",
 			"population": 1338211,
 			"area": 660,
-			"density": 2028
+			"density": 2028,
+			"lat": 28.7298,
+			"lon": 77.7807,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6418,7 +8338,10 @@
 			"headquarters": "Hardoi",
 			"population": 4091380,
 			"area": 5986,
-			"density": 683
+			"density": 683,
+			"lat": 27.3949,
+			"lon": 80.1316,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6428,7 +8351,10 @@
 			"headquarters": "Hathras",
 			"population": 1565678,
 			"area": 1752,
-			"density": 851
+			"density": 851,
+			"lat": 27.5955,
+			"lon": 78.052,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6438,7 +8364,10 @@
 			"headquarters": "Orai",
 			"population": 1670718,
 			"area": 4565,
-			"density": 366
+			"density": 366,
+			"lat": 25.9902,
+			"lon": 79.4533,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6448,7 +8377,10 @@
 			"headquarters": "Jaunpur",
 			"population": 4476072,
 			"area": 4038,
-			"density": 1108
+			"density": 1108,
+			"lat": 25.7536,
+			"lon": 82.6869,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6458,7 +8390,10 @@
 			"headquarters": "Jhansi",
 			"population": 2000755,
 			"area": 5024,
-			"density": 398
+			"density": 398,
+			"lat": 25.4589,
+			"lon": 78.5799,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6468,7 +8403,10 @@
 			"headquarters": "Kannauj",
 			"population": 1658005,
 			"area": 1993,
-			"density": 792
+			"density": 792,
+			"lat": 27.0552,
+			"lon": 79.9188,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6478,7 +8416,10 @@
 			"headquarters": "Akbarpur",
 			"population": 1795092,
 			"area": 3021,
-			"density": 594
+			"density": 594,
+			"lat": 26.3837,
+			"lon": 79.9493,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6488,7 +8429,10 @@
 			"headquarters": "Kanpur",
 			"population": 4572951,
 			"area": 3156,
-			"density": 1415
+			"density": 1415,
+			"lat": 26.4652,
+			"lon": 80.3498,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6498,7 +8442,10 @@
 			"headquarters": "Kasganj",
 			"population": 1438156,
 			"area": 1955,
-			"density": 736
+			"density": 736,
+			"lat": 27.8088,
+			"lon": 78.6458,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6508,7 +8455,10 @@
 			"headquarters": "Manjhanpur",
 			"population": 1596909,
 			"area": 1837,
-			"density": 897
+			"density": 897,
+			"lat": 25.5305,
+			"lon": 81.3757,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6518,7 +8468,10 @@
 			"headquarters": "Padrauna",
 			"population": 3560830,
 			"area": 2909,
-			"density": 1226
+			"density": 1226,
+			"lat": 26.904,
+			"lon": 83.9809,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6528,7 +8481,10 @@
 			"headquarters": "Lakhimpur",
 			"population": 4013634,
 			"area": 7674,
-			"density": 523
+			"density": 523,
+			"lat": 27.9482,
+			"lon": 80.7793,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6538,7 +8494,10 @@
 			"headquarters": "Lalitpur",
 			"population": 1218002,
 			"area": 5039,
-			"density": 242
+			"density": 242,
+			"lat": 24.6901,
+			"lon": 78.4192,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6548,7 +8507,10 @@
 			"headquarters": "Lucknow",
 			"population": 4588455,
 			"area": 2528,
-			"density": 1815
+			"density": 1815,
+			"lat": 26.8393,
+			"lon": 80.9231,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6558,7 +8520,10 @@
 			"headquarters": "Maharajganj",
 			"population": 2665292,
 			"area": 2953,
-			"density": 903
+			"density": 903,
+			"lat": 26.3813,
+			"lon": 81.2744,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6568,7 +8533,10 @@
 			"headquarters": "Mahoba",
 			"population": 876055,
 			"area": 2847,
-			"density": 288
+			"density": 288,
+			"lat": 25.2905,
+			"lon": 79.8753,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6578,7 +8546,10 @@
 			"headquarters": "Mainpuri",
 			"population": 1847194,
 			"area": 2760,
-			"density": 670
+			"density": 670,
+			"lat": 27.2286,
+			"lon": 79.0288,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6588,7 +8559,10 @@
 			"headquarters": "Mathura",
 			"population": 2541894,
 			"area": 3333,
-			"density": 761
+			"density": 761,
+			"lat": 27.5035,
+			"lon": 77.6722,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6598,7 +8572,10 @@
 			"headquarters": "Mau",
 			"population": 2205170,
 			"area": 1713,
-			"density": 1287
+			"density": 1287,
+			"lat": 25.9417,
+			"lon": 83.5611,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6608,7 +8585,10 @@
 			"headquarters": "Meerut",
 			"population": 3447405,
 			"area": 2522,
-			"density": 1342
+			"density": 1342,
+			"lat": 28.98,
+			"lon": 77.7064,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6618,7 +8598,10 @@
 			"headquarters": "Mirzapur",
 			"population": 2494533,
 			"area": 4522,
-			"density": 561
+			"density": 561,
+			"lat": 25.1449,
+			"lon": 82.5653,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6628,7 +8611,10 @@
 			"headquarters": "Moradabad",
 			"population": 4773138,
 			"area": 3718,
-			"density": 1284
+			"density": 1284,
+			"lat": 28.8389,
+			"lon": 78.7768,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6638,7 +8624,10 @@
 			"headquarters": "Muzaffarnagar",
 			"population": 4138605,
 			"area": 4008,
-			"density": 1033
+			"density": 1033,
+			"lat": 29.4709,
+			"lon": 77.7033,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6648,7 +8637,10 @@
 			"headquarters": "Pilibhit",
 			"population": 2037225,
 			"area": 3499,
-			"density": 567
+			"density": 567,
+			"lat": 28.6312,
+			"lon": 79.8044,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6658,7 +8650,10 @@
 			"headquarters": "Pratapgarh",
 			"population": 3173752,
 			"area": 3717,
-			"density": 854
+			"density": 854,
+			"lat": 25.8951,
+			"lon": 81.9424,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6668,7 +8663,10 @@
 			"headquarters": "Prayagraj",
 			"population": 5959798,
 			"area": 5481,
-			"density": 1087
+			"density": 1087,
+			"lat": 25.4448,
+			"lon": 81.8432,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6678,7 +8676,10 @@
 			"headquarters": "Raebareli",
 			"population": 3404004,
 			"area": 4609,
-			"density": 739
+			"density": 739,
+			"lat": 26.2309,
+			"lon": 81.2331,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6688,7 +8689,10 @@
 			"headquarters": "Rampur",
 			"population": 2335398,
 			"area": 2367,
-			"density": 987
+			"density": 987,
+			"lat": 28.8101,
+			"lon": 79.027,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6698,7 +8702,10 @@
 			"headquarters": "Saharanpur",
 			"population": 3464228,
 			"area": 3689,
-			"density": 939
+			"density": 939,
+			"lat": 29.9679,
+			"lon": 77.5452,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6708,7 +8715,10 @@
 			"headquarters": "Sambhal",
 			"population": 2217020,
 			"area": 2453,
-			"density": 890
+			"density": 890,
+			"lat": 28.585,
+			"lon": 78.5696,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6718,7 +8728,10 @@
 			"headquarters": "Khalilabad",
 			"population": 1714300,
 			"area": 1442,
-			"density": 1014
+			"density": 1014,
+			"lat": 26.7727,
+			"lon": 83.0718,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6728,7 +8741,10 @@
 			"headquarters": "Shahjahanpur",
 			"population": 3002376,
 			"area": 4575,
-			"density": 673
+			"density": 673,
+			"lat": 27.8817,
+			"lon": 79.9092,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6738,7 +8754,10 @@
 			"headquarters": "Shamli",
 			"population": 1274815,
 			"area": 1063,
-			"density": 1200
+			"density": 1200,
+			"lat": 29.4497,
+			"lon": 77.3096,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6748,7 +8767,10 @@
 			"headquarters": "Shravasti",
 			"population": 1114615,
 			"area": 1948,
-			"density": 572
+			"density": 572,
+			"lat": 27.502,
+			"lon": 82.0268,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6758,7 +8780,10 @@
 			"headquarters": "Naugarh",
 			"population": 2553526,
 			"area": 2751,
-			"density": 882
+			"density": 882,
+			"lat": 27.302,
+			"lon": 83.0963,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6768,7 +8793,10 @@
 			"headquarters": "Sitapur",
 			"population": 4474446,
 			"area": 5743,
-			"density": 779
+			"density": 779,
+			"lat": 27.5619,
+			"lon": 80.6826,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6778,7 +8806,10 @@
 			"headquarters": "Robertsganj",
 			"population": 1862612,
 			"area": 6788,
-			"density": 274
+			"density": 274,
+			"lat": 24.6886,
+			"lon": 83.0678,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6788,7 +8819,10 @@
 			"headquarters": "Sultanpur",
 			"population": 3790922,
 			"area": 4436,
-			"density": 855
+			"density": 855,
+			"lat": 26.2579,
+			"lon": 82.0727,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6798,7 +8832,10 @@
 			"headquarters": "Unnao",
 			"population": 3110595,
 			"area": 4561,
-			"density": 682
+			"density": 682,
+			"lat": 26.5471,
+			"lon": 80.4878,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttar Pradesh",
@@ -6808,7 +8845,10 @@
 			"headquarters": "Varanasi",
 			"population": 3682194,
 			"area": 1535,
-			"density": 2399
+			"density": 2399,
+			"lat": 25.3167,
+			"lon": 83.0104,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6818,7 +8858,10 @@
 			"headquarters": "Almora",
 			"population": 621927,
 			"area": 3090,
-			"density": 198
+			"density": 198,
+			"lat": 29.5971,
+			"lon": 79.6591,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6828,7 +8871,10 @@
 			"headquarters": "Bageshwar",
 			"population": 259840,
 			"area": 2310,
-			"density": 116
+			"density": 116,
+			"lat": 29.8374,
+			"lon": 79.7716,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6838,7 +8884,10 @@
 			"headquarters": "Gopeshwar",
 			"population": 391114,
 			"area": 7692,
-			"density": 49
+			"density": 49,
+			"lat": 30.4125,
+			"lon": 79.3198,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6848,7 +8897,10 @@
 			"headquarters": "Champawat",
 			"population": 259315,
 			"area": 1781,
-			"density": 147
+			"density": 147,
+			"lat": 29.335,
+			"lon": 80.0778,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6858,7 +8910,10 @@
 			"headquarters": "Dehradun",
 			"population": 1698560,
 			"area": 3088,
-			"density": 550
+			"density": 550,
+			"lat": 30.3244,
+			"lon": 78.0339,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6868,7 +8923,10 @@
 			"headquarters": "Haridwar",
 			"population": 1927029,
 			"area": 2360,
-			"density": 817
+			"density": 817,
+			"lat": 29.9479,
+			"lon": 78.1603,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6878,7 +8936,10 @@
 			"headquarters": "Nainital",
 			"population": 955128,
 			"area": 3853,
-			"density": 225
+			"density": 225,
+			"lat": 29.3974,
+			"lon": 79.4469,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6888,7 +8949,10 @@
 			"headquarters": "Pauri",
 			"population": 686527,
 			"area": 5438,
-			"density": 129
+			"density": 129,
+			"lat": 30.1529,
+			"lon": 78.7771,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6898,7 +8962,10 @@
 			"headquarters": "Pithoragarh",
 			"population": 485993,
 			"area": 7110,
-			"density": 69
+			"density": 69,
+			"lat": 29.5835,
+			"lon": 80.2095,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6908,7 +8975,10 @@
 			"headquarters": "Rudraprayag",
 			"population": 236857,
 			"area": 1896,
-			"density": 119
+			"density": 119,
+			"lat": 30.2847,
+			"lon": 78.9835,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6918,7 +8988,10 @@
 			"headquarters": "New Tehri",
 			"population": 616409,
 			"area": 4085,
-			"density": 169
+			"density": 169,
+			"lat": 30.3739,
+			"lon": 78.4325,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6928,7 +9001,10 @@
 			"headquarters": "Rudrapur",
 			"population": 1648367,
 			"area": 2912,
-			"density": 648
+			"density": 648,
+			"lat": 28.98,
+			"lon": 79.4,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Uttarakhand",
@@ -6938,7 +9014,10 @@
 			"headquarters": "Uttarkashi",
 			"population": 329686,
 			"area": 7951,
-			"density": 41
+			"density": 41,
+			"lat": 30.7299,
+			"lon": 78.4434,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -6948,7 +9027,10 @@
 			"headquarters": "Alipurduar",
 			"population": 1501983,
 			"area": 3136,
-			"density": 479
+			"density": 479,
+			"lat": 26.6288,
+			"lon": 89.4538,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "West Bengal",
@@ -6958,7 +9040,10 @@
 			"headquarters": "Bankura",
 			"population": 3596292,
 			"area": 6882,
-			"density": 523
+			"density": 523,
+			"lat": 23.2324,
+			"lon": 87.0716,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -6968,7 +9053,10 @@
 			"headquarters": "Suri",
 			"population": 3502387,
 			"area": 4545,
-			"density": 771
+			"density": 771,
+			"lat": 23.9081,
+			"lon": 87.5277,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -6978,7 +9066,10 @@
 			"headquarters": "Cooch Behar",
 			"population": 2822780,
 			"area": 3387,
-			"density": 833
+			"density": 833,
+			"lat": 26.3254,
+			"lon": 89.4451,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -6988,7 +9079,10 @@
 			"headquarters": "Balurghat",
 			"population": 1670931,
 			"area": 2183,
-			"density": 753
+			"density": 753,
+			"lat": 25.221,
+			"lon": 88.7773,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -6998,7 +9092,10 @@
 			"headquarters": "Darjeeling",
 			"population": 1595181,
 			"area": 2093,
-			"density": 762
+			"density": 762,
+			"lat": 27.0333,
+			"lon": 88.2667,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7008,7 +9105,10 @@
 			"headquarters": "Chinsurah",
 			"population": 5520389,
 			"area": 3149,
-			"density": 1753
+			"density": 1753,
+			"lat": 22.9088,
+			"lon": 88.3967,
+			"geo_source": "district"
 		},
 		{
 			"state": "West Bengal",
@@ -7018,7 +9118,10 @@
 			"headquarters": "Howrah",
 			"population": 4841638,
 			"area": 1467,
-			"density": 3300
+			"density": 3300,
+			"lat": 22.5769,
+			"lon": 88.3186,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7028,7 +9131,10 @@
 			"headquarters": "Jalpaiguri",
 			"population": 3869675,
 			"area": 6227,
-			"density": 621
+			"density": 621,
+			"lat": 26.5167,
+			"lon": 88.7333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7038,7 +9144,10 @@
 			"headquarters": "Jhargram",
 			"population": 1136548,
 			"area": 3038,
-			"density": 374
+			"density": 374,
+			"lat": 22.4538,
+			"lon": 86.995,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7048,7 +9157,10 @@
 			"headquarters": "Kalimpong",
 			"population": 251642,
 			"area": 1054,
-			"density": 239
+			"density": 239,
+			"lat": 27.0562,
+			"lon": 88.4621,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7058,7 +9170,10 @@
 			"headquarters": "Kolkata",
 			"population": 4486679,
 			"area": 206,
-			"density": 24252
+			"density": 24252,
+			"lat": 22.5626,
+			"lon": 88.363,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7068,7 +9183,10 @@
 			"headquarters": "English Bazar",
 			"population": 3997970,
 			"area": 3733,
-			"density": 1071
+			"density": 1071,
+			"lat": 25.0977,
+			"lon": 88.1262,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "West Bengal",
@@ -7078,7 +9196,10 @@
 			"headquarters": "Baharampur",
 			"population": 7102430,
 			"area": 5324,
-			"density": 1334
+			"density": 1334,
+			"lat": 24.1047,
+			"lon": 88.2515,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7088,7 +9209,10 @@
 			"headquarters": "Krishnanagar",
 			"population": 5168488,
 			"area": 3927,
-			"density": 1316
+			"density": 1316,
+			"lat": 23.4058,
+			"lon": 88.4907,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7098,7 +9222,10 @@
 			"headquarters": "Barasat",
 			"population": 10082852,
 			"area": 4094,
-			"density": 2463
+			"density": 2463,
+			"lat": 22.7215,
+			"lon": 88.482,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7108,7 +9235,10 @@
 			"headquarters": "Asansol",
 			"population": 2882031,
 			"area": 1603,
-			"density": 1798
+			"density": 1798,
+			"lat": 23.6833,
+			"lon": 86.9833,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7118,7 +9248,10 @@
 			"headquarters": "Midnapore",
 			"population": 4776909,
 			"area": 6308,
-			"density": 757
+			"density": 757,
+			"lat": 22.4211,
+			"lon": 87.3226,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7128,7 +9261,10 @@
 			"headquarters": "Bardhaman",
 			"population": 4835532,
 			"area": 5433,
-			"density": 890
+			"density": 890,
+			"lat": 23.2557,
+			"lon": 87.8569,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7138,7 +9274,10 @@
 			"headquarters": "Tamluk",
 			"population": 5095875,
 			"area": 4736,
-			"density": 1076
+			"density": 1076,
+			"lat": 22.3008,
+			"lon": 87.9259,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7148,7 +9287,10 @@
 			"headquarters": "Purulia",
 			"population": 2927965,
 			"area": 6259,
-			"density": 468
+			"density": 468,
+			"lat": 23.3306,
+			"lon": 86.363,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7158,7 +9300,10 @@
 			"headquarters": "Alipore",
 			"population": 8161961,
 			"area": 9960,
-			"density": 819
+			"density": 819,
+			"lat": 22.5319,
+			"lon": 88.3232,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "West Bengal",
@@ -7168,7 +9313,10 @@
 			"headquarters": "Raiganj",
 			"population": 3000849,
 			"area": 3180,
-			"density": 956
+			"density": 956,
+			"lat": 25.6128,
+			"lon": 88.1245,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andaman and Nicobar",
@@ -7178,7 +9326,10 @@
 			"headquarters": "Car Nicobar",
 			"population": 36842,
 			"area": 1841,
-			"density": 20
+			"density": 20,
+			"lat": 9.1516,
+			"lon": 92.8188,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andaman and Nicobar",
@@ -7188,7 +9339,10 @@
 			"headquarters": "Mayabunder",
 			"population": 105597,
 			"area": 3736,
-			"density": 28
+			"density": 28,
+			"lat": 12.9095,
+			"lon": 92.9035,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Andaman and Nicobar",
@@ -7198,7 +9352,10 @@
 			"headquarters": "Port Blair",
 			"population": 238142,
 			"area": 2672,
-			"density": 89
+			"density": 89,
+			"lat": 11.6661,
+			"lon": 92.7464,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Chandigarh",
@@ -7208,7 +9365,10 @@
 			"headquarters": "Chandigarh",
 			"population": 1055450,
 			"area": 114,
-			"density": 9258
+			"density": 9258,
+			"lat": 30.7363,
+			"lon": 76.7884,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Dadra and Nagar Haveli and Daman and Diu",
@@ -7218,7 +9378,10 @@
 			"headquarters": "Daman",
 			"population": 191173,
 			"area": 72,
-			"density": 2651
+			"density": 2651,
+			"lat": 20.4143,
+			"lon": 72.8324,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Dadra and Nagar Haveli and Daman and Diu",
@@ -7228,7 +9391,10 @@
 			"headquarters": "Diu",
 			"population": 52074,
 			"area": 39,
-			"density": 2058
+			"density": 2058,
+			"lat": 20.7141,
+			"lon": 70.9822,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Dadra and Nagar Haveli and Daman and Diu",
@@ -7238,7 +9404,10 @@
 			"headquarters": "Silvassa",
 			"population": 343709,
 			"area": 491,
-			"density": 700
+			"density": 700,
+			"lat": 20.2739,
+			"lon": 72.9967,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7248,7 +9417,10 @@
 			"headquarters": "Anantnag",
 			"population": 1070144,
 			"area": 2853,
-			"density": 375
+			"density": 375,
+			"lat": 33.7307,
+			"lon": 75.1542,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7258,7 +9430,10 @@
 			"headquarters": "Budgam",
 			"population": 735753,
 			"area": 1406,
-			"density": 537
+			"density": 537,
+			"lat": 33.9099,
+			"lon": 74.627,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7268,7 +9443,10 @@
 			"headquarters": "Bandipore",
 			"population": 385099,
 			"area": 3010,
-			"density": 128
+			"density": 128,
+			"lat": 34.4563,
+			"lon": 74.6825,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7278,7 +9456,10 @@
 			"headquarters": "Baramulla",
 			"population": 1015503,
 			"area": 3329,
-			"density": 305
+			"density": 305,
+			"lat": 34.1774,
+			"lon": 74.315,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7288,7 +9469,10 @@
 			"headquarters": "Doda",
 			"population": 409576,
 			"area": 2625,
-			"density": 79
+			"density": 79,
+			"lat": 33.1492,
+			"lon": 75.5475,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7298,7 +9482,10 @@
 			"headquarters": "Ganderbal",
 			"population": 297003,
 			"area": 1979,
-			"density": 1151
+			"density": 1151,
+			"lat": 34.2262,
+			"lon": 74.7748,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7308,7 +9495,10 @@
 			"headquarters": "Jammu",
 			"population": 1526406,
 			"area": 3097,
-			"density": 596
+			"density": 596,
+			"lat": 32.7353,
+			"lon": 74.8617,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7318,7 +9508,10 @@
 			"headquarters": "Kathua",
 			"population": 615711,
 			"area": 2651,
-			"density": 232
+			"density": 232,
+			"lat": 32.3694,
+			"lon": 75.5254,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7328,7 +9521,10 @@
 			"headquarters": "Kishtwar",
 			"population": 230696,
 			"area": 7737,
-			"density": 30
+			"density": 30,
+			"lat": 33.3135,
+			"lon": 75.7673,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7338,7 +9534,10 @@
 			"headquarters": "Kulgam",
 			"population": 422786,
 			"area": 457,
-			"density": 925
+			"density": 925,
+			"lat": 33.6446,
+			"lon": 75.0192,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7348,7 +9547,10 @@
 			"headquarters": "Kupwara",
 			"population": 875564,
 			"area": 2379,
-			"density": 368
+			"density": 368,
+			"lat": 34.5286,
+			"lon": 74.264,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7358,7 +9560,10 @@
 			"headquarters": "Poonch",
 			"population": 476820,
 			"area": 1674,
-			"density": 285
+			"density": 285,
+			"lat": 33.7703,
+			"lon": 74.0925,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7368,7 +9573,10 @@
 			"headquarters": "Pulwama",
 			"population": 570060,
 			"area": 1398,
-			"density": 598
+			"density": 598,
+			"lat": 33.874,
+			"lon": 74.8996,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7378,7 +9586,10 @@
 			"headquarters": "Rajouri",
 			"population": 619266,
 			"area": 2630,
-			"density": 235
+			"density": 235,
+			"lat": 33.3779,
+			"lon": 74.3152,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7388,7 +9599,10 @@
 			"headquarters": "Ramban",
 			"population": 283313,
 			"area": 1330,
-			"density": 213
+			"density": 213,
+			"lat": 33.2428,
+			"lon": 75.2351,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7398,7 +9612,10 @@
 			"headquarters": "Reasi",
 			"population": 314714,
 			"area": 1710,
-			"density": 184
+			"density": 184,
+			"lat": 33.0812,
+			"lon": 74.8324,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7408,7 +9625,10 @@
 			"headquarters": "Samba",
 			"population": 318611,
 			"area": 913,
-			"density": 318
+			"density": 318,
+			"lat": 32.5624,
+			"lon": 75.1199,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7418,7 +9638,10 @@
 			"headquarters": "Shopian",
 			"population": 265960,
 			"area": 312,
-			"density": 852
+			"density": 852,
+			"lat": 33.7172,
+			"lon": 74.8341,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7428,7 +9651,10 @@
 			"headquarters": "Srinagar",
 			"population": 1269751,
 			"area": 2228,
-			"density": 703
+			"density": 703,
+			"lat": 34.0857,
+			"lon": 74.8055,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Jammu and Kashmir",
@@ -7438,7 +9664,10 @@
 			"headquarters": "Udhampur",
 			"population": 555357,
 			"area": 4550,
-			"density": 211
+			"density": 211,
+			"lat": 32.9243,
+			"lon": 75.1357,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Ladakh",
@@ -7448,7 +9677,10 @@
 			"headquarters": "Kargil",
 			"population": 143388,
 			"area": 14036,
-			"density": 10
+			"density": 10,
+			"lat": 34.5577,
+			"lon": 76.1262,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Ladakh",
@@ -7458,7 +9690,10 @@
 			"headquarters": "Leh",
 			"population": 133487,
 			"area": 45110,
-			"density": 3
+			"density": 3,
+			"lat": 34.165,
+			"lon": 77.584,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Lakshadweep",
@@ -7468,7 +9703,10 @@
 			"headquarters": "Kavaratti",
 			"population": 64473,
 			"area": 30,
-			"density": 2149
+			"density": 2149,
+			"lat": 10.5669,
+			"lon": 72.642,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7478,7 +9716,10 @@
 			"headquarters": "Daryaganj",
 			"population": 582320,
 			"area": 25,
-			"density": 27730
+			"density": 27730,
+			"lat": 28.6389,
+			"lon": 77.1617,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7488,7 +9729,10 @@
 			"headquarters": "Preet Vihar",
 			"population": 1709346,
 			"area": 440,
-			"density": 27132
+			"density": 27132,
+			"lat": 28.6412,
+			"lon": 77.2923,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7498,7 +9742,10 @@
 			"headquarters": "Connaught Place",
 			"population": 142004,
 			"area": 22,
-			"density": 4057
+			"density": 4057,
+			"lat": 28.6331,
+			"lon": 77.2211,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7508,7 +9755,10 @@
 			"headquarters": "Sadar Bazaar",
 			"population": 887978,
 			"area": 59,
-			"density": 14557
+			"density": 14557,
+			"lat": 28.732,
+			"lon": 77.1853,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7518,7 +9768,10 @@
 			"headquarters": "Seelampur",
 			"population": 2241624,
 			"area": 52,
-			"density": 36155
+			"density": 36155,
+			"lat": 28.6708,
+			"lon": 77.2721,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7528,17 +9781,23 @@
 			"headquarters": "Kanjhawala",
 			"population": 3656539,
 			"area": 130,
-			"density": 8254
+			"density": 8254,
+			"lat": 28.7368,
+			"lon": 77.0052,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
 			"stateCode": "DL",
-			"districtCode": "\u2013",
+			"districtCode": "–",
 			"district": "Shahdara district",
 			"headquarters": "Nand Nagri",
 			"population": 0,
 			"area": 59,
-			"density": 0
+			"density": 0,
+			"lat": 28.6781,
+			"lon": 77.3091,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7548,7 +9807,10 @@
 			"headquarters": "Saket",
 			"population": 2731929,
 			"area": 250,
-			"density": 11060
+			"density": 11060,
+			"lat": 28.5189,
+			"lon": 77.2131,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7558,7 +9820,10 @@
 			"headquarters": "Defence Colony",
 			"population": 1500636,
 			"area": 102,
-			"density": 15000
+			"density": 15000,
+			"lat": 28.5714,
+			"lon": 77.2327,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7568,7 +9833,10 @@
 			"headquarters": "Vasant Vihar",
 			"population": 2292958,
 			"area": 395,
-			"density": 5446
+			"density": 5446,
+			"lat": 28.5864,
+			"lon": 76.9794,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "National Capital Territory of Delhi",
@@ -7578,7 +9846,10 @@
 			"headquarters": "Rajouri Garden",
 			"population": 2543243,
 			"area": 112,
-			"density": 19563
+			"density": 19563,
+			"lat": 28.641,
+			"lon": 77.095,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Puducherry",
@@ -7588,17 +9859,23 @@
 			"headquarters": "Karaikal",
 			"population": 200222,
 			"area": 157,
-			"density": 1275
+			"density": 1275,
+			"lat": 10.9167,
+			"lon": 79.8333,
+			"geo_source": "headquarters"
 		},
 		{
 			"state": "Puducherry",
 			"stateCode": "PY",
 			"districtCode": "MA",
-			"district": "Mah\u00e9",
-			"headquarters": "Mah\u00e9",
+			"district": "Mahé",
+			"headquarters": "Mahé",
 			"population": 41816,
 			"area": 9,
-			"density": 4646
+			"density": 4646,
+			"lat": 11.7022,
+			"lon": 75.5365,
+			"geo_source": "openstreetmap"
 		},
 		{
 			"state": "Puducherry",
@@ -7608,7 +9885,10 @@
 			"headquarters": "Pondicherry",
 			"population": 950289,
 			"area": 293,
-			"density": 3232
+			"density": 3232,
+			"lat": 11.9338,
+			"lon": 79.8298,
+			"geo_source": "district"
 		},
 		{
 			"state": "Puducherry",
@@ -7618,7 +9898,10 @@
 			"headquarters": "Yanam",
 			"population": 55626,
 			"area": 30,
-			"density": 1854
+			"density": 1854,
+			"lat": 16.7385,
+			"lon": 82.2106,
+			"geo_source": "openstreetmap"
 		}
 	]
 }

@@ -1,0 +1,121 @@
+{% set icons = {
+    "rupee": "M7 4h10M7 8.5h10M8 4c4.5 0 6.5 1.8 6.5 4.3S12.5 12.5 8 12.5l7 7.5",
+    "shield": "M12 3l7 3v6c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6zM9 12l2 2 4-4",
+    "card": "M3 6h18v12H3zM3 10h18M7 15h4",
+    "soil": "M3 17h18M5 20.5h14M12 17v-5M12 12c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5zM12 13.5c0-2.5 2-4.5 5-4.5 0 2.5-2 4.5-5 4.5z",
+    "market": "M4 10h16l-1.5-5h-13zM5 10v10h14V10M9 20v-5h6v5",
+    "sun": "M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4",
+    "phone": "M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"
+} %}
+{% set speaker = "M11 5 6 9H3v6h3l5 4zM15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13" %}
+<!DOCTYPE html>
+<html lang="{{ selected_language }}" dir="{{ bundle.dir }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1d7a58">
+    <title>{{ bundle.ui.schemesTitle }} · {{ bundle.labels.title }}</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="icon" href="{{ url_for('static', filename='icons/favicon.png') }}?v={{ asset_version }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}?v={{ asset_version }}">
+</head>
+<body>
+    <main class="page-shell schemes-page">
+        <a class="back-link" href="/?language={{ selected_language }}">&larr; {{ bundle.ui.backHome }}</a>
+        <p class="eyebrow">{{ bundle.labels.title }}</p>
+        <h1>{{ bundle.ui.schemesTitle }}</h1>
+        <p class="panel-copy">{{ bundle.ui.schemesCopy }}</p>
+
+        <form class="schemes-language" method="get" action="/schemes">
+            <label>
+                <span>{{ bundle.labels.language }}</span>
+                <select name="language" id="schemes-language">
+                    {% for code, name in language_names.items() %}
+                    <option value="{{ code }}" {% if code == selected_language %}selected{% endif %}>{{ name }} ({{ code.upper() }})</option>
+                    {% endfor %}
+                </select>
+            </label>
+        </form>
+        {% if not translated %}<p class="fine-print">{{ bundle.ui.schemesNotTranslated }}</p>{% endif %}
+
+        <div class="scheme-grid">
+            {% for scheme in schemes %}
+            <article class="result-card scheme-card" id="{{ scheme.id }}">
+                <div class="scheme-head">
+                    <div class="action-icon"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ icons[scheme.icon] }}"/></svg></div>
+                    <h2>{{ scheme.name }}</h2>
+                    <button type="button" class="speak-btn" data-speak="{{ loop.index0 }}" aria-label="{{ bundle.ui.readAloud }}" title="{{ bundle.ui.readAloud }}"><svg class="icon" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="{{ speaker }}"/></svg></button>
+                </div>
+                <p>{{ scheme.summary }}</p>
+                <h3>{{ bundle.ui.schemesHow }}</h3>
+                <p>{{ scheme.how }}</p>
+                <div class="scheme-links">
+                    {% if scheme.link %}<a class="scheme-link" href="{{ scheme.link }}" target="_blank" rel="noopener">{{ bundle.ui.officialSite }}: {{ scheme.link_label }}</a>{% endif %}
+                    {% if scheme.phone %}<a class="scheme-call" href="tel:{{ scheme.phone | replace('-', '') }}">{{ bundle.ui.callNow }} {{ scheme.phone }}</a>{% endif %}
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </main>
+
+    <script>
+        const speakables = {{ schemes | map(attribute='speak') | list | tojson }};
+        const serverSpeech = {{ speech_enabled | tojson }};
+        const language = {{ selected_language | tojson }};
+        const locale = {{ bundle.speech_locale | tojson }};
+        const unavailable = {{ bundle.ui.speechUnavailable | tojson }};
+        let audio = null;
+        let activeButton = null;
+
+        document.getElementById("schemes-language").addEventListener("change", (event) => event.target.form.submit());
+
+        function stop() {
+            if (audio) { audio.pause(); audio = null; }
+            if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+            if (activeButton) { activeButton.classList.remove("playing"); activeButton = null; }
+        }
+
+        function browserVoice(item, button) {
+            if (!("speechSynthesis" in window)) return false;
+            const short = locale.toLowerCase().split("-")[0];
+            const voice = window.speechSynthesis.getVoices().find(v => v.lang.toLowerCase().startsWith(short));
+            if (!voice && short !== "en") return false;
+            const utterance = new SpeechSynthesisUtterance(item.text);
+            utterance.lang = locale;
+            if (voice) utterance.voice = voice;
+            utterance.rate = 0.9;
+            utterance.onend = () => { if (activeButton === button) stop(); };
+            window.speechSynthesis.speak(utterance);
+            return true;
+        }
+
+        document.addEventListener("click", async (event) => {
+            const button = event.target.closest("[data-speak]");
+            if (!button) return;
+            if (activeButton === button) return stop();
+            stop();
+            activeButton = button;
+            button.classList.add("playing");
+            const item = speakables[Number(button.dataset.speak)];
+            if (serverSpeech && navigator.onLine) {
+                try {
+                    const response = await fetch("/speak", {method: "POST", headers: {"Content-Type": "application/json"},
+                                                            body: JSON.stringify({text: item.text, sig: item.sig, language})});
+                    if (response.ok && activeButton === button) {
+                        audio = new Audio(URL.createObjectURL(await response.blob()));
+                        audio.onended = () => { if (activeButton === button) stop(); };
+                        await audio.play();
+                        return;
+                    }
+                } catch (error) {
+                    // use the phone's own voice
+                }
+            }
+            if (activeButton === button && !browserVoice(item, button)) {
+                stop();
+                alert(unavailable);
+            }
+        });
+    </script>
+</body>
+</html>

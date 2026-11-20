@@ -1,0 +1,45 @@
+name: Tests
+
+on:
+  push:
+    branches-ignore: [main]   # main is tested by the deploy workflow
+  pull_request:
+  workflow_call:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+          cache: pip
+          cache-dependency-path: requirements*.txt
+
+      - name: Install dependencies
+        run: pip install -r requirements-dev.txt
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Start Azurite (local Azure Storage emulator)
+        run: |
+          npx --yes azurite@3 --silent --skipApiVersionCheck --loose \
+            --location "$RUNNER_TEMP/azurite" --blobPort 10000 --queuePort 10001 --tablePort 10002 &
+          for i in $(seq 1 30); do
+            nc -z 127.0.0.1 10000 && nc -z 127.0.0.1 10002 && exit 0
+            sleep 1
+          done
+          echo "Azurite did not start" && exit 1
+
+      - name: Run tests
+        env:
+          FARMSAARTHI_TEST_AZURITE: "1"
+        run: pytest -q
